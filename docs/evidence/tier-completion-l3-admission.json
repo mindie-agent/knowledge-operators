@@ -1,0 +1,22 @@
+{
+  "schema_version": "mindie-tier-completion-admission/1",
+  "unit_id": "unit-rmsnorm-five-stage-ablation-workflow",
+  "tier": "L3",
+  "category": "workflow",
+  "evidence_strength": "single_observation",
+  "actual_repetitions": 1,
+  "validator_revision": "422ebbdfb3d3faacd858e4b96811d99694aa1be0",
+  "editorial_packet_sha256": "7bb45577279dc7cad17661fdd16c384bfc2cd469b45767f9ec50ec41fc10de30",
+  "source_projection_sha256": "559ec6571463148494c090be4f3ac768268ca73104119ffe1791d4b125e55b2c",
+  "c6": "applied",
+  "actual_Gitleaks_and_deterministic_scan": "unchanged",
+  "applicable_query": "matched",
+  "missing_condition": "excluded",
+  "mismatched_condition": "excluded",
+  "partial_workload": "excluded",
+  "exact_ref": "byte_matched",
+  "existing_unit_bytes": "preserved",
+  "admission_model_calls": 0,
+  "new_hardware_calls": 0,
+  "remote_writes": 0
+}

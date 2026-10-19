@@ -1,17 +1,19 @@
 {
-  "build_elapsed_ms": 0.26466697454452515,
+  "build_elapsed_ms": 0.5488329916261137,
   "closure": {
-    "unit-residual-free-rmsnorm-fastpath": []
+    "unit-residual-free-rmsnorm-fastpath": [],
+    "unit-rmsnorm-five-stage-ablation-workflow": []
   },
-  "digest": "8662a86760af9079f6fdfea9ffd3bc9c33d4a66e29e723bba5e4e1f6c568566c",
-  "generation": "f306f878eca50314dea07ee593283e5afbe156f52ca7ed97f5118df4e06fc8e2",
+  "digest": "433c0aa8979f17cf65b398b24d4da915fcbf518f4225d6b30d75481a518bf577",
+  "generation": "f0d3505c59ed62bc0dbb99e6c8638fb0c00e53645008482c643c43867942cd70",
   "id_path": {
-    "unit-residual-free-rmsnorm-fastpath": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md"
+    "unit-residual-free-rmsnorm-fastpath": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
+    "unit-rmsnorm-five-stage-ablation-workflow": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md"
   },
   "query_budget_excludes_build": true,
   "schema_version": "mindie-routing-manifest/1",
   "token_estimator": "utf8_bytes_div_4_ceiling",
-  "unit_count": 1,
+  "unit_count": 2,
   "units": [
     {
       "category": "mutator",
@@ -100,6 +102,78 @@
           "residual",
           "dispatch",
           "fastpath"
+        ]
+      }
+    },
+    {
+      "category": "workflow",
+      "closure_digest": "sha256:b1bd737ab989166932f458ede8fff8e6e13e5d45812c555a1301bdf610c047a0",
+      "conditions": {
+        "activation": "sigmoid",
+        "base_commit": "f02da291ec0bdbe31af248deffa69f7a97e8f259",
+        "cann": "9.1.0",
+        "driver": "25.2.2",
+        "dtype": "bfloat16",
+        "factor_id": "native_residual_free_fastpath",
+        "firmware": "7.7.0.10.220",
+        "framework": {
+          "torch": "2.10.0+cpu",
+          "torch_npu": "2.10.0.post4"
+        },
+        "soc": "Ascend910B4",
+        "target_file": "vllm_ascend/ops/layernorm.py",
+        "workload": {
+          "exact_set": [
+            {
+              "input_shape": "1x37x4x128",
+              "samples_per_shape": 36,
+              "workload_case_sha256": "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a"
+            },
+            {
+              "input_shape": "1x193x8x128",
+              "samples_per_shape": 36,
+              "workload_case_sha256": "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+            }
+          ]
+        }
+      },
+      "content_digest": "sha256:f72c21fd52649a8b086010eda2049fbd200276d4b22badee963f0d2aa088fc67",
+      "content_sha256": "f72c21fd52649a8b086010eda2049fbd200276d4b22badee963f0d2aa088fc67",
+      "domain_path": "normalization/rmsnorm",
+      "evidence_strength": "single_observation",
+      "id": "unit-rmsnorm-five-stage-ablation-workflow",
+      "inherits_from": [],
+      "inherits_from_closure": [],
+      "path": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md",
+      "provenance": {
+        "evidence_refs": [
+          "docs/evidence/l3-ablation-workflow.json",
+          "docs/evidence/c4-case-block-v2-ablation.json",
+          "docs/evidence/c4-case-block-v2-stage-acceptance.json",
+          "docs/evidence/c4-case-block-v2-gates.json",
+          "docs/evidence/c4-revision4-provenance.json"
+        ],
+        "source_digest": "559ec6571463148494c090be4f3ac768268ca73104119ffe1791d4b125e55b2c",
+        "source_locator": "docs/evidence/l3-ablation-workflow.json",
+        "source_type": "run_manifest",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L3",
+      "title": "Observed five-stage RMSNorm ablation workflow with preserved reporting failure",
+      "token_estimate": 458,
+      "triggers": {
+        "error_signatures": [],
+        "keywords": [
+          "observed",
+          "five-stage",
+          "rmsnorm",
+          "ablation",
+          "workflow",
+          "with",
+          "preserved",
+          "reporting",
+          "failure"
         ]
       }
     }

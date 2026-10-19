@@ -1,70 +1,75 @@
 {
   "closure": {
-    "unit-residual-free-rmsnorm-fastpath": []
+    "unit-residual-free-rmsnorm-fastpath": [],
+    "unit-rmsnorm-five-stage-ablation-workflow": []
   },
-  "digest": "6a0d006eea8c2251306a2bca5d2744c5c243b3bcce5577af3d9cbad0472eda13",
+  "digest": "87d3a7217457c6f25b53ad7f6ecb379e0dcf960d1a63a909b07c967dbc85c497",
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 5842,
-      "estimated_tokens": 809,
+      "bytes": 9340,
+      "estimated_tokens": 1267,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
-        "unit-residual-free-rmsnorm-fastpath"
+        "unit-residual-free-rmsnorm-fastpath",
+        "unit-rmsnorm-five-stage-ablation-workflow"
       ],
-      "units": 1
+      "units": 2
     },
     "domains": [
       {
         "automatic": false,
-        "bytes": 5842,
-        "estimated_tokens": 809,
+        "bytes": 9340,
+        "estimated_tokens": 1267,
         "exceeds": [],
         "kind": "federation",
         "path": "normalization",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
-          "unit-residual-free-rmsnorm-fastpath"
+          "unit-residual-free-rmsnorm-fastpath",
+          "unit-rmsnorm-five-stage-ablation-workflow"
         ],
-        "units": 1
+        "units": 2
       }
     ]
   },
-  "index_build_elapsed_ms": 0.26466697454452515,
-  "index_digest": "8662a86760af9079f6fdfea9ffd3bc9c33d4a66e29e723bba5e4e1f6c568566c",
+  "index_build_elapsed_ms": 0.5488329916261137,
+  "index_digest": "433c0aa8979f17cf65b398b24d4da915fcbf518f4225d6b30d75481a518bf577",
   "leaves": [
     {
       "automatic": false,
-      "bytes": 5842,
-      "estimated_tokens": 809,
+      "bytes": 9340,
+      "estimated_tokens": 1267,
       "exceeds": [],
       "kind": "leaf",
       "path": "normalization/rmsnorm",
       "recommended_action": "review_leaf_split",
       "unit_ids": [
-        "unit-residual-free-rmsnorm-fastpath"
+        "unit-residual-free-rmsnorm-fastpath",
+        "unit-rmsnorm-five-stage-ablation-workflow"
       ],
-      "units": 1
+      "units": 2
     }
   ],
   "schema": "mindie-shard-topology/1",
   "two_level_subtrees": [
     {
       "automatic": false,
-      "bytes": 5842,
-      "estimated_tokens": 809,
+      "bytes": 9340,
+      "estimated_tokens": 1267,
       "exceeds": [],
       "kind": "subtree",
       "path": "normalization/rmsnorm",
       "recommended_action": "review_two_level_subtree_split",
       "unit_ids": [
-        "unit-residual-free-rmsnorm-fastpath"
+        "unit-residual-free-rmsnorm-fastpath",
+        "unit-rmsnorm-five-stage-ablation-workflow"
       ],
-      "units": 1
+      "units": 2
     }
   ],
-  "unit_count": 1,
+  "unit_count": 2,
   "units": {
     "unit-residual-free-rmsnorm-fastpath": {
       "bytes": 5842,
@@ -76,6 +81,17 @@
       "inherits_from": [],
       "path": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
       "tier": "L4"
+    },
+    "unit-rmsnorm-five-stage-ablation-workflow": {
+      "bytes": 3498,
+      "category": "workflow",
+      "content_sha256": "f72c21fd52649a8b086010eda2049fbd200276d4b22badee963f0d2aa088fc67",
+      "domain_path": "normalization/rmsnorm",
+      "estimated_tokens": 458,
+      "evidence_strength": "single_observation",
+      "inherits_from": [],
+      "path": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md",
+      "tier": "L3"
     }
   }
 }
