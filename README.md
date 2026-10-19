@@ -5,6 +5,12 @@ conditions. Its first unit was admitted from the actual C4 RMSNorm receipt and
 exported through the current graded knowledge pipeline. It contains no migrated
 vllm-ascend task corpus.
 
+The current unit has **incomplete applicability**: the measured SoC and workload
+are bound to the original run, while historical CANN and driver versions remain
+unknown. Default query excludes it. `include_unknown` permits inspection only;
+it does not authorize automatic reuse. The original C4 measurement remains
+passed, and its raw receipt has not been rewritten.
+
 The repository is a **local development draft**. There is no
 `publication-contract.json`: an exact reviewed runtime commit implementing
 contract/2 must be pinned before formal Feed integration or publication. The
@@ -18,6 +24,8 @@ acceptance is claimed.
 - `docs/evidence/c4-assembly-health-ablation.json`: mechanically redacted measured
   receipt. Its original and redacted digests are distinguished in
   `docs/evidence/provenance.json`.
+- `docs/evidence/c4-applicability-binding.json`: run-bound SoC/workload evidence
+  and the explicit unknown software-version premises in revision 2.
 
 The claim concerns the recorded single development case. It does not establish
 heldout generalization, a full-model serving gain, or product-level productivity.

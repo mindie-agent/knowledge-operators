@@ -10,9 +10,31 @@
   "baseline_run_id": "stage1-1cd637fea06e4e9d890e441b690129dc-baseline",
   "full_candidate_run_id": "stage1-1cd637fea06e4e9d890e441b690129dc-full",
   "repetitions_scope": "Three AB/BA/AB timing blocks per arm in the source measurement program; distinct full and final runs.",
-  "admission": "Validated C6 decision then existing graded export; manually prepared from the measured receipt, model_calls=0.",
   "runtime_base_commit": "62f66e471bf12c6d8541c79697325612ac018d23",
   "runtime_working_source_manifest_sha256": "a494192cbaa8a0801b0dcadd97eb4f9270fd346eef6e3db3167c5f49e2e07fe3",
   "integration_status": "local_draft_formal_validator_pin_pending",
-  "claim_scope": "Recorded development case and matched samples only; not heldout or product-level evidence."
+  "claim_scope": "Recorded development case and matched samples only; not heldout or product-level evidence.",
+  "applicability_binding": {
+    "path": "docs/evidence/c4-applicability-binding.json",
+    "sha256": "9b6a3825fa0ed9b45b18a6409b58e041eb6eef9416620ab96d24456375494ff2",
+    "status": "incomplete",
+    "unknown": [
+      "cann",
+      "driver"
+    ]
+  },
+  "local_unit_revision": 2,
+  "automatic_reuse": "not_eligible",
+  "admission_history": "Validated C6 decision then existing graded export; manually prepared from the measured receipt, model_calls=0.",
+  "current_revision_admission": {
+    "status": "not_admitted",
+    "error": "reproduced_empirical requires repeated verified evidence; compilation or measurement failure is insufficient",
+    "scope": "The tightened unit adds incomplete applicability evidence; it remains an explicitly reviewed local draft without a publication grant."
+  },
+  "current_revision_runtime_sources": {
+    "mindie_knowledge/graded/conditions.py": "12abc5cfe2b8a1a96c9afdb0f601cacbbb15b274122e13d6ba7a6f7e25551840",
+    "mindie_knowledge/graded/distill.py": "16bb40a3ba4941b209f4e677204f904b5d84cfa7d32a59cee9d2707fbe56a8bb",
+    "mindie_knowledge/graded/index.py": "45a19248c13bdc57c6eb0b3408c5482d42cb0ad863cb24b032dc4a80789808c5",
+    "mindie_knowledge/graded/units.py": "7746e5d5a077618a2c1da589cd51851effe8cd45aeadd3c063fc09633798d7c5"
+  }
 }

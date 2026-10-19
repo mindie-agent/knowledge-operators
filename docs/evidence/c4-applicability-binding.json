@@ -1,0 +1,230 @@
+{
+  "schema": "mindie-c4-applicability-binding/1",
+  "status": "applicability_incomplete",
+  "original_ablation_sha256": "67ca5ed641213ab4d8db8bc0d23faf848a58b37185de8f15b3678076d7e210f3",
+  "original_measurement_status": "passed",
+  "final_combination_verified": true,
+  "final_run_id": "stage1-1cd637fea06e4e9d890e441b690129dc-final",
+  "known_conditions": {
+    "soc": "Ascend910B4",
+    "dtype": "bfloat16",
+    "activation": "sigmoid",
+    "input_shape": [
+      "1x37x4x128",
+      "1x193x8x128"
+    ],
+    "workload_case_sha256": [
+      "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+      "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+    ]
+  },
+  "unknown_conditions": {
+    "cann": "not recorded in run-bound evidence",
+    "driver": "not recorded in run-bound evidence"
+  },
+  "workload_cases": [
+    {
+      "case_sha256": "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+      "shape": [
+        1,
+        37,
+        4,
+        128
+      ],
+      "dtype": "bfloat16",
+      "strided_gate": false,
+      "activation": "sigmoid"
+    },
+    {
+      "case_sha256": "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e",
+      "shape": [
+        1,
+        193,
+        8,
+        128
+      ],
+      "dtype": "bfloat16",
+      "strided_gate": true,
+      "activation": "sigmoid"
+    }
+  ],
+  "binding_method": "Existing per-stage run nonce and oracle hash bind each performance receipt; each recorded shape digest matches the frozen case and all five stage arms contain 36 samples per case.",
+  "dtype_binding": "Frozen measure.py creates the measured layer and input tensors with torch.bfloat16; its exact SHA is already in every stage condition.",
+  "stage_evidence": [
+    {
+      "stage": "source",
+      "run_id": "stage1-1cd637fea06e4e9d890e441b690129dc-source",
+      "stage_status": "rejected",
+      "correctness_status": "passed",
+      "device_identity": "Ascend910B4",
+      "sample_counts": {
+        "baseline": {
+          "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a": 36,
+          "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e": 36
+        },
+        "candidate": {
+          "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a": 36,
+          "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e": 36
+        }
+      },
+      "graph_shape_sha256": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "oracle_manifest_sha256": "f343d8a964b8b20a168efcc9b8380e7c5afecffd5a1cd048d0a7cb93c2bd6bf2"
+    },
+    {
+      "stage": "baseline_correctness",
+      "run_id": "stage1-1cd637fea06e4e9d890e441b690129dc-baseline",
+      "stage_status": "rejected",
+      "correctness_status": "passed",
+      "device_identity": "Ascend910B4",
+      "sample_counts": {
+        "baseline": {
+          "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a": 36,
+          "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e": 36
+        },
+        "candidate": {
+          "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a": 36,
+          "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e": 36
+        }
+      },
+      "graph_shape_sha256": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "oracle_manifest_sha256": "f343d8a964b8b20a168efcc9b8380e7c5afecffd5a1cd048d0a7cb93c2bd6bf2"
+    },
+    {
+      "stage": "full",
+      "run_id": "stage1-1cd637fea06e4e9d890e441b690129dc-full",
+      "stage_status": "accepted",
+      "correctness_status": "passed",
+      "device_identity": "Ascend910B4",
+      "sample_counts": {
+        "baseline": {
+          "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a": 36,
+          "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e": 36
+        },
+        "candidate": {
+          "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a": 36,
+          "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e": 36
+        }
+      },
+      "graph_shape_sha256": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "oracle_manifest_sha256": "f343d8a964b8b20a168efcc9b8380e7c5afecffd5a1cd048d0a7cb93c2bd6bf2"
+    },
+    {
+      "stage": "loo_fastpath",
+      "run_id": "stage1-1cd637fea06e4e9d890e441b690129dc-loo",
+      "stage_status": "rejected",
+      "correctness_status": "passed",
+      "device_identity": "Ascend910B4",
+      "sample_counts": {
+        "baseline": {
+          "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a": 36,
+          "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e": 36
+        },
+        "candidate": {
+          "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a": 36,
+          "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e": 36
+        }
+      },
+      "graph_shape_sha256": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "oracle_manifest_sha256": "f343d8a964b8b20a168efcc9b8380e7c5afecffd5a1cd048d0a7cb93c2bd6bf2"
+    },
+    {
+      "stage": "final_retained",
+      "run_id": "stage1-1cd637fea06e4e9d890e441b690129dc-final",
+      "stage_status": "accepted",
+      "correctness_status": "passed",
+      "device_identity": "Ascend910B4",
+      "sample_counts": {
+        "baseline": {
+          "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a": 36,
+          "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e": 36
+        },
+        "candidate": {
+          "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a": 36,
+          "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e": 36
+        }
+      },
+      "graph_shape_sha256": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "oracle_manifest_sha256": "f343d8a964b8b20a168efcc9b8380e7c5afecffd5a1cd048d0a7cb93c2bd6bf2"
+    }
+  ],
+  "sources": [
+    {
+      "locator": "c4-measured/producer-receipts/stages/source/result.json",
+      "sha256": "375c28787fe8f61f2a355677a793def844a0076d5f0c75be1c6fb4d49c30a625"
+    },
+    {
+      "locator": "c4-measured/producer-receipts/stages/source/receipts/performance_evidence.json",
+      "sha256": "2e3006bf3400a910826b6a987c42a83e3da75f74324f18d06a4e53d6abf30ce1"
+    },
+    {
+      "locator": "c4-measured/producer-receipts/stages/baseline_correctness/result.json",
+      "sha256": "1021b7555c63f63e2a34084404fb4d670ac0a6cb758b03b593cd1114ba91441f"
+    },
+    {
+      "locator": "c4-measured/producer-receipts/stages/baseline_correctness/receipts/performance_evidence.json",
+      "sha256": "04fa7b3787a4397484dc52d2c480ccf656e78b5758962055e611a8862c81b533"
+    },
+    {
+      "locator": "c4-measured/producer-receipts/stages/full/result.json",
+      "sha256": "b03952a308d73ea59beaaaeac1c36575c1320fe6f85c74a59656a9bd6c9dec6b"
+    },
+    {
+      "locator": "c4-measured/producer-receipts/stages/full/receipts/performance_evidence.json",
+      "sha256": "5fd1fd0473bbd9c6f69c62523a0f9658d113e5ac5ed89d373d1bca4c746b49cc"
+    },
+    {
+      "locator": "c4-measured/producer-receipts/stages/loo_fastpath/result.json",
+      "sha256": "8c12ec383aa7217ef2fc3a03b8304602574287241857cfa797b7a3796f6008c6"
+    },
+    {
+      "locator": "c4-measured/producer-receipts/stages/loo_fastpath/receipts/performance_evidence.json",
+      "sha256": "ff08ee18a0a92c69987361c23589453f5d59d993fd8cf4f923c067c1d73e24a3"
+    },
+    {
+      "locator": "c4-measured/producer-receipts/stages/final_retained/result.json",
+      "sha256": "54bd8148c6a843920901c8c05c52508959db689792c8e285d453b483ec91831a"
+    },
+    {
+      "locator": "c4-measured/producer-receipts/stages/final_retained/receipts/performance_evidence.json",
+      "sha256": "bc3e6eac34285019ef2c2679b59e65a64d2e82fecf06d695f712993f79be5cab"
+    },
+    {
+      "locator": "c4-measured/assembly-health/ablation_receipt.json",
+      "sha256": "67ca5ed641213ab4d8db8bc0d23faf848a58b37185de8f15b3678076d7e210f3"
+    },
+    {
+      "locator": "c4-measured/producer-receipts/frozen_oracle/manifest.json",
+      "sha256": "d684f92ee4533d68a2ee01e70431670bc23de2b8f50e84d6411bafcff7f2a07c"
+    },
+    {
+      "locator": "c4-measured/reproduction-inputs/task/oracle/cases.json",
+      "sha256": "2100bdf944ebaa7189aa962e9a2506fd5da24448f85c38b5c74fc33d930105ba"
+    },
+    {
+      "locator": "c4-measured/reproduction-inputs/task/verifier/measure.py",
+      "sha256": "bc77c926270222f5ab051e1d94abb070df6d39bb66ace05963a83f3f29cd4efe"
+    }
+  ],
+  "exclusions": [
+    "Prior host RPM listings do not establish the measured container CANN version.",
+    "The npu-smi program version is not independently a driver version binding.",
+    "Later environment probes cannot backfill historical applicability."
+  ],
+  "automatic_reuse": "not_eligible_while_cann_or_driver_is_unknown",
+  "relationship": "Adds applicability evidence only. It does not rewrite or overturn the original successful measured ablation receipt."
+}

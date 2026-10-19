@@ -12,3 +12,7 @@ contract/2. Do not publish or configure installed adapters from this draft.
 Preserve unsuccessful results, corrections, provenance and scope limitations.
 Do not import private histories or copy the existing vllm-ascend corpus here.
 Admit new knowledge individually with the actual source digest and evidence.
+
+A necessary condition whose historical value was not recorded remains `unknown`.
+Never make unknown match itself or use a later environment probe to backfill the
+original run. Incomplete units are readable for inspection, not automatic reuse.
