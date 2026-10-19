@@ -4,7 +4,7 @@
   "revision": 4,
   "content_digest": "sha256:64f02c7298d8238d28d9884d4bc599d2d0bd27160be76e80f76841dc5f674d0c",
   "source_revision": "7645b800c18bf2bc41ad1696318d47015e1a8d11",
-  "validator_revision": "71d74396cdc2df88a1de5e2f4b87cac87931d346",
+  "validator_revision": "9e4ee0bc0e5440a71d3c4c82ea0440e8642ffa25",
   "sources": [
     {
       "source": "c4-case-block-assembly-v2/ablation_receipt.json",
@@ -68,5 +68,21 @@
   "model_calls": 0,
   "new_npu_calls": 0,
   "remote_writes": 0,
-  "installed_config_changes": 0
+  "installed_config_changes": 0,
+  "initial_admission_validator": {
+    "base_revision": "71d74396cdc2df88a1de5e2f4b87cac87931d346",
+    "working_tree": "included the structured-redaction and opaque-condition fixes subsequently committed in ae8e235938ea563b27323666ad099e28f1c152b4"
+  },
+  "clean_validator_replay": {
+    "status": "passed",
+    "revision": "9e4ee0bc0e5440a71d3c4c82ea0440e8642ffa25",
+    "input_bytes_identical": true,
+    "unit_bytes_identical": true,
+    "fresh_store": "applied",
+    "complete_workload_query": "matched",
+    "subset_workload": "mismatch",
+    "historical_evidence_bytes_unchanged": true,
+    "model_calls": 0,
+    "new_npu_calls": 0
+  }
 }
