@@ -1,0 +1,33 @@
+{
+  "ablation": {
+    "evidence_refs": [],
+    "reasons": [],
+    "status": "passed"
+  },
+  "claim_scope": "declared inputs, metrics and measurement window; semantic review remains separate",
+  "correctness": {
+    "evidence_refs": [
+      "stages/final_retained/receipts/verifier_result.raw.txt"
+    ],
+    "reasons": [],
+    "status": "passed"
+  },
+  "execution": {
+    "evidence_refs": [
+      "stages/final_retained/receipts/wrapper_evidence.json"
+    ],
+    "reasons": [],
+    "status": "passed"
+  },
+  "measurement": {
+    "evidence_refs": [
+      "<redacted:local-path:f9e54c494245>.raw-window.json"
+    ],
+    "reasons": [],
+    "status": "passed"
+  },
+  "run_id": "stage1-034f88c590b746a4b381830336a1e24a-final",
+  "schema_version": "mindie-bench-gates/1",
+  "status": "passed",
+  "task_id": "fused-rmsnorm-gate-dispatch-performance"
+}

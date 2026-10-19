@@ -1,0 +1,120 @@
+{
+  "schema_version": "mindie-bench-c4-execution-proof-correction-validation/1",
+  "run_id": "stage1-034f88c590b746a4b381830336a1e24a",
+  "reason": "Actual observed_dtypes set was compared to a singleton list, so equal bfloat16 values were incorrectly marked input_dtype_mismatch. Correction compares to a singleton set.",
+  "execution": "CPU-only stdlib validation in the original container to preserve Linux /tmp path semantics; no torch import or NPU work",
+  "raw_wrapper_path": "<redacted:local-path:e5d4d1a9b791>.json",
+  "raw_stage_result_path": "<redacted:local-path:74a31b22fc90>.json",
+  "original_producer_path": "<redacted:local-path:fb1a0c139f20>.py",
+  "original_producer_sha256": "9431433964797641bcd0e56470b4724b89d85de0996024ed1b25e8986d40464b",
+  "corrected_producer_path": "<redacted:local-path:f173d518c4e4>.py",
+  "counterfactual_change": "deep copy target-call dtype from torch.bfloat16 to torch.float16; original artifact unchanged",
+  "raw_artifacts_modified": false,
+  "npu_rerun_performed": false,
+  "raw_wrapper_sha256": "ce1b57c79eb98aa93c074f2b3ac74c57f3165ffc84c2e1955abc75d0c0e78f9b",
+  "raw_wrapper_status": "passed",
+  "raw_stage_result_sha256": "1ea14ddf5993f54961bc6c7591d4eca871a8a71e9ffb04e96ec6f7004b8f1e58",
+  "raw_stage_execution_proof": {
+    "evidence_ref": "stages/full/receipts/wrapper_evidence.json",
+    "expected_dtype": "bfloat16",
+    "expected_input_ids": [
+      "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+      "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+    ],
+    "judge_performance_module_matches_frozen": true,
+    "limitations": [
+      "input_dtype_mismatch"
+    ],
+    "loaded_module_path": "/tmp/mindie-npu-test-stage1-034f88c590b746a4b381830336a1e24a/c4-environment-result/stages/full/workspace/vllm_ascend/ops/layernorm.py",
+    "loaded_module_sha256": "887a5976bd9d4a65b96abedfb47268a0742ec04b7a3a02da9412021c73f0b025",
+    "observed_dtypes": [
+      "bfloat16"
+    ],
+    "observed_input_ids": [
+      "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+      "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+    ],
+    "profile_closed_reason": "measure_rotating_buffers_call",
+    "required": true,
+    "run_id": "stage1-034f88c590b746a4b381830336a1e24a-full",
+    "stage": "full",
+    "status": "failed",
+    "target_call_count": 8,
+    "target_call_path": "vllm_ascend.ops.layernorm.AscendFusedRMSNormGated.forward_oot",
+    "timing_profile_state": "closed_before_timing",
+    "variant_patch_digest": "60b3deb5002dfe925b4da7ac04cec1a933bd496cd3305f132bdb57683fc32c38",
+    "window": {
+      "end_ts": 1792434177.509485,
+      "start_ts": 1792434128.0548398
+    }
+  },
+  "corrected_producer_sha256": "880fd2897e993dade51296bbea24ccf842e16d88d28bd9212d7f012d0bf62f52",
+  "real_wrapper_positive": {
+    "required": true,
+    "status": "passed",
+    "evidence_ref": "stages/full/receipts/wrapper_evidence.json",
+    "target_call_path": "vllm_ascend.ops.layernorm.AscendFusedRMSNormGated.forward_oot",
+    "expected_input_ids": [
+      "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+      "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+    ],
+    "limitations": [],
+    "run_id": "stage1-034f88c590b746a4b381830336a1e24a-full",
+    "stage": "full",
+    "loaded_module_path": "/tmp/mindie-npu-test-stage1-034f88c590b746a4b381830336a1e24a/c4-environment-result/stages/full/workspace/vllm_ascend/ops/layernorm.py",
+    "loaded_module_sha256": "887a5976bd9d4a65b96abedfb47268a0742ec04b7a3a02da9412021c73f0b025",
+    "variant_patch_digest": "60b3deb5002dfe925b4da7ac04cec1a933bd496cd3305f132bdb57683fc32c38",
+    "observed_input_ids": [
+      "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+      "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+    ],
+    "expected_dtype": "bfloat16",
+    "observed_dtypes": [
+      "bfloat16"
+    ],
+    "target_call_count": 8,
+    "window": {
+      "start_ts": 1792434128.0548398,
+      "end_ts": 1792434177.509485
+    },
+    "profile_closed_reason": "measure_rotating_buffers_call",
+    "timing_profile_state": "closed_before_timing",
+    "judge_performance_module_matches_frozen": true
+  },
+  "counterfactual_dtype_only_negative": {
+    "required": true,
+    "status": "failed",
+    "evidence_ref": "stages/full/receipts/wrapper_evidence.json",
+    "target_call_path": "vllm_ascend.ops.layernorm.AscendFusedRMSNormGated.forward_oot",
+    "expected_input_ids": [
+      "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+      "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+    ],
+    "limitations": [
+      "input_dtype_mismatch"
+    ],
+    "run_id": "stage1-034f88c590b746a4b381830336a1e24a-full",
+    "stage": "full",
+    "loaded_module_path": "/tmp/mindie-npu-test-stage1-034f88c590b746a4b381830336a1e24a/c4-environment-result/stages/full/workspace/vllm_ascend/ops/layernorm.py",
+    "loaded_module_sha256": "887a5976bd9d4a65b96abedfb47268a0742ec04b7a3a02da9412021c73f0b025",
+    "variant_patch_digest": "60b3deb5002dfe925b4da7ac04cec1a933bd496cd3305f132bdb57683fc32c38",
+    "observed_input_ids": [
+      "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+      "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+    ],
+    "expected_dtype": "bfloat16",
+    "observed_dtypes": [
+      "float16"
+    ],
+    "target_call_count": 8,
+    "window": {
+      "start_ts": 1792434128.0548398,
+      "end_ts": 1792434177.509485
+    },
+    "profile_closed_reason": "measure_rotating_buffers_call",
+    "timing_profile_state": "closed_before_timing",
+    "judge_performance_module_matches_frozen": true
+  },
+  "torch_imported": false,
+  "status": "passed"
+}

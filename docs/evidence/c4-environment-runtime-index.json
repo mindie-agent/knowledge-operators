@@ -1,0 +1,484 @@
+{
+  "schema_version": "mindie-bench-c4-runtime-environment-index/1",
+  "run_id": "stage1-034f88c590b746a4b381830336a1e24a",
+  "status": "passed",
+  "scope": "Same-process environment and source/image/device binding for this independent five-stage run; no rewrite of original producer conclusions",
+  "created_at": 1792434569.9670541,
+  "actual_runtime": {
+    "soc": "Ascend910B4",
+    "cann": {
+      "version": "9.1.0",
+      "innerversion": "V100R001C25B114",
+      "install_info_path": "/usr/local/Ascend/cann-9.1.0/aarch64-linux/ascend_toolkit_install.info",
+      "install_info_sha256": "f03fc5d1e67a78d6999e7d341d68521c2418587f1494706f013acf85ec8a317b"
+    },
+    "driver": {
+      "version": "25.2.2",
+      "innerversion": "V100R001C21SPC010B220",
+      "version_info_path": "/usr/local/Ascend/driver/version.info",
+      "version_info_sha256": "5d3e5a8f9efc48946afd3b7c52f6b02abd6388000451e4d332d52f1123ad22db"
+    },
+    "firmware": {
+      "version": "7.7.0.10.220"
+    },
+    "framework": {
+      "torch": "2.10.0+cpu",
+      "torch_npu": "2.10.0.post4"
+    },
+    "libraries": {
+      "libascendcl.so": {
+        "path": "/usr/local/Ascend/cann-9.1.0/aarch64-linux/lib64/libascendcl.so",
+        "sha256": "123d67c313f743e5d6f2e856f40c24d5edac376975cf0a7a1019e079b4171480"
+      },
+      "libruntime.so": {
+        "path": "/usr/local/Ascend/cann-9.1.0/aarch64-linux/lib64/libruntime.so",
+        "sha256": "7bc2b610dff552df2f114c95701156b4aba43ffcba24e06e3c249e1cf57bbc21"
+      },
+      "libhccl.so": {
+        "path": "/usr/local/Ascend/cann-9.1.0/aarch64-linux/lib64/libhccl.so",
+        "sha256": "e7742392619bd0f7bfd1b55552070f9811b25ed3017eefd49ed2c1f9f45fc647"
+      },
+      "libascend_hal.so": {
+        "path": "[REDACTED_SECRET].so",
+        "sha256": "c902f69cc714d3522b05c641f2664ddc4fc96cfc477718b9b37f44f051af7810"
+      }
+    },
+    "device": {
+      "card": 0,
+      "chip": 0,
+      "logic_id": 0,
+      "pcie_bus": "0000:C1:00.0",
+      "major": 236,
+      "minor": 0
+    }
+  },
+  "applicability_conditions": {
+    "soc": "Ascend910B4",
+    "cann": "9.1.0",
+    "driver": "25.2.2",
+    "firmware": "7.7.0.10.220",
+    "framework": {
+      "torch": "2.10.0+cpu",
+      "torch_npu": "2.10.0.post4"
+    },
+    "dtype": "bfloat16",
+    "activation": "sigmoid",
+    "input_shape": [
+      "1x37x4x128",
+      "1x193x8x128"
+    ],
+    "workload_case_sha256": [
+      "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+      "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+    ]
+  },
+  "host": "<redacted:ipv4-address:616e29d919e5>",
+  "container_image": {
+    "container_id": "b2bb20466bf75cb252a421dcdb1c72433f3d6a67f03bccd04e4d887a4ac6405f",
+    "image_id": "sha256:d85730f56df057d890f9f1ded8f9d42b55e746e1cd1e9e3bb6a8adf36eeb4a16",
+    "image_repo_digests": [],
+    "image_created": "2026-10-17T01:25:49.659751107Z",
+    "configured_image": "sha256:d85730f56df057d890f9f1ded8f9d42b55e746e1cd1e9e3bb6a8adf36eeb4a16",
+    "running": true,
+    "host_pid": 2338798,
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "/usr/local/bin/npu-smi",
+        "Destination": "/usr/local/bin/npu-smi",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/usr/local/Ascend/driver",
+        "Destination": "/usr/local/Ascend/driver",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "[REDACTED_SECRET].so",
+        "Destination": "/usr/local/dcmi/libdcmi.so",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "devices": [],
+    "privileged": true,
+    "device_cgroup_rules": null
+  },
+  "source": {
+    "commit": "f02da291ec0bdbe31af248deffa69f7a97e8f259",
+    "archive_sha256": "ba4910031cc4b6f88b7502cad84b9564e997874155bf5ea3638fe6e348ee439b",
+    "runtime_source_tree_sha256": "efb31c0470b80b8a4f955bcde7825c90cccd1ea1886215f925830901749aa715"
+  },
+  "oracle": {
+    "manifest_file_sha256": "d684f92ee4533d68a2ee01e70431670bc23de2b8f50e84d6411bafcff7f2a07c",
+    "manifest_canonical_sha256": "f343d8a964b8b20a168efcc9b8380e7c5afecffd5a1cd048d0a7cb93c2bd6bf2",
+    "contract_sha256": "dd525b1353f4d82fb25b7056e2762c207dd05b0525343486bb93d47ad18057fa",
+    "environment_input_provenance_note": "Its oracle_manifest_sha256 field records the manifest file-byte SHA, distinct from the producer canonical manifest digest."
+  },
+  "original_producer_process_state": "failed",
+  "original_producer_exit_code": 1,
+  "lease_state": "released",
+  "quiet": true,
+  "slot_cleanup": {
+    "state": "completed"
+  },
+  "stages": {
+    "baseline_correctness": {
+      "stage_run_id": "stage1-034f88c590b746a4b381830336a1e24a-baseline",
+      "raw_oracle_status": "rejected",
+      "raw_execution_proof_status": "failed",
+      "stage_result": {
+        "path": "<redacted:local-path:baf834622cff>.json",
+        "sha256": "4dfe3ace6fe11c159f0c4793ae7f6a34ff190b79bb1af348bba08232cef335dc"
+      },
+      "runtime_environment": {
+        "path": "<redacted:local-path:878600b60b9d>.json",
+        "sha256": "addb2a02f47768d6dac875cec185d37fe32aa0913150eb1c1e77def0b8dd17e2"
+      },
+      "wrapper": {
+        "path": "<redacted:local-path:6f1d922a8fd6>.json",
+        "sha256": "73684891549260d7e0f4eb5e36fdbe89fb44b7eca36f0c27cf491fe17a5da441"
+      },
+      "captures": {
+        "post_measurement": {
+          "pid": 7701,
+          "startticks": "135854206",
+          "exe": "/usr/local/python3.12.13/bin/python3.12",
+          "hostname": "b2bb20466bf7",
+          "clock": {
+            "finished_monotonic_ns": 1358601296260877,
+            "finished_perf_counter_ns": 1358601296260447,
+            "finished_wall": 1792434120.5202265,
+            "monotonic_ns": 1358600164437870,
+            "perf_counter_ns": 1358600164437020,
+            "wall": 1792434119.388403
+          },
+          "comparison": "matched",
+          "soc_source": "torch.npu.get_device_name(0)"
+        },
+        "pre_measurement": {
+          "pid": 7701,
+          "startticks": "135854206",
+          "exe": "/usr/local/python3.12.13/bin/python3.12",
+          "hostname": "b2bb20466bf7",
+          "clock": {
+            "finished_monotonic_ns": 1358598402058613,
+            "finished_perf_counter_ns": 1358598402057973,
+            "finished_wall": 1792434117.626024,
+            "monotonic_ns": 1358597272010941,
+            "perf_counter_ns": 1358597272010311,
+            "wall": 1792434116.495966
+          },
+          "comparison": "matched",
+          "soc_source": "torch.npu.get_device_name(0)"
+        }
+      },
+      "same_process": true,
+      "all_facts_equal_input": true,
+      "runtime_and_workload_conditions_equal_observation": true,
+      "exact_measurement_monotonic_window_ns": [
+        1358598437261117,
+        1358600157836967
+      ],
+      "metadata_outside_measured_intervals": true
+    },
+    "final_retained": {
+      "stage_run_id": "stage1-034f88c590b746a4b381830336a1e24a-final",
+      "raw_oracle_status": "accepted",
+      "raw_execution_proof_status": "failed",
+      "stage_result": {
+        "path": "<redacted:local-path:11804ad7085b>.json",
+        "sha256": "24f5f3b50ddf953ba70280031dc7ef30bf5d161373c16853433a8a3b40d4d52a"
+      },
+      "runtime_environment": {
+        "path": "<redacted:local-path:3935ea6586f9>.json",
+        "sha256": "da2e166eaae60f214c3bea28e1fab5421faaa1b24e62664909b4c07abc98d17c"
+      },
+      "wrapper": {
+        "path": "<redacted:local-path:68ead8b6ef38>.json",
+        "sha256": "f7b6648371b78cc9f48cb3d4899aa9bc6856c60ecbba6da25c3d51a3e4ccdd35"
+      },
+      "captures": {
+        "post_measurement": {
+          "pid": 8056,
+          "startticks": "135873022",
+          "exe": "/usr/local/python3.12.13/bin/python3.12",
+          "hostname": "b2bb20466bf7",
+          "clock": {
+            "finished_monotonic_ns": 1358783596919877,
+            "finished_perf_counter_ns": 1358783596919487,
+            "finished_wall": 1792434302.8208854,
+            "monotonic_ns": 1358782486952757,
+            "perf_counter_ns": 1358782486952137,
+            "wall": 1792434301.7109182
+          },
+          "comparison": "matched",
+          "soc_source": "torch.npu.get_device_name(0)"
+        },
+        "pre_measurement": {
+          "pid": 8056,
+          "startticks": "135873022",
+          "exe": "/usr/local/python3.12.13/bin/python3.12",
+          "hostname": "b2bb20466bf7",
+          "clock": {
+            "finished_monotonic_ns": 1358780938330541,
+            "finished_perf_counter_ns": 1358780938329730,
+            "finished_wall": 1792434300.1622953,
+            "monotonic_ns": 1358779826444634,
+            "perf_counter_ns": 1358779826444014,
+            "wall": 1792434299.05041
+          },
+          "comparison": "matched",
+          "soc_source": "torch.npu.get_device_name(0)"
+        }
+      },
+      "same_process": true,
+      "all_facts_equal_input": true,
+      "runtime_and_workload_conditions_equal_observation": true,
+      "exact_measurement_monotonic_window_ns": [
+        1358780970650234,
+        1358782480518057
+      ],
+      "metadata_outside_measured_intervals": true
+    },
+    "full": {
+      "stage_run_id": "stage1-034f88c590b746a4b381830336a1e24a-full",
+      "raw_oracle_status": "accepted",
+      "raw_execution_proof_status": "failed",
+      "stage_result": {
+        "path": "<redacted:local-path:74a31b22fc90>.json",
+        "sha256": "1ea14ddf5993f54961bc6c7591d4eca871a8a71e9ffb04e96ec6f7004b8f1e58"
+      },
+      "runtime_environment": {
+        "path": "<redacted:local-path:18777dfd7ea3>.json",
+        "sha256": "68467282491d4f6bb9bf92febf23578c107c67adecf310e161e8d3fa16699b1a"
+      },
+      "wrapper": {
+        "path": "<redacted:local-path:e5d4d1a9b791>.json",
+        "sha256": "ce1b57c79eb98aa93c074f2b3ac74c57f3165ffc84c2e1955abc75d0c0e78f9b"
+      },
+      "captures": {
+        "post_measurement": {
+          "pid": 7882,
+          "startticks": "135860875",
+          "exe": "/usr/local/python3.12.13/bin/python3.12",
+          "hostname": "b2bb20466bf7",
+          "clock": {
+            "finished_monotonic_ns": 1358662099640906,
+            "finished_perf_counter_ns": 1358662099640486,
+            "finished_wall": 1792434181.3236065,
+            "monotonic_ns": 1358660996860237,
+            "perf_counter_ns": 1358660996859737,
+            "wall": 1792434180.2208257
+          },
+          "comparison": "matched",
+          "soc_source": "torch.npu.get_device_name(0)"
+        },
+        "pre_measurement": {
+          "pid": 7882,
+          "startticks": "135860875",
+          "exe": "/usr/local/python3.12.13/bin/python3.12",
+          "hostname": "b2bb20466bf7",
+          "clock": {
+            "finished_monotonic_ns": 1358659397614279,
+            "finished_perf_counter_ns": 1358659397613919,
+            "finished_wall": 1792434178.62158,
+            "monotonic_ns": 1358658285604871,
+            "perf_counter_ns": 1358658285604421,
+            "wall": 1792434177.509569
+          },
+          "comparison": "matched",
+          "soc_source": "torch.npu.get_device_name(0)"
+        }
+      },
+      "same_process": true,
+      "all_facts_equal_input": true,
+      "runtime_and_workload_conditions_equal_observation": true,
+      "exact_measurement_monotonic_window_ns": [
+        1358659431208831,
+        1358660990531288
+      ],
+      "metadata_outside_measured_intervals": true
+    },
+    "loo_fastpath": {
+      "stage_run_id": "stage1-034f88c590b746a4b381830336a1e24a-loo",
+      "raw_oracle_status": "rejected",
+      "raw_execution_proof_status": "failed",
+      "stage_result": {
+        "path": "<redacted:local-path:0669665a0c08>.json",
+        "sha256": "c6ce80a79b344bd782eef067d235f72a31a225c15e2afcbbcbb90a0373551964"
+      },
+      "runtime_environment": {
+        "path": "<redacted:local-path:a0596f692263>.json",
+        "sha256": "0e180b46260d797a5f8e3685270503a89cd43dc3059debf5b32470bcda7e2a78"
+      },
+      "wrapper": {
+        "path": "<redacted:local-path:c9fb0c0fd5c2>.json",
+        "sha256": "7bb6a5bb7372743168d6e1fa41c64bb68e946fbb6bd21f5dfd4796e80ca260ca"
+      },
+      "captures": {
+        "post_measurement": {
+          "pid": 7964,
+          "startticks": "135866935",
+          "exe": "/usr/local/python3.12.13/bin/python3.12",
+          "hostname": "b2bb20466bf7",
+          "clock": {
+            "finished_monotonic_ns": 1358722928460582,
+            "finished_perf_counter_ns": 1358722928460262,
+            "finished_wall": 1792434242.1524265,
+            "monotonic_ns": 1358721758479490,
+            "perf_counter_ns": 1358721758478910,
+            "wall": 1792434240.9824448
+          },
+          "comparison": "matched",
+          "soc_source": "torch.npu.get_device_name(0)"
+        },
+        "pre_measurement": {
+          "pid": 7964,
+          "startticks": "135866935",
+          "exe": "/usr/local/python3.12.13/bin/python3.12",
+          "hostname": "b2bb20466bf7",
+          "clock": {
+            "finished_monotonic_ns": 1358720038104172,
+            "finished_perf_counter_ns": 1358720038103532,
+            "finished_wall": 1792434239.2620692,
+            "monotonic_ns": 1358718918187943,
+            "perf_counter_ns": 1358718918187423,
+            "wall": 1792434238.142153
+          },
+          "comparison": "matched",
+          "soc_source": "torch.npu.get_device_name(0)"
+        }
+      },
+      "same_process": true,
+      "all_facts_equal_input": true,
+      "runtime_and_workload_conditions_equal_observation": true,
+      "exact_measurement_monotonic_window_ns": [
+        1358720072649507,
+        1358721752141781
+      ],
+      "metadata_outside_measured_intervals": true
+    },
+    "source": {
+      "stage_run_id": "stage1-034f88c590b746a4b381830336a1e24a-source",
+      "raw_oracle_status": "rejected",
+      "raw_execution_proof_status": "missing",
+      "stage_result": {
+        "path": "<redacted:local-path:8542d59c0a51>.json",
+        "sha256": "2d5d686e607beaa52dc94e37706f36217e03fc1ee90dd5639cfe42d76d374b96"
+      },
+      "runtime_environment": {
+        "path": "<redacted:local-path:c8091eee6a05>.json",
+        "sha256": "339029fc9d22403d701dda1b8ce6ca1776d4878d6c5dfc68ded7cb61385b06d5"
+      },
+      "wrapper": {
+        "path": "<redacted:local-path:7c0ad945d5b1>.json",
+        "sha256": "bbc2191a689ed7b128a2bb8d98cd845709f42ecc67193191c03c54c4dde2b6b9"
+      },
+      "captures": {
+        "post_measurement": {
+          "pid": 7578,
+          "startticks": "135844390",
+          "exe": "/usr/local/python3.12.13/bin/python3.12",
+          "hostname": "b2bb20466bf7",
+          "clock": {
+            "finished_monotonic_ns": 1358511011140116,
+            "finished_perf_counter_ns": 1358511011138956,
+            "finished_wall": 1792434030.2351036,
+            "monotonic_ns": 1358509901237807,
+            "perf_counter_ns": 1358509901237117,
+            "wall": 1792434029.125203
+          },
+          "comparison": "matched",
+          "soc_source": "torch.npu.get_device_name(0)"
+        },
+        "pre_measurement": {
+          "pid": 7578,
+          "startticks": "135844390",
+          "exe": "/usr/local/python3.12.13/bin/python3.12",
+          "hostname": "b2bb20466bf7",
+          "clock": {
+            "finished_monotonic_ns": 1358508207192279,
+            "finished_perf_counter_ns": 1358508207191839,
+            "finished_wall": 1792434027.4311578,
+            "monotonic_ns": 1358507087315920,
+            "perf_counter_ns": 1358507087315160,
+            "wall": 1792434026.3112807
+          },
+          "comparison": "matched",
+          "soc_source": "torch.npu.get_device_name(0)"
+        }
+      },
+      "same_process": true,
+      "all_facts_equal_input": true,
+      "runtime_and_workload_conditions_equal_observation": true,
+      "exact_measurement_monotonic_window_ns": [
+        1358508212504303,
+        1358509894840727
+      ],
+      "metadata_outside_measured_intervals": true
+    }
+  },
+  "references": [
+    {
+      "path": "<redacted:local-path:1d94047756dd>.json",
+      "sha256": "af7cb37ba1737d295f2fbf5130e6061772905ac53d18fffd2a4efc9843208030"
+    },
+    {
+      "path": "<redacted:local-path:35df47841df4>.raw.json",
+      "sha256": "2c662cadbe7ddb498072290961e8325ee568fdca19c03ea673919212f614989c"
+    },
+    {
+      "path": "<redacted:local-path:35df47841df4>.json",
+      "sha256": "4489f98e699299c12398ea87a236c65ef375660c9fa7354e80b601e746738bc9"
+    },
+    {
+      "path": "<redacted:local-path:53d49115667e>.raw.json",
+      "sha256": "f65f1ba7346218f5b0c8ae081c5aa6d1d43331e78e008e55f71834057e8088f7"
+    },
+    {
+      "path": "<redacted:local-path:a1ae2af03444>.raw.json",
+      "sha256": "aba50ed8e8c4d43c3e08ee3367bbbb5e1ffb3b40e7a2afcdb8cfc17a626b31cf"
+    },
+    {
+      "path": "<redacted:local-path:f488350bdafe>.raw.json",
+      "sha256": "2bd71d8d19d1c26f3a502b5af22af37e0954a6f6d6c12e3f093b4ea53da2d7a1"
+    },
+    {
+      "path": "<redacted:local-path:10ba9687f128>.raw.json",
+      "sha256": "cea5b735570fbecff29c3a5208725ab90918be970c69bf6c7900946792236b6d"
+    },
+    {
+      "path": "<redacted:local-path:64395ea1e0ad>.raw.json",
+      "sha256": "fe237edd92a510505095618083959e842b248d22eae98a79fbeda8061db4572c"
+    },
+    {
+      "path": "<redacted:local-path:aae619198663>.json",
+      "sha256": "7a302e358874bd26e14dbf33a2d047d1cb8ea8b5139dd9f4da83c12e0649a731"
+    },
+    {
+      "path": "<redacted:local-path:c45e5c96299c>.json",
+      "sha256": "77b0efbfbfc5885bd4cbcd50a39864b050c687b33aa9fe6fc6f35705c46c95a1"
+    },
+    {
+      "path": "<redacted:local-path:135d9849771e>.json",
+      "sha256": "9ebe28024b811e2dd8585cf65c8b8f584d87d233c5e8a80cc22255271c666888"
+    }
+  ],
+  "limits": [
+    "Host RPM 8.2.RC1 records installed host packages only; actual measured container libraries bind CANN 9.1.0.",
+    "Registry RepoDigests is empty; the observed local image ID is recorded without inventing a registry digest.",
+    "Source and rejected comparisons are measurements, not accepted solutions; raw producer reporting failure remains visible."
+  ],
+  "final_cleanup": {
+    "path": "<redacted:local-path:1e393d6a3419>.json",
+    "sha256": "da946c6a8835d4ca384fbb1ee13f48cbbdc12fffc45314f836945f0c71d13b92"
+  }
+}

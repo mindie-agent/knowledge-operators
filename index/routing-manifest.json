@@ -1,10 +1,9 @@
 {
-  "build_elapsed_ms": 0.5238750018179417,
   "closure": {
     "unit-residual-free-rmsnorm-fastpath": []
   },
-  "digest": "07eb3a5acb7c068da339ade3a1dc845ca4cae6a42414fd07a2e2dc86f2f1f348",
-  "generation": "8b56c30e5b6c18ca15127c90cc8d65fe17d2727c6a187056811cd9a9971e3e5f",
+  "digest": "d1dabed5186f1587440f3d31011c52067301336ef08a37a89f212c6f9bf5f464",
+  "generation": "22c407e225d65a6aa2aedfa9e4c83f52c82654a2ec23240e7b84f453b4948019",
   "id_path": {
     "unit-residual-free-rmsnorm-fastpath": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md"
   },
@@ -15,15 +14,20 @@
   "units": [
     {
       "category": "mutator",
-      "closure_digest": "sha256:aba3a8f1bd4920553b88045968789c160800c5d0cd656c96ef09d4ac0cd1053d",
+      "closure_digest": "sha256:8572c70539c9047e655b66f2f91cb0f18826fff4d2e001a5ca7db588716887b8",
       "conditions": {
         "activation": "sigmoid",
         "ascend_rt_visible_devices": "0",
         "base_commit": "f02da291ec0bdbe31af248deffa69f7a97e8f259",
-        "cann": "unknown",
-        "driver": "unknown",
+        "cann": "9.1.0",
+        "driver": "25.2.2",
         "dtype": "bfloat16",
         "factor_id": "native_residual_free_fastpath",
+        "firmware": "7.7.0.10.220",
+        "framework": {
+          "torch": "2.10.0+cpu",
+          "torch_npu": "2.10.0.post4"
+        },
         "gold_patch_sha256": "f01efd3a242a3b183e1431d9df6aefb700ba067314c41ad7891c8c249babf2ec",
         "input_shape": [
           "1x37x4x128",
@@ -43,8 +47,8 @@
           "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
         ]
       },
-      "content_digest": "sha256:9c4ee3f0e570d1eca504f722090460096541887bac052182fe477d4645ed3626",
-      "content_sha256": "9c4ee3f0e570d1eca504f722090460096541887bac052182fe477d4645ed3626",
+      "content_digest": "sha256:049e64317e28aeaad88e2df1649661935270acadef82ba3dc97e22bf42cbdbef",
+      "content_sha256": "049e64317e28aeaad88e2df1649661935270acadef82ba3dc97e22bf42cbdbef",
       "domain_path": "normalization/rmsnorm",
       "evidence_strength": "reproduced_empirical",
       "id": "unit-residual-free-rmsnorm-fastpath",
@@ -53,20 +57,21 @@
       "path": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
       "provenance": {
         "evidence_refs": [
-          "docs/evidence/c4-assembly-health-ablation.json",
-          "docs/evidence/c4-applicability-binding.json"
+          "docs/evidence/c4-environment-ablation.json",
+          "docs/evidence/c4-environment-runtime-index.json",
+          "docs/evidence/c4-environment-stage-acceptance.json"
         ],
-        "source_digest": "67ca5ed641213ab4d8db8bc0d23faf848a58b37185de8f15b3678076d7e210f3",
-        "source_locator": "mindie-003-execution/c4-measured/assembly-health/ablation_receipt.json",
+        "source_digest": "40c444ff848a9a83f3632f63b414c2c93f4c8924f7e71556ca9f8e727a30f7b9",
+        "source_locator": "mindie-003-execution/c4-environment/assembly-health/ablation_receipt.json",
         "source_type": "ablation_receipt",
         "supersedes": [
-          "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@655a8c56c81d6aa337201dbc895c9760826d0f1b7dc7087e9301479943dd4ef3"
+          "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@9c4ee3f0e570d1eca504f722090460096541887bac052182fe477d4645ed3626"
         ]
       },
-      "revision": 2,
+      "revision": 3,
       "tier": "L4",
-      "title": "Residual-free RMSNorm dispatch under recorded C4 development conditions",
-      "token_estimate": 627,
+      "title": "Residual-free RMSNorm fastpath under the measured Ascend910B4 environment",
+      "token_estimate": 789,
       "triggers": {
         "error_signatures": [],
         "keywords": [

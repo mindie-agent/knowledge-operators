@@ -1,0 +1,109 @@
+{
+  "schema": "mindie-c4-environment-revision-provenance/1",
+  "run_id": "stage1-034f88c590b746a4b381830336a1e24a",
+  "unit_id": "unit-residual-free-rmsnorm-fastpath",
+  "revision": 3,
+  "content_digest": "sha256:049e64317e28aeaad88e2df1649661935270acadef82ba3dc97e22bf42cbdbef",
+  "sources": [
+    {
+      "source": "c4-environment/assembly-health/ablation_receipt.json",
+      "source_sha256": "40c444ff848a9a83f3632f63b414c2c93f4c8924f7e71556ca9f8e727a30f7b9",
+      "redacted_path": "docs/evidence/c4-environment-ablation.json",
+      "redacted_sha256": "d6b1d8383043485212f89657ef43e2c0c29ed04a17f3113d3f9f491747db2d89",
+      "outcome": "verified",
+      "repetitions": 3
+    },
+    {
+      "source": "c4-environment/runtime-environment-index.json",
+      "source_sha256": "a788196feb1a6774dc7271b6f2b85e8ea0ec00f592b79a4ef9d749d93301197b",
+      "redacted_path": "docs/evidence/c4-environment-runtime-index.json",
+      "redacted_sha256": "9d358cec7dc3591fbec92ae39ec20d90705bba33967c6e2348e598f8754023fc",
+      "outcome": "verified",
+      "repetitions": 5
+    },
+    {
+      "source": "c4-environment/assembly-health/stage-acceptance.json",
+      "source_sha256": "01879a2a4ccc82974f412fa07c405871bbb656ddb25f9dbe418e9ad080618a9b",
+      "redacted_path": "docs/evidence/c4-environment-stage-acceptance.json",
+      "redacted_sha256": "b98443777a4ef8d2f4cc52f824a2ac1e4c1c36f8e27f7c863a64f90c9b49f9df",
+      "outcome": "verified",
+      "repetitions": 4
+    },
+    {
+      "source": "c4-environment/execution-proof-correction-validation.json",
+      "source_sha256": "77b0efbfbfc5885bd4cbcd50a39864b050c687b33aa9fe6fc6f35705c46c95a1",
+      "redacted_path": "docs/evidence/c4-environment-correction-validation.json",
+      "redacted_sha256": "46df85bb7c2197b08bf559613eb38b8e91b90680b440b317cc717a019ad262eb",
+      "outcome": "observed",
+      "repetitions": 1
+    },
+    {
+      "source": "c4-environment/assembly-health/gate_report.json",
+      "source_sha256": "98b1b99054132148b2334ece055729c968ada0f98ed55b8483c0e694d0f099e3",
+      "redacted_path": "docs/evidence/c4-environment-gates.json",
+      "redacted_sha256": "6d93bc1639e5fad22eb835c10c4d6cffebd70df965d36bf5e8bae3a1ba52908e",
+      "outcome": "observed",
+      "repetitions": 1
+    }
+  ],
+  "redaction": "Actual prepare_request with configured Gitleaks and shared deterministic rules.",
+  "repetitions_scope": {
+    "ablation": "Three measured AB/BA/AB timing blocks per arm.",
+    "runtime_environment": "Five independent measurement processes, each with matching pre/post observations.",
+    "stage_acceptance": "Four separately executed target stages with original wrapper evidence."
+  },
+  "applicability_conditions": {
+    "machine": "aarch64",
+    "platform": "Linux-5.10.0-282.0.0.184.oe2203sp3.aarch64-aarch64-with-glibc2.35",
+    "python_version": "3.12.13",
+    "base_commit": "f02da291ec0bdbe31af248deffa69f7a97e8f259",
+    "target_file": "vllm_ascend/ops/layernorm.py",
+    "task_id": "fused-rmsnorm-gate-dispatch-performance",
+    "factor_id": "native_residual_free_fastpath",
+    "ascend_rt_visible_devices": "0",
+    "gold_patch_sha256": "f01efd3a242a3b183e1431d9df6aefb700ba067314c41ad7891c8c249babf2ec",
+    "measure_sha256": "bc77c926270222f5ab051e1d94abb070df6d39bb66ace05963a83f3f29cd4efe",
+    "oracle_manifest_sha256": "f343d8a964b8b20a168efcc9b8380e7c5afecffd5a1cd048d0a7cb93c2bd6bf2",
+    "source_root_tree_sha256": "efb31c0470b80b8a4f955bcde7825c90cccd1ea1886215f925830901749aa715",
+    "soc": "Ascend910B4",
+    "cann": "9.1.0",
+    "driver": "25.2.2",
+    "firmware": "7.7.0.10.220",
+    "framework": {
+      "torch": "2.10.0+cpu",
+      "torch_npu": "2.10.0.post4"
+    },
+    "dtype": "bfloat16",
+    "activation": "sigmoid",
+    "input_shape": [
+      "1x37x4x128",
+      "1x193x8x128"
+    ],
+    "workload_case_sha256": [
+      "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+      "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+    ]
+  },
+  "fresh_store_c6": "applied",
+  "existing_id_c6": "review_or_unchanged; propose_semantic_merge_review; no automatic write",
+  "existing_id_update": "Explicit parent-authorized local semantic update after new run review.",
+  "publication_grant": "No grant from local import or reviewed update; temporary fresh-store export generation only.",
+  "original_producer_status": "failed",
+  "correction": "Derived proof corrects only the dtype set/list comparison; original raw results remain unchanged.",
+  "old_revision": {
+    "revision": 2,
+    "ref": "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@9c4ee3f0e570d1eca504f722090460096541887bac052182fe477d4645ed3626",
+    "git_commit": "b8c7037a374db2b6dcdb881b1858f656538b6afa",
+    "path": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
+    "content_digest": "sha256:9c4ee3f0e570d1eca504f722090460096541887bac052182fe477d4645ed3626",
+    "cann": "unknown",
+    "driver": "unknown",
+    "historical_bytes_unchanged": true
+  },
+  "original_c4_ablation_sha256": "67ca5ed641213ab4d8db8bc0d23faf848a58b37185de8f15b3678076d7e210f3",
+  "independent_environment_check_sha256": "81fa3bba9f23a69f1db41f166327443ba5a9695fcde5a3881c59ef6a43d477c9",
+  "scope": "Same exposed development task and recorded samples only; formal contract and Feed integration pending.",
+  "model_calls": 0,
+  "npu_calls": 0,
+  "remote_writes": 0
+}
