@@ -1,0 +1,18 @@
+{
+  "schema": "mindie-local-evidence-provenance/1",
+  "source_locator": "mindie-003-execution/c4-measured/assembly-health/ablation_receipt.json",
+  "original_source_sha256": "67ca5ed641213ab4d8db8bc0d23faf848a58b37185de8f15b3678076d7e210f3",
+  "redacted_file": "docs/evidence/c4-assembly-health-ablation.json",
+  "redacted_sha256": "ff93164d7d07dcbcaa7eb767ff8f53e4164636a372b396dcbc1f32db1b8e4afe",
+  "redaction": "prepare_request using the configured Gitleaks scanner and shared deterministic rules",
+  "source_task_id": "fused-rmsnorm-gate-dispatch-performance",
+  "final_run_id": "stage1-1cd637fea06e4e9d890e441b690129dc-final",
+  "baseline_run_id": "stage1-1cd637fea06e4e9d890e441b690129dc-baseline",
+  "full_candidate_run_id": "stage1-1cd637fea06e4e9d890e441b690129dc-full",
+  "repetitions_scope": "Three AB/BA/AB timing blocks per arm in the source measurement program; distinct full and final runs.",
+  "admission": "Validated C6 decision then existing graded export; manually prepared from the measured receipt, model_calls=0.",
+  "runtime_base_commit": "62f66e471bf12c6d8541c79697325612ac018d23",
+  "runtime_working_source_manifest_sha256": "a494192cbaa8a0801b0dcadd97eb4f9270fd346eef6e3db3167c5f49e2e07fe3",
+  "integration_status": "local_draft_formal_validator_pin_pending",
+  "claim_scope": "Recorded development case and matched samples only; not heldout or product-level evidence."
+}

@@ -1,0 +1,79 @@
+{
+  "closure": {
+    "unit-residual-free-rmsnorm-fastpath": []
+  },
+  "digest": "af58c8b4655d0397b104db40d69d9f2a49deb90dd98e808f5eee4a7f052fc207",
+  "federation": {
+    "corpus": {
+      "automatic": false,
+      "bytes": 3244,
+      "estimated_tokens": 440,
+      "kind": "federation",
+      "path": ".",
+      "unit_ids": [
+        "unit-residual-free-rmsnorm-fastpath"
+      ],
+      "units": 1
+    },
+    "domains": [
+      {
+        "automatic": false,
+        "bytes": 3244,
+        "estimated_tokens": 440,
+        "exceeds": [],
+        "kind": "federation",
+        "path": "normalization",
+        "recommended_action": "review_federation_boundary",
+        "unit_ids": [
+          "unit-residual-free-rmsnorm-fastpath"
+        ],
+        "units": 1
+      }
+    ]
+  },
+  "index_digest": "6ba001329286bf616cee47f8944c7d0b290534fc5b4836ba41fe30f5f5bf197b",
+  "leaves": [
+    {
+      "automatic": false,
+      "bytes": 3244,
+      "estimated_tokens": 440,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "normalization/rmsnorm",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-residual-free-rmsnorm-fastpath"
+      ],
+      "units": 1
+    }
+  ],
+  "schema": "mindie-shard-topology/1",
+  "two_level_subtrees": [
+    {
+      "automatic": false,
+      "bytes": 3244,
+      "estimated_tokens": 440,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "normalization/rmsnorm",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-residual-free-rmsnorm-fastpath"
+      ],
+      "units": 1
+    }
+  ],
+  "unit_count": 1,
+  "units": {
+    "unit-residual-free-rmsnorm-fastpath": {
+      "bytes": 3244,
+      "category": "mutator",
+      "content_sha256": "655a8c56c81d6aa337201dbc895c9760826d0f1b7dc7087e9301479943dd4ef3",
+      "domain_path": "normalization/rmsnorm",
+      "estimated_tokens": 440,
+      "evidence_strength": "reproduced_empirical",
+      "path": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
+      "tier": "L4"
+    }
+  }
+}
