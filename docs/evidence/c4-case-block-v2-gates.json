@@ -1,0 +1,42 @@
+{
+  "ablation": {
+    "evidence_refs": [],
+    "reasons": [],
+    "status": "passed"
+  },
+  "claim_scope": "declared inputs, metrics and measurement window; semantic review remains separate",
+  "correctness": {
+    "evidence_refs": [
+      "stages/final_retained/receipts/verifier_result.raw.txt"
+    ],
+    "reasons": [],
+    "status": "passed"
+  },
+  "execution": {
+    "evidence_refs": [
+      "stages/final_retained/receipts/wrapper_evidence.json"
+    ],
+    "reasons": [],
+    "status": "passed"
+  },
+  "measurement": {
+    "evidence_refs": [
+      "[REDACTED_SECRET].raw-window.json"
+    ],
+    "reasons": [],
+    "status": "passed"
+  },
+  "performance_comparison": {
+    "candidate_label": "kernel_candidate in the same final stage",
+    "candidate_timing_sha256": "04c8e4bd6e78ba99080052c7124bb605aa0a10ad2e315516d4db6a8cae5364b1",
+    "comparison_status": "passed",
+    "estimator": "geomean_of_per_case_arithmetic_mean_ratios",
+    "reference_label": "AscendFusedRMSNormGated.forward_native in the same final stage",
+    "reference_timing_sha256": "8c0d29570ae98c8e1324b84f55f18a0fabc85153c7922d749c033706cad16466",
+    "speedup_geomean": 1.7762762678505948
+  },
+  "run_id": "stage1-034f88c590b746a4b381830336a1e24a-final",
+  "schema_version": "mindie-bench-gates/1",
+  "status": "passed",
+  "task_id": "fused-rmsnorm-gate-dispatch-performance"
+}

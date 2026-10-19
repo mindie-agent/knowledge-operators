@@ -1,0 +1,522 @@
+{
+  "baseline_correctness": {
+    "derived_execution_proof": {
+      "checks": {
+        "actual_dtype_set": true,
+        "all_call_bindings": true,
+        "all_frozen_input_ids": true,
+        "frozen_judge": true,
+        "module_path": true,
+        "module_sha": true,
+        "profile_closed_before_timing": true,
+        "raw_reported_limitations_resolved": true,
+        "run_and_stage": true,
+        "variant_patch": true,
+        "wrapper_passed": true
+      },
+      "correction_basis": "Raw actual dtype set equals the singleton expected set; producer compared a set with a list.",
+      "derived_correction": true,
+      "evidence_ref": "stages/baseline_correctness/receipts/wrapper_evidence.json",
+      "expected_dtype": "bfloat16",
+      "expected_input_ids": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "judge_performance_module_matches_frozen": true,
+      "limitations": [],
+      "loaded_module_path": "/tmp/mindie-npu-test-stage1-034f88c590b746a4b381830336a1e24a/c4-environment-result/stages/baseline_correctness/workspace/vllm_ascend/ops/layernorm.py",
+      "loaded_module_sha256": "95d04d1dac659d17a867cf7ea43f99bbb552d2b425bfc701430989a7d1fcfeab",
+      "observed_dtypes": [
+        "bfloat16"
+      ],
+      "observed_input_ids": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "profile_closed_reason": "measure_rotating_buffers_call",
+      "raw_reported_limitations": [
+        "input_dtype_mismatch"
+      ],
+      "raw_reported_status": "failed",
+      "required": true,
+      "run_id": "stage1-034f88c590b746a4b381830336a1e24a-baseline",
+      "stage": "baseline_correctness",
+      "status": "passed",
+      "target_call_count": 8,
+      "target_call_path": "vllm_ascend.ops.layernorm.AscendFusedRMSNormGated.forward_oot",
+      "timing_profile_state": "closed_before_timing",
+      "variant_patch_digest": "c9064cf96db80b9ccc5fef402775134b6f4d773fea4732f7ef524732f1d0e3ee",
+      "window": {
+        "end_ts": 1792434116.4958906,
+        "start_ts": 1792434061.3695126
+      }
+    },
+    "environment": {
+      "actual_conditions": {
+        "cann": "9.1.0",
+        "driver": "25.2.2",
+        "firmware": "7.7.0.10.220",
+        "framework": {
+          "torch": "2.10.0+cpu",
+          "torch_npu": "2.10.0.post4"
+        },
+        "soc": "Ascend910B4"
+      },
+      "checks": {
+        "actual_summary_facts": true,
+        "brackets_measurements": true,
+        "complete_captures": true,
+        "condition_facts": true,
+        "expected_facts_binding": true,
+        "input_binding": true,
+        "post_measurement_actual_facts": true,
+        "post_measurement_status": true,
+        "pre_measurement_actual_facts": true,
+        "pre_measurement_status": true,
+        "producer_status": true,
+        "raw_artifact_sha": true,
+        "raw_status": true,
+        "run_identity": true,
+        "same_container": true,
+        "same_process": true,
+        "wrapper_process": true
+      },
+      "environment_clock_bounds_ns": [
+        1358598402058613,
+        1358600164437870
+      ],
+      "environment_input_sha256": "af7cb37ba1737d295f2fbf5130e6061772905ac53d18fffd2a4efc9843208030",
+      "issues": [],
+      "process_identity": {
+        "exe": "/usr/local/python3.12.13/bin/python3.12",
+        "hostname": "<redacted:local-path:0e4201aad4a5>",
+        "pid": 7701,
+        "startticks": "135854206"
+      },
+      "raw_measurement_window_ns": [
+        1358598437261117,
+        1358600157836967
+      ],
+      "run_id": "stage1-034f88c590b746a4b381830336a1e24a-baseline",
+      "runtime_evidence_ref": "[REDACTED_SECRET].json",
+      "runtime_evidence_sha256": "addb2a02f47768d6dac875cec185d37fe32aa0913150eb1c1e77def0b8dd17e2",
+      "status": "passed"
+    },
+    "raw_result_ref": "[REDACTED_SECRET].json",
+    "raw_result_sha256": "4dfe3ace6fe11c159f0c4793ae7f6a34ff190b79bb1af348bba08232cef335dc",
+    "raw_wrapper_ref": "[REDACTED_SECRET].json",
+    "raw_wrapper_sha256": "73684891549260d7e0f4eb5e36fdbe89fb44b7eca36f0c27cf491fe17a5da441"
+  },
+  "final_retained": {
+    "derived_execution_proof": {
+      "checks": {
+        "actual_dtype_set": true,
+        "all_call_bindings": true,
+        "all_frozen_input_ids": true,
+        "frozen_judge": true,
+        "module_path": true,
+        "module_sha": true,
+        "profile_closed_before_timing": true,
+        "raw_reported_limitations_resolved": true,
+        "run_and_stage": true,
+        "variant_patch": true,
+        "wrapper_passed": true
+      },
+      "correction_basis": "Raw actual dtype set equals the singleton expected set; producer compared a set with a list.",
+      "derived_correction": true,
+      "evidence_ref": "stages/final_retained/receipts/wrapper_evidence.json",
+      "expected_dtype": "bfloat16",
+      "expected_input_ids": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "judge_performance_module_matches_frozen": true,
+      "limitations": [],
+      "loaded_module_path": "/tmp/mindie-npu-test-stage1-034f88c590b746a4b381830336a1e24a/c4-environment-result/stages/final_retained/workspace/vllm_ascend/ops/layernorm.py",
+      "loaded_module_sha256": "887a5976bd9d4a65b96abedfb47268a0742ec04b7a3a02da9412021c73f0b025",
+      "observed_dtypes": [
+        "bfloat16"
+      ],
+      "observed_input_ids": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "profile_closed_reason": "measure_rotating_buffers_call",
+      "raw_reported_limitations": [
+        "input_dtype_mismatch"
+      ],
+      "raw_reported_status": "failed",
+      "required": true,
+      "run_id": "stage1-034f88c590b746a4b381830336a1e24a-final",
+      "stage": "final_retained",
+      "status": "passed",
+      "target_call_count": 8,
+      "target_call_path": "vllm_ascend.ops.layernorm.AscendFusedRMSNormGated.forward_oot",
+      "timing_profile_state": "closed_before_timing",
+      "variant_patch_digest": "60b3deb5002dfe925b4da7ac04cec1a933bd496cd3305f132bdb57683fc32c38",
+      "window": {
+        "end_ts": 1792434299.050311,
+        "start_ts": 1792434249.531549
+      }
+    },
+    "environment": {
+      "actual_conditions": {
+        "cann": "9.1.0",
+        "driver": "25.2.2",
+        "firmware": "7.7.0.10.220",
+        "framework": {
+          "torch": "2.10.0+cpu",
+          "torch_npu": "2.10.0.post4"
+        },
+        "soc": "Ascend910B4"
+      },
+      "checks": {
+        "actual_summary_facts": true,
+        "brackets_measurements": true,
+        "complete_captures": true,
+        "condition_facts": true,
+        "expected_facts_binding": true,
+        "input_binding": true,
+        "post_measurement_actual_facts": true,
+        "post_measurement_status": true,
+        "pre_measurement_actual_facts": true,
+        "pre_measurement_status": true,
+        "producer_status": true,
+        "raw_artifact_sha": true,
+        "raw_status": true,
+        "run_identity": true,
+        "same_container": true,
+        "same_process": true,
+        "wrapper_process": true
+      },
+      "environment_clock_bounds_ns": [
+        1358780938330541,
+        1358782486952757
+      ],
+      "environment_input_sha256": "af7cb37ba1737d295f2fbf5130e6061772905ac53d18fffd2a4efc9843208030",
+      "issues": [],
+      "process_identity": {
+        "exe": "/usr/local/python3.12.13/bin/python3.12",
+        "hostname": "<redacted:local-path:0e4201aad4a5>",
+        "pid": 8056,
+        "startticks": "135873022"
+      },
+      "raw_measurement_window_ns": [
+        1358780970650234,
+        1358782480518057
+      ],
+      "run_id": "stage1-034f88c590b746a4b381830336a1e24a-final",
+      "runtime_evidence_ref": "[REDACTED_SECRET].json",
+      "runtime_evidence_sha256": "da2e166eaae60f214c3bea28e1fab5421faaa1b24e62664909b4c07abc98d17c",
+      "status": "passed"
+    },
+    "raw_result_ref": "[REDACTED_SECRET].json",
+    "raw_result_sha256": "24f5f3b50ddf953ba70280031dc7ef30bf5d161373c16853433a8a3b40d4d52a",
+    "raw_wrapper_ref": "[REDACTED_SECRET].json",
+    "raw_wrapper_sha256": "f7b6648371b78cc9f48cb3d4899aa9bc6856c60ecbba6da25c3d51a3e4ccdd35"
+  },
+  "full": {
+    "derived_execution_proof": {
+      "checks": {
+        "actual_dtype_set": true,
+        "all_call_bindings": true,
+        "all_frozen_input_ids": true,
+        "frozen_judge": true,
+        "module_path": true,
+        "module_sha": true,
+        "profile_closed_before_timing": true,
+        "raw_reported_limitations_resolved": true,
+        "run_and_stage": true,
+        "variant_patch": true,
+        "wrapper_passed": true
+      },
+      "correction_basis": "Raw actual dtype set equals the singleton expected set; producer compared a set with a list.",
+      "derived_correction": true,
+      "evidence_ref": "stages/full/receipts/wrapper_evidence.json",
+      "expected_dtype": "bfloat16",
+      "expected_input_ids": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "judge_performance_module_matches_frozen": true,
+      "limitations": [],
+      "loaded_module_path": "/tmp/mindie-npu-test-stage1-034f88c590b746a4b381830336a1e24a/c4-environment-result/stages/full/workspace/vllm_ascend/ops/layernorm.py",
+      "loaded_module_sha256": "887a5976bd9d4a65b96abedfb47268a0742ec04b7a3a02da9412021c73f0b025",
+      "observed_dtypes": [
+        "bfloat16"
+      ],
+      "observed_input_ids": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "profile_closed_reason": "measure_rotating_buffers_call",
+      "raw_reported_limitations": [
+        "input_dtype_mismatch"
+      ],
+      "raw_reported_status": "failed",
+      "required": true,
+      "run_id": "stage1-034f88c590b746a4b381830336a1e24a-full",
+      "stage": "full",
+      "status": "passed",
+      "target_call_count": 8,
+      "target_call_path": "vllm_ascend.ops.layernorm.AscendFusedRMSNormGated.forward_oot",
+      "timing_profile_state": "closed_before_timing",
+      "variant_patch_digest": "60b3deb5002dfe925b4da7ac04cec1a933bd496cd3305f132bdb57683fc32c38",
+      "window": {
+        "end_ts": 1792434177.509485,
+        "start_ts": 1792434128.0548398
+      }
+    },
+    "environment": {
+      "actual_conditions": {
+        "cann": "9.1.0",
+        "driver": "25.2.2",
+        "firmware": "7.7.0.10.220",
+        "framework": {
+          "torch": "2.10.0+cpu",
+          "torch_npu": "2.10.0.post4"
+        },
+        "soc": "Ascend910B4"
+      },
+      "checks": {
+        "actual_summary_facts": true,
+        "brackets_measurements": true,
+        "complete_captures": true,
+        "condition_facts": true,
+        "expected_facts_binding": true,
+        "input_binding": true,
+        "post_measurement_actual_facts": true,
+        "post_measurement_status": true,
+        "pre_measurement_actual_facts": true,
+        "pre_measurement_status": true,
+        "producer_status": true,
+        "raw_artifact_sha": true,
+        "raw_status": true,
+        "run_identity": true,
+        "same_container": true,
+        "same_process": true,
+        "wrapper_process": true
+      },
+      "environment_clock_bounds_ns": [
+        1358659397614279,
+        1358660996860237
+      ],
+      "environment_input_sha256": "af7cb37ba1737d295f2fbf5130e6061772905ac53d18fffd2a4efc9843208030",
+      "issues": [],
+      "process_identity": {
+        "exe": "/usr/local/python3.12.13/bin/python3.12",
+        "hostname": "<redacted:local-path:0e4201aad4a5>",
+        "pid": 7882,
+        "startticks": "135860875"
+      },
+      "raw_measurement_window_ns": [
+        1358659431208831,
+        1358660990531288
+      ],
+      "run_id": "stage1-034f88c590b746a4b381830336a1e24a-full",
+      "runtime_evidence_ref": "[REDACTED_SECRET].json",
+      "runtime_evidence_sha256": "68467282491d4f6bb9bf92febf23578c107c67adecf310e161e8d3fa16699b1a",
+      "status": "passed"
+    },
+    "raw_result_ref": "[REDACTED_SECRET].json",
+    "raw_result_sha256": "1ea14ddf5993f54961bc6c7591d4eca871a8a71e9ffb04e96ec6f7004b8f1e58",
+    "raw_wrapper_ref": "[REDACTED_SECRET].json",
+    "raw_wrapper_sha256": "ce1b57c79eb98aa93c074f2b3ac74c57f3165ffc84c2e1955abc75d0c0e78f9b"
+  },
+  "loo_fastpath": {
+    "derived_execution_proof": {
+      "checks": {
+        "actual_dtype_set": true,
+        "all_call_bindings": true,
+        "all_frozen_input_ids": true,
+        "frozen_judge": true,
+        "module_path": true,
+        "module_sha": true,
+        "profile_closed_before_timing": true,
+        "raw_reported_limitations_resolved": true,
+        "run_and_stage": true,
+        "variant_patch": true,
+        "wrapper_passed": true
+      },
+      "correction_basis": "Raw actual dtype set equals the singleton expected set; producer compared a set with a list.",
+      "derived_correction": true,
+      "evidence_ref": "stages/loo_fastpath/receipts/wrapper_evidence.json",
+      "expected_dtype": "bfloat16",
+      "expected_input_ids": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "judge_performance_module_matches_frozen": true,
+      "limitations": [],
+      "loaded_module_path": "/tmp/mindie-npu-test-stage1-034f88c590b746a4b381830336a1e24a/c4-environment-result/stages/loo_fastpath/workspace/vllm_ascend/ops/layernorm.py",
+      "loaded_module_sha256": "95d04d1dac659d17a867cf7ea43f99bbb552d2b425bfc701430989a7d1fcfeab",
+      "observed_dtypes": [
+        "bfloat16"
+      ],
+      "observed_input_ids": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "profile_closed_reason": "measure_rotating_buffers_call",
+      "raw_reported_limitations": [
+        "input_dtype_mismatch"
+      ],
+      "raw_reported_status": "failed",
+      "required": true,
+      "run_id": "stage1-034f88c590b746a4b381830336a1e24a-loo",
+      "stage": "loo_fastpath",
+      "status": "passed",
+      "target_call_count": 8,
+      "target_call_path": "vllm_ascend.ops.layernorm.AscendFusedRMSNormGated.forward_oot",
+      "timing_profile_state": "closed_before_timing",
+      "variant_patch_digest": "c9064cf96db80b9ccc5fef402775134b6f4d773fea4732f7ef524732f1d0e3ee",
+      "window": {
+        "end_ts": 1792434238.1420577,
+        "start_ts": 1792434188.6534598
+      }
+    },
+    "environment": {
+      "actual_conditions": {
+        "cann": "9.1.0",
+        "driver": "25.2.2",
+        "firmware": "7.7.0.10.220",
+        "framework": {
+          "torch": "2.10.0+cpu",
+          "torch_npu": "2.10.0.post4"
+        },
+        "soc": "Ascend910B4"
+      },
+      "checks": {
+        "actual_summary_facts": true,
+        "brackets_measurements": true,
+        "complete_captures": true,
+        "condition_facts": true,
+        "expected_facts_binding": true,
+        "input_binding": true,
+        "post_measurement_actual_facts": true,
+        "post_measurement_status": true,
+        "pre_measurement_actual_facts": true,
+        "pre_measurement_status": true,
+        "producer_status": true,
+        "raw_artifact_sha": true,
+        "raw_status": true,
+        "run_identity": true,
+        "same_container": true,
+        "same_process": true,
+        "wrapper_process": true
+      },
+      "environment_clock_bounds_ns": [
+        1358720038104172,
+        1358721758479490
+      ],
+      "environment_input_sha256": "af7cb37ba1737d295f2fbf5130e6061772905ac53d18fffd2a4efc9843208030",
+      "issues": [],
+      "process_identity": {
+        "exe": "/usr/local/python3.12.13/bin/python3.12",
+        "hostname": "<redacted:local-path:0e4201aad4a5>",
+        "pid": 7964,
+        "startticks": "135866935"
+      },
+      "raw_measurement_window_ns": [
+        1358720072649507,
+        1358721752141781
+      ],
+      "run_id": "stage1-034f88c590b746a4b381830336a1e24a-loo",
+      "runtime_evidence_ref": "[REDACTED_SECRET].json",
+      "runtime_evidence_sha256": "0e180b46260d797a5f8e3685270503a89cd43dc3059debf5b32470bcda7e2a78",
+      "status": "passed"
+    },
+    "raw_result_ref": "[REDACTED_SECRET].json",
+    "raw_result_sha256": "c6ce80a79b344bd782eef067d235f72a31a225c15e2afcbbcbb90a0373551964",
+    "raw_wrapper_ref": "[REDACTED_SECRET].json",
+    "raw_wrapper_sha256": "7bb6a5bb7372743168d6e1fa41c64bb68e946fbb6bd21f5dfd4796e80ca260ca"
+  },
+  "source": {
+    "derived_execution_proof": {
+      "derived_correction": false,
+      "evidence_ref": "stages/source/receipts/wrapper_evidence.json",
+      "expected_dtype": "bfloat16",
+      "expected_input_ids": [
+        "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
+        "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+      ],
+      "judge_performance_module_matches_frozen": true,
+      "limitations": [
+        "target_forward_oot_not_called"
+      ],
+      "loaded_module_path": null,
+      "loaded_module_sha256": null,
+      "observed_dtypes": [],
+      "observed_input_ids": [],
+      "profile_closed_reason": "measure_rotating_buffers_call",
+      "raw_reported_status": "missing",
+      "required": false,
+      "run_id": "stage1-034f88c590b746a4b381830336a1e24a-source",
+      "stage": "source",
+      "status": "missing",
+      "target_call_count": 0,
+      "target_call_path": "vllm_ascend.ops.layernorm.AscendFusedRMSNormGated.forward_oot",
+      "timing_profile_state": "closed_before_timing",
+      "variant_patch_digest": "ddd495f516672eebe271599f6736f5d9e52a9d2611e84fdf55c6758d3a90cb13",
+      "window": {
+        "end_ts": 1792434026.3112016,
+        "start_ts": 1792433963.2061622
+      }
+    },
+    "environment": {
+      "actual_conditions": {
+        "cann": "9.1.0",
+        "driver": "25.2.2",
+        "firmware": "7.7.0.10.220",
+        "framework": {
+          "torch": "2.10.0+cpu",
+          "torch_npu": "2.10.0.post4"
+        },
+        "soc": "Ascend910B4"
+      },
+      "checks": {
+        "actual_summary_facts": true,
+        "brackets_measurements": true,
+        "complete_captures": true,
+        "condition_facts": true,
+        "expected_facts_binding": true,
+        "input_binding": true,
+        "post_measurement_actual_facts": true,
+        "post_measurement_status": true,
+        "pre_measurement_actual_facts": true,
+        "pre_measurement_status": true,
+        "producer_status": true,
+        "raw_artifact_sha": true,
+        "raw_status": true,
+        "run_identity": true,
+        "same_container": true,
+        "same_process": true,
+        "wrapper_process": true
+      },
+      "environment_clock_bounds_ns": [
+        1358508207192279,
+        1358509901237807
+      ],
+      "environment_input_sha256": "af7cb37ba1737d295f2fbf5130e6061772905ac53d18fffd2a4efc9843208030",
+      "issues": [],
+      "process_identity": {
+        "exe": "/usr/local/python3.12.13/bin/python3.12",
+        "hostname": "<redacted:local-path:0e4201aad4a5>",
+        "pid": 7578,
+        "startticks": "135844390"
+      },
+      "raw_measurement_window_ns": [
+        1358508212504303,
+        1358509894840727
+      ],
+      "run_id": "stage1-034f88c590b746a4b381830336a1e24a-source",
+      "runtime_evidence_ref": "[REDACTED_SECRET].json",
+      "runtime_evidence_sha256": "339029fc9d22403d701dda1b8ce6ca1776d4878d6c5dfc68ded7cb61385b06d5",
+      "status": "passed"
+    },
+    "raw_result_ref": "[REDACTED_SECRET].json",
+    "raw_result_sha256": "2d5d686e607beaa52dc94e37706f36217e03fc1ee90dd5639cfe42d76d374b96",
+    "raw_wrapper_ref": "[REDACTED_SECRET].json",
+    "raw_wrapper_sha256": "bbc2191a689ed7b128a2bb8d98cd845709f42ecc67193191c03c54c4dde2b6b9"
+  }
+}

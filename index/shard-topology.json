@@ -2,12 +2,12 @@
   "closure": {
     "unit-residual-free-rmsnorm-fastpath": []
   },
-  "digest": "bf4bc13b190efdcf50fcc7090f47ca4c2417419a6032939bbe98be716451e00c",
+  "digest": "6a0d006eea8c2251306a2bca5d2744c5c243b3bcce5577af3d9cbad0472eda13",
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 5262,
-      "estimated_tokens": 789,
+      "bytes": 5842,
+      "estimated_tokens": 809,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
@@ -18,8 +18,8 @@
     "domains": [
       {
         "automatic": false,
-        "bytes": 5262,
-        "estimated_tokens": 789,
+        "bytes": 5842,
+        "estimated_tokens": 809,
         "exceeds": [],
         "kind": "federation",
         "path": "normalization",
@@ -31,12 +31,13 @@
       }
     ]
   },
-  "index_digest": "d1dabed5186f1587440f3d31011c52067301336ef08a37a89f212c6f9bf5f464",
+  "index_build_elapsed_ms": 0.26466697454452515,
+  "index_digest": "8662a86760af9079f6fdfea9ffd3bc9c33d4a66e29e723bba5e4e1f6c568566c",
   "leaves": [
     {
       "automatic": false,
-      "bytes": 5262,
-      "estimated_tokens": 789,
+      "bytes": 5842,
+      "estimated_tokens": 809,
       "exceeds": [],
       "kind": "leaf",
       "path": "normalization/rmsnorm",
@@ -51,8 +52,8 @@
   "two_level_subtrees": [
     {
       "automatic": false,
-      "bytes": 5262,
-      "estimated_tokens": 789,
+      "bytes": 5842,
+      "estimated_tokens": 809,
       "exceeds": [],
       "kind": "subtree",
       "path": "normalization/rmsnorm",
@@ -66,12 +67,13 @@
   "unit_count": 1,
   "units": {
     "unit-residual-free-rmsnorm-fastpath": {
-      "bytes": 5262,
+      "bytes": 5842,
       "category": "mutator",
-      "content_sha256": "049e64317e28aeaad88e2df1649661935270acadef82ba3dc97e22bf42cbdbef",
+      "content_sha256": "64f02c7298d8238d28d9884d4bc599d2d0bd27160be76e80f76841dc5f674d0c",
       "domain_path": "normalization/rmsnorm",
-      "estimated_tokens": 789,
+      "estimated_tokens": 809,
       "evidence_strength": "reproduced_empirical",
+      "inherits_from": [],
       "path": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
       "tier": "L4"
     }

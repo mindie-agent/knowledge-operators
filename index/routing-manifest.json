@@ -1,9 +1,10 @@
 {
+  "build_elapsed_ms": 0.26466697454452515,
   "closure": {
     "unit-residual-free-rmsnorm-fastpath": []
   },
-  "digest": "d1dabed5186f1587440f3d31011c52067301336ef08a37a89f212c6f9bf5f464",
-  "generation": "22c407e225d65a6aa2aedfa9e4c83f52c82654a2ec23240e7b84f453b4948019",
+  "digest": "8662a86760af9079f6fdfea9ffd3bc9c33d4a66e29e723bba5e4e1f6c568566c",
+  "generation": "f306f878eca50314dea07ee593283e5afbe156f52ca7ed97f5118df4e06fc8e2",
   "id_path": {
     "unit-residual-free-rmsnorm-fastpath": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md"
   },
@@ -14,7 +15,7 @@
   "units": [
     {
       "category": "mutator",
-      "closure_digest": "sha256:8572c70539c9047e655b66f2f91cb0f18826fff4d2e001a5ca7db588716887b8",
+      "closure_digest": "sha256:edbd08b334727cc479b1947e3de069c3228c5f2c1242e1cf22684273ff69bf70",
       "conditions": {
         "activation": "sigmoid",
         "ascend_rt_visible_devices": "0",
@@ -29,26 +30,47 @@
           "torch_npu": "2.10.0.post4"
         },
         "gold_patch_sha256": "f01efd3a242a3b183e1431d9df6aefb700ba067314c41ad7891c8c249babf2ec",
+        "hostname": "<redacted:local-path:0e4201aad4a5>",
         "input_shape": [
           "1x37x4x128",
           "1x193x8x128"
         ],
         "machine": "aarch64",
         "measure_sha256": "bc77c926270222f5ab051e1d94abb070df6d39bb66ace05963a83f3f29cd4efe",
+        "non_factors": [
+          "required_dispatch_registration",
+          "input_preservation_out_dtype"
+        ],
         "oracle_manifest_sha256": "f343d8a964b8b20a168efcc9b8380e7c5afecffd5a1cd048d0a7cb93c2bd6bf2",
         "platform": "Linux-5.10.0-282.0.0.184.oe2203sp3.aarch64-aarch64-with-glibc2.35",
+        "python_executable": "/usr/local/python3.12.13/bin/python3",
         "python_version": "3.12.13",
         "soc": "Ascend910B4",
         "source_root_tree_sha256": "efb31c0470b80b8a4f955bcde7825c90cccd1ea1886215f925830901749aa715",
+        "stage_timeout_seconds": 240.0,
         "target_file": "vllm_ascend/ops/layernorm.py",
         "task_id": "fused-rmsnorm-gate-dispatch-performance",
+        "workload": {
+          "exact_set": [
+            {
+              "input_shape": "1x37x4x128",
+              "samples_per_shape": 36,
+              "workload_case_sha256": "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a"
+            },
+            {
+              "input_shape": "1x193x8x128",
+              "samples_per_shape": 36,
+              "workload_case_sha256": "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
+            }
+          ]
+        },
         "workload_case_sha256": [
           "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
           "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
         ]
       },
-      "content_digest": "sha256:049e64317e28aeaad88e2df1649661935270acadef82ba3dc97e22bf42cbdbef",
-      "content_sha256": "049e64317e28aeaad88e2df1649661935270acadef82ba3dc97e22bf42cbdbef",
+      "content_digest": "sha256:64f02c7298d8238d28d9884d4bc599d2d0bd27160be76e80f76841dc5f674d0c",
+      "content_sha256": "64f02c7298d8238d28d9884d4bc599d2d0bd27160be76e80f76841dc5f674d0c",
       "domain_path": "normalization/rmsnorm",
       "evidence_strength": "reproduced_empirical",
       "id": "unit-residual-free-rmsnorm-fastpath",
@@ -57,21 +79,20 @@
       "path": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
       "provenance": {
         "evidence_refs": [
-          "docs/evidence/c4-environment-ablation.json",
-          "docs/evidence/c4-environment-runtime-index.json",
-          "docs/evidence/c4-environment-stage-acceptance.json"
+          "docs/evidence/c4-case-block-v2-ablation.json",
+          "docs/evidence/c4-case-block-v2-stage-acceptance.json"
         ],
-        "source_digest": "40c444ff848a9a83f3632f63b414c2c93f4c8924f7e71556ca9f8e727a30f7b9",
-        "source_locator": "mindie-003-execution/c4-environment/assembly-health/ablation_receipt.json",
+        "source_digest": "9893d83c5b58b03692fab48ae7ad904ce64c19d8a2e4739a3ec70a225f429dd4",
+        "source_locator": "mindie-003-execution/c4-case-block-assembly-v2/ablation_receipt.json",
         "source_type": "ablation_receipt",
         "supersedes": [
-          "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@9c4ee3f0e570d1eca504f722090460096541887bac052182fe477d4645ed3626"
+          "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@049e64317e28aeaad88e2df1649661935270acadef82ba3dc97e22bf42cbdbef"
         ]
       },
-      "revision": 3,
+      "revision": 4,
       "tier": "L4",
-      "title": "Residual-free RMSNorm fastpath under the measured Ascend910B4 environment",
-      "token_estimate": 789,
+      "title": "Residual-free RMSNorm fastpath for the complete measured Ascend910B4 workload",
+      "token_estimate": 809,
       "triggers": {
         "error_signatures": [],
         "keywords": [

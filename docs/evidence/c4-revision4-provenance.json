@@ -1,0 +1,72 @@
+{
+  "schema": "mindie-c4-reviewed-revision/1",
+  "unit_id": "unit-residual-free-rmsnorm-fastpath",
+  "revision": 4,
+  "content_digest": "sha256:64f02c7298d8238d28d9884d4bc599d2d0bd27160be76e80f76841dc5f674d0c",
+  "source_revision": "7645b800c18bf2bc41ad1696318d47015e1a8d11",
+  "validator_revision": "71d74396cdc2df88a1de5e2f4b87cac87931d346",
+  "sources": [
+    {
+      "source": "c4-case-block-assembly-v2/ablation_receipt.json",
+      "source_sha256": "9893d83c5b58b03692fab48ae7ad904ce64c19d8a2e4739a3ec70a225f429dd4",
+      "redacted_path": "docs/evidence/c4-case-block-v2-ablation.json",
+      "redacted_sha256": "51666aa4f25518284712955cf2ef7bf510b02428aac142bd44d16827d4159fbf",
+      "outcome": "verified",
+      "repetitions": 3
+    },
+    {
+      "source": "c4-case-block-assembly-v2/gate_report.json",
+      "source_sha256": "7ea8d8c2db98c3ea25303e22b12a0844bfd63b90956c723c7baea53bebe75f39",
+      "redacted_path": "docs/evidence/c4-case-block-v2-gates.json",
+      "redacted_sha256": "b85fbff8a11220ba431f26dba42af20293ba094d3bd14dce00398577703253b5",
+      "outcome": "observed",
+      "repetitions": 1
+    },
+    {
+      "source": "c4-case-block-assembly-v2/stage-acceptance.json",
+      "source_sha256": "8b80d3f68e4b61bb3a0012ee3a97aa5023155f96da2f7108c097502d98965530",
+      "redacted_path": "docs/evidence/c4-case-block-v2-stage-acceptance.json",
+      "redacted_sha256": "40480f56c6683df25c48a34a2b92aa96a0b3bb261a742fcd9ada4591169049fc",
+      "outcome": "verified",
+      "repetitions": 4
+    }
+  ],
+  "original_assembly_sha256": "b0b3a6c3c07d390dc29e7edb860ab93ba690edf2a26b72d3bcf4e13bf40aac2d",
+  "complete_workload_identity": true,
+  "timing_intervals_unchanged": true,
+  "uncertainty_scope": "observed independent block-mean envelope; not a confidence interval; no cross-stage block pairing or between-run replication claim",
+  "prior_revision": {
+    "commit": "7645b800c18bf2bc41ad1696318d47015e1a8d11",
+    "revision": 3,
+    "ref": "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@049e64317e28aeaad88e2df1649661935270acadef82ba3dc97e22bf42cbdbef",
+    "evidence_hashes": {
+      "docs/evidence/provenance.json": "3157566196b82d7521e96bcffd99c854c462171964e20c69e02b3e5f208aeba1",
+      "docs/evidence/c4-assembly-health-ablation.json": "ff93164d7d07dcbcaa7eb767ff8f53e4164636a372b396dcbc1f32db1b8e4afe",
+      "docs/evidence/c4-environment-correction-validation.json": "46df85bb7c2197b08bf559613eb38b8e91b90680b440b317cc717a019ad262eb",
+      "docs/evidence/c4-environment-provenance.json": "b5d2b47ca8219b3955e0e7dfe1079e97653c8bdcb07e9720effdb76292cfd26a",
+      "docs/evidence/c4-environment-gates.json": "6d93bc1639e5fad22eb835c10c4d6cffebd70df965d36bf5e8bae3a1ba52908e",
+      "docs/evidence/c4-environment-stage-acceptance.json": "b98443777a4ef8d2f4cc52f824a2ac1e4c1c36f8e27f7c863a64f90c9b49f9df",
+      "docs/evidence/c4-environment-runtime-index.json": "9d358cec7dc3591fbec92ae39ec20d90705bba33967c6e2348e598f8754023fc",
+      "docs/evidence/c4-environment-ablation.json": "d6b1d8383043485212f89657ef43e2c0c29ed04a17f3113d3f9f491747db2d89",
+      "docs/evidence/c4-applicability-binding.json": "9b6a3825fa0ed9b45b18a6409b58e041eb6eef9416620ab96d24456375494ff2"
+    },
+    "historical_bytes_unchanged": true
+  },
+  "c6": {
+    "fresh_store": "applied",
+    "existing_id": "review_or_unchanged",
+    "automatic_existing_id_writes": 0,
+    "explicit_review_applied": true,
+    "malformed_workloads_rejected": [
+      "subset",
+      "duplicate",
+      "extra",
+      "cross_paired"
+    ],
+    "missing_workload": "unknown"
+  },
+  "model_calls": 0,
+  "new_npu_calls": 0,
+  "remote_writes": 0,
+  "installed_config_changes": 0
+}
