@@ -1,0 +1,1 @@
+mindie-knowledge @ git+https://github.com/mindie-agent/knowledge@ab2216600c545c1904b969f369b6aee1b15d0de4

@@ -1,0 +1,17 @@
+{
+  "domain": "operators",
+  "formats": {
+    "feedback": "mindie-graded-feedback/1",
+    "routing": "mindie-routing-manifest/1",
+    "unit": "mindie-graded-unit/1"
+  },
+  "review": {
+    "check": "publication-head",
+    "contract": "mindie-content-review/2"
+  },
+  "schema": "mindie-publication-contract/2",
+  "validator": {
+    "repository": "mindie-agent/knowledge",
+    "revision": "ab2216600c545c1904b969f369b6aee1b15d0de4"
+  }
+}

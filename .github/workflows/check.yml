@@ -1,0 +1,192 @@
+name: Knowledge publication checks
+
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  checks: write
+
+concurrency:
+  group: corpus-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publication:
+    runs-on: ubuntu-latest
+    steps:
+      # No candidate checkout: the PR supplies Git blobs, never executable code.
+      # pull_request_target uses the trusted base; only the final step receives
+      # a token, to attach its result to the validated head instead of the base SHA.
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Read trusted base publication contract
+        id: contract
+        run: |
+          python -I - <<'PYCODE'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import subprocess
+          import tempfile
+
+          event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          base = (event['pull_request']['base']['sha']
+                  if os.environ['GITHUB_EVENT_NAME'] == 'pull_request_target'
+                  else os.environ['GITHUB_SHA'])
+          if not re.fullmatch(r'[0-9a-f]{40}', base):
+              raise SystemExit('Trusted base must be an immutable commit')
+          def git(repo, *args):
+              return subprocess.run(['git', '-C', str(repo), '-c', 'core.hooksPath=/dev/null', *args],
+                                    check=True, capture_output=True,
+                                    env={**os.environ, 'GIT_TERMINAL_PROMPT': '0'}).stdout
+          with tempfile.TemporaryDirectory(prefix='mindie-contract-') as directory:
+              git(directory, 'init', '--bare', '--quiet')
+              git(directory, 'fetch', '--no-tags', '--depth=1',
+                  'https://github.com/mindie-agent/knowledge-operators.git', base)
+              record = git(directory, 'ls-tree', '-z', '--long', base, '--', 'publication-contract.json')
+              meta, name = record.rstrip(b'\0').split(b'\t', 1)
+              mode, kind, oid, size = meta.split()
+              if mode != b'100644' or kind != b'blob' or name != b'publication-contract.json' or not 0 < int(size) <= 16384:
+                  raise SystemExit('Trusted base requires a plain bounded contract declaration')
+              raw = git(directory, 'cat-file', 'blob', oid.decode('ascii'))
+          contract = json.loads(raw)
+          validator = contract.get('validator', {})
+          revision = validator.get('revision', '')
+          if (contract.get('schema') not in {'mindie-publication-contract/1', 'mindie-publication-contract/2'}
+                  or contract.get('domain') != 'operators'
+                  or validator.get('repository') != 'mindie-agent/knowledge'
+                  or not re.fullmatch(r'[0-9a-f]{40}', revision)):
+              raise SystemExit('Trusted base contract does not select the reviewed validator')
+          with open(os.environ['GITHUB_ENV'], 'a') as output:
+              output.write('KNOWLEDGE_VALIDATOR_SHA=' + revision + '\n')
+              output.write('TRUSTED_BASE_SHA=' + base + '\n')
+              output.write('TRUSTED_CONTRACT_SHA256=' + hashlib.sha256(raw).hexdigest() + '\n')
+          PYCODE
+      - name: Install reviewed validator
+        id: install
+        env:
+          PIP_NO_INPUT: '1'
+          PIP_RETRIES: '0'
+          PIP_DEFAULT_TIMEOUT: '20'
+          GIT_TERMINAL_PROMPT: '0'
+        run: python -m pip install --disable-pip-version-check "mindie-knowledge @ git+https://github.com/mindie-agent/knowledge@${KNOWLEDGE_VALIDATOR_SHA}"
+      - name: Validate exact publication head and PR text
+        id: validate
+        run: |
+          python -I - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import tempfile
+          from mindie_knowledge.community.common import run_argv
+          from mindie_knowledge.publication_check import validate, classify_changes
+          from mindie_knowledge.publication_contract import read_git_contract
+          from mindie_knowledge.redact import scan_text
+
+          event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          if os.environ['GITHUB_EVENT_NAME'] == 'pull_request_target':
+              pr = event['pull_request']
+              if pr['base']['ref'] != 'main':
+                  raise SystemExit('Only main is a publication target')
+              expected = pr['head']['sha']
+              number = event['number']
+              if type(number) is not int or number <= 0:
+                  raise SystemExit('Invalid PR number')
+              ref = f'refs/pull/{number}/head'
+              for key in ('title', 'body'):
+                  value = pr.get(key) or ''
+                  if not isinstance(value, str) or len(value.encode('utf-8')) > 131072:
+                      raise SystemExit('PR text exceeds validation limits')
+                  if scan_text(value):
+                      raise SystemExit('PR text fails the privacy scan')
+          else:
+              expected = os.environ['GITHUB_SHA']
+              ref = expected
+          if not re.fullmatch(r'[0-9a-f]{40}', expected):
+              raise SystemExit('Expected an immutable commit SHA')
+
+          def git(repo, *args):
+              result = run_argv(
+                  ['git', '-C', str(repo), '-c', 'core.hooksPath=/dev/null', *args],
+                  max_output=1048576, input_bytes=b'',
+                  env={'GIT_TERMINAL_PROMPT': '0'},
+              )
+              if result.timed_out or result.code:
+                  raise SystemExit('Git read failed; no automatic retry')
+              return result.out.decode('utf-8').strip()
+
+          with tempfile.TemporaryDirectory(prefix='mindie-publication-') as directory:
+              repo = Path(directory)
+              git(repo, 'init', '--bare', '--quiet')
+              git(repo, 'fetch', '--no-tags', '--depth=1',
+                  'https://github.com/mindie-agent/knowledge-operators.git', ref)
+              if git(repo, 'rev-parse', 'FETCH_HEAD') != expected:
+                  raise SystemExit('PR head changed while fetching; stale result refused')
+              base = os.environ['TRUSTED_BASE_SHA']
+              git(repo, 'fetch', '--no-tags', '--depth=1',
+                  'https://github.com/mindie-agent/knowledge-operators.git', base)
+              # Validate the trusted declaration with its own installed validator.
+              trusted = read_git_contract(repo, base, 'operators',
+                                          expected_sha256=os.environ['TRUSTED_CONTRACT_SHA256'])
+              if trusted['contract']['validator']['revision'] != os.environ['KNOWLEDGE_VALIDATOR_SHA']:
+                  raise SystemExit('Trusted validator receipt mismatch')
+              classification = classify_changes(repo, base, expected, schema=trusted['contract']['schema'])
+              ordinary = os.environ['GITHUB_EVENT_NAME'] != 'pull_request_target' or classification['content_only']
+              checked = validate(repo, expected, 'operators', base_revision=base,
+                                 expected_contract_sha256=trusted['sha256'] if ordinary else None)
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+                  output.write('review_mode=' + ('content' if ordinary else 'development') + '\n')
+              print(json.dumps(checked, sort_keys=True))
+          PY
+      - name: Publish result on the validated commit
+        if: always() && !cancelled()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUBLICATION_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          CONTRACT_OUTCOME: ${{ steps.contract.outcome }}
+          INSTALL_OUTCOME: ${{ steps.install.outcome }}
+          REVIEW_MODE: ${{ steps.validate.outputs.review_mode }}
+          VALIDATION_OUTCOME: ${{ steps.validate.outcome }}
+        run: |
+          python -I - <<'PY'
+          import json
+          import os
+          import re
+          import urllib.error
+          import urllib.request
+          sha = os.environ['PUBLICATION_HEAD']
+          if not re.fullmatch(r'[0-9a-f]{40}', sha):
+              raise SystemExit('Invalid result commit')
+          ok = all(os.environ[key] == 'success' for key in ('CONTRACT_OUTCOME', 'INSTALL_OUTCOME', 'VALIDATION_OUTCOME'))
+          conclusion = ('neutral' if os.environ['REVIEW_MODE'] == 'development' else 'success') if ok else 'failure'
+          repository = 'mindie-agent/knowledge-operators'
+          payload = dict(
+              name='publication-head', head_sha=sha, status='completed', conclusion=conclusion,
+              details_url=f'https://github.com/{repository}/actions/runs/' + os.environ['GITHUB_RUN_ID'],
+              output=dict(title='Publication validation', summary=f"{sha}: {conclusion}. Review path: {os.environ['REVIEW_MODE']}. Base {os.environ.get('TRUSTED_BASE_SHA', 'unavailable')}. Trusted validator {os.environ.get('KNOWLEDGE_VALIDATOR_SHA', 'unavailable')}. Development changes require maintainer review."),
+          )
+          request = urllib.request.Request(
+              f'https://api.github.com/repos/{repository}/check-runs',
+              data=json.dumps(payload).encode(), method='POST',
+              headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+                       'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json'},
+          )
+          try:
+              with urllib.request.urlopen(request, timeout=10) as response:
+                  receipt = json.loads(response.read(65536))
+          except urllib.error.HTTPError as exc:
+              raise SystemExit(f'Check publication failed: HTTP {exc.code}; no automatic retry')
+          if receipt.get('head_sha') != sha or receipt.get('conclusion') != conclusion:
+              raise SystemExit('Check publication receipt mismatch')
+          print(json.dumps({'head_sha': sha, 'conclusion': conclusion, 'check_id': receipt['id']}))
+          PY
