@@ -6,7 +6,7 @@ tier: L4
 category: mutator
 domain_path: normalization/rmsnorm
 evidence_strength: reproduced_empirical
-title: 'L4 mutator: residual-free gated RMSNorm native fastpath for Ascend910B'
+title: 'Residual-free gated RMSNorm native fastpath for Ascend910B'
 conditions:
   soc:
   - Ascend910B
@@ -44,7 +44,7 @@ triggers:
   - strided
   - Ascend910B
 ---
-# L4 mutator: residual-free gated RMSNorm native fastpath
+# Residual-free gated RMSNorm native fastpath
 
 ## Applicability
 

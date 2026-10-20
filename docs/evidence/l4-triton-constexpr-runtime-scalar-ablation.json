@@ -1,0 +1,153 @@
+{
+  "schema": "mindie-l4-ablation-design/1",
+  "domain": "operators",
+  "candidate_id": "unit-triton-constexpr-to-runtime-scalar-specialization-mutator",
+  "candidate_family": "triton-constexpr-to-runtime-scalar-persistent-grid",
+  "sibling_l4_family": "vectorized-bf16-fp32-accumulation-cast-fusion",
+  "corpus_parent_revision": "knowledge-operators:24ed736",
+  "experiment_status": "not_run_source_only",
+  "evidence_strength": "reproduced_empirical",
+  "measurement_claims": [],
+  "reason": "The dynamic-shape recompilation storm and unaligned-tail failure mode were observed in the redacted user transcripts; token-proportional grid growth, the CoreDim ceiling and the int1/atomic constraints were reviewed against the Triton-Ascend and CANNBot software contracts. The three-factor leave-one-out campaign, hidden-input retention run and synchronized latency comparison were not executed for this candidate, so this receipt establishes a transformation design and a verification contract, not a measured speedup.",
+  "conditions": {
+    "kernel_language": "triton",
+    "soc": [
+      "Ascend910B",
+      "Ascend910_93",
+      "Ascend950"
+    ],
+    "workload": "dynamic_shape"
+  },
+  "reproduced_observations": [
+    {
+      "id": "dynamic-shape-recompilation",
+      "observation": "Kernels that carry a length-derived extent such as N, H, B, NUM_CORES or NB on the tl.constexpr side produce a new compilation when the serving batch or sequence length changes. Adding do_not_specialize without removing the constexpr annotation leaves the specialization key unchanged.",
+      "source": "redacted user transcript packet b3 and offline transcript digest",
+      "status": "observed_not_reexecuted"
+    },
+    {
+      "id": "shape-driven-indexer-recompilation",
+      "observation": "A serving path with prepare/quantize indexer kernels was repaired specifically to avoid shape-driven recompilation, showing that the compile storm is a serving-path onset rather than a microbenchmark artefact.",
+      "source": "redacted user transcript branch-diff summary",
+      "status": "observed_not_reexecuted"
+    },
+    {
+      "id": "grid-coreDim-and-tiny-block-growth",
+      "observation": "A grid whose first dimension is proportional to token or block count grows with the workload. Triton-Ascend maps that first dimension to CoreDim, whose hard ceiling is UINT16_MAX = 65535; below the ceiling the same shape still launches thousands of tiny blocks when BLOCK is small.",
+      "source": "CANNbot Triton runbook, vllm-ascend issue 3548 and Triton-Ascend program_id contract",
+      "status": "software_contract_reviewed"
+    },
+    {
+      "id": "tail-and-low-precision-accumulator",
+      "observation": "A last partial tile that is not a multiple of BLOCK_M must be masked; an unmasked tail can read past GM or fold padding into a denominator. A bf16/fp16 reduction accumulator that is not widened to fp32 before the first accumulation drifts from the fp32 reference.",
+      "source": "redacted user transcript RMSNorm cases and inherited Ascend alignment/reduction axioms",
+      "status": "software_contract_and_observed_case"
+    }
+  ],
+  "factors": [
+    {
+      "id": "demote_dynamic_extent_from_constexpr",
+      "kind": "performance",
+      "change": "Remove tl.constexpr from every varying batch/token extent (M, seq_len, num_tokens, BLOCKS_PER_CORE), pass it as an int32 or int64 runtime scalar, and list it in do_not_specialize. Keep BLOCK_M, BLOCK_N and HEAD_DIM as power-of-two constexpr tile extents whose byte width is a multiple of 32 B.",
+      "depends_on": []
+    },
+    {
+      "id": "fixed_core_persistent_grid_loop",
+      "kind": "performance",
+      "change": "Replace the token-proportional one-dimensional grid with a core-bounded grid, grid = (min(cdiv(M, BLOCK_M), NUM_CORES),), and cover the logical blocks inside the kernel with for bid in range(pid, num_blocks, num_programs). Use num_aicore for a tl.dot kernel and num_vectorcore for a pure-vector kernel.",
+      "depends_on": [
+        "demote_dynamic_extent_from_constexpr"
+      ]
+    },
+    {
+      "id": "masked_32b_tail_and_fp32_accumulator_guard",
+      "kind": "correctness",
+      "change": "Keep an explicit offs < M boundary mask with the neutral identity (other=0.0 for sum/mean, -inf for max/logsumexp, +inf for min), store with the same mask, and keep every reduction partial in fp32 across the persistent loop until the single final cast to the declared output dtype.",
+      "depends_on": [
+        "demote_dynamic_extent_from_constexpr",
+        "fixed_core_persistent_grid_loop"
+      ]
+    }
+  ],
+  "leave_one_out_arms": [
+    {
+      "arm": "full_candidate",
+      "removed": [],
+      "purpose": "Measure the complete retained combination: one specialization across varying M, a core-bounded grid, and a correct masked tail."
+    },
+    {
+      "arm": "minus_demote",
+      "removed": [
+        "demote_dynamic_extent_from_constexpr"
+      ],
+      "purpose": "Restore the length-derived constexpr and show the compile-count growth across M; correctness may still pass, so compilation count is the discriminating gate."
+    },
+    {
+      "arm": "minus_persistent_grid",
+      "removed": [
+        "fixed_core_persistent_grid_loop"
+      ],
+      "purpose": "Restore grid = (cdiv(M, BLOCK_M),); at large M this must hit the CoreDim ceiling or the tiny-block launch regime, not merely slow down."
+    },
+    {
+      "arm": "minus_tail_guard",
+      "removed": [
+        "masked_32b_tail_and_fp32_accumulator_guard"
+      ],
+      "purpose": "Remove the tail mask or the fp32 accumulator; this arm must fail the correctness gate on a non-multiple-of-BLOCK_M shape or a low-precision accumulation case rather than pass with a small timing win."
+    }
+  ],
+  "guard_workloads": [
+    "aligned_m_divisible_by_block_m",
+    "prime_or_unaligned_m_tail",
+    "m_just_above_65535_logical_blocks",
+    "dynamic_m_sweep_across_bucket_boundaries",
+    "high_dynamic_range_input",
+    "strided_view_with_32b_compliant_base",
+    "graph_capture_and_replay_shape_stability",
+    "warm_server_repeated_call",
+    "workspace_high_water_mark",
+    "fallback_path_selection"
+  ],
+  "fallback_boundary": {
+    "dynamic_tile_extent": "If tl.arange or a tile allocation needs a runtime extent, do not demote that extent. Keep a finite bucket set of constexpr tile shapes and warm only those buckets.",
+    "small_workload_or_direct_grid": "When the logical block count is already at or below the physical core count and launch overhead is not material, the direct grid may be simpler and faster; retain it and record the boundary.",
+    "pointer_offset_over_2gib": "If the byte offset can exceed 2 GiB, cast the final linear offset to int64 before pointer addition. If the backend cannot legalise the int64 path, split the tensor or keep the direct int32 path only when the bound is proven.",
+    "deterministic_reduction_order": "If the consumer requires a bitwise-fixed reduction order, a different persistent-loop assignment can change the order. Use a fixed two-stage partial buffer or restrict the loop schedule; do not claim bitwise identity from a different order.",
+    "runtime_loop_or_num_programs_unsupported": "If the installed backend cannot legalise a runtime range bound or tl.num_programs(0), pass the chosen core count as a warmed constexpr. If that still fails, fall back to a finite bucket set; do not enumerate an unbounded M.",
+    "unrepresentable_identity": "If the tail cannot be represented with the correct neutral identity, stage through an aligned buffer and mask explicitly, or do not take this path.",
+    "unaligned_head_dim": "If HEAD_DIM or the innermost tile is not a 32 B multiple, pad or stage it through an aligned UB buffer. Do not shrink the tile to a non-aligned width."
+  },
+  "heldout_buckets": [
+    "both_pass",
+    "opt_regression",
+    "both_fail",
+    "opt_improvement",
+    "evaluation_error"
+  ],
+  "retention_rule": "Only hidden cases that pass correctness under both the full candidate and the reference enter a paired timing ratio. A compile-count reduction or grid-overflow avoidance is reported separately from latency. A local speedup cannot override a tail-correctness or graph-replay regression.",
+  "source_provenance": {
+    "user_transcripts": [
+      "packet_b3_triton_rmsnorm",
+      "offline_transcript_digest"
+    ],
+    "cannbot_references": [
+      "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/triton_api/Programming_Model/program_id.md",
+      "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/debug_guide/debugging.md",
+      "https://github.com/vllm-project/vllm-ascend/issues/3548"
+    ],
+    "cannbot_knowledge_revision": "7ea0efbeb79f2559f121fa8514a9fe5c82245807",
+    "triton_ascend_revision": "c22984baa55e1506eadd7c72955d9bf669b1c959"
+  },
+  "source_references": [
+    "_common/unit-triton-ascend-constexpr-and-specialization-contract.md",
+    "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md",
+    "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
+    "https://triton-lang.org/main/python-api/generated/triton.jit.html",
+    "https://github.com/triton-lang/triton/blob/v3.2.0/python/triton/runtime/jit.py",
+    "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/triton_api/Programming_Model/program_id.md",
+    "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/debug_guide/debugging.md",
+    "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/triton_api/Linear_Algebra_Ops/dot.md",
+    "https://github.com/vllm-project/vllm-ascend/issues/3548"
+  ]
+}

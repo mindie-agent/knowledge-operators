@@ -1,7 +1,38 @@
 {
   "closure": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
+    "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
+    "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop"
+    ],
+    "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+    ],
+    "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
     "unit-ascend-operator-roofline-and-four-view-measurement": [],
+    "unit-ascendc-aicore-exception-and-precision-divergence-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+    ],
+    "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
@@ -20,8 +51,22 @@
       "unit-ascend-operator-roofline-and-four-view-measurement"
     ],
     "unit-triton-ascend-constexpr-and-specialization-contract": [],
+    "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
+    "unit-triton-constexpr-to-runtime-scalar-specialization-mutator": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-triton-dynamic-scalar-specialization-sop"
+    ],
     "unit-triton-dynamic-scalar-specialization-sop": [
       "unit-triton-ascend-constexpr-and-specialization-contract"
+    ],
+    "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop"
     ],
     "unit-triton-recompilation-decision-tree": [
       "unit-triton-ascend-constexpr-and-specialization-contract",
@@ -40,30 +85,40 @@
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 59501,
-      "estimated_tokens": 10804,
+      "bytes": 239160,
+      "estimated_tokens": 50084,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator",
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+        "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop",
         "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-ascendc-aicore-exception-and-precision-divergence-workflow",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+        "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop",
         "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
         "unit-operator-memory-vs-compute-bottleneck-convergence-workflow",
         "unit-residual-free-rmsnorm-fastpath",
         "unit-rmsnorm-five-stage-ablation-workflow",
         "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop",
+        "unit-triton-constexpr-to-runtime-scalar-specialization-mutator",
         "unit-triton-dynamic-scalar-specialization-sop",
+        "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow",
         "unit-triton-recompilation-decision-tree",
         "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
         "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator"
       ],
-      "units": 11
+      "units": 21
     },
     "domains": [
       {
         "automatic": false,
-        "bytes": 32381,
-        "estimated_tokens": 6652,
+        "bytes": 32353,
+        "estimated_tokens": 6649,
         "exceeds": [],
         "kind": "federation",
         "path": "Reduction",
@@ -77,37 +132,95 @@
       },
       {
         "automatic": false,
-        "bytes": 7472,
-        "estimated_tokens": 994,
+        "bytes": 18458,
+        "estimated_tokens": 3153,
         "exceeds": [],
         "kind": "federation",
         "path": "_common",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
           "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+          "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
           "unit-ascend-operator-roofline-and-four-view-measurement",
           "unit-triton-ascend-constexpr-and-specialization-contract"
         ],
-        "units": 3
+        "units": 4
       },
       {
         "automatic": false,
-        "bytes": 5337,
-        "estimated_tokens": 796,
+        "bytes": 37594,
+        "estimated_tokens": 8178,
         "exceeds": [],
         "kind": "federation",
-        "path": "compilation",
+        "path": "ascendc",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
-          "unit-triton-dynamic-scalar-specialization-sop",
-          "unit-triton-recompilation-decision-tree"
+          "unit-ascendc-aicore-exception-and-precision-divergence-workflow",
+          "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
         ],
         "units": 2
       },
       {
         "automatic": false,
-        "bytes": 14311,
-        "estimated_tokens": 2362,
+        "bytes": 36136,
+        "estimated_tokens": 7974,
+        "exceeds": [],
+        "kind": "federation",
+        "path": "attention",
+        "recommended_action": "review_federation_boundary",
+        "unit_ids": [
+          "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator",
+          "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop"
+        ],
+        "units": 2
+      },
+      {
+        "automatic": false,
+        "bytes": 62072,
+        "estimated_tokens": 13410,
+        "exceeds": [],
+        "kind": "federation",
+        "path": "compilation",
+        "recommended_action": "review_federation_boundary",
+        "unit_ids": [
+          "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop",
+          "unit-triton-constexpr-to-runtime-scalar-specialization-mutator",
+          "unit-triton-dynamic-scalar-specialization-sop",
+          "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow",
+          "unit-triton-recompilation-decision-tree"
+        ],
+        "units": 5
+      },
+      {
+        "automatic": false,
+        "bytes": 18209,
+        "estimated_tokens": 3960,
+        "exceeds": [],
+        "kind": "federation",
+        "path": "fusion",
+        "recommended_action": "review_federation_boundary",
+        "unit_ids": [
+          "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop"
+        ],
+        "units": 1
+      },
+      {
+        "automatic": false,
+        "bytes": 20053,
+        "estimated_tokens": 4401,
+        "exceeds": [],
+        "kind": "federation",
+        "path": "matmul",
+        "recommended_action": "review_federation_boundary",
+        "unit_ids": [
+          "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop"
+        ],
+        "units": 1
+      },
+      {
+        "automatic": false,
+        "bytes": 14285,
+        "estimated_tokens": 2359,
         "exceeds": [],
         "kind": "federation",
         "path": "normalization",
@@ -121,12 +234,12 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 2.2797499550506473,
+  "index_build_elapsed_ms": 13.143333024345338,
   "leaves": [
     {
       "automatic": false,
-      "bytes": 32381,
-      "estimated_tokens": 6652,
+      "bytes": 32353,
+      "estimated_tokens": 6649,
       "exceeds": [
         "estimated_tokens"
       ],
@@ -142,37 +255,105 @@
     },
     {
       "automatic": false,
-      "bytes": 7472,
-      "estimated_tokens": 994,
+      "bytes": 18458,
+      "estimated_tokens": 3153,
       "exceeds": [],
       "kind": "leaf",
       "path": "_common",
       "recommended_action": "review_leaf_split",
       "unit_ids": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
         "unit-ascend-operator-roofline-and-four-view-measurement",
         "unit-triton-ascend-constexpr-and-specialization-contract"
       ],
-      "units": 3
+      "units": 4
     },
     {
       "automatic": false,
-      "bytes": 5337,
-      "estimated_tokens": 796,
-      "exceeds": [],
+      "bytes": 37594,
+      "estimated_tokens": 8178,
+      "exceeds": [
+        "estimated_tokens"
+      ],
       "kind": "leaf",
-      "path": "compilation/triton",
+      "path": "ascendc/core",
       "recommended_action": "review_leaf_split",
       "unit_ids": [
-        "unit-triton-dynamic-scalar-specialization-sop",
-        "unit-triton-recompilation-decision-tree"
+        "unit-ascendc-aicore-exception-and-precision-divergence-workflow",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
       ],
       "units": 2
     },
     {
       "automatic": false,
-      "bytes": 14311,
-      "estimated_tokens": 2362,
+      "bytes": 36136,
+      "estimated_tokens": 7974,
+      "exceeds": [
+        "estimated_tokens"
+      ],
+      "kind": "leaf",
+      "path": "attention/fia-mla",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator",
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 62072,
+      "estimated_tokens": 13410,
+      "exceeds": [
+        "estimated_tokens"
+      ],
+      "kind": "leaf",
+      "path": "compilation/triton",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop",
+        "unit-triton-constexpr-to-runtime-scalar-specialization-mutator",
+        "unit-triton-dynamic-scalar-specialization-sop",
+        "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow",
+        "unit-triton-recompilation-decision-tree"
+      ],
+      "units": 5
+    },
+    {
+      "automatic": false,
+      "bytes": 18209,
+      "estimated_tokens": 3960,
+      "exceeds": [
+        "estimated_tokens"
+      ],
+      "kind": "leaf",
+      "path": "fusion/moe-gmm",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 20053,
+      "estimated_tokens": 4401,
+      "exceeds": [
+        "estimated_tokens"
+      ],
+      "kind": "leaf",
+      "path": "matmul/catlass-tilelang",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 14285,
+      "estimated_tokens": 2359,
       "exceeds": [],
       "kind": "leaf",
       "path": "normalization/rmsnorm",
@@ -189,8 +370,8 @@
   "two_level_subtrees": [
     {
       "automatic": false,
-      "bytes": 32381,
-      "estimated_tokens": 6652,
+      "bytes": 32353,
+      "estimated_tokens": 6649,
       "exceeds": [],
       "kind": "subtree",
       "path": "Reduction",
@@ -204,37 +385,95 @@
     },
     {
       "automatic": false,
-      "bytes": 7472,
-      "estimated_tokens": 994,
+      "bytes": 18458,
+      "estimated_tokens": 3153,
       "exceeds": [],
       "kind": "subtree",
       "path": "_common",
       "recommended_action": "review_two_level_subtree_split",
       "unit_ids": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
         "unit-ascend-operator-roofline-and-four-view-measurement",
         "unit-triton-ascend-constexpr-and-specialization-contract"
       ],
-      "units": 3
+      "units": 4
     },
     {
       "automatic": false,
-      "bytes": 5337,
-      "estimated_tokens": 796,
+      "bytes": 37594,
+      "estimated_tokens": 8178,
       "exceeds": [],
       "kind": "subtree",
-      "path": "compilation/triton",
+      "path": "ascendc/core",
       "recommended_action": "review_two_level_subtree_split",
       "unit_ids": [
-        "unit-triton-dynamic-scalar-specialization-sop",
-        "unit-triton-recompilation-decision-tree"
+        "unit-ascendc-aicore-exception-and-precision-divergence-workflow",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
       ],
       "units": 2
     },
     {
       "automatic": false,
-      "bytes": 14311,
-      "estimated_tokens": 2362,
+      "bytes": 36136,
+      "estimated_tokens": 7974,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "attention/fia-mla",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator",
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 62072,
+      "estimated_tokens": 13410,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "compilation/triton",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop",
+        "unit-triton-constexpr-to-runtime-scalar-specialization-mutator",
+        "unit-triton-dynamic-scalar-specialization-sop",
+        "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow",
+        "unit-triton-recompilation-decision-tree"
+      ],
+      "units": 5
+    },
+    {
+      "automatic": false,
+      "bytes": 18209,
+      "estimated_tokens": 3960,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "fusion/moe-gmm",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 20053,
+      "estimated_tokens": 4401,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "matmul/catlass-tilelang",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 14285,
+      "estimated_tokens": 2359,
       "exceeds": [],
       "kind": "subtree",
       "path": "normalization/rmsnorm",
@@ -247,7 +486,7 @@
       "units": 3
     }
   ],
-  "unit_count": 11,
+  "unit_count": 21,
   "units": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": {
       "bytes": 2511,
@@ -260,16 +499,115 @@
       "path": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
       "tier": "L1"
     },
-    "unit-ascend-operator-roofline-and-four-view-measurement": {
-      "bytes": 2728,
-      "category": "measurement",
-      "content_sha256": "7b15f4c39d941edcaf2f47f24a8e98ccf84ecf2524e5a5ad8de75b6d51cd9652",
+    "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": {
+      "bytes": 10895,
+      "category": "axiom",
+      "content_sha256": "caf5b69679cd8aed42c3b9796da7bdc18aeb3c37cfdb55b50f582a1edf8d53fa",
       "domain_path": "_common",
-      "estimated_tokens": 348,
+      "estimated_tokens": 2135,
+      "evidence_strength": "hardware_spec",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      ],
+      "path": "_common/unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms.md",
+      "tier": "L1"
+    },
+    "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator": {
+      "bytes": 12856,
+      "category": "mutator",
+      "content_sha256": "ea9f035714c38046d65f63a32681ab435fc5a6e4342b112fa5d37b48be5fcebf",
+      "domain_path": "attention/fia-mla",
+      "estimated_tokens": 2783,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "attention/fia-mla/unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator.md",
+      "tier": "L4"
+    },
+    "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop": {
+      "bytes": 23280,
+      "category": "sop",
+      "content_sha256": "92addf11cea3a374769a3001f9a732c9254a55b51e6b8c461e23060ddb22cdaf",
+      "domain_path": "attention/fia-mla",
+      "estimated_tokens": 5191,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "attention/fia-mla/unit-ascend-fused-infer-attention-and-flash-mla-c8-sop.md",
+      "tier": "L2"
+    },
+    "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop": {
+      "bytes": 18209,
+      "category": "sop",
+      "content_sha256": "43a6e673e5e7a3dce7a9601a2ef4fc3c5845592f314b2e20ebe43a17477dd42b",
+      "domain_path": "fusion/moe-gmm",
+      "estimated_tokens": 3960,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "fusion/moe-gmm/unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop.md",
+      "tier": "L2"
+    },
+    "unit-ascend-operator-roofline-and-four-view-measurement": {
+      "bytes": 2819,
+      "category": "measurement",
+      "content_sha256": "99adf790c79825d3b3fa8d6b830a4bc39bf26692d996c5d7e8b3e26d96fccc8b",
+      "domain_path": "_common",
+      "estimated_tokens": 372,
       "evidence_strength": "reproduced_empirical",
       "inherits_from": [],
       "path": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
       "tier": "L1"
+    },
+    "unit-ascendc-aicore-exception-and-precision-divergence-workflow": {
+      "bytes": 19329,
+      "category": "workflow",
+      "content_sha256": "d707acfab5c1af6205eaef4647031ac749527d110f71387ef84e49454a2a0a64",
+      "domain_path": "ascendc/core",
+      "estimated_tokens": 4241,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "path": "ascendc/core/unit-ascendc-aicore-exception-and-precision-divergence-workflow.md",
+      "tier": "L3"
+    },
+    "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop": {
+      "bytes": 18265,
+      "category": "sop",
+      "content_sha256": "ffa489db627a3dd0fbd2c0bb2bb943d98ac5fbe0480913c55d40c6180af5f043",
+      "domain_path": "ascendc/core",
+      "estimated_tokens": 3937,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "ascendc/core/unit-ascendc-tiling-pipe-double-buffer-and-sync-sop.md",
+      "tier": "L2"
+    },
+    "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop": {
+      "bytes": 20053,
+      "category": "sop",
+      "content_sha256": "2dd2fe9ee8cd4b3296f8a9d6e74ef0faffeb3cd5ca27b285e75f72795d6a8229",
+      "domain_path": "matmul/catlass-tilelang",
+      "estimated_tokens": 4401,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "matmul/catlass-tilelang/unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop.md",
+      "tier": "L2"
     },
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": {
       "bytes": 4846,
@@ -301,11 +639,11 @@
       "tier": "L3"
     },
     "unit-residual-free-rmsnorm-fastpath": {
-      "bytes": 4676,
+      "bytes": 4650,
       "category": "mutator",
-      "content_sha256": "174f4c371aa732a86dbcfa141296dd0133c94e4c0ab6d632f8405846cc3313ec",
+      "content_sha256": "592ccccd2268311d6fd96ca81d40f4bd91fe3fde5e8ad18946d5d3cbfe7a9b02",
       "domain_path": "normalization/rmsnorm",
-      "estimated_tokens": 798,
+      "estimated_tokens": 795,
       "evidence_strength": "reproduced_empirical",
       "inherits_from": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -339,6 +677,35 @@
       "path": "_common/unit-triton-ascend-constexpr-and-specialization-contract.md",
       "tier": "L1"
     },
+    "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop": {
+      "bytes": 18862,
+      "category": "sop",
+      "content_sha256": "f2c69e0f5e4b19f2c8ebe4ca4a0e87b3488faa32f6dfcd375d100e949c628170",
+      "domain_path": "compilation/triton",
+      "estimated_tokens": 4205,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract"
+      ],
+      "path": "compilation/triton/unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop.md",
+      "tier": "L2"
+    },
+    "unit-triton-constexpr-to-runtime-scalar-specialization-mutator": {
+      "bytes": 17496,
+      "category": "mutator",
+      "content_sha256": "75595ab3b098cb009fff4206b3c5cb7c466ebdefa71c2606a3e6b811fb1fee7a",
+      "domain_path": "compilation/triton",
+      "estimated_tokens": 3932,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-triton-dynamic-scalar-specialization-sop"
+      ],
+      "path": "compilation/triton/unit-triton-constexpr-to-runtime-scalar-specialization-mutator.md",
+      "tier": "L4"
+    },
     "unit-triton-dynamic-scalar-specialization-sop": {
       "bytes": 2430,
       "category": "sop",
@@ -351,6 +718,21 @@
       ],
       "path": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md",
       "tier": "L2"
+    },
+    "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow": {
+      "bytes": 20377,
+      "category": "workflow",
+      "content_sha256": "7a0734d1043046dcf764cd672e1df458cfbaca3821992fe2a5129e7de76b437c",
+      "domain_path": "compilation/triton",
+      "estimated_tokens": 4477,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop"
+      ],
+      "path": "compilation/triton/unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow.md",
+      "tier": "L3"
     },
     "unit-triton-recompilation-decision-tree": {
       "bytes": 2907,
@@ -381,11 +763,11 @@
       "tier": "L2"
     },
     "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator": {
-      "bytes": 7638,
+      "bytes": 7610,
       "category": "mutator",
-      "content_sha256": "4e66e7dba5155824be3522193d4f08612d6905b71129cab87ddce6bdff8ba5af",
+      "content_sha256": "3e6b6123918af4a9fd03308ef8aa223827b3a5ff8c878767eb7bcc02abe2efa8",
       "domain_path": "Reduction",
-      "estimated_tokens": 1427,
+      "estimated_tokens": 1424,
       "evidence_strength": "hypothesis",
       "inherits_from": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",

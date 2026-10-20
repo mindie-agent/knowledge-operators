@@ -6,7 +6,7 @@ tier: L4
 category: mutator
 domain_path: Reduction
 evidence_strength: hypothesis
-title: 'L4 mutator: vectorized bf16 reduction with fp32 accumulation and fused store cast'
+title: 'Vectorized bf16 reduction with fp32 accumulation and fused store cast'
 conditions:
   soc:
   - Ascend910B
@@ -64,7 +64,7 @@ triggers:
   - leave-one-out
   - guard workload
 ---
-# L4 mutator: vectorized bf16 reduction with fp32 accumulation and fused store cast
+# Vectorized bf16 reduction with fp32 accumulation and fused store cast
 
 ## Applicability
 
