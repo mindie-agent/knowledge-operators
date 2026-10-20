@@ -1,11 +1,16 @@
 {
-  "build_elapsed_ms": 1.8951250240206718,
+  "build_elapsed_ms": 2.399333054199815,
   "closure": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
     "unit-ascend-operator-roofline-and-four-view-measurement": [],
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-operator-memory-vs-compute-bottleneck-convergence-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
     ],
     "unit-residual-free-rmsnorm-fastpath": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -22,23 +27,29 @@
     "unit-triton-recompilation-decision-tree": [
       "unit-triton-ascend-constexpr-and-specialization-contract",
       "unit-triton-dynamic-scalar-specialization-sop"
+    ],
+    "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
     ]
   },
-  "generation": "df08838526ba0ac2bc2ca0c89922d81559e7231dd2cd2eda3d1e166f3f389238",
+  "generation": "b988f3dae6e5b5ff474695f5c2bf882c40be379008f74f1290cc1c6f7e6e1708",
   "id_path": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
     "unit-ascend-operator-roofline-and-four-view-measurement": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
+    "unit-operator-memory-vs-compute-bottleneck-convergence-workflow": "Reduction/unit-operator-memory-vs-compute-bottleneck-convergence-workflow.md",
     "unit-residual-free-rmsnorm-fastpath": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
     "unit-rmsnorm-five-stage-ablation-workflow": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md",
     "unit-triton-ascend-constexpr-and-specialization-contract": "_common/unit-triton-ascend-constexpr-and-specialization-contract.md",
     "unit-triton-dynamic-scalar-specialization-sop": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md",
-    "unit-triton-recompilation-decision-tree": "compilation/triton/unit-triton-recompilation-decision-tree.md"
+    "unit-triton-recompilation-decision-tree": "compilation/triton/unit-triton-recompilation-decision-tree.md",
+    "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop": "Reduction/unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop.md"
   },
   "query_budget_excludes_build": true,
   "schema_version": "mindie-routing-manifest/1",
   "token_estimator": "utf8_bytes_div_4_ceiling",
-  "unit_count": 8,
+  "unit_count": 10,
   "units": [
     {
       "category": "axiom",
@@ -218,6 +229,90 @@
           "Ascend910B4",
           "fastpath",
           "dispatch"
+        ]
+      }
+    },
+    {
+      "category": "workflow",
+      "conditions": {
+        "dtype": [
+          "bfloat16",
+          "float16",
+          "float32"
+        ],
+        "op_family": [
+          "reduction",
+          "elementwise",
+          "norm",
+          "matmul"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910B1",
+          "Ascend910B2",
+          "Ascend910B3",
+          "Ascend910B4",
+          "Ascend910_93"
+        ],
+        "workload": [
+          "fixed_shape"
+        ]
+      },
+      "domain_path": "Reduction",
+      "evidence_strength": "software_contract",
+      "id": "unit-operator-memory-vs-compute-bottleneck-convergence-workflow",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "path": "Reduction/unit-operator-memory-vs-compute-bottleneck-convergence-workflow.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasprofiling_16_0001.html",
+          "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/opdevg/Ascendcopdevg/atlas_ascendc_10_0001.html",
+          "https://github.com/Ascend/ascendc-samples",
+          "https://github.com/Ascend/pytorch"
+        ],
+        "source_locator": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasprofiling_16_0001.html",
+        "source_type": "public_profiling_contract_review",
+        "source_url": "https://www.hiascend.com/document",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L3",
+      "title": "Operator bottleneck convergence: MTE2/MTE3, Vector/Cube, and host launch triage",
+      "token_estimate": 2659,
+      "triggers": {
+        "error_signatures": [
+          "an operator is declared vector-bound or memory-bound from end-to-end latency alone",
+          "msprof shows low aicore_time and aiv_time but the operator is still slow",
+          "vectorization increases vector ALU time without reducing wall time",
+          "adding multibuffering or a larger tile makes the operator slower",
+          "a speedup is claimed after one iteration without checking that the bottleneck moved"
+        ],
+        "keywords": [
+          "operator optimization",
+          "bottleneck",
+          "MTE2",
+          "MTE3",
+          "Vector",
+          "Cube",
+          "host launch",
+          "tiling",
+          "multibuffer",
+          "redundant cast",
+          "msprof",
+          "aicore_time",
+          "pipe utilization",
+          "convergence",
+          "Ascend910B",
+          "Ascend910_93"
         ]
       }
     },
@@ -473,6 +568,83 @@
           "constexpr",
           "dynamic shape",
           "warmup"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "dtype": [
+          "bfloat16",
+          "float16"
+        ],
+        "op_family": [
+          "reduction"
+        ],
+        "reduction_axis": [
+          "last"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910B1",
+          "Ascend910B2",
+          "Ascend910B3",
+          "Ascend910B4",
+          "Ascend910_93"
+        ]
+      },
+      "domain_path": "Reduction",
+      "evidence_strength": "software_contract",
+      "id": "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "Reduction/unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://github.com/Ascend/ascendc-samples",
+          "https://github.com/Ascend/pytorch",
+          "https://triton-lang.org/main/python-api/generated/triton.language.sum.html",
+          "https://triton-lang.org/main/python-api/generated/triton.language.max.html",
+          "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/opdevg/Ascendcopdevg/atlas_ascendc_10_0001.html"
+        ],
+        "source_locator": "https://github.com/Ascend/ascendc-samples",
+        "source_type": "public_software_contract_review",
+        "source_url": "https://github.com/Ascend/ascendc-samples",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "Ascend vector-reduction SOP: FP32 accumulation and 32 B UB tail alignment",
+      "token_estimate": 2566,
+      "triggers": {
+        "error_signatures": [
+          "a bf16 or fp16 reduction returns NaN or Inf while the fp32 reference is finite",
+          "a last-axis reduction misreads the tail when the row byte length is not a multiple of 32",
+          "the padded UB tile is counted in the mean denominator or in the maximum",
+          "a timing number is published before finiteness and max-abs checks pass"
+        ],
+        "keywords": [
+          "reduction",
+          "vector reduction",
+          "fp32 accumulation",
+          "UB alignment",
+          "32-byte alignment",
+          "DataCopyPad",
+          "tail mask",
+          "bfloat16",
+          "float16",
+          "sum",
+          "mean",
+          "amax",
+          "logsumexp",
+          "Ascend910B",
+          "Ascend910_93"
         ]
       }
     }
