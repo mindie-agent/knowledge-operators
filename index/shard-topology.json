@@ -14,15 +14,20 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
     ],
+    "unit-triton-ascend-constexpr-and-specialization-contract": [],
     "unit-triton-dynamic-scalar-specialization-sop": [
-      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      "unit-triton-ascend-constexpr-and-specialization-contract"
+    ],
+    "unit-triton-recompilation-decision-tree": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-dynamic-scalar-specialization-sop"
     ]
   },
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 34983,
-      "estimated_tokens": 6663,
+      "bytes": 27123,
+      "estimated_tokens": 4152,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
@@ -31,42 +36,46 @@
         "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
         "unit-residual-free-rmsnorm-fastpath",
         "unit-rmsnorm-five-stage-ablation-workflow",
-        "unit-triton-dynamic-scalar-specialization-sop"
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-triton-dynamic-scalar-specialization-sop",
+        "unit-triton-recompilation-decision-tree"
       ],
-      "units": 6
+      "units": 8
     },
     "domains": [
       {
         "automatic": false,
-        "bytes": 10207,
-        "estimated_tokens": 1943,
+        "bytes": 7472,
+        "estimated_tokens": 994,
         "exceeds": [],
         "kind": "federation",
         "path": "_common",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
           "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
-          "unit-ascend-operator-roofline-and-four-view-measurement"
+          "unit-ascend-operator-roofline-and-four-view-measurement",
+          "unit-triton-ascend-constexpr-and-specialization-contract"
         ],
-        "units": 2
+        "units": 3
       },
       {
         "automatic": false,
-        "bytes": 2297,
-        "estimated_tokens": 333,
+        "bytes": 5340,
+        "estimated_tokens": 796,
         "exceeds": [],
         "kind": "federation",
         "path": "compilation",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
-          "unit-triton-dynamic-scalar-specialization-sop"
+          "unit-triton-dynamic-scalar-specialization-sop",
+          "unit-triton-recompilation-decision-tree"
         ],
-        "units": 1
+        "units": 2
       },
       {
         "automatic": false,
-        "bytes": 22479,
-        "estimated_tokens": 4387,
+        "bytes": 14311,
+        "estimated_tokens": 2362,
         "exceeds": [],
         "kind": "federation",
         "path": "normalization",
@@ -80,42 +89,42 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 1.6910829581320286,
+  "index_build_elapsed_ms": 1.8951250240206718,
   "leaves": [
     {
       "automatic": false,
-      "bytes": 10207,
-      "estimated_tokens": 1943,
+      "bytes": 7472,
+      "estimated_tokens": 994,
       "exceeds": [],
       "kind": "leaf",
       "path": "_common",
       "recommended_action": "review_leaf_split",
       "unit_ids": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
-        "unit-ascend-operator-roofline-and-four-view-measurement"
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-triton-ascend-constexpr-and-specialization-contract"
       ],
-      "units": 2
+      "units": 3
     },
     {
       "automatic": false,
-      "bytes": 2297,
-      "estimated_tokens": 333,
+      "bytes": 5340,
+      "estimated_tokens": 796,
       "exceeds": [],
       "kind": "leaf",
       "path": "compilation/triton",
       "recommended_action": "review_leaf_split",
       "unit_ids": [
-        "unit-triton-dynamic-scalar-specialization-sop"
+        "unit-triton-dynamic-scalar-specialization-sop",
+        "unit-triton-recompilation-decision-tree"
       ],
-      "units": 1
+      "units": 2
     },
     {
       "automatic": false,
-      "bytes": 22479,
-      "estimated_tokens": 4387,
-      "exceeds": [
-        "estimated_tokens"
-      ],
+      "bytes": 14311,
+      "estimated_tokens": 2362,
+      "exceeds": [],
       "kind": "leaf",
       "path": "normalization/rmsnorm",
       "recommended_action": "review_leaf_split",
@@ -131,35 +140,37 @@
   "two_level_subtrees": [
     {
       "automatic": false,
-      "bytes": 10207,
-      "estimated_tokens": 1943,
+      "bytes": 7472,
+      "estimated_tokens": 994,
       "exceeds": [],
       "kind": "subtree",
       "path": "_common",
       "recommended_action": "review_two_level_subtree_split",
       "unit_ids": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
-        "unit-ascend-operator-roofline-and-four-view-measurement"
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-triton-ascend-constexpr-and-specialization-contract"
       ],
-      "units": 2
+      "units": 3
     },
     {
       "automatic": false,
-      "bytes": 2297,
-      "estimated_tokens": 333,
+      "bytes": 5340,
+      "estimated_tokens": 796,
       "exceeds": [],
       "kind": "subtree",
       "path": "compilation/triton",
       "recommended_action": "review_two_level_subtree_split",
       "unit_ids": [
-        "unit-triton-dynamic-scalar-specialization-sop"
+        "unit-triton-dynamic-scalar-specialization-sop",
+        "unit-triton-recompilation-decision-tree"
       ],
-      "units": 1
+      "units": 2
     },
     {
       "automatic": false,
-      "bytes": 22479,
-      "estimated_tokens": 4387,
+      "bytes": 14311,
+      "estimated_tokens": 2362,
       "exceeds": [],
       "kind": "subtree",
       "path": "normalization/rmsnorm",
@@ -172,36 +183,36 @@
       "units": 3
     }
   ],
-  "unit_count": 6,
+  "unit_count": 8,
   "units": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": {
-      "bytes": 4897,
+      "bytes": 2511,
       "category": "axiom",
-      "content_sha256": "046d589203749274b72b11780d0181113176ff0935a39e45b4252c287e4e14e3",
+      "content_sha256": "13f52b0ad7fd24b85b9789137a58979a8b0548057c692d609d6c72ddddb707a4",
       "domain_path": "_common",
-      "estimated_tokens": 925,
+      "estimated_tokens": 344,
       "evidence_strength": "hardware_spec",
       "inherits_from": [],
       "path": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
       "tier": "L1"
     },
     "unit-ascend-operator-roofline-and-four-view-measurement": {
-      "bytes": 5310,
+      "bytes": 2728,
       "category": "measurement",
-      "content_sha256": "bdd1a8d09cb01d317509d7e5eac17a6b9ac57d6b58fd6eabf023cbca9221570f",
+      "content_sha256": "7b15f4c39d941edcaf2f47f24a8e98ccf84ecf2524e5a5ad8de75b6d51cd9652",
       "domain_path": "_common",
-      "estimated_tokens": 1018,
+      "estimated_tokens": 348,
       "evidence_strength": "reproduced_empirical",
       "inherits_from": [],
       "path": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
       "tier": "L1"
     },
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": {
-      "bytes": 5457,
+      "bytes": 4846,
       "category": "sop",
-      "content_sha256": "8a88ab014b6104ae726d9f24f1cd1e8dd6d345f7fe66ddc4e5b7bc6c3c0d09a6",
+      "content_sha256": "b99f14dc262229f2cca433ccb03ffe22427bab84d8f480900dc4e10b4546f9ac",
       "domain_path": "normalization/rmsnorm",
-      "estimated_tokens": 918,
+      "estimated_tokens": 765,
       "evidence_strength": "single_observation",
       "inherits_from": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -211,11 +222,11 @@
       "tier": "L2"
     },
     "unit-residual-free-rmsnorm-fastpath": {
-      "bytes": 8504,
+      "bytes": 4676,
       "category": "mutator",
-      "content_sha256": "179330e3ed4d9fd88740079999c95c86d094829e4532bb6baf3fedeea98f24b7",
+      "content_sha256": "174f4c371aa732a86dbcfa141296dd0133c94e4c0ab6d632f8405846cc3313ec",
       "domain_path": "normalization/rmsnorm",
-      "estimated_tokens": 1738,
+      "estimated_tokens": 798,
       "evidence_strength": "reproduced_empirical",
       "inherits_from": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -225,11 +236,11 @@
       "tier": "L4"
     },
     "unit-rmsnorm-five-stage-ablation-workflow": {
-      "bytes": 8518,
+      "bytes": 4789,
       "category": "workflow",
-      "content_sha256": "7d3a3835b10d26f0d41df0835bab70ea7ab17953198dcdd32af141f8cc24408c",
+      "content_sha256": "6a524855ab86bf30479d255b9be494ecccd60bbf08e7f6ac979b779393f10941",
       "domain_path": "normalization/rmsnorm",
-      "estimated_tokens": 1731,
+      "estimated_tokens": 799,
       "evidence_strength": "reproduced_empirical",
       "inherits_from": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -238,18 +249,43 @@
       "path": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md",
       "tier": "L3"
     },
+    "unit-triton-ascend-constexpr-and-specialization-contract": {
+      "bytes": 2233,
+      "category": "axiom",
+      "content_sha256": "0359fab9c7b655536c5fbda9bf23601e1e29af6036391da27d50a493124b8c7f",
+      "domain_path": "_common",
+      "estimated_tokens": 302,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [],
+      "path": "_common/unit-triton-ascend-constexpr-and-specialization-contract.md",
+      "tier": "L1"
+    },
     "unit-triton-dynamic-scalar-specialization-sop": {
-      "bytes": 2297,
+      "bytes": 2430,
       "category": "sop",
-      "content_sha256": "7da580d50b1f5b47acc64b81d21eedd70c95e9d9f1d35fa61dee94047f87c86b",
+      "content_sha256": "50b150f90aee29c6f3e5316527388660fc76cba1dc47223627061f3df00b161c",
       "domain_path": "compilation/triton",
-      "estimated_tokens": 333,
+      "estimated_tokens": 347,
       "evidence_strength": "single_observation",
       "inherits_from": [
-        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+        "unit-triton-ascend-constexpr-and-specialization-contract"
       ],
       "path": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md",
       "tier": "L2"
+    },
+    "unit-triton-recompilation-decision-tree": {
+      "bytes": 2910,
+      "category": "workflow",
+      "content_sha256": "4cde3e0a23c9ef45ddb3109f419796b29b5b220b2d647e9ea69624ee2316cdd5",
+      "domain_path": "compilation/triton",
+      "estimated_tokens": 449,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-triton-dynamic-scalar-specialization-sop"
+      ],
+      "path": "compilation/triton/unit-triton-recompilation-decision-tree.md",
+      "tier": "L3"
     }
   }
 }

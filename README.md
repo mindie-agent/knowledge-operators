@@ -14,36 +14,48 @@ Markdown units are the source of truth. [`index/routing-manifest.json`](index/ro
 
 | Unit | Revision | Tier / category | Evidence strength | Pinned reference |
 | --- | --- | --- | --- | --- |
-| [Ascend 910B/910_93 memory alignment, vector repeat and ACLGraph tiling axioms](_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md) | 1 | L1 / `axiom` | `hardware_spec` | `mindie://operators/units/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms@1` |
-| [Ascend operator four-gate measurement and four-view roofline contract](_common/unit-ascend-operator-roofline-and-four-view-measurement.md) | 1 | L1 / `measurement` | `reproduced_empirical` | `mindie://operators/units/unit-ascend-operator-roofline-and-four-view-measurement@1` |
-| [Ascend gated RMSNorm Bottleneck & Fastpath Dispatch Triage SOP](normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md) | 2 | L2 / `sop` | `single_observation` | `mindie://operators/units/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence@2` |
-| [Five-stage Hermes operator optimization, leave-one-out ablation, and distillation workflow](normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md) | 3 | L3 / `workflow` | `reproduced_empirical` | `mindie://operators/units/unit-rmsnorm-five-stage-ablation-workflow@3` |
-| [L4 mutator: residual-free gated RMSNorm native fastpath for Ascend910B](normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md) | 6 | L4 / `mutator` | `reproduced_empirical` | `mindie://operators/units/unit-residual-free-rmsnorm-fastpath@6` |
-| [Dynamic-length Triton recompilation SOP](compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md) | 1 | L2 / `sop` | `single_observation` | `mindie://operators/units/unit-triton-dynamic-scalar-specialization-sop@1` |
+| [Ascend 910B/910_93 memory alignment and reduction axioms](_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md) | 2 | L1 / `axiom` | `hardware_spec` | `mindie://operators/units/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms@2` |
+| [Ascend operator measurement and four-view roofline contract](_common/unit-ascend-operator-roofline-and-four-view-measurement.md) | 2 | L1 / `measurement` | `reproduced_empirical` | `mindie://operators/units/unit-ascend-operator-roofline-and-four-view-measurement@2` |
+| [Triton-Ascend constexpr and runtime scalar specialization contract](_common/unit-triton-ascend-constexpr-and-specialization-contract.md) | 1 | L1 / `axiom` | `reproduced_empirical` | `mindie://operators/units/unit-triton-ascend-constexpr-and-specialization-contract@1` |
+| [Ascend gated RMSNorm Bottleneck & Fastpath Dispatch Triage SOP](normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md) | 3 | L2 / `sop` | `single_observation` | `mindie://operators/units/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence@3` |
+| [Five-stage Hermes operator optimization, leave-one-out ablation, and distillation workflow](normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md) | 4 | L3 / `workflow` | `reproduced_empirical` | `mindie://operators/units/unit-rmsnorm-five-stage-ablation-workflow@4` |
+| [L4 mutator: residual-free gated RMSNorm native fastpath for Ascend910B](normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md) | 7 | L4 / `mutator` | `reproduced_empirical` | `mindie://operators/units/unit-residual-free-rmsnorm-fastpath@7` |
+| [Dynamic-length Triton recompilation SOP](compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md) | 2 | L2 / `sop` | `single_observation` | `mindie://operators/units/unit-triton-dynamic-scalar-specialization-sop@2` |
+| [Triton recompilation decision tree](compilation/triton/unit-triton-recompilation-decision-tree.md) | 1 | L3 / `workflow` | `reproduced_empirical` | `mindie://operators/units/unit-triton-recompilation-decision-tree@1` |
 
-The two L1 units live under `_common` and are inherited by every `normalization/rmsnorm` unit. The `operators` domain has no migrated `vllm-ascend` task corpus; shared knowledge is accessed through explicit domain routes, not copied here.
+The three L1 units live under `_common`. The two Ascend hardware/measurement axioms are inherited by every `normalization/rmsnorm` unit; the Triton specialization contract is inherited by the `compilation/triton` units and matches only when `kernel_language: triton` is observed. The `operators` domain has no migrated `vllm-ascend` task corpus; shared knowledge is accessed through explicit domain routes, not copied here.
 
 ## Conditions and evidence boundaries
 
-### L1 foundation, revision 1
+### L1 foundation, revision 2
 
-The axiom unit states the hardware contracts for Ascend 910B (A2) and Ascend 910_93 (A3 dual-die, Phy-ID 0..15): 32 B UB DMA alignment, 512 B L1 alignment, vector repeat/stride rules, fp32 accumulation for RMSNorm/LayerNorm/Softmax reductions, contiguous-versus-strided dispatch, and ACLGraph workspace/stream capture invariants. Its conditions cover the Ascend 910B family plus Ascend 910_93 and bfloat16, float16 and float32.
+The atomized axiom unit states the hardware contracts for Ascend 910B (A2) and Ascend 910_93 (A3 dual-die): 32 B UB DMA alignment, 512 B L1 alignment, fp32 accumulation for RMSNorm/LayerNorm/Softmax reductions on bf16/fp16, and contiguous last-dimension dispatch. It no longer bundles ACLGraph or vector-repeat rules, so a condition-matched query can mount it inside the default budget. Its conditions cover the Ascend 910B family plus Ascend 910_93 and bfloat16, float16 and float32.
 
-The measurement unit defines the four gates (OracleFreezer correctness, synchronized block timing, AblationGate leave-one-out attribution, and execution/artifact identity) and the four aligned views (msprof kernel, host dispatch, HBM/UB traffic against the Roofline ridge point, and end-to-end operator boundary). Both L1 units are inherited premises, not operator-specific performance claims.
+The measurement unit defines OracleFreezer correctness, the two-run baseline noise envelope, synchronized `torch.npu.synchronize()` timing with excluded warmups, and the four aligned views: msprof `aicore_time`, host dispatch, `ub_to_gm`/HBM traffic against the Roofline ridge point, and `l2_cache_hit_rate` plus the end-to-end operator boundary. Both units are inherited premises, not operator-specific performance claims.
 
-### L2 gated RMSNorm triage, revision 2
+The Triton L1 unit records the specialization contract: a `tl.constexpr` argument is compile-time and enters the specialization key, while `do_not_specialize` only covers runtime scalars. It is the premise for the Triton L2/L3 units and is not inherited by the RMSNorm units.
+
+### L2 gated RMSNorm triage, revision 3
 
 The L2 unit is a reusable bottleneck and fastpath dispatch SOP. Its conditions are the observed facts `soc` in `[Ascend910B, Ascend910B4]`, `dtype: bfloat16`, `activation: sigmoid`, and `target_file: vllm_ascend/ops/layernorm.py`; it no longer requires a task-start base commit or a specific driver/firmware pair. It triages the executed kernel inventory, the dispatch registration, the oracle and the timing before routing to the L4 mutator or the L3 workflow. A class name or dispatch entry is treated as load evidence, not as fusion or speedup evidence.
 
-### L3 five-stage Hermes workflow, revision 3
+### L3 five-stage Hermes workflow, revision 4
 
 The L3 unit is an executable five-stage workflow: source/symbol contract and oracle freeze; synchronized block baseline timing; candidate synthesis with an explicit L4 escalation trigger when routine optimization stalls or fails Gate 1/2; leave-one-out ablation that separates the correctness prerequisites `required_dispatch_registration` and `input_preservation_out_dtype` from performance factors such as `native_residual_free_fastpath`; and final retained verification with Hermes `knowledge_distill` into `reviewed_change` plus `experiment-ledger.jsonl`. Its conditions are the same four observed facts as the L2 unit, with no base-commit or driver/firmware lock.
 
-### L4 residual-free gated RMSNorm mutator, revision 6
+### L4 residual-free gated RMSNorm mutator, revision 7
 
-The L4 unit is an actionable code-transformation mutator. Its conditions are `soc` in `[Ascend910B, Ascend910B4]`, `dtype: bfloat16`, `activation: sigmoid`, and `target_file: vllm_ascend/ops/layernorm.py`. It applies `native_residual_free_fastpath` together with the correctness prerequisites `required_dispatch_registration` and `input_preservation_out_dtype`, handles contiguous and strided gates without mutating inputs, and carries the Gate 1-3 verification invariants.
+The L4 unit is an actionable code-transformation mutator. Its conditions are `soc` in `[Ascend910B, Ascend910B4]`, `dtype: bfloat16`, `activation: sigmoid`, and `target_file: vllm_ascend/ops/layernorm.py`. It applies `native_residual_free_fastpath` together with the correctness prerequisites `required_dispatch_registration` and `input_preservation_out_dtype`, handles contiguous and strided gates without mutating inputs, and carries the Gate 1-4 verification invariants.
 
 The reference envelope was measured on Ascend910B4: bfloat16/sigmoid cases `1x37x4x128` with a contiguous gate and `1x193x8x128` with a strided gate, 36 samples per case in three blocks after two warmups. Final retained versus baseline is `1.6767473221869322x` (reported as 1.68x); the observed per-case block-envelope lower bounds are 1.5638748801806301 and 1.7387598131467064. The full candidate versus baseline is 1.5276488398873962x. The envelope is descriptive, not a confidence interval, and the stages are separate runs. Raw samples and comparison identities remain in [the ablation receipt](docs/evidence/c4-case-block-v2-ablation.json), [gate results](docs/evidence/c4-case-block-v2-gates.json) and [stage acceptance](docs/evidence/c4-case-block-v2-stage-acceptance.json). The measured speedup is not claimed for other shapes, SOCs, dtypes or full-model serving.
+
+### L2 Triton recompilation SOP, revision 2
+
+The L2 SOP inherits only the Triton specialization contract. It separates same-length repeated compilation (cache path, process boundary, environment) from new-length specialization (JIT key and length-derived arguments), and requires converting a length-derived work-partition constexpr to a runtime scalar listed in `do_not_specialize`. It no longer inherits the unrelated UB/L1 alignment axioms.
+
+### L3 Triton recompilation decision tree, revision 1
+
+The L3 unit turns that SOP into a decision experience: trigger conditions for repeated versus shape-change compilation, the same-length repeat as the first discriminating observation, Branch A (cache path) versus Branch B (`tl.constexpr` conversion plus `do_not_specialize`), finite-tile warmup versus unbounded length-derived scalars, and an explicit exploration exit when the specialization key is stable but compiler internals or layout mechanics still explain the failure.
 
 ## Using these units
 
@@ -63,7 +75,7 @@ knowledge_query(
 )
 ```
 
-These four observed facts are the complete condition set for the L2/L3/L4 units and match both L1 foundation units. Omitting any one of them yields `condition_unknown` and the unit is excluded by default. That is the correct result: supply the facts you actually observed, never copy the unit's own answers into the query, and never use a gold patch, oracle verdict or held-out answer to force applicability. A larger `token_budget` is needed when the caller wants the full inherited L1 bodies injected; the matched/rejected status does not depend on the budget.
+These four observed facts are the complete condition set for the L2/L3/L4 units and match the two Ascend L1 foundation units. Omitting any one of them yields `condition_unknown` and the unit is excluded by default. That is the correct result: supply the facts you actually observed, never copy the unit's own answers into the query, and never use a gold patch, oracle verdict or held-out answer to force applicability. The two matched L1 bodies now total under 700 estimated tokens, so they fit the default 800-token query budget.
 
 All declared conditions must hold for `matched`. Any explicit contradiction is `mismatch`; missing, `unknown` or incomparable facts remain `unknown` and do not match.
 
@@ -73,7 +85,7 @@ A query result carries a revision-specific `ref`. Read that revision:
 
 ```python
 knowledge_explain(
-    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@6",
+    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@7",
 )
 ```
 
@@ -85,7 +97,7 @@ After using a unit in real work, record `up` or `down` against the exact observe
 
 ```python
 knowledge_feedback(
-    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@6",
+    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@7",
     rating="up",
     reason="Recorded after reusing the measured workload boundary in the observed task.",
 )
@@ -112,7 +124,12 @@ knowledge-operators/
 ├── README.md
 ├── _common/
 │   ├── unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md
-│   └── unit-ascend-operator-roofline-and-four-view-measurement.md
+│   ├── unit-ascend-operator-roofline-and-four-view-measurement.md
+│   └── unit-triton-ascend-constexpr-and-specialization-contract.md
+├── compilation/
+│   └── triton/
+│       ├── unit-triton-dynamic-scalar-specialization-sop.md
+│       └── unit-triton-recompilation-decision-tree.md
 ├── index/
 │   ├── routing-manifest.json
 │   └── shard-topology.json
