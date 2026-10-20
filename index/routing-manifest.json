@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 13.143333024345338,
+  "build_elapsed_ms": 14.446540968492627,
   "closure": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
     "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": [
@@ -26,6 +26,22 @@
       "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
       "unit-ascend-operator-roofline-and-four-view-measurement"
     ],
+    "unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop",
+      "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop"
+    ],
+    "unit-ascendc-simt-and-regbase-vector-programming-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+    ],
+    "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+    ],
     "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
@@ -51,10 +67,34 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
     ],
+    "unit-sparse-mla-and-lightning-indexer-cube-vector-pingpong-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop"
+    ],
+    "unit-streamk-matmul-and-mxa8w4-quant-bmm-tile-scheduling-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop"
+    ],
+    "unit-tilelang-and-pypto-ub-memory-template-and-pipeline-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop"
+    ],
     "unit-triton-ascend-constexpr-and-specialization-contract": [],
     "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop": [
       "unit-triton-ascend-constexpr-and-specialization-contract",
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
+    "unit-triton-ascend-mfu-roofline-and-camodel-simulator-sop": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop"
     ],
     "unit-triton-constexpr-to-runtime-scalar-specialization-mutator": [
       "unit-triton-ascend-constexpr-and-specialization-contract",
@@ -83,7 +123,7 @@
       "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
     ]
   },
-  "generation": "6caecbaf5ac5a6a568038aad2994e004551809da200b176738da7007e2992aa3",
+  "generation": "52a5046bf0a6576d5574907e5c50f0bd1b9e292bb5dd8d5d1ac5f2cf93985745",
   "id_path": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
     "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": "_common/unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms.md",
@@ -92,14 +132,21 @@
     "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop": "fusion/moe-gmm/unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop.md",
     "unit-ascend-operator-roofline-and-four-view-measurement": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
     "unit-ascendc-aicore-exception-and-precision-divergence-workflow": "ascendc/core/unit-ascendc-aicore-exception-and-precision-divergence-workflow.md",
+    "unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow": "fusion/mc2-catlass/unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow.md",
+    "unit-ascendc-simt-and-regbase-vector-programming-sop": "ascendc/simt-regbase/unit-ascendc-simt-and-regbase-vector-programming-sop.md",
+    "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop": "ascendc/sync/unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop.md",
     "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop": "ascendc/core/unit-ascendc-tiling-pipe-double-buffer-and-sync-sop.md",
     "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop": "matmul/catlass-tilelang/unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop.md",
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
     "unit-operator-memory-vs-compute-bottleneck-convergence-workflow": "Reduction/unit-operator-memory-vs-compute-bottleneck-convergence-workflow.md",
     "unit-residual-free-rmsnorm-fastpath": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
     "unit-rmsnorm-five-stage-ablation-workflow": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md",
+    "unit-sparse-mla-and-lightning-indexer-cube-vector-pingpong-mutator": "attention/sparse-mla-indexer/unit-sparse-mla-and-lightning-indexer-cube-vector-pingpong-mutator.md",
+    "unit-streamk-matmul-and-mxa8w4-quant-bmm-tile-scheduling-mutator": "matmul/streamk-mxquant/unit-streamk-matmul-and-mxa8w4-quant-bmm-tile-scheduling-mutator.md",
+    "unit-tilelang-and-pypto-ub-memory-template-and-pipeline-sop": "matmul/tilelang-pypto/unit-tilelang-and-pypto-ub-memory-template-and-pipeline-sop.md",
     "unit-triton-ascend-constexpr-and-specialization-contract": "_common/unit-triton-ascend-constexpr-and-specialization-contract.md",
     "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop": "compilation/triton/unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop.md",
+    "unit-triton-ascend-mfu-roofline-and-camodel-simulator-sop": "compilation/triton-mfu/unit-triton-ascend-mfu-roofline-and-camodel-simulator-sop.md",
     "unit-triton-constexpr-to-runtime-scalar-specialization-mutator": "compilation/triton/unit-triton-constexpr-to-runtime-scalar-specialization-mutator.md",
     "unit-triton-dynamic-scalar-specialization-sop": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md",
     "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow": "compilation/triton/unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow.md",
@@ -110,7 +157,7 @@
   "query_budget_excludes_build": true,
   "schema_version": "mindie-routing-manifest/1",
   "token_estimator": "utf8_bytes_div_4_ceiling",
-  "unit_count": 21,
+  "unit_count": 28,
   "units": [
     {
       "category": "axiom",
@@ -631,6 +678,237 @@
       }
     },
     {
+      "category": "workflow",
+      "conditions": {
+        "kernel_language": [
+          "ascendc",
+          "catlass"
+        ],
+        "op_family": [
+          "mc2",
+          "matmul",
+          "grouped_matmul"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "fusion/mc2-catlass",
+      "evidence_strength": "software_contract",
+      "id": "unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop",
+        "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop",
+        "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop"
+      ],
+      "path": "fusion/mc2-catlass/unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-mc2-best-practice/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-mc2-best-practice/references/overview.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-mc2-best-practice/references/profiling_mc2.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-mc2-best-practice/references/a2_hccl_client.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-mc2-best-practice/references/a5_shmem.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/catlass-op-perf-tune/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/catlass-op-perf-tune/references/knowledge-base.md",
+          "https://gitcode.com/cann/cannbot-knowledge/blob/be5882ef29fa9943305085652d2025a038ba491c/knowledge/ops/ascendc/guides/optimization/mc2_best_practice.md"
+        ],
+        "source_locator": "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-mc2-best-practice/SKILL.md",
+        "source_revision": "f305e200aa4b1e1fed73cd21ff1f083b8df25a1e",
+        "source_type": "public_software_contract_review",
+        "supersedes": [],
+        "supporting_source_revisions": [
+          "be5882ef29fa9943305085652d2025a038ba491c"
+        ]
+      },
+      "revision": 1,
+      "tier": "L3",
+      "title": "AscendC MC2 collective-compute overlap and CATLASS Cube-Vector rotating-workspace optimization workflow",
+      "token_estimate": 1970,
+      "triggers": {
+        "error_signatures": [
+          "an MC2 MatmulAllReduce or AllGatherMatmul kernel fails accuracy or hangs when tileCnt > 1 is enabled before verifying tileCnt = 1",
+          "MC2 benchmark latency looks fast only because warm L2 cache was not flushed between multi-rank profiling iterations",
+          "a CATLASS MatmulActivation or MatmulEpilogue kernel writes the entire M by N matrix to GM before the AIV epilogue starts",
+          "a CATLASS SwiGLU or GeGLU epilogue with a rotating workspace produces wrong values when N > L1_N",
+          "raising UB_STAGES in a dual-input CATLASS epilogue hangs at runtime because HardEvent V_MTE2 exceeds 8 event IDs"
+        ],
+        "keywords": [
+          "MC2",
+          "MatmulAllReduce",
+          "MatmulReduceScatter",
+          "AllGatherMatmul",
+          "MatmulAlltoAll",
+          "Hccl",
+          "HCCL_SERVER_TYPE_AICPU",
+          "blaze-shmem",
+          "apace",
+          "URMA",
+          "tileCnt",
+          "MmadAtlasA2PreloadAsyncWithCallback",
+          "GemmIdentityBlockSwizzle",
+          "UB_STAGES",
+          "rotating workspace"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "kernel_language": "ascendc",
+        "soc": [
+          "Ascend950",
+          "Ascend910B",
+          "Ascend910_93"
+        ]
+      },
+      "domain_path": "ascendc/simt-regbase",
+      "evidence_strength": "software_contract",
+      "id": "unit-ascendc-simt-and-regbase-vector-programming-sop",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "path": "ascendc/simt-regbase/unit-ascendc-simt-and-regbase-vector-programming-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-simt-best-practices/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-regbase-best-practice/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ops-design-paradigms/SKILL.md",
+          "https://gitcode.com/cann/cannbot-knowledge/blob/be5882ef29fa9943305085652d2025a038ba491c/knowledge/ops/ascendc/guides/programming/simt_best_practices.md",
+          "https://gitcode.com/cann/cannbot-knowledge/blob/be5882ef29fa9943305085652d2025a038ba491c/knowledge/ops/ascendc/guides/programming/regbase_best_practice.md"
+        ],
+        "source_locator": "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-simt-best-practices/SKILL.md",
+        "source_revision": "f305e200aa4b1e1fed73cd21ff1f083b8df25a1e",
+        "source_type": "public_software_contract_review",
+        "supersedes": [],
+        "supporting_source_revisions": [
+          "be5882ef29fa9943305085652d2025a038ba491c"
+        ]
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "AscendC SIMT (__simt_vf__) and RegBase (RegTensor/MaskReg) vector programming SOP: paradigm selection, 40 KB UB reserve, scatter deduplication and LocalMemBar",
+      "token_estimate": 1936,
+      "triggers": {
+        "error_signatures": [
+          "an Ascend950 kernel containing __simt_vf__ crashes with 507035 or corrupts data because UB allocations exceeded total_UB - 40 KB",
+          "a RegBase __vf__ kernel reads stale UB values in GetValue or Vld immediately after Vst because LocalMemBar<VEC_STORE, VEC_LOAD> is missing",
+          "a SIMT scatter or index_put kernel suffers severe GM write amplification or multi-core races on duplicate indices",
+          "a multi-step elementwise kernel writes and reloads UB after every Vector API call instead of keeping intermediates in RegTensor registers"
+        ],
+        "keywords": [
+          "AscendC",
+          "SIMT",
+          "__simt_vf__",
+          "LAUNCH_BOUND",
+          "RegBase",
+          "__vf__",
+          "RegTensor",
+          "MaskReg",
+          "LocalMemBar",
+          "VEC_STORE",
+          "VEC_LOAD",
+          "40 KB UB reserve",
+          "scatter deduplication",
+          "GatherMask",
+          "UnpackB8",
+          "Interleave",
+          "Ascend950"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "kernel_language": "ascendc",
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "ascendc/sync",
+      "evidence_strength": "software_contract",
+      "id": "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "path": "ascendc/sync/unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-sync-audit/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-sync-audit/references/sync-hazards.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-sync-audit/references/sync-primitives.md",
+          "https://gitcode.com/cann/cannbot-knowledge/blob/be5882ef29fa9943305085652d2025a038ba491c/knowledge/ops/ascendc/guides/debugging/sync_audit_checklist.md"
+        ],
+        "source_locator": "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/ascendc-sync-audit/SKILL.md",
+        "source_revision": "f305e200aa4b1e1fed73cd21ff1f083b8df25a1e",
+        "source_type": "public_software_contract_review",
+        "supersedes": [],
+        "supporting_source_revisions": [
+          "be5882ef29fa9943305085652d2025a038ba491c"
+        ]
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "AscendC synchronization audit SOP: SetFlag/WaitFlag pairing, branch symmetry, double-buffer loop invariants, PipeBarrier scope and MIX_CV cross-core hazards",
+      "token_estimate": 2024,
+      "triggers": {
+        "error_signatures": [
+          "aclrtSynchronizeStream hangs or returns 507015 after adding manual SetFlag/WaitFlag or TBuf double buffering",
+          "a kernel passes single-tile tests but corrupts iteration 1+ or the final MTE3 write-back when tileCount >= 2",
+          "a conditional tail branch or early return causes a hang in WaitFlag, DeQue or CrossCoreWaitFlag",
+          "PipeBarrier<PIPE_V> is used between MTE2 DataCopy and Vector compute instead of HardEvent::MTE2_V",
+          "SetAtomicAdd or SetAtomicNone is called immediately after MTE3/Fixpipe without PipeBarrier<PIPE_FIX> or PipeBarrier<PIPE_MTE3>",
+          "a MIX_CV kernel deadlocks or reads stale workspace slots when CrossCoreSetFlag mode, pipe or flagId conflicts with Matmul"
+        ],
+        "keywords": [
+          "AscendC",
+          "sync audit",
+          "SetFlag",
+          "WaitFlag",
+          "HardEvent",
+          "MTE2_V",
+          "V_MTE3",
+          "MTE3_MTE2",
+          "MTE1_M",
+          "M_FIX",
+          "PipeBarrier",
+          "PIPE_ALL",
+          "PIPE_FIX",
+          "CrossCoreSetFlag",
+          "CrossCoreWaitFlag",
+          "SetAtomicAdd",
+          "double buffer",
+          "SYNC-01",
+          "SYNC-14"
+        ]
+      }
+    },
+    {
       "category": "sop",
       "conditions": {
         "kernel_language": "ascendc",
@@ -1062,6 +1340,256 @@
       }
     },
     {
+      "category": "mutator",
+      "conditions": {
+        "dtype": [
+          "bfloat16",
+          "float16",
+          "fp4_e2m1"
+        ],
+        "op_family": [
+          "attention",
+          "sparse_attention",
+          "lightning_indexer",
+          "mla_prologue"
+        ],
+        "soc": [
+          "Ascend950",
+          "Ascend910B",
+          "Ascend910_93"
+        ]
+      },
+      "domain_path": "attention/sparse-mla-indexer",
+      "evidence_strength": "hypothesis",
+      "id": "unit-sparse-mla-and-lightning-indexer-cube-vector-pingpong-mutator",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop"
+      ],
+      "path": "attention/sparse-mla-indexer/unit-sparse-mla-and-lightning-indexer-cube-vector-pingpong-mutator.md",
+      "provenance": {
+        "evidence_refs": [
+          "docs/evidence/l4-sparse-mla-lightning-indexer-ablation.json",
+          "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/sparse_flash_attention/sparse_flash_attention.py",
+          "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/quant_lightning_indexer_dsl/quant_lightning_indexer_dsl.py",
+          "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/attn_prologue/attn_prologue.py",
+          "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/qwen_sparse_attn/qwen_sparse_attn.py",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/cannbot-dsl-best-practice/SKILL.md"
+        ],
+        "experiment_status": "not_run_source_only",
+        "source_locator": "docs/evidence/l4-sparse-mla-lightning-indexer-ablation.json",
+        "source_revision": "4519e5372a8b9306f7d823688c0cb8141ee34fb1",
+        "source_type": "ablation_design_receipt",
+        "supersedes": [],
+        "supporting_source_revisions": [
+          "f305e200aa4b1e1fed73cd21ff1f083b8df25a1e",
+          "be5882ef29fa9943305085652d2025a038ba491c"
+        ]
+      },
+      "revision": 1,
+      "tier": "L4",
+      "title": "DeepSeek/Qwen Sparse Attention, MLA Prologue and MXFP4 Lightning Indexer Cube-Vector ping-pong and online softmax mutator",
+      "token_estimate": 2033,
+      "triggers": {
+        "error_signatures": [
+          "sparse attention gathers KV tokens one by one into L1 and serializes AIC QK/PV matmuls with AIV online softmax",
+          "p_ub probabilities are written in ND layout and require an extra L1 transpose or HBM copy before Cube PV matmul",
+          "scalar get_value() after a register-level vector UB store reads stale row_max or row_sum values because vmem_bar('vst_vld') is missing",
+          "attention prologue reloads input X from HBM for KV projection or suffers RMSNorm drift after split-K reduction",
+          "MXFP4 lightning indexer transfers full fp32 L0C tiles to a single AIV or overflows UB when sorting total_n > 4096 candidates"
+        ],
+        "keywords": [
+          "SparseFlashAttention",
+          "QwenSparseAttn",
+          "QuantLightningIndexer",
+          "AttnPrologue",
+          "MLA absorb",
+          "paired KV gather",
+          "Cube-Vector ping-pong",
+          "NZ fractal p_ub",
+          "online softmax",
+          "vmem_bar",
+          "vst_vld",
+          "MXFP4",
+          "E2M1",
+          "E8M0",
+          "vbitsort32",
+          "vmrgsort4",
+          "Ascend950"
+        ]
+      }
+    },
+    {
+      "category": "mutator",
+      "conditions": {
+        "dtype": [
+          "bfloat16",
+          "float16",
+          "fp8_e4m3fn",
+          "int4"
+        ],
+        "op_family": [
+          "matmul",
+          "quant_batch_matmul",
+          "streamk_matmul"
+        ],
+        "soc": [
+          "Ascend950",
+          "Ascend910B",
+          "Ascend910_93"
+        ]
+      },
+      "domain_path": "matmul/streamk-mxquant",
+      "evidence_strength": "hypothesis",
+      "id": "unit-streamk-matmul-and-mxa8w4-quant-bmm-tile-scheduling-mutator",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop"
+      ],
+      "path": "matmul/streamk-mxquant/unit-streamk-matmul-and-mxa8w4-quant-bmm-tile-scheduling-mutator.md",
+      "provenance": {
+        "evidence_refs": [
+          "docs/evidence/l4-streamk-and-mxa8w4-matmul-ablation.json",
+          "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/matmul/matmul/matmul_streamk.py",
+          "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/matmul/quant_matmul/quant_batch_matmul_mxa8w4.py",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/cannbot-dsl-best-practice/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/aiss-tiling-solver/SKILL.md"
+        ],
+        "experiment_status": "not_run_source_only",
+        "source_locator": "docs/evidence/l4-streamk-and-mxa8w4-matmul-ablation.json",
+        "source_revision": "4519e5372a8b9306f7d823688c0cb8141ee34fb1",
+        "source_type": "ablation_design_receipt",
+        "supersedes": [],
+        "supporting_source_revisions": [
+          "f305e200aa4b1e1fed73cd21ff1f083b8df25a1e",
+          "be5882ef29fa9943305085652d2025a038ba491c"
+        ]
+      },
+      "revision": 1,
+      "tier": "L4",
+      "title": "Stream-K DPSK load-balanced Matmul and MXA8W4 bit-permuted group-quantized BatchMatmul tile scheduling mutator",
+      "token_estimate": 2003,
+      "triggers": {
+        "error_signatures": [
+          "a GEMM with total_tiles % aic_num != 0 suffers wave quantization where most AIC cores sit idle on the last wave",
+          "Stream-K global barrier polling hangs because sync_gm is read without SINGLE_CACHE_LINE cache invalidation",
+          "W4A8 or MXA8W4 weight dequantization on AIV bottlenecks the Cube pipeline due to lookup-table or multi-step float conversion",
+          "host-side K-padding copies the entire activation and weight tensors when K is not a multiple of bk"
+        ],
+        "keywords": [
+          "Stream-K",
+          "DPSK",
+          "wave quantization",
+          "sliding window L2",
+          "SINGLE_CACHE_LINE",
+          "DataCacheCleanAndInvalid",
+          "MXA8W4",
+          "QuantBatchMatmul",
+          "E2M1",
+          "E8M0",
+          "fp8_e4m3fn",
+          "bit permutation",
+          "deq_scale",
+          "DualParam",
+          "Ascend950"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "kernel_language": [
+          "tilelang",
+          "pypto"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "matmul/tilelang-pypto",
+      "evidence_strength": "software_contract",
+      "id": "unit-tilelang-and-pypto-ub-memory-template-and-pipeline-sop",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop"
+      ],
+      "path": "matmul/tilelang-pypto/unit-tilelang-and-pypto-ub-memory-template-and-pipeline-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/tilelang-perf-optimization/Ascend910/instructions.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/tilelang-perf-optimization/Ascend910/references/performance-antipatterns.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/tilelang-perf-optimization/Ascend950/instructions.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/pypto-op-perf-tune/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/pypto-op-perf-tune/shared/optimization_catalog.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/pypto-memory-template/SKILL.md"
+        ],
+        "source_locator": "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/tilelang-perf-optimization/SKILL.md",
+        "source_revision": "f305e200aa4b1e1fed73cd21ff1f083b8df25a1e",
+        "source_type": "public_software_contract_review",
+        "supersedes": [],
+        "supporting_source_revisions": [
+          "be5882ef29fa9943305085652d2025a038ba491c"
+        ]
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "TileLang-Ascend and PyPTO operator SOP: DMA capacity maximization, branchless vectorization, three-phase swimlane tuning and Stage-5 memory ledger",
+      "token_estimate": 2030,
+      "triggers": {
+        "error_signatures": [
+          "a TileLang wrapper calls permute().contiguous() or forces a 2D reshape and degrades dim != -1 cases by 10x to 30x",
+          "T.if_then_else inside T.Parallel degrades to a serial scalar loop in ascend_lower_parallel",
+          "reduce_sum(dim=0) inside a multi-row inner loop produces NaN or per-iteration reduction overhead",
+          "a PyPTO operator inplace-reshapes an output tensor and produces all-zero outputs due to broken slice indexing",
+          "PyPTO vec_nbuffer_setting is configured without -2:1 or cube_nbuffer_setting uses an empty dict {} and regresses latency"
+        ],
+        "keywords": [
+          "TileLang",
+          "PyPTO",
+          "PTO-ISA",
+          "TL_ASCEND_MEMORY_PLANNING",
+          "TL_ASCEND_AUTO_CV_COMBINE",
+          "T.if_then_else",
+          "mul_add_dst",
+          "runtime_debug_mode",
+          "merged_swimlane.json",
+          "set_cube_tile_shapes",
+          "set_vec_tile_shapes",
+          "sg_set_scope",
+          "vec_nbuffer_setting",
+          "cube_l1_reuse_setting",
+          "NONE_CACHEABLE",
+          "valid_shape",
+          "MEMORY.md"
+        ]
+      }
+    },
+    {
       "category": "axiom",
       "conditions": {
         "kernel_language": "triton"
@@ -1172,6 +1700,78 @@
           "Ascend910B",
           "Ascend910_93",
           "Ascend950"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "kernel_language": "triton",
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "compilation/triton-mfu",
+      "evidence_strength": "software_contract",
+      "id": "unit-triton-ascend-mfu-roofline-and-camodel-simulator-sop",
+      "inherits_from": [
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop"
+      ],
+      "path": "compilation/triton-mfu/unit-triton-ascend-mfu-roofline-and-camodel-simulator-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/triton-mfu-analyzer/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/triton-simulator-optimizer/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/triton-simulator-optimizer/references/bottleneck-diagnosis.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/triton-simulator-optimizer/references/msprof-simulator.md",
+          "https://gitcode.com/cann/cannbot-knowledge/blob/be5882ef29fa9943305085652d2025a038ba491c/knowledge/ops/triton/guides/tooling/mfu_pitfalls.md",
+          "https://gitcode.com/cann/cannbot-knowledge/blob/be5882ef29fa9943305085652d2025a038ba491c/knowledge/ops/triton/guides/tooling/mfu_max_shape_search.md"
+        ],
+        "source_locator": "https://gitcode.com/cann/cannbot-skills/blob/f305e200aa4b1e1fed73cd21ff1f083b8df25a1e/ops/triton-mfu-analyzer/SKILL.md",
+        "source_revision": "f305e200aa4b1e1fed73cd21ff1f083b8df25a1e",
+        "source_type": "public_software_contract_review",
+        "supersedes": [],
+        "supporting_source_revisions": [
+          "be5882ef29fa9943305085652d2025a038ba491c"
+        ]
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "Triton-Ascend MFU roofline breakdown, 2D max-shape search and CAModel simulator instruction-level diagnosis SOP",
+      "token_estimate": 2009,
+      "triggers": {
+        "error_signatures": [
+          "a Triton-Ascend fp32 case reports ~10% MFU because the denominator used the fp16/bf16 nominal Cube peak",
+          "scaling to the largest shape lowers MFU below the unscaled baseline or silently runs the unscaled JSON file",
+          "a sparse or sliding-window reference traced with FlopCounterMode reports MFU > 100% because dense masked FLOPs inflated the numerator",
+          "an operator is claimed to be fp32 dot Cube-bound without simulator evidence while MMAD share is < 5% and WAIT_FLAG_DEVI is > 50%",
+          "msprof op simulator hangs on a large shape or atomic_add, or exits with code 134 after writing CSVs"
+        ],
+        "keywords": [
+          "Triton-Ascend",
+          "MFU",
+          "operator_mfu",
+          "FlopCounterMode",
+          "aic_cube_fops",
+          "MFU@nom",
+          "MFU@ach",
+          "msprof op simulator",
+          "instr_exe.csv",
+          "code_exe.csv",
+          "WAIT_FLAG_DEVI",
+          "MMAD",
+          "fixp_l0c2ub",
+          "MIX_AIC"
         ]
       }
     },
