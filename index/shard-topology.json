@@ -1,76 +1,92 @@
 {
   "closure": {
+    "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": [],
     "unit-residual-free-rmsnorm-fastpath": [],
     "unit-rmsnorm-five-stage-ablation-workflow": []
   },
-  "digest": "87d3a7217457c6f25b53ad7f6ecb379e0dcf960d1a63a909b07c967dbc85c497",
+  "digest": "0e199f5b63bf464d8b666ca326f00f6b273ca260fe403c447afd2a6fd52ee7c4",
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 9340,
-      "estimated_tokens": 1267,
+      "bytes": 16259,
+      "estimated_tokens": 2566,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
+        "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
         "unit-residual-free-rmsnorm-fastpath",
         "unit-rmsnorm-five-stage-ablation-workflow"
       ],
-      "units": 2
+      "units": 3
     },
     "domains": [
       {
         "automatic": false,
-        "bytes": 9340,
-        "estimated_tokens": 1267,
+        "bytes": 16259,
+        "estimated_tokens": 2566,
         "exceeds": [],
         "kind": "federation",
         "path": "normalization",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
+          "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
           "unit-residual-free-rmsnorm-fastpath",
           "unit-rmsnorm-five-stage-ablation-workflow"
         ],
-        "units": 2
+        "units": 3
       }
     ]
   },
-  "index_build_elapsed_ms": 0.5488329916261137,
-  "index_digest": "433c0aa8979f17cf65b398b24d4da915fcbf518f4225d6b30d75481a518bf577",
+  "index_build_elapsed_ms": 0.6651669973507524,
+  "index_digest": "606a4f138b7c27f97af26a28ed4a465f53fee4278819afb25d089dc31f33cef2",
   "leaves": [
     {
       "automatic": false,
-      "bytes": 9340,
-      "estimated_tokens": 1267,
+      "bytes": 16259,
+      "estimated_tokens": 2566,
       "exceeds": [],
       "kind": "leaf",
       "path": "normalization/rmsnorm",
       "recommended_action": "review_leaf_split",
       "unit_ids": [
+        "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
         "unit-residual-free-rmsnorm-fastpath",
         "unit-rmsnorm-five-stage-ablation-workflow"
       ],
-      "units": 2
+      "units": 3
     }
   ],
   "schema": "mindie-shard-topology/1",
   "two_level_subtrees": [
     {
       "automatic": false,
-      "bytes": 9340,
-      "estimated_tokens": 1267,
+      "bytes": 16259,
+      "estimated_tokens": 2566,
       "exceeds": [],
       "kind": "subtree",
       "path": "normalization/rmsnorm",
       "recommended_action": "review_two_level_subtree_split",
       "unit_ids": [
+        "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
         "unit-residual-free-rmsnorm-fastpath",
         "unit-rmsnorm-five-stage-ablation-workflow"
       ],
-      "units": 2
+      "units": 3
     }
   ],
-  "unit_count": 2,
+  "unit_count": 3,
   "units": {
+    "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": {
+      "bytes": 6919,
+      "category": "sop",
+      "content_sha256": "052c3021547f44142562355cd6388ff0a3e7ca28d66570a7ec0fa0784eebee8d",
+      "domain_path": "normalization/rmsnorm",
+      "estimated_tokens": 1299,
+      "evidence_strength": "single_observation",
+      "inherits_from": [],
+      "path": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
+      "tier": "L2"
+    },
     "unit-residual-free-rmsnorm-fastpath": {
       "bytes": 5842,
       "category": "mutator",

@@ -1,20 +1,76 @@
 {
-  "build_elapsed_ms": 0.5488329916261137,
+  "build_elapsed_ms": 0.6651669973507524,
   "closure": {
+    "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": [],
     "unit-residual-free-rmsnorm-fastpath": [],
     "unit-rmsnorm-five-stage-ablation-workflow": []
   },
-  "digest": "433c0aa8979f17cf65b398b24d4da915fcbf518f4225d6b30d75481a518bf577",
-  "generation": "f0d3505c59ed62bc0dbb99e6c8638fb0c00e53645008482c643c43867942cd70",
+  "digest": "606a4f138b7c27f97af26a28ed4a465f53fee4278819afb25d089dc31f33cef2",
+  "generation": "4ca1703f99176c4078075f2ddbfa339f84315cf1e473464f1174721241611822",
   "id_path": {
+    "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
     "unit-residual-free-rmsnorm-fastpath": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
     "unit-rmsnorm-five-stage-ablation-workflow": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md"
   },
   "query_budget_excludes_build": true,
   "schema_version": "mindie-routing-manifest/1",
   "token_estimator": "utf8_bytes_div_4_ceiling",
-  "unit_count": 2,
+  "unit_count": 3,
   "units": [
+    {
+      "category": "sop",
+      "closure_digest": "sha256:ded4d723c7912c2e894db09d2ac8b1dd7dd1ef2ed8ad85073ca1cee145368d99",
+      "conditions": {
+        "declared_hardware": {
+          "npu_count": 1,
+          "npu_model": "Ascend910"
+        },
+        "repository": "vllm-project/vllm-ascend",
+        "task_start_base_commit": "f02da291ec0bdbe31af248deffa69f7a97e8f259",
+        "topic": "gated-rmsnorm-gdn-kda-fastpath"
+      },
+      "content_digest": "sha256:052c3021547f44142562355cd6388ff0a3e7ca28d66570a7ec0fa0784eebee8d",
+      "content_sha256": "052c3021547f44142562355cd6388ff0a3e7ca28d66570a7ec0fa0784eebee8d",
+      "domain_path": "normalization/rmsnorm",
+      "evidence_strength": "single_observation",
+      "id": "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
+      "inherits_from": [],
+      "inherits_from_closure": [],
+      "path": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
+      "provenance": {
+        "evidence_refs": [
+          "public-task-metadata:sha256:94687a1df029594699981125fb9a29d273e18f5307c6776107e42b3c4b614f9f",
+          "original-task-instruction:sha256:c747db1c6139860c9b6d650501e18c5659322b0de7dfae201eb9a8478d21eb45",
+          "fixed-case-observation:sha256:57c4859ac0096806477c4192fada6a68787caad97a70e6e9433d2d56dfa67c7d",
+          "identity-scope-correction:sha256:36b7f1bac3bccc506f3696bd915ed5dd0768c3a586efccc75ba687453a274b00"
+        ],
+        "source_digest": "94687a1df029594699981125fb9a29d273e18f5307c6776107e42b3c4b614f9f",
+        "source_locator": "https://github.com/vllm-project/vllm-ascend/tree/f02da291ec0bdbe31af248deffa69f7a97e8f259",
+        "source_type": "public_task_start_metadata_plus_same_family_observation",
+        "source_url": "https://github.com/vllm-project/vllm-ascend",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "Ascend gated RMSNorm: verify the intended fast path loaded, then bound the claim to the observed stage inventory and numerics",
+      "token_estimate": 1299,
+      "triggers": {
+        "error_signatures": [
+          "gated RMSNorm falls back to unoptimized PyTorch instead of the Ascend fast path",
+          "Ascend fused gated RMSNorm path does not take effect"
+        ],
+        "keywords": [
+          "gated RMSNorm",
+          "AscendFusedRMSNormGated",
+          "GDN",
+          "KDA",
+          "RmsNorm",
+          "Sigmoid",
+          "Mul",
+          "Ascend910"
+        ]
+      }
+    },
     {
       "category": "mutator",
       "closure_digest": "sha256:edbd08b334727cc479b1947e3de069c3228c5f2c1242e1cf22684273ff69bf70",
