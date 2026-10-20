@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 1.6910829581320286,
+  "build_elapsed_ms": 1.8951250240206718,
   "closure": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
     "unit-ascend-operator-roofline-and-four-view-measurement": [],
@@ -15,23 +15,30 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
     ],
+    "unit-triton-ascend-constexpr-and-specialization-contract": [],
     "unit-triton-dynamic-scalar-specialization-sop": [
-      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      "unit-triton-ascend-constexpr-and-specialization-contract"
+    ],
+    "unit-triton-recompilation-decision-tree": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-dynamic-scalar-specialization-sop"
     ]
   },
-  "generation": "41c4d8c8bec3307899f745fe0187fc2f89907bbc8401a6b40f9dab02fe93b150",
+  "generation": "df08838526ba0ac2bc2ca0c89922d81559e7231dd2cd2eda3d1e166f3f389238",
   "id_path": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
     "unit-ascend-operator-roofline-and-four-view-measurement": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
     "unit-residual-free-rmsnorm-fastpath": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
     "unit-rmsnorm-five-stage-ablation-workflow": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md",
-    "unit-triton-dynamic-scalar-specialization-sop": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md"
+    "unit-triton-ascend-constexpr-and-specialization-contract": "_common/unit-triton-ascend-constexpr-and-specialization-contract.md",
+    "unit-triton-dynamic-scalar-specialization-sop": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md",
+    "unit-triton-recompilation-decision-tree": "compilation/triton/unit-triton-recompilation-decision-tree.md"
   },
   "query_budget_excludes_build": true,
   "schema_version": "mindie-routing-manifest/1",
   "token_estimator": "utf8_bytes_div_4_ceiling",
-  "unit_count": 6,
+  "unit_count": 8,
   "units": [
     {
       "category": "axiom",
@@ -62,18 +69,19 @@
         ],
         "source_locator": "docs/evidence/c4-case-block-v2-gates.json",
         "source_type": "hardware_architecture_specification",
-        "supersedes": []
+        "supersedes": [
+          "mindie://operators/units/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms@1"
+        ]
       },
-      "revision": 1,
+      "revision": 2,
       "tier": "L1",
-      "title": "Ascend 910B and 910_93 memory alignment, vector repeat and ACLGraph tiling axioms",
-      "token_estimate": 925,
+      "title": "Ascend 910B/910_93 memory alignment and reduction axioms",
+      "token_estimate": 344,
       "triggers": {
         "error_signatures": [
-          "misaligned UB DMA, L1 tile or vector repeat causes wrong results or a runtime fault",
+          "misaligned UB DMA or L1 tile causes wrong results or a runtime fault",
           "bf16 or fp16 RMSNorm/LayerNorm/Softmax loses accuracy because the reduction is not fp32",
-          "a strided gate view silently takes the contiguous fast path",
-          "ACLGraph capture fails or replay changes the captured workspace"
+          "a strided gate view silently takes the contiguous fast path"
         ],
         "keywords": [
           "Ascend910B",
@@ -81,14 +89,12 @@
           "alignment",
           "UB",
           "L1",
-          "vector repeat",
           "fp32 accumulation",
           "RMSNorm",
           "LayerNorm",
           "Softmax",
           "contiguous",
-          "strided",
-          "ACLGraph"
+          "strided"
         ]
       }
     },
@@ -122,12 +128,14 @@
         ],
         "source_locator": "docs/evidence/c4-case-block-v2-gates.json",
         "source_type": "measurement_contract",
-        "supersedes": []
+        "supersedes": [
+          "mindie://operators/units/unit-ascend-operator-roofline-and-four-view-measurement@1"
+        ]
       },
-      "revision": 1,
+      "revision": 2,
       "tier": "L1",
-      "title": "Ascend operator four-gate measurement and four-view roofline contract",
-      "token_estimate": 1018,
+      "title": "Ascend operator measurement and four-view roofline contract",
+      "token_estimate": 348,
       "triggers": {
         "error_signatures": [
           "a speedup is claimed without synchronized before/after timing or without warmup exclusion",
@@ -139,14 +147,14 @@
           "Ascend operator",
           "measurement",
           "OracleFreezer",
-          "synchronize_stream",
+          "torch.npu.synchronize",
           "AblationGate",
-          "leave-one-out",
+          "four-view",
           "roofline",
           "msprof",
-          "HBM",
-          "UB",
-          "four-view"
+          "aicore_time",
+          "ub_to_gm",
+          "l2_cache_hit_rate"
         ]
       }
     },
@@ -185,13 +193,13 @@
         "source_type": "public_task_start_metadata_plus_same_family_observation",
         "source_url": "https://github.com/vllm-project/vllm-ascend",
         "supersedes": [
-          "mindie://operators/units/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence@1"
+          "mindie://operators/units/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence@2"
         ]
       },
-      "revision": 2,
+      "revision": 3,
       "tier": "L2",
       "title": "Ascend gated RMSNorm Bottleneck & Fastpath Dispatch Triage SOP",
-      "token_estimate": 918,
+      "token_estimate": 765,
       "triggers": {
         "error_signatures": [
           "gated RMSNorm falls back to unoptimized PyTorch instead of the Ascend fast path",
@@ -245,14 +253,13 @@
         "source_locator": "mindie-003-execution/c4-case-block-assembly-v2/ablation_receipt.json",
         "source_type": "ablation_receipt",
         "supersedes": [
-          "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@3",
-          "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@5"
+          "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@6"
         ]
       },
-      "revision": 6,
+      "revision": 7,
       "tier": "L4",
       "title": "L4 mutator: residual-free gated RMSNorm native fastpath for Ascend910B",
-      "token_estimate": 1738,
+      "token_estimate": 798,
       "triggers": {
         "error_signatures": [
           "residual-free gated RMSNorm falls back to separate RmsNorm, Sigmoid and Mul operations",
@@ -309,13 +316,13 @@
         "source_locator": "docs/evidence/l3-ablation-workflow.json",
         "source_type": "run_manifest",
         "supersedes": [
-          "mindie://operators/units/unit-rmsnorm-five-stage-ablation-workflow@2"
+          "mindie://operators/units/unit-rmsnorm-five-stage-ablation-workflow@3"
         ]
       },
-      "revision": 3,
+      "revision": 4,
       "tier": "L3",
       "title": "Five-stage Hermes operator optimization, leave-one-out ablation, and distillation workflow",
-      "token_estimate": 1731,
+      "token_estimate": 799,
       "triggers": {
         "error_signatures": [
           "an operator optimization has no frozen oracle, no synchronized baseline or no leave-one-out attribution",
@@ -337,6 +344,46 @@
       }
     },
     {
+      "category": "axiom",
+      "conditions": {
+        "kernel_language": "triton"
+      },
+      "domain_path": "_common",
+      "evidence_strength": "reproduced_empirical",
+      "id": "unit-triton-ascend-constexpr-and-specialization-contract",
+      "inherits_from": [],
+      "inherits_from_closure": [],
+      "path": "_common/unit-triton-ascend-constexpr-and-specialization-contract.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://triton-lang.org/main/python-api/generated/triton.jit.html",
+          "https://github.com/triton-lang/triton/blob/v3.2.0/python/triton/runtime/jit.py"
+        ],
+        "source_locator": "https://github.com/triton-lang/triton/blob/v3.2.0/python/triton/runtime/jit.py",
+        "source_type": "source_review_and_reproduced_case",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L1",
+      "title": "Triton-Ascend constexpr and runtime scalar specialization contract",
+      "token_estimate": 302,
+      "triggers": {
+        "error_signatures": [
+          "a Triton kernel recompiles when only an input length or per-core work count changes",
+          "do_not_specialize is applied but a length-derived argument still creates a new compilation"
+        ],
+        "keywords": [
+          "Triton",
+          "Triton-Ascend",
+          "constexpr",
+          "do_not_specialize",
+          "specialization key",
+          "recompilation",
+          "runtime scalar"
+        ]
+      }
+    },
+    {
       "category": "sop",
       "conditions": {
         "kernel_language": "triton"
@@ -345,10 +392,10 @@
       "evidence_strength": "single_observation",
       "id": "unit-triton-dynamic-scalar-specialization-sop",
       "inherits_from": [
-        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+        "unit-triton-ascend-constexpr-and-specialization-contract"
       ],
       "inherits_from_closure": [
-        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+        "unit-triton-ascend-constexpr-and-specialization-contract"
       ],
       "path": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md",
       "provenance": {
@@ -358,12 +405,14 @@
         ],
         "source_locator": "https://github.com/triton-lang/triton/blob/v3.2.0/python/triton/runtime/jit.py",
         "source_type": "source_review",
-        "supersedes": []
+        "supersedes": [
+          "mindie://operators/units/unit-triton-dynamic-scalar-specialization-sop@1"
+        ]
       },
-      "revision": 1,
+      "revision": 2,
       "tier": "L2",
       "title": "Diagnose Triton recompilation across dynamic input lengths",
-      "token_estimate": 333,
+      "token_estimate": 347,
       "triggers": {
         "error_signatures": [
           "changing token count causes a new Triton compilation",
@@ -375,6 +424,53 @@
           "do_not_specialize",
           "constexpr",
           "BLOCKS_PER_CORE",
+          "dynamic shape",
+          "warmup"
+        ]
+      }
+    },
+    {
+      "category": "workflow",
+      "conditions": {
+        "kernel_language": "triton"
+      },
+      "domain_path": "compilation/triton",
+      "evidence_strength": "reproduced_empirical",
+      "id": "unit-triton-recompilation-decision-tree",
+      "inherits_from": [
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-triton-dynamic-scalar-specialization-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-triton-dynamic-scalar-specialization-sop"
+      ],
+      "path": "compilation/triton/unit-triton-recompilation-decision-tree.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://github.com/mindie-agent/mindie-agent/blob/main/docs/knowledge-context-and-exploration.md#72",
+          "https://github.com/triton-lang/triton/blob/v3.2.0/python/triton/runtime/jit.py"
+        ],
+        "source_locator": "https://github.com/mindie-agent/mindie-agent/blob/main/docs/knowledge-context-and-exploration.md#72",
+        "source_type": "reproduced_case_decision_record",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L3",
+      "title": "Triton recompilation decision tree",
+      "token_estimate": 449,
+      "triggers": {
+        "error_signatures": [
+          "a Triton-Ascend serving path recompiles on the same input length",
+          "first requests at new input lengths trigger repeated Triton compilation"
+        ],
+        "keywords": [
+          "Triton",
+          "Triton-Ascend",
+          "recompilation",
+          "specialization key",
+          "do_not_specialize",
+          "constexpr",
           "dynamic shape",
           "warmup"
         ]

@@ -1,7 +1,7 @@
 ---
 schema: mindie-graded-unit/1
 id: unit-triton-dynamic-scalar-specialization-sop
-revision: 1
+revision: 2
 tier: L2
 category: sop
 domain_path: compilation/triton
@@ -10,14 +10,15 @@ title: Diagnose Triton recompilation across dynamic input lengths
 conditions:
   kernel_language: triton
 inherits_from:
-- unit-ascend-910b-a3-memory-alignment-and-tiling-axioms
+- unit-triton-ascend-constexpr-and-specialization-contract
 provenance:
   source_type: source_review
   source_locator: https://github.com/triton-lang/triton/blob/v3.2.0/python/triton/runtime/jit.py
   evidence_refs:
   - https://triton-lang.org/main/python-api/generated/triton.jit.html
   - https://github.com/triton-lang/triton/blob/v3.2.0/python/triton/runtime/jit.py
-  supersedes: []
+  supersedes:
+  - mindie://operators/units/unit-triton-dynamic-scalar-specialization-sop@1
 triggers:
   error_signatures:
   - changing token count causes a new Triton compilation
@@ -32,6 +33,8 @@ triggers:
   - warmup
 ---
 # Dynamic-length recompilation SOP
+
+Use the inherited L1 constexpr/specialization contract.
 
 1. Repeat an identical launch, then change only the input length. Inspect compilation activity separately from kernel timing and confirm that the serving path calls this kernel.
 2. Trace length-derived launch arguments into the JIT signature. In Triton 3.2, `constexpr` values enter the compilation key separately from ordinary scalar specialization. Adding `do_not_specialize` while retaining `tl.constexpr` does not remove that constant.

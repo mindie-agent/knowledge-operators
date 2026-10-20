@@ -1,7 +1,7 @@
 ---
 schema: mindie-graded-unit/1
 id: unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence
-revision: 2
+revision: 3
 tier: L2
 category: sop
 domain_path: normalization/rmsnorm
@@ -28,7 +28,7 @@ provenance:
   - fixed-case-observation:sha256:57c4859ac0096806477c4192fada6a68787caad97a70e6e9433d2d56dfa67c7d
   - identity-scope-correction:sha256:36b7f1bac3bccc506f3696bd915ed5dd0768c3a586efccc75ba687453a274b00
   supersedes:
-  - mindie://operators/units/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence@1
+  - mindie://operators/units/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence@2
 triggers:
   error_signatures:
   - gated RMSNorm falls back to unoptimized PyTorch instead of the Ascend fast path
@@ -51,25 +51,25 @@ triggers:
 
 ## Use when
 
-A bf16 sigmoid-gated RMSNorm is on the critical path in `vllm_ascend/ops/layernorm.py` on Ascend910B or Ascend910B4, and the task is to decide whether the intended Ascend fast path actually loaded, whether the current implementation is a bottleneck, and which unit to apply next. Apply the L1 memory/tiling axioms and the L1 four-gate/four-view contract as inherited premises.
+A bf16 sigmoid-gated RMSNorm in `vllm_ascend/ops/layernorm.py` on Ascend910B/910B4 needs triage: did the intended fast path load, is the current implementation a bottleneck, and which unit applies next? Inherited L1 alignment and measurement rules are premises.
 
 ## Triage procedure
 
-1. **Freeze the source and symbol contract.** Record the repository revision, the target file path and SHA-256, the exact class/function entry point, and the dispatch table or registry entry that is supposed to select the native path. Read the candidate checkout, not a cached import. A class name is not evidence that a kernel was registered or executed.
-2. **Observe the executed stage inventory.** Use the msprof kernel view to list the per-step tasks. Separate `RmsNorm`, `Sigmoid` and `Mul` tasks indicate a composite chain. One fused or native task indicates a fused path. A single step is not enough: record every active step and its target call count, and check for a silent fallback to PyTorch.
-3. **Check the fastpath gates before calling it a bottleneck.** Confirm bf16 input, sigmoid activation, residual-free input, and the declared output dtype. Inspect both a contiguous gate view and a strided gate view. The contiguous and strided dispatch decisions must be explicit; shape equality alone does not prove the same kernel ran. If a strided gate falls back, that is a dispatch defect, not a performance result.
-4. **Freeze the oracle before any timing.** Compute the reference as `x * rsqrt(mean(x^2) + eps) * weight * sigmoid(gate)` with fp32 reduction and an fp32 intermediate. Record tolerance, max absolute/relative error, returned dtype, and an input-preservation check. Gate 1 must pass for both the contiguous and strided cases; a passing contiguous case does not cover the strided case.
-5. **Measure only after Gates 1 and 4.** Use synchronized before/after blocks, excluded warmups, and at least three blocks per case. Report per-case block envelopes and the host dispatch and kernel views separately. A composite chain that is numerically correct but slower than its native alternative is a validated bottleneck; a chain without a matched baseline is only a hypothesis.
+1. **Freeze the source and symbol contract.** Record repository revision, target path and SHA-256, exact entry point, and the dispatch/registry entry expected to select the native path. Read the candidate checkout, not a cached import; a class name does not prove registration or execution.
+2. **Inventory executed stages.** Use the msprof kernel view to list per-step tasks. Separate `RmsNorm`/`Sigmoid`/`Mul` tasks indicate a composite chain; one fused or native task indicates fusion. Record every active step and target call count, and check for silent PyTorch fallback.
+3. **Check the fastpath gates before calling it a bottleneck.** Confirm bf16 input, sigmoid activation, residual-free input and declared output dtype. Inspect contiguous and strided gate views; record the dispatch decision, because shape equality alone does not prove the same kernel ran. A strided-gate fallback is a dispatch defect, not a performance result.
+4. **Freeze the oracle before timing.** Compute the reference as `x * rsqrt(mean(x^2) + eps) * weight * sigmoid(gate)` with fp32 reduction and intermediate. Record tolerance, max absolute/relative error, returned dtype and input preservation. Gate 1 must pass for both layouts.
+5. **Measure only after Gates 1 and 4.** Use synchronized before/after blocks and excluded warmups, at least three blocks per case. Report per-case block envelopes and keep host dispatch and kernel views separate. A correct composite chain slower than its matched native alternative is a validated bottleneck; without that baseline it is a hypothesis.
 6. **Dispose and route.** Choose one:
-   - the native fast path is already loaded, registered and exercised: no mutator, record the dispatch evidence and stop;
-   - the native path exists but the composite chain is selected: apply the L4 residual-free mutator, including `required_dispatch_registration` and `input_preservation_out_dtype`;
+   - native fast path loaded, registered and exercised: no mutator; record dispatch evidence and stop;
+   - native path exists but composite chain is selected: apply the L4 residual-free mutator, including `required_dispatch_registration` and `input_preservation_out_dtype`;
    - Gate 1 fails, or the transformation should have removed the bottleneck but did not: escalate to the L3 five-stage workflow and its L4 escalation trigger;
-   - the case is outside the declared shape/dtype/activation envelope: do not reuse this SOP as a performance claim; collect new evidence.
+   - case outside the declared shape/dtype/activation envelope: do not reuse this SOP as a performance claim; collect new evidence.
 
 ## Output record
 
-Write a triage record containing: source identity, symbol and registration path, executed stage inventory per case, both gate-view shapes, oracle result, timing blocks, the chosen disposition, and every condition that remains unknown. Keep the raw failed or rejected records; do not replace them with a later interpretation.
+Write a triage record: source identity, symbol/registration path, executed stages per case, both gate-view shapes, oracle result, timing blocks, disposition and every unknown condition. Keep rejected records.
 
 ## Claim boundaries
 
-Dispatch evidence is not fusion evidence. A fused task is not a speedup. A fixed-case numerical pass is not full-model correctness. A single shape is not a workload envelope. The L4 measured envelope and the L3 workflow carry their own conditions; this L2 unit only decides which one applies.
+Dispatch evidence is not fusion evidence; a fused task is not a speedup. A fixed-case numerical pass is not full-model correctness, and one shape is not a workload envelope. The L4 envelope and L3 workflow carry their own conditions; this L2 unit only chooses which applies.
