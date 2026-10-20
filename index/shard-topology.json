@@ -1,8 +1,23 @@
 {
   "closure": {
+    "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
     "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
+    "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
     ],
     "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -14,22 +29,162 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
     ],
+    "unit-ascend-gather-v2-scatter-elements-and-index-operator-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-simt-and-regbase-vector-programming-sop"
+    ],
     "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
     ],
     "unit-ascend-operator-roofline-and-four-view-measurement": [],
+    "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
+    "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
+    "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+    ],
+    "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-ascendc-507015-illegal-address-sync-hang-and-validation-fault-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop",
+      "unit-ascendc-datacopy-datacopypad-tpipe-tque-and-flag-sync-api-contract"
+    ],
     "unit-ascendc-aicore-exception-and-precision-divergence-workflow": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
       "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
       "unit-ascend-operator-roofline-and-four-view-measurement"
     ],
+    "unit-ascendc-argreduce-tree-reduction-and-atomic-contention-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+    ],
+    "unit-ascendc-bisheng-ccec-and-161001-compilation-error-triage-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-host-tilingkey-workspace-and-ub-partitioning-sop"
+    ],
+    "unit-ascendc-cube-l1-residency-l0-pingpong-and-fixpipe-fusion-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+    ],
+    "unit-ascendc-datacopy-datacopypad-tpipe-tque-and-flag-sync-api-contract": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
+    "unit-ascendc-datacopypad-elimination-ub-bank-conflict-and-l2-tiling-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement"
+    ],
+    "unit-ascendc-discovered-evolution-strategies-and-cross-core-pipeline-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop"
+    ],
+    "unit-ascendc-elementwise-unary-binary-and-mask-predicate-perturbation-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-simt-and-regbase-vector-programming-sop"
+    ],
+    "unit-ascendc-evolutionary-strategy-vector-simd-and-ub-tiling-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-simt-and-regbase-vector-programming-sop"
+    ],
+    "unit-ascendc-foreach-metadata-batching-and-layout-transform-perturbation-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-simt-and-regbase-vector-programming-sop"
+    ],
+    "unit-ascendc-fp16-bf16-accumulation-nan-padding-and-cast-precision-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop"
+    ],
+    "unit-ascendc-host-tilingkey-workspace-and-ub-partitioning-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+    ],
+    "unit-ascendc-interpolation-grid-sample-and-fused-composite-perturbation-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-simt-and-regbase-vector-programming-sop"
+    ],
+    "unit-ascendc-matmul-impl-iterate-gettensorc-and-gemm-api-contract": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms"
+    ],
     "unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement",
       "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop",
       "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop"
+    ],
+    "unit-ascendc-msprof-roofline-pipe-stall-and-ub-spill-performance-runbook-sop": [
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms"
+    ],
+    "unit-ascendc-regbase-and-simt-thread-warp-programming-guide-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-simt-and-regbase-vector-programming-sop",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
+    "unit-ascendc-shmem-symmetric-memory-and-hccl-communication-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop"
     ],
     "unit-ascendc-simt-and-regbase-vector-programming-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -45,18 +200,123 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
     ],
+    "unit-ascendc-vector-simd-softmax-activation-sort-and-gather-api-contract": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
+    "unit-ascendc-wholereduce-blockreduce-and-argreduce-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+    ],
+    "unit-bisheng-ir-bufferization-memory-planning-and-multibuffer-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract"
+    ],
+    "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+    ],
+    "unit-cannbot-dsl-matmul-and-catlass-gemm-epilogue-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
     "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-flash-kda-and-mega-recurrent-replayssm-dsl-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
     ],
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
     ],
+    "unit-hfusion-hacc-and-triton-custom-dialects-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract"
+    ],
+    "unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract"
+    ],
+    "unit-hivm-dialect-vector-simd-and-sync-injection-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract",
+      "unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract"
+    ],
+    "unit-lightning-indexer-prolog-epilogue-and-qsa-stem-indexer-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
+    "unit-mhc-pre-post-sinkhorn-knopp-and-engram-gate-fusion-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascendc-simt-and-regbase-vector-programming-sop",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+    ],
+    "unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
+    "unit-moe-dispatch-gmm-combine-and-alltoallv-routing-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-moe-grouped-matmul-swiglu-finalize-and-dynamic-shape-selection-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop"
+    ],
+    "unit-nn-math-and-cv-aclnn-direct-operator-contracts-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+    ],
+    "unit-nsa-qwen-block-sparse-and-fp8-fullquant-flash-attention-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
     "unit-operator-memory-vs-compute-bottleneck-convergence-workflow": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement",
       "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+    ],
+    "unit-pypto-compile-precision-bisect-and-swimlane-debug-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-pypto-tile-operator-design-api-and-execution-constraints-sop",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-pypto-tile-operator-design-api-and-execution-constraints-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ],
     "unit-residual-free-rmsnorm-fastpath": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -84,16 +344,131 @@
       "unit-ascend-operator-roofline-and-four-view-measurement",
       "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop"
     ],
+    "unit-tilelang-ascend-operator-templates-compile-and-precision-debug-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract",
+      "unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract",
+      "unit-tilelang-ascend-programming-model-memory-and-cv-schedule-sop",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-tilelang-ascend-programming-model-memory-and-cv-schedule-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract",
+      "unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract"
+    ],
+    "unit-transformer-aclnn-and-direct-attention-mc2-gmm-moe-operator-contracts-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop",
+      "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms"
+    ],
+    "unit-triton-ascend-attention-mla-and-gqa-playbooks-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+      "unit-triton-ascend-operator-domain-constraints-contract"
+    ],
+    "unit-triton-ascend-compilation-runtime-and-reduction-perf-runbook-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+      "unit-triton-ascend-operator-domain-constraints-contract",
+      "unit-triton-ascend-reduction-sort-and-index-playbooks-sop"
+    ],
     "unit-triton-ascend-constexpr-and-specialization-contract": [],
+    "unit-triton-ascend-cv-pipeline-vector-degradation-and-dot-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract"
+    ],
+    "unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+      "unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow"
+    ],
+    "unit-triton-ascend-gpu-kernel-migration-and-ascend-ext-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+      "unit-triton-ascend-operator-domain-constraints-contract"
+    ],
+    "unit-triton-ascend-hardware-and-compiler-constraints-contract": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract"
+    ],
     "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop": [
       "unit-triton-ascend-constexpr-and-specialization-contract",
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
+    "unit-triton-ascend-matmul-quant-and-moe-playbooks-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+      "unit-triton-ascend-operator-domain-constraints-contract"
+    ],
+    "unit-triton-ascend-memory-coalescing-and-ub-gather-staging-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract"
     ],
     "unit-triton-ascend-mfu-roofline-and-camodel-simulator-sop": [
       "unit-triton-ascend-constexpr-and-specialization-contract",
       "unit-ascend-operator-roofline-and-four-view-measurement",
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop"
+    ],
+    "unit-triton-ascend-norm-rope-activation-and-transform-playbooks-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+      "unit-triton-ascend-operator-domain-constraints-contract"
+    ],
+    "unit-triton-ascend-operator-domain-constraints-contract": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract"
+    ],
+    "unit-triton-ascend-precision-debug-and-verifier-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+      "unit-triton-ascend-operator-domain-constraints-contract"
+    ],
+    "unit-triton-ascend-reduction-sort-and-index-playbooks-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+      "unit-triton-ascend-operator-domain-constraints-contract"
+    ],
+    "unit-triton-ascend-scalar-cmp-to-fp32-vec-and-dot-rewrite-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+      "unit-triton-ascend-cv-pipeline-vector-degradation-and-dot-workflow"
+    ],
+    "unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-triton-ascend-hardware-and-compiler-constraints-contract"
     ],
     "unit-triton-constexpr-to-runtime-scalar-specialization-mutator": [
       "unit-triton-ascend-constexpr-and-specialization-contract",
@@ -125,33 +500,92 @@
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 314405,
-      "estimated_tokens": 64077,
+      "bytes": 858135,
+      "estimated_tokens": 156707,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
+        "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop",
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
         "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop",
         "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator",
         "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+        "unit-ascend-gather-v2-scatter-elements-and-index-operator-sop",
         "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop",
         "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement",
+        "unit-ascendc-507015-illegal-address-sync-hang-and-validation-fault-workflow",
         "unit-ascendc-aicore-exception-and-precision-divergence-workflow",
+        "unit-ascendc-argreduce-tree-reduction-and-atomic-contention-mutator",
+        "unit-ascendc-bisheng-ccec-and-161001-compilation-error-triage-workflow",
+        "unit-ascendc-cube-l1-residency-l0-pingpong-and-fixpipe-fusion-sop",
+        "unit-ascendc-datacopy-datacopypad-tpipe-tque-and-flag-sync-api-contract",
+        "unit-ascendc-datacopypad-elimination-ub-bank-conflict-and-l2-tiling-sop",
+        "unit-ascendc-discovered-evolution-strategies-and-cross-core-pipeline-mutator",
+        "unit-ascendc-elementwise-unary-binary-and-mask-predicate-perturbation-mutator",
+        "unit-ascendc-evolutionary-strategy-vector-simd-and-ub-tiling-mutator",
+        "unit-ascendc-foreach-metadata-batching-and-layout-transform-perturbation-mutator",
+        "unit-ascendc-fp16-bf16-accumulation-nan-padding-and-cast-precision-workflow",
+        "unit-ascendc-host-tilingkey-workspace-and-ub-partitioning-sop",
+        "unit-ascendc-interpolation-grid-sample-and-fused-composite-perturbation-mutator",
+        "unit-ascendc-matmul-impl-iterate-gettensorc-and-gemm-api-contract",
         "unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow",
+        "unit-ascendc-msprof-roofline-pipe-stall-and-ub-spill-performance-runbook-sop",
+        "unit-ascendc-regbase-and-simt-thread-warp-programming-guide-sop",
+        "unit-ascendc-shmem-symmetric-memory-and-hccl-communication-sop",
         "unit-ascendc-simt-and-regbase-vector-programming-sop",
         "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop",
         "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+        "unit-ascendc-vector-simd-softmax-activation-sort-and-gather-api-contract",
+        "unit-ascendc-wholereduce-blockreduce-and-argreduce-sop",
+        "unit-bisheng-ir-bufferization-memory-planning-and-multibuffer-sop",
+        "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract",
+        "unit-cannbot-dsl-matmul-and-catlass-gemm-epilogue-sop",
         "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop",
+        "unit-flash-kda-and-mega-recurrent-replayssm-dsl-sop",
         "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
+        "unit-hfusion-hacc-and-triton-custom-dialects-sop",
+        "unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract",
+        "unit-hivm-dialect-vector-simd-and-sync-injection-sop",
+        "unit-lightning-indexer-prolog-epilogue-and-qsa-stem-indexer-sop",
+        "unit-mhc-pre-post-sinkhorn-knopp-and-engram-gate-fusion-sop",
+        "unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop",
+        "unit-moe-dispatch-gmm-combine-and-alltoallv-routing-sop",
+        "unit-moe-grouped-matmul-swiglu-finalize-and-dynamic-shape-selection-mutator",
+        "unit-nn-math-and-cv-aclnn-direct-operator-contracts-sop",
+        "unit-nsa-qwen-block-sparse-and-fp8-fullquant-flash-attention-sop",
         "unit-operator-memory-vs-compute-bottleneck-convergence-workflow",
+        "unit-pypto-compile-precision-bisect-and-swimlane-debug-workflow",
+        "unit-pypto-tile-operator-design-api-and-execution-constraints-sop",
         "unit-residual-free-rmsnorm-fastpath",
         "unit-rmsnorm-five-stage-ablation-workflow",
         "unit-sparse-mla-and-lightning-indexer-cube-vector-pingpong-mutator",
         "unit-streamk-matmul-and-mxa8w4-quant-bmm-tile-scheduling-mutator",
         "unit-tilelang-and-pypto-ub-memory-template-and-pipeline-sop",
+        "unit-tilelang-ascend-operator-templates-compile-and-precision-debug-workflow",
+        "unit-tilelang-ascend-programming-model-memory-and-cv-schedule-sop",
+        "unit-transformer-aclnn-and-direct-attention-mc2-gmm-moe-operator-contracts-sop",
+        "unit-triton-ascend-attention-mla-and-gqa-playbooks-sop",
+        "unit-triton-ascend-compilation-runtime-and-reduction-perf-runbook-workflow",
         "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-triton-ascend-cv-pipeline-vector-degradation-and-dot-workflow",
+        "unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator",
+        "unit-triton-ascend-gpu-kernel-migration-and-ascend-ext-sop",
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract",
         "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop",
+        "unit-triton-ascend-matmul-quant-and-moe-playbooks-sop",
+        "unit-triton-ascend-memory-coalescing-and-ub-gather-staging-workflow",
         "unit-triton-ascend-mfu-roofline-and-camodel-simulator-sop",
+        "unit-triton-ascend-norm-rope-activation-and-transform-playbooks-sop",
+        "unit-triton-ascend-operator-domain-constraints-contract",
+        "unit-triton-ascend-precision-debug-and-verifier-workflow",
+        "unit-triton-ascend-reduction-sort-and-index-playbooks-sop",
+        "unit-triton-ascend-scalar-cmp-to-fp32-vec-and-dot-rewrite-mutator",
+        "unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow",
         "unit-triton-constexpr-to-runtime-scalar-specialization-mutator",
         "unit-triton-dynamic-scalar-specialization-sop",
         "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow",
@@ -159,28 +593,29 @@
         "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
         "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator"
       ],
-      "units": 28
+      "units": 87
     },
     "domains": [
       {
         "automatic": false,
-        "bytes": 32353,
-        "estimated_tokens": 6649,
+        "bytes": 41859,
+        "estimated_tokens": 8119,
         "exceeds": [],
         "kind": "federation",
         "path": "Reduction",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
+          "unit-ascendc-wholereduce-blockreduce-and-argreduce-sop",
           "unit-operator-memory-vs-compute-bottleneck-convergence-workflow",
           "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
           "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator"
         ],
-        "units": 3
+        "units": 4
       },
       {
         "automatic": false,
-        "bytes": 18458,
-        "estimated_tokens": 3153,
+        "bytes": 51599,
+        "estimated_tokens": 8983,
         "exceeds": [],
         "kind": "federation",
         "path": "_common",
@@ -189,30 +624,52 @@
           "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
           "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
           "unit-ascend-operator-roofline-and-four-view-measurement",
+          "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+          "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms",
+          "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+          "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement",
           "unit-triton-ascend-constexpr-and-specialization-contract"
         ],
-        "units": 4
+        "units": 8
       },
       {
         "automatic": false,
-        "bytes": 58583,
-        "estimated_tokens": 12138,
+        "bytes": 228811,
+        "estimated_tokens": 38671,
         "exceeds": [],
         "kind": "federation",
         "path": "ascendc",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
+          "unit-ascendc-507015-illegal-address-sync-hang-and-validation-fault-workflow",
           "unit-ascendc-aicore-exception-and-precision-divergence-workflow",
+          "unit-ascendc-argreduce-tree-reduction-and-atomic-contention-mutator",
+          "unit-ascendc-bisheng-ccec-and-161001-compilation-error-triage-workflow",
+          "unit-ascendc-cube-l1-residency-l0-pingpong-and-fixpipe-fusion-sop",
+          "unit-ascendc-datacopy-datacopypad-tpipe-tque-and-flag-sync-api-contract",
+          "unit-ascendc-datacopypad-elimination-ub-bank-conflict-and-l2-tiling-sop",
+          "unit-ascendc-discovered-evolution-strategies-and-cross-core-pipeline-mutator",
+          "unit-ascendc-elementwise-unary-binary-and-mask-predicate-perturbation-mutator",
+          "unit-ascendc-evolutionary-strategy-vector-simd-and-ub-tiling-mutator",
+          "unit-ascendc-foreach-metadata-batching-and-layout-transform-perturbation-mutator",
+          "unit-ascendc-fp16-bf16-accumulation-nan-padding-and-cast-precision-workflow",
+          "unit-ascendc-host-tilingkey-workspace-and-ub-partitioning-sop",
+          "unit-ascendc-interpolation-grid-sample-and-fused-composite-perturbation-mutator",
+          "unit-ascendc-matmul-impl-iterate-gettensorc-and-gemm-api-contract",
+          "unit-ascendc-msprof-roofline-pipe-stall-and-ub-spill-performance-runbook-sop",
+          "unit-ascendc-regbase-and-simt-thread-warp-programming-guide-sop",
+          "unit-ascendc-shmem-symmetric-memory-and-hccl-communication-sop",
           "unit-ascendc-simt-and-regbase-vector-programming-sop",
           "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop",
-          "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+          "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+          "unit-ascendc-vector-simd-softmax-activation-sort-and-gather-api-contract"
         ],
-        "units": 4
+        "units": 22
       },
       {
         "automatic": false,
-        "bytes": 47156,
-        "estimated_tokens": 10007,
+        "bytes": 87545,
+        "estimated_tokens": 16717,
         "exceeds": [],
         "kind": "federation",
         "path": "attention",
@@ -220,83 +677,165 @@
         "unit_ids": [
           "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator",
           "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+          "unit-flash-kda-and-mega-recurrent-replayssm-dsl-sop",
+          "unit-lightning-indexer-prolog-epilogue-and-qsa-stem-indexer-sop",
+          "unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop",
+          "unit-nsa-qwen-block-sparse-and-fp8-fullquant-flash-attention-sop",
           "unit-sparse-mla-and-lightning-indexer-cube-vector-pingpong-mutator"
         ],
-        "units": 3
+        "units": 7
       },
       {
         "automatic": false,
-        "bytes": 72829,
-        "estimated_tokens": 15419,
+        "bytes": 275930,
+        "estimated_tokens": 53319,
         "exceeds": [],
         "kind": "federation",
         "path": "compilation",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
+          "unit-bisheng-ir-bufferization-memory-planning-and-multibuffer-sop",
+          "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract",
+          "unit-hfusion-hacc-and-triton-custom-dialects-sop",
+          "unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract",
+          "unit-hivm-dialect-vector-simd-and-sync-injection-sop",
+          "unit-pypto-compile-precision-bisect-and-swimlane-debug-workflow",
+          "unit-pypto-tile-operator-design-api-and-execution-constraints-sop",
+          "unit-tilelang-ascend-operator-templates-compile-and-precision-debug-workflow",
+          "unit-tilelang-ascend-programming-model-memory-and-cv-schedule-sop",
+          "unit-triton-ascend-attention-mla-and-gqa-playbooks-sop",
+          "unit-triton-ascend-compilation-runtime-and-reduction-perf-runbook-workflow",
+          "unit-triton-ascend-cv-pipeline-vector-degradation-and-dot-workflow",
+          "unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator",
+          "unit-triton-ascend-gpu-kernel-migration-and-ascend-ext-sop",
+          "unit-triton-ascend-hardware-and-compiler-constraints-contract",
           "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop",
+          "unit-triton-ascend-matmul-quant-and-moe-playbooks-sop",
+          "unit-triton-ascend-memory-coalescing-and-ub-gather-staging-workflow",
           "unit-triton-ascend-mfu-roofline-and-camodel-simulator-sop",
+          "unit-triton-ascend-norm-rope-activation-and-transform-playbooks-sop",
+          "unit-triton-ascend-operator-domain-constraints-contract",
+          "unit-triton-ascend-precision-debug-and-verifier-workflow",
+          "unit-triton-ascend-reduction-sort-and-index-playbooks-sop",
+          "unit-triton-ascend-scalar-cmp-to-fp32-vec-and-dot-rewrite-mutator",
+          "unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow",
           "unit-triton-constexpr-to-runtime-scalar-specialization-mutator",
           "unit-triton-dynamic-scalar-specialization-sop",
           "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow",
           "unit-triton-recompilation-decision-tree"
         ],
-        "units": 6
+        "units": 29
       },
       {
         "automatic": false,
-        "bytes": 29208,
-        "estimated_tokens": 5918,
+        "bytes": 9764,
+        "estimated_tokens": 1559,
+        "exceeds": [],
+        "kind": "federation",
+        "path": "elementwise",
+        "recommended_action": "review_federation_boundary",
+        "unit_ids": [
+          "unit-ascend-gather-v2-scatter-elements-and-index-operator-sop"
+        ],
+        "units": 1
+      },
+      {
+        "automatic": false,
+        "bytes": 37922,
+        "estimated_tokens": 7368,
         "exceeds": [],
         "kind": "federation",
         "path": "fusion",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
           "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop",
-          "unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow"
+          "unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow",
+          "unit-mhc-pre-post-sinkhorn-knopp-and-engram-gate-fusion-sop"
         ],
-        "units": 2
+        "units": 3
       },
       {
         "automatic": false,
-        "bytes": 41533,
-        "estimated_tokens": 8434,
+        "bytes": 51517,
+        "estimated_tokens": 10088,
         "exceeds": [],
         "kind": "federation",
         "path": "matmul",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
+          "unit-cannbot-dsl-matmul-and-catlass-gemm-epilogue-sop",
           "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop",
           "unit-streamk-matmul-and-mxa8w4-quant-bmm-tile-scheduling-mutator",
           "unit-tilelang-and-pypto-ub-memory-template-and-pipeline-sop"
         ],
-        "units": 3
+        "units": 4
       },
       {
         "automatic": false,
-        "bytes": 14285,
-        "estimated_tokens": 2359,
+        "bytes": 20646,
+        "estimated_tokens": 3552,
+        "exceeds": [],
+        "kind": "federation",
+        "path": "moe",
+        "recommended_action": "review_federation_boundary",
+        "unit_ids": [
+          "unit-moe-dispatch-gmm-combine-and-alltoallv-routing-sop",
+          "unit-moe-grouped-matmul-swiglu-finalize-and-dynamic-shape-selection-mutator"
+        ],
+        "units": 2
+      },
+      {
+        "automatic": false,
+        "bytes": 23383,
+        "estimated_tokens": 3841,
         "exceeds": [],
         "kind": "federation",
         "path": "normalization",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
+          "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop",
           "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
           "unit-residual-free-rmsnorm-fastpath",
           "unit-rmsnorm-five-stage-ablation-workflow"
         ],
-        "units": 3
+        "units": 4
+      },
+      {
+        "automatic": false,
+        "bytes": 19465,
+        "estimated_tokens": 2977,
+        "exceeds": [],
+        "kind": "federation",
+        "path": "operators",
+        "recommended_action": "review_federation_boundary",
+        "unit_ids": [
+          "unit-nn-math-and-cv-aclnn-direct-operator-contracts-sop",
+          "unit-transformer-aclnn-and-direct-attention-mc2-gmm-moe-operator-contracts-sop"
+        ],
+        "units": 2
+      },
+      {
+        "automatic": false,
+        "bytes": 9694,
+        "estimated_tokens": 1513,
+        "exceeds": [],
+        "kind": "federation",
+        "path": "quantization",
+        "recommended_action": "review_federation_boundary",
+        "unit_ids": [
+          "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop"
+        ],
+        "units": 1
       }
     ]
   },
-  "index_build_elapsed_ms": 15.2161669684574,
+  "index_build_elapsed_ms": 51.422375021502376,
   "leaves": [
     {
       "automatic": false,
       "bytes": 32353,
       "estimated_tokens": 6649,
-      "exceeds": [
-        "estimated_tokens"
-      ],
+      "exceeds": [],
       "kind": "leaf",
       "path": "Reduction",
       "recommended_action": "review_leaf_split",
@@ -306,6 +845,19 @@
         "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator"
       ],
       "units": 3
+    },
+    {
+      "automatic": false,
+      "bytes": 9506,
+      "estimated_tokens": 1470,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "Reduction/tree-and-argreduce",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-wholereduce-blockreduce-and-argreduce-sop"
+      ],
+      "units": 1
     },
     {
       "automatic": false,
@@ -325,11 +877,100 @@
     },
     {
       "automatic": false,
+      "bytes": 7174,
+      "estimated_tokens": 1200,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "_common/platforms/ascend910b-910c-310p",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 11021,
+      "estimated_tokens": 2054,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "_common/platforms/ascend950-microarch",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 8266,
+      "estimated_tokens": 1444,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "_common/platforms/ascend950dt-observations",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 6680,
+      "estimated_tokens": 1132,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "_common/platforms/constraints-cheatsheet",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9501,
+      "estimated_tokens": 1526,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/apis/cube-and-matmul",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-matmul-impl-iterate-gettensorc-and-gemm-api-contract"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9808,
+      "estimated_tokens": 1595,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/apis/datamove-and-sync",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-datacopy-datacopypad-tpipe-tque-and-flag-sync-api-contract"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 8685,
+      "estimated_tokens": 1383,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/apis/vector-activation-sort",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-vector-simd-softmax-activation-sort-and-gather-api-contract"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 37594,
       "estimated_tokens": 8178,
-      "exceeds": [
-        "estimated_tokens"
-      ],
+      "exceeds": [],
       "kind": "leaf",
       "path": "ascendc/core",
       "recommended_action": "review_leaf_split",
@@ -338,6 +979,189 @@
         "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
       ],
       "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 9508,
+      "estimated_tokens": 1551,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/guides/regbase-and-simt",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-regbase-and-simt-thread-warp-programming-guide-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9364,
+      "estimated_tokens": 1461,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/guides/shmem-and-comm",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-shmem-symmetric-memory-and-hccl-communication-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9356,
+      "estimated_tokens": 1508,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/guides/tiling-and-ub-planning",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-host-tilingkey-workspace-and-ub-partitioning-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9848,
+      "estimated_tokens": 1612,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/optimizations/cube-l1-l0-pipeline",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-cube-l1-residency-l0-pingpong-and-fixpipe-fusion-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 8757,
+      "estimated_tokens": 1256,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/optimizations/elementwise-unary-binary",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-elementwise-unary-binary-and-mask-predicate-perturbation-mutator"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 20647,
+      "estimated_tokens": 3210,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/optimizations/evolutionary-mutators",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-discovered-evolution-strategies-and-cross-core-pipeline-mutator",
+        "unit-ascendc-evolutionary-strategy-vector-simd-and-ub-tiling-mutator"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 8687,
+      "estimated_tokens": 1268,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/optimizations/foreach-and-layout",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-foreach-metadata-batching-and-layout-transform-perturbation-mutator"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9337,
+      "estimated_tokens": 1353,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/optimizations/interpolation-and-composite",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-interpolation-grid-sample-and-fused-composite-perturbation-mutator"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9582,
+      "estimated_tokens": 1504,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/optimizations/mte-memory-alignment",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-datacopypad-elimination-ub-bank-conflict-and-l2-tiling-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 8727,
+      "estimated_tokens": 1234,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/optimizations/reduction-and-atomic",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-argreduce-tree-reduction-and-atomic-contention-mutator"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9096,
+      "estimated_tokens": 1460,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/runbooks/compilation-errors",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-bisheng-ccec-and-161001-compilation-error-triage-workflow"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9597,
+      "estimated_tokens": 1519,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/runbooks/performance-diagnosis",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-msprof-roofline-pipe-stall-and-ub-spill-performance-runbook-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9804,
+      "estimated_tokens": 1561,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/runbooks/precision-divergence",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-fp16-bf16-accumulation-nan-padding-and-cast-precision-workflow"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9924,
+      "estimated_tokens": 1532,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "ascendc/runbooks/runtime-aicore-faults",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascendc-507015-illegal-address-sync-hang-and-validation-fault-workflow"
+      ],
+      "units": 1
     },
     {
       "automatic": false,
@@ -369,15 +1193,53 @@
       "automatic": false,
       "bytes": 36136,
       "estimated_tokens": 7974,
-      "exceeds": [
-        "estimated_tokens"
-      ],
+      "exceeds": [],
       "kind": "leaf",
       "path": "attention/fia-mla",
       "recommended_action": "review_leaf_split",
       "unit_ids": [
         "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator",
         "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 10463,
+      "estimated_tokens": 1691,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "attention/indexer-prolog",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-lightning-indexer-prolog-epilogue-and-qsa-stem-indexer-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 10318,
+      "estimated_tokens": 1684,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "attention/kda-recurrent-ssm",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-flash-kda-and-mega-recurrent-replayssm-dsl-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 19608,
+      "estimated_tokens": 3335,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "attention/mla-sparse",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop",
+        "unit-nsa-qwen-block-sparse-and-fp8-fullquant-flash-attention-sop"
       ],
       "units": 2
     },
@@ -396,11 +1258,78 @@
     },
     {
       "automatic": false,
+      "bytes": 8481,
+      "estimated_tokens": 1529,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/bisheng-ir/hfusion-and-hacc",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-hfusion-hacc-and-triton-custom-dialects-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 15793,
+      "estimated_tokens": 2712,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/bisheng-ir/hivm-dialect",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract",
+        "unit-hivm-dialect-vector-simd-and-sync-injection-sop"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 18634,
+      "estimated_tokens": 3400,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/bisheng-ir/pipeline-and-arch",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-bisheng-ir-bufferization-memory-planning-and-multibuffer-sop",
+        "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 19994,
+      "estimated_tokens": 4046,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/pypto",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-pypto-compile-precision-bisect-and-swimlane-debug-workflow",
+        "unit-pypto-tile-operator-design-api-and-execution-constraints-sop"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 19942,
+      "estimated_tokens": 3876,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/tilelang",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-tilelang-ascend-operator-templates-compile-and-precision-debug-workflow",
+        "unit-tilelang-ascend-programming-model-memory-and-cv-schedule-sop"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
       "bytes": 62072,
       "estimated_tokens": 13410,
-      "exceeds": [
-        "estimated_tokens"
-      ],
+      "exceeds": [],
       "kind": "leaf",
       "path": "compilation/triton",
       "recommended_action": "review_leaf_split",
@@ -428,6 +1357,153 @@
     },
     {
       "automatic": false,
+      "bytes": 20542,
+      "estimated_tokens": 4037,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/triton/constraints",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+        "unit-triton-ascend-operator-domain-constraints-contract"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 17772,
+      "estimated_tokens": 3413,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/triton/migration-and-tooling",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-ascend-gpu-kernel-migration-and-ascend-ext-sop",
+        "unit-triton-ascend-precision-debug-and-verifier-workflow"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 16483,
+      "estimated_tokens": 3049,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/triton/optimizations/cv-pipeline-and-compute",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-ascend-cv-pipeline-vector-degradation-and-dot-workflow",
+        "unit-triton-ascend-scalar-cmp-to-fp32-vec-and-dot-rewrite-mutator"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 7438,
+      "estimated_tokens": 1284,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/triton/optimizations/memory-and-gather",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-ascend-memory-coalescing-and-ub-gather-staging-workflow"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 14744,
+      "estimated_tokens": 2650,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/triton/optimizations/tiling-and-ub-budget",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator",
+        "unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 8589,
+      "estimated_tokens": 1600,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/triton/playbooks/attention-and-mla",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-ascend-attention-mla-and-gqa-playbooks-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 8917,
+      "estimated_tokens": 1671,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/triton/playbooks/matmul-and-moe",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-ascend-matmul-quant-and-moe-playbooks-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 8502,
+      "estimated_tokens": 1533,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/triton/playbooks/norm-rope-activation",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-ascend-norm-rope-activation-and-transform-playbooks-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 8115,
+      "estimated_tokens": 1418,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/triton/playbooks/reduction-and-index",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-ascend-reduction-sort-and-index-playbooks-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9155,
+      "estimated_tokens": 1682,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/triton/runbooks",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-ascend-compilation-runtime-and-reduction-perf-runbook-workflow"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9764,
+      "estimated_tokens": 1559,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "elementwise/gather-scatter-dsl",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascend-gather-v2-scatter-elements-and-index-operator-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 10999,
       "estimated_tokens": 1958,
       "exceeds": [],
@@ -441,11 +1517,22 @@
     },
     {
       "automatic": false,
+      "bytes": 8714,
+      "estimated_tokens": 1450,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "fusion/mhc-hyper-connections",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-mhc-pre-post-sinkhorn-knopp-and-engram-gate-fusion-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 18209,
       "estimated_tokens": 3960,
-      "exceeds": [
-        "estimated_tokens"
-      ],
+      "exceeds": [],
       "kind": "leaf",
       "path": "fusion/moe-gmm",
       "recommended_action": "review_leaf_split",
@@ -458,14 +1545,25 @@
       "automatic": false,
       "bytes": 20053,
       "estimated_tokens": 4401,
-      "exceeds": [
-        "estimated_tokens"
-      ],
+      "exceeds": [],
       "kind": "leaf",
       "path": "matmul/catlass-tilelang",
       "recommended_action": "review_leaf_split",
       "unit_ids": [
         "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9984,
+      "estimated_tokens": 1654,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "matmul/dsl-and-catlass",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-cannbot-dsl-matmul-and-catlass-gemm-epilogue-sop"
       ],
       "units": 1
     },
@@ -497,6 +1595,32 @@
     },
     {
       "automatic": false,
+      "bytes": 11301,
+      "estimated_tokens": 1933,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "moe/dispatch-combine",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-moe-dispatch-gmm-combine-and-alltoallv-routing-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9345,
+      "estimated_tokens": 1619,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "moe/grouped-matmul",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-moe-grouped-matmul-swiglu-finalize-and-dynamic-shape-selection-mutator"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 14285,
       "estimated_tokens": 2359,
       "exceeds": [],
@@ -509,6 +1633,58 @@
         "unit-rmsnorm-five-stage-ablation-workflow"
       ],
       "units": 3
+    },
+    {
+      "automatic": false,
+      "bytes": 9098,
+      "estimated_tokens": 1482,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "normalization/rmsnorm-rope-quant",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9386,
+      "estimated_tokens": 1455,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/nn-and-math-aclnn",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-nn-math-and-cv-aclnn-direct-operator-contracts-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 10079,
+      "estimated_tokens": 1522,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/transformer-aclnn",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-transformer-aclnn-and-direct-attention-mc2-gmm-moe-operator-contracts-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9694,
+      "estimated_tokens": 1513,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "quantization/aclnn-and-dsl-quant",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop"
+      ],
+      "units": 1
     }
   ],
   "schema": "mindie-shard-topology/1",
@@ -530,6 +1706,19 @@
     },
     {
       "automatic": false,
+      "bytes": 9506,
+      "estimated_tokens": 1470,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "Reduction/tree-and-argreduce",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascendc-wholereduce-blockreduce-and-argreduce-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 18458,
       "estimated_tokens": 3153,
       "exceeds": [],
@@ -546,6 +1735,37 @@
     },
     {
       "automatic": false,
+      "bytes": 33141,
+      "estimated_tokens": 5830,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "_common/platforms",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement"
+      ],
+      "units": 4
+    },
+    {
+      "automatic": false,
+      "bytes": 27994,
+      "estimated_tokens": 4504,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "ascendc/apis",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascendc-datacopy-datacopypad-tpipe-tque-and-flag-sync-api-contract",
+        "unit-ascendc-matmul-impl-iterate-gettensorc-and-gemm-api-contract",
+        "unit-ascendc-vector-simd-softmax-activation-sort-and-gather-api-contract"
+      ],
+      "units": 3
+    },
+    {
+      "automatic": false,
       "bytes": 37594,
       "estimated_tokens": 8178,
       "exceeds": [],
@@ -557,6 +1777,57 @@
         "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
       ],
       "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 28228,
+      "estimated_tokens": 4520,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "ascendc/guides",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascendc-host-tilingkey-workspace-and-ub-partitioning-sop",
+        "unit-ascendc-regbase-and-simt-thread-warp-programming-guide-sop",
+        "unit-ascendc-shmem-symmetric-memory-and-hccl-communication-sop"
+      ],
+      "units": 3
+    },
+    {
+      "automatic": false,
+      "bytes": 75585,
+      "estimated_tokens": 11437,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "ascendc/optimizations",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascendc-argreduce-tree-reduction-and-atomic-contention-mutator",
+        "unit-ascendc-cube-l1-residency-l0-pingpong-and-fixpipe-fusion-sop",
+        "unit-ascendc-datacopypad-elimination-ub-bank-conflict-and-l2-tiling-sop",
+        "unit-ascendc-discovered-evolution-strategies-and-cross-core-pipeline-mutator",
+        "unit-ascendc-elementwise-unary-binary-and-mask-predicate-perturbation-mutator",
+        "unit-ascendc-evolutionary-strategy-vector-simd-and-ub-tiling-mutator",
+        "unit-ascendc-foreach-metadata-batching-and-layout-transform-perturbation-mutator",
+        "unit-ascendc-interpolation-grid-sample-and-fused-composite-perturbation-mutator"
+      ],
+      "units": 8
+    },
+    {
+      "automatic": false,
+      "bytes": 38421,
+      "estimated_tokens": 6072,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "ascendc/runbooks",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascendc-507015-illegal-address-sync-hang-and-validation-fault-workflow",
+        "unit-ascendc-bisheng-ccec-and-161001-compilation-error-triage-workflow",
+        "unit-ascendc-fp16-bf16-accumulation-nan-padding-and-cast-precision-workflow",
+        "unit-ascendc-msprof-roofline-pipe-stall-and-ub-spill-performance-runbook-sop"
+      ],
+      "units": 4
     },
     {
       "automatic": false,
@@ -600,6 +1871,46 @@
     },
     {
       "automatic": false,
+      "bytes": 10463,
+      "estimated_tokens": 1691,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "attention/indexer-prolog",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-lightning-indexer-prolog-epilogue-and-qsa-stem-indexer-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 10318,
+      "estimated_tokens": 1684,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "attention/kda-recurrent-ssm",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-flash-kda-and-mega-recurrent-replayssm-dsl-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 19608,
+      "estimated_tokens": 3335,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "attention/mla-sparse",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop",
+        "unit-nsa-qwen-block-sparse-and-fp8-fullquant-flash-attention-sop"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
       "bytes": 11020,
       "estimated_tokens": 2033,
       "exceeds": [],
@@ -613,20 +1924,70 @@
     },
     {
       "automatic": false,
-      "bytes": 62072,
-      "estimated_tokens": 13410,
+      "bytes": 42908,
+      "estimated_tokens": 7641,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "compilation/bisheng-ir",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-bisheng-ir-bufferization-memory-planning-and-multibuffer-sop",
+        "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract",
+        "unit-hfusion-hacc-and-triton-custom-dialects-sop",
+        "unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract",
+        "unit-hivm-dialect-vector-simd-and-sync-injection-sop"
+      ],
+      "units": 5
+    },
+    {
+      "automatic": false,
+      "bytes": 19994,
+      "estimated_tokens": 4046,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "compilation/pypto",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-pypto-compile-precision-bisect-and-swimlane-debug-workflow",
+        "unit-pypto-tile-operator-design-api-and-execution-constraints-sop"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 19942,
+      "estimated_tokens": 3876,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "compilation/tilelang",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-tilelang-ascend-operator-templates-compile-and-precision-debug-workflow",
+        "unit-tilelang-ascend-programming-model-memory-and-cv-schedule-sop"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 109541,
+      "estimated_tokens": 22542,
       "exceeds": [],
       "kind": "subtree",
       "path": "compilation/triton",
       "recommended_action": "review_two_level_subtree_split",
       "unit_ids": [
+        "unit-triton-ascend-compilation-runtime-and-reduction-perf-runbook-workflow",
+        "unit-triton-ascend-gpu-kernel-migration-and-ascend-ext-sop",
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract",
         "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop",
+        "unit-triton-ascend-operator-domain-constraints-contract",
+        "unit-triton-ascend-precision-debug-and-verifier-workflow",
         "unit-triton-constexpr-to-runtime-scalar-specialization-mutator",
         "unit-triton-dynamic-scalar-specialization-sop",
         "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow",
         "unit-triton-recompilation-decision-tree"
       ],
-      "units": 5
+      "units": 10
     },
     {
       "automatic": false,
@@ -643,6 +2004,52 @@
     },
     {
       "automatic": false,
+      "bytes": 38665,
+      "estimated_tokens": 6983,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "compilation/triton/optimizations",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-triton-ascend-cv-pipeline-vector-degradation-and-dot-workflow",
+        "unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator",
+        "unit-triton-ascend-memory-coalescing-and-ub-gather-staging-workflow",
+        "unit-triton-ascend-scalar-cmp-to-fp32-vec-and-dot-rewrite-mutator",
+        "unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow"
+      ],
+      "units": 5
+    },
+    {
+      "automatic": false,
+      "bytes": 34123,
+      "estimated_tokens": 6222,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "compilation/triton/playbooks",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-triton-ascend-attention-mla-and-gqa-playbooks-sop",
+        "unit-triton-ascend-matmul-quant-and-moe-playbooks-sop",
+        "unit-triton-ascend-norm-rope-activation-and-transform-playbooks-sop",
+        "unit-triton-ascend-reduction-sort-and-index-playbooks-sop"
+      ],
+      "units": 4
+    },
+    {
+      "automatic": false,
+      "bytes": 9764,
+      "estimated_tokens": 1559,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "elementwise/gather-scatter-dsl",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascend-gather-v2-scatter-elements-and-index-operator-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 10999,
       "estimated_tokens": 1958,
       "exceeds": [],
@@ -651,6 +2058,19 @@
       "recommended_action": "review_two_level_subtree_split",
       "unit_ids": [
         "unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 8714,
+      "estimated_tokens": 1450,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "fusion/mhc-hyper-connections",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-mhc-pre-post-sinkhorn-knopp-and-engram-gate-fusion-sop"
       ],
       "units": 1
     },
@@ -682,6 +2102,19 @@
     },
     {
       "automatic": false,
+      "bytes": 9984,
+      "estimated_tokens": 1654,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "matmul/dsl-and-catlass",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-cannbot-dsl-matmul-and-catlass-gemm-epilogue-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 10511,
       "estimated_tokens": 2003,
       "exceeds": [],
@@ -708,6 +2141,32 @@
     },
     {
       "automatic": false,
+      "bytes": 11301,
+      "estimated_tokens": 1933,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "moe/dispatch-combine",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-moe-dispatch-gmm-combine-and-alltoallv-routing-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9345,
+      "estimated_tokens": 1619,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "moe/grouped-matmul",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-moe-grouped-matmul-swiglu-finalize-and-dynamic-shape-selection-mutator"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 14285,
       "estimated_tokens": 2359,
       "exceeds": [],
@@ -720,10 +2179,77 @@
         "unit-rmsnorm-five-stage-ablation-workflow"
       ],
       "units": 3
+    },
+    {
+      "automatic": false,
+      "bytes": 9098,
+      "estimated_tokens": 1482,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "normalization/rmsnorm-rope-quant",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9386,
+      "estimated_tokens": 1455,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "operators/nn-and-math-aclnn",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-nn-math-and-cv-aclnn-direct-operator-contracts-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 10079,
+      "estimated_tokens": 1522,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "operators/transformer-aclnn",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-transformer-aclnn-and-direct-attention-mc2-gmm-moe-operator-contracts-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 9694,
+      "estimated_tokens": 1513,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "quantization/aclnn-and-dsl-quant",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop"
+      ],
+      "units": 1
     }
   ],
-  "unit_count": 28,
+  "unit_count": 87,
   "units": {
+    "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": {
+      "bytes": 9098,
+      "category": "sop",
+      "content_sha256": "be37bf816094a7f4f0c31280354732314c67b03a81808554c104928ab8a184b4",
+      "domain_path": "normalization/rmsnorm-rope-quant",
+      "estimated_tokens": 1482,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "path": "normalization/rmsnorm-rope-quant/unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop.md",
+      "tier": "L2"
+    },
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": {
       "bytes": 2511,
       "category": "axiom",
@@ -747,6 +2273,21 @@
       ],
       "path": "_common/unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms.md",
       "tier": "L1"
+    },
+    "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop": {
+      "bytes": 9694,
+      "category": "sop",
+      "content_sha256": "0ea78f5c10285d8cf4e4c92c54838412228efe5871f0718b8122b63d897e83a5",
+      "domain_path": "quantization/aclnn-and-dsl-quant",
+      "estimated_tokens": 1513,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "path": "quantization/aclnn-and-dsl-quant/unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop.md",
+      "tier": "L2"
     },
     "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator": {
       "bytes": 12856,
@@ -777,6 +2318,21 @@
       "path": "attention/fia-mla/unit-ascend-fused-infer-attention-and-flash-mla-c8-sop.md",
       "tier": "L2"
     },
+    "unit-ascend-gather-v2-scatter-elements-and-index-operator-sop": {
+      "bytes": 9764,
+      "category": "sop",
+      "content_sha256": "2baabfb2e48e68171cb64cf76e870212c875dd4158486d70f40ede1bdb4a13c1",
+      "domain_path": "elementwise/gather-scatter-dsl",
+      "estimated_tokens": 1559,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascendc-simt-and-regbase-vector-programming-sop"
+      ],
+      "path": "elementwise/gather-scatter-dsl/unit-ascend-gather-v2-scatter-elements-and-index-operator-sop.md",
+      "tier": "L2"
+    },
     "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop": {
       "bytes": 18209,
       "category": "sop",
@@ -802,6 +2358,75 @@
       "path": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
       "tier": "L1"
     },
+    "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms": {
+      "bytes": 6680,
+      "category": "axiom",
+      "content_sha256": "d44e9ce20a23482941c6956efab8a01af0085bf5602ae7afe0bc7db5275a930d",
+      "domain_path": "_common/platforms/constraints-cheatsheet",
+      "estimated_tokens": 1132,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      ],
+      "path": "_common/platforms/constraints-cheatsheet/unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms.md",
+      "tier": "L1"
+    },
+    "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms": {
+      "bytes": 7174,
+      "category": "axiom",
+      "content_sha256": "249dbb791df1d272c57f7406ef36f650ce2c2179fe65f7534b87dbf444d429b5",
+      "domain_path": "_common/platforms/ascend910b-910c-310p",
+      "estimated_tokens": 1200,
+      "evidence_strength": "hardware_spec",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      ],
+      "path": "_common/platforms/ascend910b-910c-310p/unit-ascend910b-910c-and-310p-memory-model-and-target-axioms.md",
+      "tier": "L1"
+    },
+    "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms": {
+      "bytes": 11021,
+      "category": "axiom",
+      "content_sha256": "5cfc7d5aaea4f517af420ee63cd19ae8f9cbf5d7670c4429a3dad9592b456d37",
+      "domain_path": "_common/platforms/ascend950-microarch",
+      "estimated_tokens": 2054,
+      "evidence_strength": "hardware_spec",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "_common/platforms/ascend950-microarch/unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms.md",
+      "tier": "L1"
+    },
+    "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement": {
+      "bytes": 8266,
+      "category": "measurement",
+      "content_sha256": "9f80cfb13a3f1db62507317a467dc1ed61636805aec575a647670429d9f2a32b",
+      "domain_path": "_common/platforms/ascend950dt-observations",
+      "estimated_tokens": 1444,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "_common/platforms/ascend950dt-observations/unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement.md",
+      "tier": "L1"
+    },
+    "unit-ascendc-507015-illegal-address-sync-hang-and-validation-fault-workflow": {
+      "bytes": 9924,
+      "category": "workflow",
+      "content_sha256": "7e6335e1ab28285c9cf52134d269e64cc9f27d7d8dd1123c13f6adb81d3dbf2c",
+      "domain_path": "ascendc/runbooks/runtime-aicore-faults",
+      "estimated_tokens": 1532,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascendc-datacopy-datacopypad-tpipe-tque-and-flag-sync-api-contract",
+        "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop"
+      ],
+      "path": "ascendc/runbooks/runtime-aicore-faults/unit-ascendc-507015-illegal-address-sync-hang-and-validation-fault-workflow.md",
+      "tier": "L3"
+    },
     "unit-ascendc-aicore-exception-and-precision-divergence-workflow": {
       "bytes": 19329,
       "category": "workflow",
@@ -816,6 +2441,199 @@
       ],
       "path": "ascendc/core/unit-ascendc-aicore-exception-and-precision-divergence-workflow.md",
       "tier": "L3"
+    },
+    "unit-ascendc-argreduce-tree-reduction-and-atomic-contention-mutator": {
+      "bytes": 8727,
+      "category": "mutator",
+      "content_sha256": "fc5907f2f128252968bfb2de5cfdc597ce890074686eb4e0bee312912968c45c",
+      "domain_path": "ascendc/optimizations/reduction-and-atomic",
+      "estimated_tokens": 1234,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "path": "ascendc/optimizations/reduction-and-atomic/unit-ascendc-argreduce-tree-reduction-and-atomic-contention-mutator.md",
+      "tier": "L4"
+    },
+    "unit-ascendc-bisheng-ccec-and-161001-compilation-error-triage-workflow": {
+      "bytes": 9096,
+      "category": "workflow",
+      "content_sha256": "8177653fb0e7dcb41f885d2336a409b2af4bb168d70cceed54066cece79f272c",
+      "domain_path": "ascendc/runbooks/compilation-errors",
+      "estimated_tokens": 1460,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascendc-host-tilingkey-workspace-and-ub-partitioning-sop"
+      ],
+      "path": "ascendc/runbooks/compilation-errors/unit-ascendc-bisheng-ccec-and-161001-compilation-error-triage-workflow.md",
+      "tier": "L3"
+    },
+    "unit-ascendc-cube-l1-residency-l0-pingpong-and-fixpipe-fusion-sop": {
+      "bytes": 9848,
+      "category": "sop",
+      "content_sha256": "cf0bc727e769166fc14c8cc8c46b4e8c619eed6ef4a924c866197a96a7c8ab85",
+      "domain_path": "ascendc/optimizations/cube-l1-l0-pipeline",
+      "estimated_tokens": 1612,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "path": "ascendc/optimizations/cube-l1-l0-pipeline/unit-ascendc-cube-l1-residency-l0-pingpong-and-fixpipe-fusion-sop.md",
+      "tier": "L2"
+    },
+    "unit-ascendc-datacopy-datacopypad-tpipe-tque-and-flag-sync-api-contract": {
+      "bytes": 9808,
+      "category": "axiom",
+      "content_sha256": "4c56319b711649730cd35fac0f4c2be27fc80f6c5865afc8f4e171398822cd40",
+      "domain_path": "ascendc/apis/datamove-and-sync",
+      "estimated_tokens": 1595,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+      ],
+      "path": "ascendc/apis/datamove-and-sync/unit-ascendc-datacopy-datacopypad-tpipe-tque-and-flag-sync-api-contract.md",
+      "tier": "L1"
+    },
+    "unit-ascendc-datacopypad-elimination-ub-bank-conflict-and-l2-tiling-sop": {
+      "bytes": 9582,
+      "category": "sop",
+      "content_sha256": "c8a1fba15cadab73707d0c3df7b639a34ace81222bbfdacd206054fda0a7a588",
+      "domain_path": "ascendc/optimizations/mte-memory-alignment",
+      "estimated_tokens": 1504,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement"
+      ],
+      "path": "ascendc/optimizations/mte-memory-alignment/unit-ascendc-datacopypad-elimination-ub-bank-conflict-and-l2-tiling-sop.md",
+      "tier": "L2"
+    },
+    "unit-ascendc-discovered-evolution-strategies-and-cross-core-pipeline-mutator": {
+      "bytes": 11188,
+      "category": "mutator",
+      "content_sha256": "cf278c28568cc4bf0c36185210240f80180e2d1a0b5e7dcead53818247b1911a",
+      "domain_path": "ascendc/optimizations/evolutionary-mutators",
+      "estimated_tokens": 1765,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop"
+      ],
+      "path": "ascendc/optimizations/evolutionary-mutators/unit-ascendc-discovered-evolution-strategies-and-cross-core-pipeline-mutator.md",
+      "tier": "L4"
+    },
+    "unit-ascendc-elementwise-unary-binary-and-mask-predicate-perturbation-mutator": {
+      "bytes": 8757,
+      "category": "mutator",
+      "content_sha256": "e4ace8c8580e450c4b34c5cc2c342800f9165dce013b3b7f4b3297661d8b4cc4",
+      "domain_path": "ascendc/optimizations/elementwise-unary-binary",
+      "estimated_tokens": 1256,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascendc-simt-and-regbase-vector-programming-sop",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "path": "ascendc/optimizations/elementwise-unary-binary/unit-ascendc-elementwise-unary-binary-and-mask-predicate-perturbation-mutator.md",
+      "tier": "L4"
+    },
+    "unit-ascendc-evolutionary-strategy-vector-simd-and-ub-tiling-mutator": {
+      "bytes": 9459,
+      "category": "mutator",
+      "content_sha256": "b4df2ca8cd03b6efed0a92b045e05660e5593be17003e220d19812fbc38f054f",
+      "domain_path": "ascendc/optimizations/evolutionary-mutators",
+      "estimated_tokens": 1445,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascendc-simt-and-regbase-vector-programming-sop",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "path": "ascendc/optimizations/evolutionary-mutators/unit-ascendc-evolutionary-strategy-vector-simd-and-ub-tiling-mutator.md",
+      "tier": "L4"
+    },
+    "unit-ascendc-foreach-metadata-batching-and-layout-transform-perturbation-mutator": {
+      "bytes": 8687,
+      "category": "mutator",
+      "content_sha256": "b604576c0653677fc5ac9ae5ffa495c39df20ed8ab85844ba4f035de1f8112c3",
+      "domain_path": "ascendc/optimizations/foreach-and-layout",
+      "estimated_tokens": 1268,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascendc-simt-and-regbase-vector-programming-sop",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "path": "ascendc/optimizations/foreach-and-layout/unit-ascendc-foreach-metadata-batching-and-layout-transform-perturbation-mutator.md",
+      "tier": "L4"
+    },
+    "unit-ascendc-fp16-bf16-accumulation-nan-padding-and-cast-precision-workflow": {
+      "bytes": 9804,
+      "category": "workflow",
+      "content_sha256": "1ed40b5aac4923804f7e123a9399f8053310e1956b24ab2d0565630b9912c0c9",
+      "domain_path": "ascendc/runbooks/precision-divergence",
+      "estimated_tokens": 1561,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "path": "ascendc/runbooks/precision-divergence/unit-ascendc-fp16-bf16-accumulation-nan-padding-and-cast-precision-workflow.md",
+      "tier": "L3"
+    },
+    "unit-ascendc-host-tilingkey-workspace-and-ub-partitioning-sop": {
+      "bytes": 9356,
+      "category": "sop",
+      "content_sha256": "fbae168cb1dfb5b764fe833763fd99991d522255f44bb65235d8da261b516ee4",
+      "domain_path": "ascendc/guides/tiling-and-ub-planning",
+      "estimated_tokens": 1508,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "path": "ascendc/guides/tiling-and-ub-planning/unit-ascendc-host-tilingkey-workspace-and-ub-partitioning-sop.md",
+      "tier": "L2"
+    },
+    "unit-ascendc-interpolation-grid-sample-and-fused-composite-perturbation-mutator": {
+      "bytes": 9337,
+      "category": "mutator",
+      "content_sha256": "2cdeea74ce734c2f79098e98b0ce8aee75c50876b5c2d7e54d651e91289c5ae8",
+      "domain_path": "ascendc/optimizations/interpolation-and-composite",
+      "estimated_tokens": 1353,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascendc-simt-and-regbase-vector-programming-sop",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "path": "ascendc/optimizations/interpolation-and-composite/unit-ascendc-interpolation-grid-sample-and-fused-composite-perturbation-mutator.md",
+      "tier": "L4"
+    },
+    "unit-ascendc-matmul-impl-iterate-gettensorc-and-gemm-api-contract": {
+      "bytes": 9501,
+      "category": "axiom",
+      "content_sha256": "64d7709ce5a3ed663573e7b55c1f82cfd95f3f500b3b5149cbf30df90c039b03",
+      "domain_path": "ascendc/apis/cube-and-matmul",
+      "estimated_tokens": 1526,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms"
+      ],
+      "path": "ascendc/apis/cube-and-matmul/unit-ascendc-matmul-impl-iterate-gettensorc-and-gemm-api-contract.md",
+      "tier": "L1"
     },
     "unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow": {
       "bytes": 10999,
@@ -832,6 +2650,51 @@
       ],
       "path": "fusion/mc2-catlass/unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow.md",
       "tier": "L3"
+    },
+    "unit-ascendc-msprof-roofline-pipe-stall-and-ub-spill-performance-runbook-sop": {
+      "bytes": 9597,
+      "category": "sop",
+      "content_sha256": "a03f586c22cc8ae9a48da8378a5cee04735e598973a828c83a36f720b9e6c6b1",
+      "domain_path": "ascendc/runbooks/performance-diagnosis",
+      "estimated_tokens": 1519,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement"
+      ],
+      "path": "ascendc/runbooks/performance-diagnosis/unit-ascendc-msprof-roofline-pipe-stall-and-ub-spill-performance-runbook-sop.md",
+      "tier": "L2"
+    },
+    "unit-ascendc-regbase-and-simt-thread-warp-programming-guide-sop": {
+      "bytes": 9508,
+      "category": "sop",
+      "content_sha256": "f08ee6e1e263b98f2486632a08112023e6515e8adcd684b1ba40c1a09ec3ee2d",
+      "domain_path": "ascendc/guides/regbase-and-simt",
+      "estimated_tokens": 1551,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascendc-simt-and-regbase-vector-programming-sop"
+      ],
+      "path": "ascendc/guides/regbase-and-simt/unit-ascendc-regbase-and-simt-thread-warp-programming-guide-sop.md",
+      "tier": "L2"
+    },
+    "unit-ascendc-shmem-symmetric-memory-and-hccl-communication-sop": {
+      "bytes": 9364,
+      "category": "sop",
+      "content_sha256": "dce18c53ace0bdb4f887715dc47e7795136770bdaccb83e6ab2ccdd074aa2c35",
+      "domain_path": "ascendc/guides/shmem-and-comm",
+      "estimated_tokens": 1461,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop"
+      ],
+      "path": "ascendc/guides/shmem-and-comm/unit-ascendc-shmem-symmetric-memory-and-hccl-communication-sop.md",
+      "tier": "L2"
     },
     "unit-ascendc-simt-and-regbase-vector-programming-sop": {
       "bytes": 10312,
@@ -877,6 +2740,79 @@
       "path": "ascendc/core/unit-ascendc-tiling-pipe-double-buffer-and-sync-sop.md",
       "tier": "L2"
     },
+    "unit-ascendc-vector-simd-softmax-activation-sort-and-gather-api-contract": {
+      "bytes": 8685,
+      "category": "axiom",
+      "content_sha256": "8fb0400c1d46f59bf8b2ee74a7214868ee930bbebb1e11318ff37b0295d1f134",
+      "domain_path": "ascendc/apis/vector-activation-sort",
+      "estimated_tokens": 1383,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+      ],
+      "path": "ascendc/apis/vector-activation-sort/unit-ascendc-vector-simd-softmax-activation-sort-and-gather-api-contract.md",
+      "tier": "L1"
+    },
+    "unit-ascendc-wholereduce-blockreduce-and-argreduce-sop": {
+      "bytes": 9506,
+      "category": "sop",
+      "content_sha256": "dedb6db182f15ac4ce06c391a8044ab93f3ec141061b87fafec8e99a8f9e47f3",
+      "domain_path": "Reduction/tree-and-argreduce",
+      "estimated_tokens": 1470,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "path": "Reduction/tree-and-argreduce/unit-ascendc-wholereduce-blockreduce-and-argreduce-sop.md",
+      "tier": "L2"
+    },
+    "unit-bisheng-ir-bufferization-memory-planning-and-multibuffer-sop": {
+      "bytes": 8973,
+      "category": "sop",
+      "content_sha256": "83341801ec58f7885c0266f19c278d5b2fe40812b4e0c96c44705c659f8f0010",
+      "domain_path": "compilation/bisheng-ir/pipeline-and-arch",
+      "estimated_tokens": 1586,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract"
+      ],
+      "path": "compilation/bisheng-ir/pipeline-and-arch/unit-bisheng-ir-bufferization-memory-planning-and-multibuffer-sop.md",
+      "tier": "L2"
+    },
+    "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract": {
+      "bytes": 9661,
+      "category": "axiom",
+      "content_sha256": "6e7f878880dfa11a92de393b679cf2513b8df256258ac742a05b6753198e3d43",
+      "domain_path": "compilation/bisheng-ir/pipeline-and-arch",
+      "estimated_tokens": 1814,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "compilation/bisheng-ir/pipeline-and-arch/unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract.md",
+      "tier": "L1"
+    },
+    "unit-cannbot-dsl-matmul-and-catlass-gemm-epilogue-sop": {
+      "bytes": 9984,
+      "category": "sop",
+      "content_sha256": "33e677f6f021ecf215ddf7466cf59113751d1415e622323c1f7d0f141bfb0332",
+      "domain_path": "matmul/dsl-and-catlass",
+      "estimated_tokens": 1654,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement"
+      ],
+      "path": "matmul/dsl-and-catlass/unit-cannbot-dsl-matmul-and-catlass-gemm-epilogue-sop.md",
+      "tier": "L2"
+    },
     "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop": {
       "bytes": 20053,
       "category": "sop",
@@ -889,6 +2825,20 @@
         "unit-ascend-operator-roofline-and-four-view-measurement"
       ],
       "path": "matmul/catlass-tilelang/unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop.md",
+      "tier": "L2"
+    },
+    "unit-flash-kda-and-mega-recurrent-replayssm-dsl-sop": {
+      "bytes": 10318,
+      "category": "sop",
+      "content_sha256": "bea61adcfca0d04a4a1c79cf1a640df5c113d81a31225a1e356b074e01df5486",
+      "domain_path": "attention/kda-recurrent-ssm",
+      "estimated_tokens": 1684,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms"
+      ],
+      "path": "attention/kda-recurrent-ssm/unit-flash-kda-and-mega-recurrent-replayssm-dsl-sop.md",
       "tier": "L2"
     },
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": {
@@ -905,6 +2855,156 @@
       "path": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
       "tier": "L2"
     },
+    "unit-hfusion-hacc-and-triton-custom-dialects-sop": {
+      "bytes": 8481,
+      "category": "sop",
+      "content_sha256": "e49373d08d26ff7278e6f645222798e0348d90cc6e7ee85a4b1a454973b87583",
+      "domain_path": "compilation/bisheng-ir/hfusion-and-hacc",
+      "estimated_tokens": 1529,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract"
+      ],
+      "path": "compilation/bisheng-ir/hfusion-and-hacc/unit-hfusion-hacc-and-triton-custom-dialects-sop.md",
+      "tier": "L2"
+    },
+    "unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract": {
+      "bytes": 7522,
+      "category": "axiom",
+      "content_sha256": "3059822f1c98979c54343df2d56fc108bb7adbd496b9a64ec21611ce81d4507e",
+      "domain_path": "compilation/bisheng-ir/hivm-dialect",
+      "estimated_tokens": 1305,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract"
+      ],
+      "path": "compilation/bisheng-ir/hivm-dialect/unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract.md",
+      "tier": "L1"
+    },
+    "unit-hivm-dialect-vector-simd-and-sync-injection-sop": {
+      "bytes": 8271,
+      "category": "sop",
+      "content_sha256": "1e00a4ba3afa50ee79bc99db2a2789ff37a0ece7981603fcaa7ef4d45b975ce7",
+      "domain_path": "compilation/bisheng-ir/hivm-dialect",
+      "estimated_tokens": 1407,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract",
+        "unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract"
+      ],
+      "path": "compilation/bisheng-ir/hivm-dialect/unit-hivm-dialect-vector-simd-and-sync-injection-sop.md",
+      "tier": "L2"
+    },
+    "unit-lightning-indexer-prolog-epilogue-and-qsa-stem-indexer-sop": {
+      "bytes": 10463,
+      "category": "sop",
+      "content_sha256": "0d88b3aa1bdd7db6dce8b5dbb1b2bac91816faf4870534a8e1600f0244b0278f",
+      "domain_path": "attention/indexer-prolog",
+      "estimated_tokens": 1691,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms"
+      ],
+      "path": "attention/indexer-prolog/unit-lightning-indexer-prolog-epilogue-and-qsa-stem-indexer-sop.md",
+      "tier": "L2"
+    },
+    "unit-mhc-pre-post-sinkhorn-knopp-and-engram-gate-fusion-sop": {
+      "bytes": 8714,
+      "category": "sop",
+      "content_sha256": "65dbc2d6818b1b685a0db4767c9798c8d50df9265099eeba5f36cbfa76bdda7a",
+      "domain_path": "fusion/mhc-hyper-connections",
+      "estimated_tokens": 1450,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascendc-simt-and-regbase-vector-programming-sop",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "path": "fusion/mhc-hyper-connections/unit-mhc-pre-post-sinkhorn-knopp-and-engram-gate-fusion-sop.md",
+      "tier": "L2"
+    },
+    "unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop": {
+      "bytes": 10411,
+      "category": "sop",
+      "content_sha256": "ce5b5dc5564466b9283b436fd0ba613db08927706d9ab6196264ef90fc027011",
+      "domain_path": "attention/mla-sparse",
+      "estimated_tokens": 1808,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms"
+      ],
+      "path": "attention/mla-sparse/unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop.md",
+      "tier": "L2"
+    },
+    "unit-moe-dispatch-gmm-combine-and-alltoallv-routing-sop": {
+      "bytes": 11301,
+      "category": "sop",
+      "content_sha256": "2c1e182b5e0d31f3ff0e82534513916d91b278fb7145c6494b4b93c63afad926",
+      "domain_path": "moe/dispatch-combine",
+      "estimated_tokens": 1933,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "moe/dispatch-combine/unit-moe-dispatch-gmm-combine-and-alltoallv-routing-sop.md",
+      "tier": "L2"
+    },
+    "unit-moe-grouped-matmul-swiglu-finalize-and-dynamic-shape-selection-mutator": {
+      "bytes": 9345,
+      "category": "mutator",
+      "content_sha256": "72549d35814db10430fe0eea8af7274c7e443332d5ebb6ed44a5ada5b6f68586",
+      "domain_path": "moe/grouped-matmul",
+      "estimated_tokens": 1619,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "moe/grouped-matmul/unit-moe-grouped-matmul-swiglu-finalize-and-dynamic-shape-selection-mutator.md",
+      "tier": "L4"
+    },
+    "unit-nn-math-and-cv-aclnn-direct-operator-contracts-sop": {
+      "bytes": 9386,
+      "category": "sop",
+      "content_sha256": "7fbc34d84ae8b008e3aca4b27fa5917577be8d40c1c9a7b3129c1acb71ee7362",
+      "domain_path": "operators/nn-and-math-aclnn",
+      "estimated_tokens": 1455,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop"
+      ],
+      "path": "operators/nn-and-math-aclnn/unit-nn-math-and-cv-aclnn-direct-operator-contracts-sop.md",
+      "tier": "L2"
+    },
+    "unit-nsa-qwen-block-sparse-and-fp8-fullquant-flash-attention-sop": {
+      "bytes": 9197,
+      "category": "sop",
+      "content_sha256": "49084486826c774be53548c108a7772a5e47021788b1511595c7b5cd87e525a8",
+      "domain_path": "attention/mla-sparse",
+      "estimated_tokens": 1527,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms"
+      ],
+      "path": "attention/mla-sparse/unit-nsa-qwen-block-sparse-and-fp8-fullquant-flash-attention-sop.md",
+      "tier": "L2"
+    },
     "unit-operator-memory-vs-compute-bottleneck-convergence-workflow": {
       "bytes": 12690,
       "category": "workflow",
@@ -919,6 +3019,33 @@
       ],
       "path": "Reduction/unit-operator-memory-vs-compute-bottleneck-convergence-workflow.md",
       "tier": "L3"
+    },
+    "unit-pypto-compile-precision-bisect-and-swimlane-debug-workflow": {
+      "bytes": 10106,
+      "category": "workflow",
+      "content_sha256": "0919f14191c927c1e33e09c82baf4dfc39a55d7ca79b482683ece0e4ea4f5dc5",
+      "domain_path": "compilation/pypto",
+      "estimated_tokens": 2033,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-pypto-tile-operator-design-api-and-execution-constraints-sop"
+      ],
+      "path": "compilation/pypto/unit-pypto-compile-precision-bisect-and-swimlane-debug-workflow.md",
+      "tier": "L3"
+    },
+    "unit-pypto-tile-operator-design-api-and-execution-constraints-sop": {
+      "bytes": 9888,
+      "category": "sop",
+      "content_sha256": "580a0693791961e6332e67eb7aa90a552b19eaf9310efc8b5ba0b4f043583dbd",
+      "domain_path": "compilation/pypto",
+      "estimated_tokens": 2013,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      ],
+      "path": "compilation/pypto/unit-pypto-tile-operator-design-api-and-execution-constraints-sop.md",
+      "tier": "L2"
     },
     "unit-residual-free-rmsnorm-fastpath": {
       "bytes": 4650,
@@ -995,6 +3122,77 @@
       "path": "matmul/tilelang-pypto/unit-tilelang-and-pypto-ub-memory-template-and-pipeline-sop.md",
       "tier": "L2"
     },
+    "unit-tilelang-ascend-operator-templates-compile-and-precision-debug-workflow": {
+      "bytes": 9885,
+      "category": "workflow",
+      "content_sha256": "ab3d2b003dff7e268c589d44dc0047d05323b63d247ad57c33d678a315d46697",
+      "domain_path": "compilation/tilelang",
+      "estimated_tokens": 1893,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-tilelang-ascend-programming-model-memory-and-cv-schedule-sop"
+      ],
+      "path": "compilation/tilelang/unit-tilelang-ascend-operator-templates-compile-and-precision-debug-workflow.md",
+      "tier": "L3"
+    },
+    "unit-tilelang-ascend-programming-model-memory-and-cv-schedule-sop": {
+      "bytes": 10057,
+      "category": "sop",
+      "content_sha256": "755dbc28c5e3ec3ccf7c784462b3d9602b044a40b31b4c5ef08b82eb9cc2993d",
+      "domain_path": "compilation/tilelang",
+      "estimated_tokens": 1983,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-hivm-dialect-dma-macro-matmul-and-fixpipe-contract"
+      ],
+      "path": "compilation/tilelang/unit-tilelang-ascend-programming-model-memory-and-cv-schedule-sop.md",
+      "tier": "L2"
+    },
+    "unit-transformer-aclnn-and-direct-attention-mc2-gmm-moe-operator-contracts-sop": {
+      "bytes": 10079,
+      "category": "sop",
+      "content_sha256": "3e5d9d845f6ff26b42644182901d9570875c577a0671fa5f365bf1f1663d64dc",
+      "domain_path": "operators/transformer-aclnn",
+      "estimated_tokens": 1522,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+        "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop",
+        "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms"
+      ],
+      "path": "operators/transformer-aclnn/unit-transformer-aclnn-and-direct-attention-mc2-gmm-moe-operator-contracts-sop.md",
+      "tier": "L2"
+    },
+    "unit-triton-ascend-attention-mla-and-gqa-playbooks-sop": {
+      "bytes": 8589,
+      "category": "sop",
+      "content_sha256": "4e5fbabdd4bd7c8977d54a380a42c2be2055a75ee1cf513a10a02c1782d3d3fb",
+      "domain_path": "compilation/triton/playbooks/attention-and-mla",
+      "estimated_tokens": 1600,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+        "unit-triton-ascend-operator-domain-constraints-contract"
+      ],
+      "path": "compilation/triton/playbooks/attention-and-mla/unit-triton-ascend-attention-mla-and-gqa-playbooks-sop.md",
+      "tier": "L2"
+    },
+    "unit-triton-ascend-compilation-runtime-and-reduction-perf-runbook-workflow": {
+      "bytes": 9155,
+      "category": "workflow",
+      "content_sha256": "54acfd7ea255b4d1872b94d8e56c0e4d956f1fa1b11cb84a55f7c9481fd64e31",
+      "domain_path": "compilation/triton/runbooks",
+      "estimated_tokens": 1682,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+        "unit-triton-ascend-reduction-sort-and-index-playbooks-sop"
+      ],
+      "path": "compilation/triton/runbooks/unit-triton-ascend-compilation-runtime-and-reduction-perf-runbook-workflow.md",
+      "tier": "L3"
+    },
     "unit-triton-ascend-constexpr-and-specialization-contract": {
       "bytes": 2233,
       "category": "axiom",
@@ -1004,6 +3202,63 @@
       "evidence_strength": "reproduced_empirical",
       "inherits_from": [],
       "path": "_common/unit-triton-ascend-constexpr-and-specialization-contract.md",
+      "tier": "L1"
+    },
+    "unit-triton-ascend-cv-pipeline-vector-degradation-and-dot-workflow": {
+      "bytes": 8551,
+      "category": "workflow",
+      "content_sha256": "b17edcc5818a92fbedcb454eaca4a743ea70a1e5e8949d9d5dae96c2f6920dc8",
+      "domain_path": "compilation/triton/optimizations/cv-pipeline-and-compute",
+      "estimated_tokens": 1553,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract"
+      ],
+      "path": "compilation/triton/optimizations/cv-pipeline-and-compute/unit-triton-ascend-cv-pipeline-vector-degradation-and-dot-workflow.md",
+      "tier": "L3"
+    },
+    "unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator": {
+      "bytes": 7347,
+      "category": "mutator",
+      "content_sha256": "89675c362a719361ac50d93be109a0967798f3813903d5ce5f42b1082356652d",
+      "domain_path": "compilation/triton/optimizations/tiling-and-ub-budget",
+      "estimated_tokens": 1334,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+        "unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow"
+      ],
+      "path": "compilation/triton/optimizations/tiling-and-ub-budget/unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator.md",
+      "tier": "L4"
+    },
+    "unit-triton-ascend-gpu-kernel-migration-and-ascend-ext-sop": {
+      "bytes": 8933,
+      "category": "sop",
+      "content_sha256": "9f39ba30a58f8d01b6f1ea811515883e84ed2b08426f065ab65df8bb0c58392c",
+      "domain_path": "compilation/triton/migration-and-tooling",
+      "estimated_tokens": 1706,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+        "unit-triton-ascend-operator-domain-constraints-contract"
+      ],
+      "path": "compilation/triton/migration-and-tooling/unit-triton-ascend-gpu-kernel-migration-and-ascend-ext-sop.md",
+      "tier": "L2"
+    },
+    "unit-triton-ascend-hardware-and-compiler-constraints-contract": {
+      "bytes": 10041,
+      "category": "axiom",
+      "content_sha256": "d3b3dd1445268121ba85b4fab9263d0560419bafdd5afcda40557d64d71a049a",
+      "domain_path": "compilation/triton/constraints",
+      "estimated_tokens": 2045,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract"
+      ],
+      "path": "compilation/triton/constraints/unit-triton-ascend-hardware-and-compiler-constraints-contract.md",
       "tier": "L1"
     },
     "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop": {
@@ -1020,6 +3275,34 @@
       "path": "compilation/triton/unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop.md",
       "tier": "L2"
     },
+    "unit-triton-ascend-matmul-quant-and-moe-playbooks-sop": {
+      "bytes": 8917,
+      "category": "sop",
+      "content_sha256": "58ec45d874f777ff071a8ad94f82c3aa0f2a898d7192a607b9916ee6d596fa0c",
+      "domain_path": "compilation/triton/playbooks/matmul-and-moe",
+      "estimated_tokens": 1671,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+        "unit-triton-ascend-operator-domain-constraints-contract"
+      ],
+      "path": "compilation/triton/playbooks/matmul-and-moe/unit-triton-ascend-matmul-quant-and-moe-playbooks-sop.md",
+      "tier": "L2"
+    },
+    "unit-triton-ascend-memory-coalescing-and-ub-gather-staging-workflow": {
+      "bytes": 7438,
+      "category": "workflow",
+      "content_sha256": "851ca141c6f56f03822598d06712100586bc986e335bc18112d8814eafb08873",
+      "domain_path": "compilation/triton/optimizations/memory-and-gather",
+      "estimated_tokens": 1284,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract"
+      ],
+      "path": "compilation/triton/optimizations/memory-and-gather/unit-triton-ascend-memory-coalescing-and-ub-gather-staging-workflow.md",
+      "tier": "L3"
+    },
     "unit-triton-ascend-mfu-roofline-and-camodel-simulator-sop": {
       "bytes": 10757,
       "category": "sop",
@@ -1034,6 +3317,90 @@
       ],
       "path": "compilation/triton-mfu/unit-triton-ascend-mfu-roofline-and-camodel-simulator-sop.md",
       "tier": "L2"
+    },
+    "unit-triton-ascend-norm-rope-activation-and-transform-playbooks-sop": {
+      "bytes": 8502,
+      "category": "sop",
+      "content_sha256": "3984b3c108b2369df3b0888570580d1129db4cbf7d54b0da4b4b63a088c36b6e",
+      "domain_path": "compilation/triton/playbooks/norm-rope-activation",
+      "estimated_tokens": 1533,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+        "unit-triton-ascend-operator-domain-constraints-contract"
+      ],
+      "path": "compilation/triton/playbooks/norm-rope-activation/unit-triton-ascend-norm-rope-activation-and-transform-playbooks-sop.md",
+      "tier": "L2"
+    },
+    "unit-triton-ascend-operator-domain-constraints-contract": {
+      "bytes": 10501,
+      "category": "axiom",
+      "content_sha256": "b6981cff1f792045b58d73a43cd7a5ccb43daedd889bd77b35b68db440173a1b",
+      "domain_path": "compilation/triton/constraints",
+      "estimated_tokens": 1992,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract"
+      ],
+      "path": "compilation/triton/constraints/unit-triton-ascend-operator-domain-constraints-contract.md",
+      "tier": "L1"
+    },
+    "unit-triton-ascend-precision-debug-and-verifier-workflow": {
+      "bytes": 8839,
+      "category": "workflow",
+      "content_sha256": "9a98282d11c3a4860ea3b7bde97f42e57712afbd8dfad2655a637ea64f3193a8",
+      "domain_path": "compilation/triton/migration-and-tooling",
+      "estimated_tokens": 1707,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+        "unit-triton-ascend-operator-domain-constraints-contract"
+      ],
+      "path": "compilation/triton/migration-and-tooling/unit-triton-ascend-precision-debug-and-verifier-workflow.md",
+      "tier": "L3"
+    },
+    "unit-triton-ascend-reduction-sort-and-index-playbooks-sop": {
+      "bytes": 8115,
+      "category": "sop",
+      "content_sha256": "e6dc3ffdc7d0484232ad12b3e6379e265725d89d0b6bfc84dc72ce66cfe3e190",
+      "domain_path": "compilation/triton/playbooks/reduction-and-index",
+      "estimated_tokens": 1418,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract",
+        "unit-triton-ascend-operator-domain-constraints-contract"
+      ],
+      "path": "compilation/triton/playbooks/reduction-and-index/unit-triton-ascend-reduction-sort-and-index-playbooks-sop.md",
+      "tier": "L2"
+    },
+    "unit-triton-ascend-scalar-cmp-to-fp32-vec-and-dot-rewrite-mutator": {
+      "bytes": 7932,
+      "category": "mutator",
+      "content_sha256": "cac107d6d9a24a07e9b3fdee3e7ad36aa02996626ab51dcf117d87281e7e13e2",
+      "domain_path": "compilation/triton/optimizations/cv-pipeline-and-compute",
+      "estimated_tokens": 1496,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-triton-ascend-cv-pipeline-vector-degradation-and-dot-workflow",
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract"
+      ],
+      "path": "compilation/triton/optimizations/cv-pipeline-and-compute/unit-triton-ascend-scalar-cmp-to-fp32-vec-and-dot-rewrite-mutator.md",
+      "tier": "L4"
+    },
+    "unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow": {
+      "bytes": 7397,
+      "category": "workflow",
+      "content_sha256": "d7b1b60c295a243ab24e7b3f2f95c55c931dd47b21410d8b1376272453cefe38",
+      "domain_path": "compilation/triton/optimizations/tiling-and-ub-budget",
+      "estimated_tokens": 1316,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-hardware-and-compiler-constraints-contract"
+      ],
+      "path": "compilation/triton/optimizations/tiling-and-ub-budget/unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow.md",
+      "tier": "L3"
     },
     "unit-triton-constexpr-to-runtime-scalar-specialization-mutator": {
       "bytes": 17496,
