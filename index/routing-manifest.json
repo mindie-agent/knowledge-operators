@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 1.5714589972048998,
+  "build_elapsed_ms": 1.6910829581320286,
   "closure": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
     "unit-ascend-operator-roofline-and-four-view-measurement": [],
@@ -14,20 +14,24 @@
     "unit-rmsnorm-five-stage-ablation-workflow": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-triton-dynamic-scalar-specialization-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ]
   },
-  "generation": "a630fcadbe8c56f369895cb890d075aaa4997ecb3b7ba6103871ce4f78fb18e3",
+  "generation": "41c4d8c8bec3307899f745fe0187fc2f89907bbc8401a6b40f9dab02fe93b150",
   "id_path": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
     "unit-ascend-operator-roofline-and-four-view-measurement": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
     "unit-residual-free-rmsnorm-fastpath": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
-    "unit-rmsnorm-five-stage-ablation-workflow": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md"
+    "unit-rmsnorm-five-stage-ablation-workflow": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md",
+    "unit-triton-dynamic-scalar-specialization-sop": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md"
   },
   "query_budget_excludes_build": true,
   "schema_version": "mindie-routing-manifest/1",
   "token_estimator": "utf8_bytes_div_4_ceiling",
-  "unit_count": 5,
+  "unit_count": 6,
   "units": [
     {
       "category": "axiom",
@@ -329,6 +333,50 @@
           "escalation",
           "reviewed_change",
           "experiment-ledger"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "kernel_language": "triton"
+      },
+      "domain_path": "compilation/triton",
+      "evidence_strength": "single_observation",
+      "id": "unit-triton-dynamic-scalar-specialization-sop",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      ],
+      "path": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://triton-lang.org/main/python-api/generated/triton.jit.html",
+          "https://github.com/triton-lang/triton/blob/v3.2.0/python/triton/runtime/jit.py"
+        ],
+        "source_locator": "https://github.com/triton-lang/triton/blob/v3.2.0/python/triton/runtime/jit.py",
+        "source_type": "source_review",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "Diagnose Triton recompilation across dynamic input lengths",
+      "token_estimate": 333,
+      "triggers": {
+        "error_signatures": [
+          "changing token count causes a new Triton compilation",
+          "first request at a new input length has a latency spike"
+        ],
+        "keywords": [
+          "Triton",
+          "recompilation",
+          "do_not_specialize",
+          "constexpr",
+          "BLOCKS_PER_CORE",
+          "dynamic shape",
+          "warmup"
         ]
       }
     }
