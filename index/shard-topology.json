@@ -30,13 +30,18 @@
     "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
     ]
   },
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 51866,
-      "estimated_tokens": 9377,
+      "bytes": 59501,
+      "estimated_tokens": 10804,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
@@ -49,24 +54,26 @@
         "unit-triton-ascend-constexpr-and-specialization-contract",
         "unit-triton-dynamic-scalar-specialization-sop",
         "unit-triton-recompilation-decision-tree",
-        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
+        "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator"
       ],
-      "units": 10
+      "units": 11
     },
     "domains": [
       {
         "automatic": false,
-        "bytes": 24743,
-        "estimated_tokens": 5225,
+        "bytes": 32381,
+        "estimated_tokens": 6652,
         "exceeds": [],
         "kind": "federation",
         "path": "Reduction",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
           "unit-operator-memory-vs-compute-bottleneck-convergence-workflow",
-          "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+          "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
+          "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator"
         ],
-        "units": 2
+        "units": 3
       },
       {
         "automatic": false,
@@ -85,7 +92,7 @@
       },
       {
         "automatic": false,
-        "bytes": 5340,
+        "bytes": 5337,
         "estimated_tokens": 796,
         "exceeds": [],
         "kind": "federation",
@@ -114,12 +121,12 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 2.399333054199815,
+  "index_build_elapsed_ms": 2.2797499550506473,
   "leaves": [
     {
       "automatic": false,
-      "bytes": 24743,
-      "estimated_tokens": 5225,
+      "bytes": 32381,
+      "estimated_tokens": 6652,
       "exceeds": [
         "estimated_tokens"
       ],
@@ -128,9 +135,10 @@
       "recommended_action": "review_leaf_split",
       "unit_ids": [
         "unit-operator-memory-vs-compute-bottleneck-convergence-workflow",
-        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
+        "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator"
       ],
-      "units": 2
+      "units": 3
     },
     {
       "automatic": false,
@@ -149,7 +157,7 @@
     },
     {
       "automatic": false,
-      "bytes": 5340,
+      "bytes": 5337,
       "estimated_tokens": 796,
       "exceeds": [],
       "kind": "leaf",
@@ -181,17 +189,18 @@
   "two_level_subtrees": [
     {
       "automatic": false,
-      "bytes": 24743,
-      "estimated_tokens": 5225,
+      "bytes": 32381,
+      "estimated_tokens": 6652,
       "exceeds": [],
       "kind": "subtree",
       "path": "Reduction",
       "recommended_action": "review_two_level_subtree_split",
       "unit_ids": [
         "unit-operator-memory-vs-compute-bottleneck-convergence-workflow",
-        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
+        "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator"
       ],
-      "units": 2
+      "units": 3
     },
     {
       "automatic": false,
@@ -210,7 +219,7 @@
     },
     {
       "automatic": false,
-      "bytes": 5340,
+      "bytes": 5337,
       "estimated_tokens": 796,
       "exceeds": [],
       "kind": "subtree",
@@ -238,7 +247,7 @@
       "units": 3
     }
   ],
-  "unit_count": 10,
+  "unit_count": 11,
   "units": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": {
       "bytes": 2511,
@@ -344,12 +353,12 @@
       "tier": "L2"
     },
     "unit-triton-recompilation-decision-tree": {
-      "bytes": 2910,
+      "bytes": 2907,
       "category": "workflow",
-      "content_sha256": "4cde3e0a23c9ef45ddb3109f419796b29b5b220b2d647e9ea69624ee2316cdd5",
+      "content_sha256": "5999b51cbbbbf323a37761f13ba26ad85b87c78ba53ed39bc591859111da88e6",
       "domain_path": "compilation/triton",
       "estimated_tokens": 449,
-      "evidence_strength": "reproduced_empirical",
+      "evidence_strength": "software_contract",
       "inherits_from": [
         "unit-triton-ascend-constexpr-and-specialization-contract",
         "unit-triton-dynamic-scalar-specialization-sop"
@@ -370,6 +379,21 @@
       ],
       "path": "Reduction/unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop.md",
       "tier": "L2"
+    },
+    "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator": {
+      "bytes": 7638,
+      "category": "mutator",
+      "content_sha256": "4e66e7dba5155824be3522193d4f08612d6905b71129cab87ddce6bdff8ba5af",
+      "domain_path": "Reduction",
+      "estimated_tokens": 1427,
+      "evidence_strength": "hypothesis",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "path": "Reduction/unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator.md",
+      "tier": "L4"
     }
   }
 }

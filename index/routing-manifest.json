@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 2.399333054199815,
+  "build_elapsed_ms": 2.2797499550506473,
   "closure": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
     "unit-ascend-operator-roofline-and-four-view-measurement": [],
@@ -31,9 +31,14 @@
     "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
     ]
   },
-  "generation": "b988f3dae6e5b5ff474695f5c2bf882c40be379008f74f1290cc1c6f7e6e1708",
+  "generation": "c67e6aa17641bb9d8b47c779c303b4a3769182f6d1a9df7ffc8e177a933be6e7",
   "id_path": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
     "unit-ascend-operator-roofline-and-four-view-measurement": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
@@ -44,12 +49,13 @@
     "unit-triton-ascend-constexpr-and-specialization-contract": "_common/unit-triton-ascend-constexpr-and-specialization-contract.md",
     "unit-triton-dynamic-scalar-specialization-sop": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md",
     "unit-triton-recompilation-decision-tree": "compilation/triton/unit-triton-recompilation-decision-tree.md",
-    "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop": "Reduction/unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop.md"
+    "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop": "Reduction/unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop.md",
+    "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator": "Reduction/unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator.md"
   },
   "query_budget_excludes_build": true,
   "schema_version": "mindie-routing-manifest/1",
   "token_estimator": "utf8_bytes_div_4_ceiling",
-  "unit_count": 10,
+  "unit_count": 11,
   "units": [
     {
       "category": "axiom",
@@ -530,7 +536,7 @@
         "kernel_language": "triton"
       },
       "domain_path": "compilation/triton",
-      "evidence_strength": "reproduced_empirical",
+      "evidence_strength": "software_contract",
       "id": "unit-triton-recompilation-decision-tree",
       "inherits_from": [
         "unit-triton-ascend-constexpr-and-specialization-contract",
@@ -645,6 +651,90 @@
           "logsumexp",
           "Ascend910B",
           "Ascend910_93"
+        ]
+      }
+    },
+    {
+      "category": "mutator",
+      "conditions": {
+        "dtype": [
+          "bfloat16",
+          "float16"
+        ],
+        "op_family": [
+          "reduction",
+          "norm"
+        ],
+        "output_dtype": [
+          "bfloat16",
+          "float16"
+        ],
+        "reduction_axis": [
+          "last"
+        ],
+        "register_pressure": "headroom",
+        "soc": [
+          "Ascend910B",
+          "Ascend910B1",
+          "Ascend910B2",
+          "Ascend910B3",
+          "Ascend910B4",
+          "Ascend910_93"
+        ],
+        "tail_alignment": "32B"
+      },
+      "domain_path": "Reduction",
+      "evidence_strength": "hypothesis",
+      "id": "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "path": "Reduction/unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator.md",
+      "provenance": {
+        "evidence_refs": [
+          "docs/evidence/l4-vectorized-reduction-cast-fusion-ablation.json",
+          "docs/evidence/c4-case-block-v2-ablation.json",
+          "docs/evidence/c4-case-block-v2-stage-acceptance.json"
+        ],
+        "experiment_status": "not_run_source_only",
+        "source_digest": "d3db32071a28dd317956aa49494e81b3aeaf1da8159aa1bdb39232ef81844a6b",
+        "source_locator": "docs/evidence/l4-vectorized-reduction-cast-fusion-ablation.json",
+        "source_type": "ablation_design_receipt",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L4",
+      "title": "L4 mutator: vectorized bf16 reduction with fp32 accumulation and fused store cast",
+      "token_estimate": 1427,
+      "triggers": {
+        "error_signatures": [
+          "a bf16 or fp16 reduction casts a partial sum back to half between stages",
+          "the vectorized load improves the aligned prefix but the tail drives the error or NaN",
+          "fp32 partials spill to GM or an intermediate fp32 output tensor is materialized",
+          "split-K atomics make repeated runs of the same input return different bytes",
+          "a candidate is faster on one shape but regresses the workspace or warm-server guard"
+        ],
+        "keywords": [
+          "vectorized reduction",
+          "fp32 accumulation",
+          "cast fusion",
+          "split-K",
+          "UB alignment",
+          "tail mask",
+          "bfloat16",
+          "float16",
+          "Ascend910B",
+          "Ascend910_93",
+          "Triton-Ascend",
+          "leave-one-out",
+          "guard workload"
         ]
       }
     }

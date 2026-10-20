@@ -1,0 +1,68 @@
+{
+  "schema": "mindie-l4-ablation-design/1",
+  "domain": "operators",
+  "candidate_id": "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator",
+  "candidate_family": "vectorized-bf16-fp32-accumulation-cast-fusion",
+  "sibling_l4_family": "residual-free-rmsnorm-native-fastpath",
+  "corpus_parent_revision": "knowledge-operators@7551671",
+  "experiment_status": "not_run_source_only",
+  "measurement_claims": [],
+  "reason": "The transformation and its ablation contract are reviewed from the pinned Ascend vector-reduction contract; no paired timing or hidden-input campaign was executed for this new family, so this receipt establishes no speedup.",
+  "conditions": {
+    "soc": ["Ascend910B", "Ascend910B1", "Ascend910B2", "Ascend910B3", "Ascend910B4", "Ascend910_93"],
+    "dtype": ["bfloat16", "float16"],
+    "output_dtype": ["bfloat16", "float16"],
+    "op_family": ["reduction", "norm"],
+    "reduction_axis": ["last"],
+    "tail_alignment": "32B",
+    "register_pressure": "headroom"
+  },
+  "factors": [
+    {
+      "id": "vectorized_bf16_load_fp32_accumulate",
+      "kind": "performance",
+      "change": "Load the reduction tile through the vectorized 32 B UB path, widen bf16/fp16 lanes to fp32 before the first accumulation, and keep every partial sum in fp32.",
+      "depends_on": []
+    },
+    {
+      "id": "single_store_cast_fusion",
+      "kind": "performance",
+      "change": "Fuse the final fp32 combine and the single cast to out_dtype at the store; do not materialize an intermediate fp32 GM tensor.",
+      "depends_on": ["vectorized_bf16_load_fp32_accumulate"]
+    },
+    {
+      "id": "two_stage_splitk_tail_guard",
+      "kind": "correctness",
+      "change": "When the reduction crosses the tile boundary, split the aligned prefix deterministically across stages, combine stage partials in fp32, and mask the unaligned tail with the reduction identity.",
+      "depends_on": ["vectorized_bf16_load_fp32_accumulate"]
+    }
+  ],
+  "leave_one_out_arms": [
+    {"arm": "full_candidate", "removed": [], "purpose": "measure the complete retained combination"},
+    {"arm": "minus_vectorized_load", "removed": ["vectorized_bf16_load_fp32_accumulate"], "purpose": "test the vectorized-load main effect"},
+    {"arm": "minus_store_cast_fusion", "removed": ["single_store_cast_fusion"], "purpose": "separate store/cast fusion from accumulation"},
+    {"arm": "minus_splitk_tail_guard", "removed": ["two_stage_splitk_tail_guard"], "purpose": "must fail the tail correctness gate, not merely slow down"}
+  ],
+  "guard_workloads": [
+    "aligned_row_bytes_mod_32_eq_0",
+    "unaligned_tail_row_bytes_mod_32_ne_0",
+    "tile_boundary_crossing_reduction",
+    "workspace_high_water_mark",
+    "graph_capture_and_replay_shape_stability",
+    "warm_server_repeated_call"
+  ],
+  "fallback_boundary": {
+    "unaligned_tail": "If the tail cannot be masked with the correct identity, do not take the fused path; use the L2 reduction SOP tail-masking path and keep the fallback visible.",
+    "register_pressure": "If the fp32 accumulator and vector tile spill or the UB tile no longer fits, abandon the fused path rather than lowering accumulation precision.",
+    "static_shape": "If the workload is a fixed shape with no tile-boundary crossing, the split-K factor is not applicable; retain the simpler vectorized path."
+  },
+  "heldout_buckets": ["both_pass", "opt_regression", "both_fail", "opt_improvement", "evaluation_error"],
+  "retention_rule": "Only both_pass hidden cases with valid paired timings enter a speedup ratio; guard workloads are evaluated separately and a local gain cannot override a guard regression.",
+  "source_references": [
+    "Reduction/unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop.md",
+    "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
+    "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
+    "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
+    "docs/evidence/c4-case-block-v2-ablation.json"
+  ]
+}
