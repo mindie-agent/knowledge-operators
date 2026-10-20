@@ -1,0 +1,137 @@
+{
+  "schema": "mindie-l4-ablation-design/1",
+  "domain": "operators",
+  "candidate_id": "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator",
+  "candidate_family": "fia-gqa-host-tiling-sink-bn2s-layout-splitkv-lse",
+  "sibling_l4_family": "residual-free-rmsnorm-native-fastpath",
+  "corpus_parent_revision": "knowledge-operators@24ed736",
+  "experiment_status": "not_run_source_only",
+  "measurement_claims": [],
+  "reason": "The three transformations and their separation are reviewed from the pinned FIA device-tiling-sink, GQA/BN2S layout and A5 FlashMLA source families and from the installed operator contracts. No paired timing, hidden-input campaign or leave-one-out run was executed for this combination, so this receipt establishes no speedup and no cross-SOC applicability.",
+  "source_worktrees": [
+    "fia-device-tiling-sink",
+    "fia-gqa-bn2s-layout",
+    "a5-flash-mla-kv-cache"
+  ],
+  "conditions": {
+    "op_family": ["attention", "fia"],
+    "soc": ["Ascend910B", "Ascend910_93", "Ascend950"],
+    "dtype": ["bfloat16", "float16"]
+  },
+  "correctness_prerequisites": [
+    "gqa_mask_expanded_by_group",
+    "inverse_head_order_preserved",
+    "softmax_lse_fp32",
+    "kv_tail_masked_before_combine",
+    "block_table_rows_valid_for_padded_requests",
+    "padding_request_length_clamped_to_at_least_one"
+  ],
+  "factors": [
+    {
+      "id": "device_tiling_metadata_sink",
+      "kind": "performance",
+      "change": "Remove the per-step host traversal of actual_seq_lengths_kv and build FIA/FlashMLA tiling metadata on device from persistent length buffers; keep the host list only for backends whose schema requires SymInt[].",
+      "depends_on": [],
+      "signals": [
+        "host .tolist()/.item() over seq_lens in the replay path",
+        "graph re-capture when only sequence lengths changed",
+        "host gap grows with num_reqs under ACLGraph"
+      ]
+    },
+    {
+      "id": "gqa_group_head_fold_bn2s_view",
+      "kind": "performance",
+      "change": "View contiguous BNSD query [B, N_q, S_q, D] as [B, N_kv, G*S_q, D] with G = N_q / N_kv and feed Cube BMM1 directly, instead of materializing a transpose+contiguous GM copy; expand the causal mask by G and invert the view on output.",
+      "depends_on": [],
+      "signals": [
+        "Transpose or TensorMove task before the first Cube task",
+        "query-sized GM copy",
+        "high aic_mte2_time relative to the query bytes"
+      ]
+    },
+    {
+      "id": "adaptive_kv_split_lse_fp32_combine",
+      "kind": "performance",
+      "change": "When B * N_kv < num_cores, split the KV axis so the product reaches the core count, compute partial out and lse per shard, mask the tail block, and combine with the online-softmax formula in fp32 with a deterministic order.",
+      "depends_on": ["gqa_mask_expanded_by_group"],
+      "signals": [
+        "B * N_kv below GetCoreNumAic()",
+        "low aic_mac_time and aiv_time with long wall time",
+        "Block Dim below the core count on a long-KV small-batch decode"
+      ]
+    }
+  ],
+  "leave_one_out_arms": [
+    {
+      "arm": "full_candidate",
+      "removed": [],
+      "purpose": "measure the complete retained combination"
+    },
+    {
+      "arm": "minus_device_tiling_sink",
+      "removed": ["device_tiling_metadata_sink"],
+      "purpose": "separate host tiling and graph re-capture cost from the device-side layout and split factors"
+    },
+    {
+      "arm": "minus_bn2s_fold",
+      "removed": ["gqa_group_head_fold_bn2s_view"],
+      "purpose": "measure the transpose+contiguous copy that the fold removes"
+    },
+    {
+      "arm": "minus_splitkv_lse",
+      "removed": ["adaptive_kv_split_lse_fp32_combine"],
+      "purpose": "measure the occupancy gain against the workspace and fp32 combine cost"
+    },
+    {
+      "arm": "minus_sink_and_fold",
+      "removed": ["device_tiling_metadata_sink", "gqa_group_head_fold_bn2s_view"],
+      "purpose": "interaction check between host tiling and layout"
+    },
+    {
+      "arm": "minus_sink_and_split",
+      "removed": ["device_tiling_metadata_sink", "adaptive_kv_split_lse_fp32_combine"],
+      "purpose": "interaction check between host tiling and the split-KV reduction"
+    },
+    {
+      "arm": "minus_fold_and_split",
+      "removed": ["gqa_group_head_fold_bn2s_view", "adaptive_kv_split_lse_fp32_combine"],
+      "purpose": "interaction check between layout and the split-KV reduction"
+    }
+  ],
+  "guard_workloads": [
+    "B_times_Nkv_less_than_cores",
+    "B_times_Nkv_greater_or_equal_to_cores",
+    "kv_tail_not_multiple_of_block_size",
+    "gqa_group_eq_1",
+    "gqa_group_gt_1",
+    "num_reqs_at_padded_graph_maximum",
+    "zero_length_padded_request",
+    "workspace_high_water_mark",
+    "graph_capture_and_replay_shape_stability",
+    "warm_server_repeated_call",
+    "c8_int8_kv_cache_variant_when_in_scope"
+  ],
+  "fallback_boundary": {
+    "host_list_mandatory": "If the installed backend validates actual_seq_lengths_kv as SymInt[] and cannot consume a device tensor, keep the host list and re-capture per shape; do not claim the device tiling sink.",
+    "non_viewable_strides": "If N_q != N_kv * G, or the BSND/NZ stride cannot express [B, N_kv, G*S_q, D], do not force a view; materialize outside the hot path or retain the baseline copy.",
+    "mask_not_expandable": "If the operator mask cannot be tiled by G, the fold changes semantics; fall back to the ungrouped path.",
+    "short_kv_or_enough_parallelism": "If B * N_kv >= num_cores or S_kv is below the minimum profitable shard, do not split.",
+    "no_fp32_lse": "If softmax_lse is not exposed or only bf16 is available, do not form the fp32 combine; a bf16 combine is not equivalent.",
+    "bit_exact_requirement": "Split-KV changes the reduction order; if the acceptance criterion is bit-exact against a single-pass reference, the split factor is out of scope."
+  },
+  "heldout_buckets": ["both_pass", "opt_regression", "both_fail", "opt_improvement", "evaluation_error"],
+  "retention_rule": "Only both_pass hidden cases with valid paired timings enter a speedup ratio; guard workloads are evaluated separately and a local gain cannot override a guard regression. A candidate that changes correctness is treated as a prerequisite failure, not as a performance factor.",
+  "source_references": [
+    "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
+    "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
+    "attention/fia-mla/unit-ascend-fused-infer-attention-and-flash-mla-c8-sop.md",
+    "attention/fia-mla/unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator.md",
+    "docs/evidence/l4-fia-gqa-host-tiling-sink-ablation.json"
+  ],
+  "transcript_families": [
+    "a5-fia",
+    "fia_gqa",
+    "flash_mla",
+    "a5-flash-comm"
+  ]
+}

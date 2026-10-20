@@ -5,7 +5,7 @@ revision: 1
 tier: L3
 category: workflow
 domain_path: compilation/triton
-evidence_strength: reproduced_empirical
+evidence_strength: software_contract
 title: Triton recompilation decision tree
 conditions:
   kernel_language: triton

@@ -1,8 +1,39 @@
 {
-  "build_elapsed_ms": 2.399333054199815,
+  "build_elapsed_ms": 13.143333024345338,
   "closure": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
+    "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
+    "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop"
+    ],
+    "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+    ],
+    "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
     "unit-ascend-operator-roofline-and-four-view-measurement": [],
+    "unit-ascendc-aicore-exception-and-precision-divergence-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+    ],
+    "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
@@ -21,8 +52,22 @@
       "unit-ascend-operator-roofline-and-four-view-measurement"
     ],
     "unit-triton-ascend-constexpr-and-specialization-contract": [],
+    "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
+    "unit-triton-constexpr-to-runtime-scalar-specialization-mutator": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-triton-dynamic-scalar-specialization-sop"
+    ],
     "unit-triton-dynamic-scalar-specialization-sop": [
       "unit-triton-ascend-constexpr-and-specialization-contract"
+    ],
+    "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop"
     ],
     "unit-triton-recompilation-decision-tree": [
       "unit-triton-ascend-constexpr-and-specialization-contract",
@@ -31,25 +76,41 @@
     "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
     ]
   },
-  "generation": "b988f3dae6e5b5ff474695f5c2bf882c40be379008f74f1290cc1c6f7e6e1708",
+  "generation": "6caecbaf5ac5a6a568038aad2994e004551809da200b176738da7007e2992aa3",
   "id_path": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
+    "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": "_common/unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms.md",
+    "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator": "attention/fia-mla/unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator.md",
+    "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop": "attention/fia-mla/unit-ascend-fused-infer-attention-and-flash-mla-c8-sop.md",
+    "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop": "fusion/moe-gmm/unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop.md",
     "unit-ascend-operator-roofline-and-four-view-measurement": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
+    "unit-ascendc-aicore-exception-and-precision-divergence-workflow": "ascendc/core/unit-ascendc-aicore-exception-and-precision-divergence-workflow.md",
+    "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop": "ascendc/core/unit-ascendc-tiling-pipe-double-buffer-and-sync-sop.md",
+    "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop": "matmul/catlass-tilelang/unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop.md",
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
     "unit-operator-memory-vs-compute-bottleneck-convergence-workflow": "Reduction/unit-operator-memory-vs-compute-bottleneck-convergence-workflow.md",
     "unit-residual-free-rmsnorm-fastpath": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
     "unit-rmsnorm-five-stage-ablation-workflow": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md",
     "unit-triton-ascend-constexpr-and-specialization-contract": "_common/unit-triton-ascend-constexpr-and-specialization-contract.md",
+    "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop": "compilation/triton/unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop.md",
+    "unit-triton-constexpr-to-runtime-scalar-specialization-mutator": "compilation/triton/unit-triton-constexpr-to-runtime-scalar-specialization-mutator.md",
     "unit-triton-dynamic-scalar-specialization-sop": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md",
+    "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow": "compilation/triton/unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow.md",
     "unit-triton-recompilation-decision-tree": "compilation/triton/unit-triton-recompilation-decision-tree.md",
-    "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop": "Reduction/unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop.md"
+    "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop": "Reduction/unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop.md",
+    "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator": "Reduction/unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator.md"
   },
   "query_budget_excludes_build": true,
   "schema_version": "mindie-routing-manifest/1",
   "token_estimator": "utf8_bytes_div_4_ceiling",
-  "unit_count": 10,
+  "unit_count": 21,
   "units": [
     {
       "category": "axiom",
@@ -110,6 +171,325 @@
       }
     },
     {
+      "category": "axiom",
+      "conditions": {
+        "dtype": [
+          "bfloat16",
+          "float16",
+          "float32",
+          "int8",
+          "fp8_e4m3fn"
+        ],
+        "soc": [
+          "Ascend950",
+          "Ascend950DT",
+          "Ascend950PR",
+          "Ascend910B",
+          "Ascend910_93"
+        ]
+      },
+      "domain_path": "_common",
+      "evidence_strength": "hardware_spec",
+      "id": "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      ],
+      "path": "_common/unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/cann/cannbot-skills/blob/bb96c9c595c7a8e96745d365291769dc48319c22/plugins-community/ascendc-port-orchestrator/kb/okf/runbooks/hardware/target-ascend950pr.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/bb96c9c595c7a8e96745d365291769dc48319c22/plugins-community/ascendc-port-orchestrator/kb/okf/runbooks/hardware/target-ascend910c.md",
+          "https://gitcode.com/cann/asc-devkit/blob/639b2b5c1031188107d23d785d52b935f1b4f13b/docs/zh/guide/cross_gen_migration_guide/3510_arch_migration/2201_to_3510_arch_changes.md",
+          "https://gitcode.com/cann/asc-devkit/blob/639b2b5c1031188107d23d785d52b935f1b4f13b/docs/zh/guide/cross_gen_migration_guide/instructions_for_new_features/3510_new_features.md"
+        ],
+        "source_locator": "CANN AscendC platform and cross-generation migration contracts; A5 bring-up topology and memory observations",
+        "source_type": "hardware_architecture_specification",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L1",
+      "title": "Ascend A5 (950/950DT/950PR) and 910B/910_93 UB, L1, workspace and AIC-AIV synchronization axioms",
+      "token_estimate": 2135,
+      "triggers": {
+        "error_signatures": [
+          "a kernel built with a 256 KB UB assumption runs out of UB or silently writes past the A3 192 KB budget",
+          "an A5 kernel underfills the device because it hardcodes 20 or 24 A2/A3 Cube cores",
+          "a pure AIV kernel writes the raw workspace pointer and fails with 507035 / MTE DDR out of range",
+          "a Mix kernel deadlocks after a CrossCoreSetFlag because the peer uses the wrong mode or never reaches the wait",
+          "an npu-smi or rank-mapping script treats A5 as two dies and parses Phy-ID 0..15"
+        ],
+        "keywords": [
+          "Ascend950",
+          "Ascend950DT",
+          "Ascend950PR",
+          "Ascend910B",
+          "Ascend910_93",
+          "A5",
+          "A3",
+          "dual-die",
+          "unified buffer",
+          "UB",
+          "L1",
+          "L0C",
+          "AIC",
+          "AIV",
+          "Cube",
+          "Vector",
+          "CrossCoreSetFlag",
+          "CrossCoreWaitFlag",
+          "CrossCoreSync",
+          "SyncAll",
+          "workspace",
+          "tiling ABI",
+          "GetBlockNum",
+          "GetCoreNumAiv",
+          "GetCoreNumAic"
+        ]
+      }
+    },
+    {
+      "category": "mutator",
+      "conditions": {
+        "dtype": [
+          "bfloat16",
+          "float16"
+        ],
+        "op_family": [
+          "attention",
+          "fia"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "attention/fia-mla",
+      "evidence_strength": "reproduced_empirical",
+      "id": "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop"
+      ],
+      "path": "attention/fia-mla/unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator.md",
+      "provenance": {
+        "evidence_refs": [
+          "docs/evidence/l4-fia-gqa-host-tiling-sink-ablation.json"
+        ],
+        "experiment_status": "not_run_source_only",
+        "source_locator": "docs/evidence/l4-fia-gqa-host-tiling-sink-ablation.json",
+        "source_type": "ablation_design_receipt",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L4",
+      "title": "FIA GQA device tiling sink, BN2S head-fold view and split-KV fp32 LSE combine",
+      "token_estimate": 2783,
+      "triggers": {
+        "error_signatures": [
+          "ACLGraph replay still performs a host traversal of actual_seq_lengths_kv or a per-step .tolist()/.item()",
+          "a Transpose or TensorMove of the query is scheduled before the Cube BMM1 and its bytes equal the query size",
+          "only a fraction of the AIC/AIV cores are busy when B * num_kv_heads is smaller than the core count",
+          "split-KV partial outputs are combined in bf16, or softmax_lse is not fp32",
+          "a padded zero-length request causes a stale block-table row or an empty required input in the graph"
+        ],
+        "keywords": [
+          "FIA",
+          "GQA",
+          "host tiling sink",
+          "device tiling",
+          "host-device sync",
+          "actual_seq_lengths_kv",
+          "ACLGraph",
+          "BN2S",
+          "BNSD",
+          "head fold",
+          "transpose elimination",
+          "split-KV",
+          "softmax_lse",
+          "fp32 combine",
+          "paged attention",
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "op_family": [
+          "attention",
+          "fia",
+          "flash_mla"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "attention/fia-mla",
+      "evidence_strength": "reproduced_empirical",
+      "id": "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "attention/fia-mla/unit-ascend-fused-infer-attention-and-flash-mla-c8-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/cann/ops-transformer/blob/master/attention/fused_infer_attention_score/docs/aclnnFusedInferAttentionScoreV5.md",
+          "https://gitcode.com/cann/ops-transformer/blob/master/attention/flash_mla/docs/torchapi_flash_mla.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea/ops/ascendc-precision-debug/SKILL.md",
+          "https://gitcode.com/cann/cann-recipes-infer",
+          "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+        ],
+        "source_locator": "FIA aclnn V2/V5 and flash_mla operator contracts; A5/A3 attention integration transcripts (a5-fia, fia_gqa, flash_mla, C8 KV cache)",
+        "source_type": "reproduced_operator_integration_and_public_contract_review",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "FIA and FlashMLA five-step SOP: TND/BNSD layout, paged KV, C8 dequant, MLA split-RoPE and graph-stable tiling",
+      "token_estimate": 5191,
+      "triggers": {
+        "error_signatures": [
+          "actual_seq_lengths_kv is passed as a Tensor on the torch.ops.npu/npugraph_ex path and fails schema validation",
+          "block_table first dimension does not equal num_reqs and Ascend950 FIA rejects the shape",
+          "a paged KV cache with a hole or an out-of-range block index reads another request's data",
+          "C8 int8 KV cache returns NaN or a systematically scaled output because the antiquant scale axis follows the wrong layout",
+          "MLA decode passes a merged 576-dim query to an operator that expects split nope/rope inputs",
+          "split-KV partial outputs are combined in bf16 and the result drifts at long context",
+          "ACLGraph replay reuses a host list or a stale metadata buffer after the sequence lengths change"
+        ],
+        "keywords": [
+          "FIA",
+          "FusedInferAttentionScore",
+          "flash_mla",
+          "FlashMLA",
+          "TND",
+          "NTD",
+          "BNSD",
+          "BSND",
+          "BSH",
+          "GQA",
+          "paged attention",
+          "block_table",
+          "block_size",
+          "actual_seq_lengths",
+          "actual_seq_lengths_kv",
+          "C8",
+          "int8 KV cache",
+          "antiquant_scale",
+          "antiquant_offset",
+          "per-channel",
+          "per-tensor",
+          "MLA",
+          "kv_lora_rank",
+          "qk_rope_head_dim",
+          "query_rope",
+          "key_rope",
+          "softmax_lse",
+          "split-KV",
+          "ACLGraph"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "op_family": [
+          "grouped_matmul",
+          "moe",
+          "swiglu",
+          "matmul"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "fusion/moe-gmm",
+      "evidence_strength": "reproduced_empirical",
+      "id": "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "fusion/moe-gmm/unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/cann/ops-transformer/blob/master/gmm/grouped_matmul/docs/aclnnGroupedMatmulV5.md",
+          "https://gitcode.com/cann/ops-transformer/blob/master/gmm/grouped_matmul/docs/GroupedMatmul算子设计介绍.md",
+          "https://gitcode.com/cann/ops-transformer/blob/master/gmm/grouped_matmul_swiglu_quant_v2/docs/torchapi_grouped_matmul_swiglu_quant.md",
+          "https://gitcode.com/cann/cann-recipes-infer",
+          "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+        ],
+        "source_locator": "GroupedMatmul aclnn V4/V5 and grouped_matmul_swiglu_quant contracts; MoE GMM/SwiGLU/W8A8/W4A8/W4A16/MC2 integration transcripts",
+        "source_type": "reproduced_operator_integration_and_public_contract_review",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "GroupedMatmul, SwiGLU and MC2 fusion SOP: split contracts, zero-token experts, NZ weights and Cube/Vector profiling",
+      "token_estimate": 3960,
+      "triggers": {
+        "error_signatures": [
+          "group_list_type=0 is passed to the kernel but the list contains per-expert counts, so every expert after the first reads the wrong segment",
+          "a zero-token expert reads the previous expert's tokens or produces NaN in the dynamic-quant scale",
+          "a small-M tail (M_e < 16) underfills the Cube tile and the last rows are stale or unmasked",
+          "GMM reads a K-dim-packed int4 weight and returns a layout-mismatch error or wrong values",
+          "the unfused path materializes separate gate and up tensors in GM and doubles the activation traffic",
+          "Cube is starved on weights while Vector is idle, or the SwiGLU epilogue makes the chain Vector-bound"
+        ],
+        "keywords": [
+          "GroupedMatmul",
+          "GMM",
+          "npu_grouped_matmul",
+          "split_item",
+          "group_list_type",
+          "group_list",
+          "MoE",
+          "SwiGLU",
+          "npu_swiglu",
+          "dynamic quant",
+          "W8A8",
+          "W4A8",
+          "W4A16",
+          "NZ",
+          "Fractal_NZ",
+          "QuantBatchMatmul",
+          "MC2",
+          "all_gather_base_mm",
+          "mm_reduce_scatter_base",
+          "alltoallv_gmm",
+          "gmm_alltoallv",
+          "msprof",
+          "PipeUtilization"
+        ]
+      }
+    },
+    {
       "category": "measurement",
       "conditions": {
         "dtype": [
@@ -145,8 +525,8 @@
       },
       "revision": 2,
       "tier": "L1",
-      "title": "Ascend operator measurement and four-view roofline contract",
-      "token_estimate": 348,
+      "title": "Ascend operator timing and roofline measurement baseline",
+      "token_estimate": 372,
       "triggers": {
         "error_signatures": [
           "a speedup is claimed without synchronized before/after timing or without warmup exclusion",
@@ -166,6 +546,249 @@
           "aicore_time",
           "ub_to_gm",
           "l2_cache_hit_rate"
+        ]
+      }
+    },
+    {
+      "category": "workflow",
+      "conditions": {
+        "kernel_language": "ascendc",
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "ascendc/core",
+      "evidence_strength": "reproduced_empirical",
+      "id": "unit-ascendc-aicore-exception-and-precision-divergence-workflow",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "ascendc/core/unit-ascendc-aicore-exception-and-precision-divergence-workflow.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/cann/cannbot-skills/blob/502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea/ops/ascendc-crash-debug/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea/ops/ascendc-precision-debug/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea/ops/ascendc-sync-audit/SKILL.md",
+          "https://gitcode.com/cann/cannbot-knowledge",
+          "https://gitcode.com/Ascend/agent-skills",
+          "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+          "unit-ascend-operator-roofline-and-four-view-measurement"
+        ],
+        "source_locator": "CANN AscendC crash, precision and sync-audit runbooks; field reproduction of 507015/507035, queue deadlock and bf16 tail divergence",
+        "source_type": "reproduced_debug_campaign_and_public_runbook_review",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L3",
+      "title": "AscendC AICore exception, hang and numerical-divergence four-stage triage workflow",
+      "token_estimate": 4241,
+      "triggers": {
+        "error_signatures": [
+          "aclrtSynchronizeStream returns 507015 (AICore timeout or trap) or 507035 (vector core exception)",
+          "the kernel hangs in EnQue, DeQue, WaitFlag or CrossCoreWaitFlag and never reaches the next PRINTF",
+          "the first tile is correct and later tiles contain garbage, inf or NaN",
+          "the aligned prefix is correct but the tail is wrong near a 32 B or 256 B boundary",
+          "eager output looks correct but ACLGraph replay diverges or fails to capture",
+          "EZ9999 appears during tiling or graph compilation without a device-side crash"
+        ],
+        "keywords": [
+          "AscendC",
+          "AICore",
+          "507015",
+          "507035",
+          "EZ9999",
+          "hang",
+          "deadlock",
+          "EnQue",
+          "DeQue",
+          "WaitFlag",
+          "507035 errcode 82",
+          "507035 errcode 95",
+          "ICPU_RUN_KF",
+          "CPU twin",
+          "tikicpulib",
+          "AscendC::PRINTF",
+          "DumpTensor",
+          "msaicerr",
+          "mssanitizer",
+          "msprof",
+          "PipeUtilization",
+          "MemoryUB",
+          "NaN",
+          "tail corruption",
+          "bf16 accumulation drift"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "kernel_language": "ascendc",
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "ascendc/core",
+      "evidence_strength": "software_contract",
+      "id": "unit-ascendc-tiling-pipe-double-buffer-and-sync-sop",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "ascendc/core/unit-ascendc-tiling-pipe-double-buffer-and-sync-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/cann/cannbot-skills/blob/502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea/ops/ascendc-sync-audit/SKILL.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea/ops/ascendc-ut-develop/references/ut-guide/op-kernel-ut-guide.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea/ops/torch-ascendc-op-extension/routes/aclnn-registry.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea/graph/torch-custom-ops-guide/SKILL.md",
+          "https://gitcode.com/cann/cannbot-knowledge",
+          "https://gitcode.com/Ascend/agent-skills",
+          "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+        ],
+        "source_locator": "CANN AscendC programming and runbook contracts; AscendC operator-development and performance-optimization skill contracts; user AscendC transcripts",
+        "source_type": "public_software_contract_review_and_transcript_distillation",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "AscendC kernel SOP: host tiling, TPipe/TQue double buffering, queue lifecycle, cross-core handoff and custom-op packaging",
+      "token_estimate": 3937,
+      "triggers": {
+        "error_signatures": [
+          "host tiling passes but the kernel fails with 507035 or writes an all-zero output because the UB ledger omitted double buffering",
+          "the last tile is copied with plain DataCopy and the shape is not a multiple of 32 B",
+          "a kernel hangs in AllocTensor, EnQue or DeQue because a Freed slot never returns",
+          "a Mix kernel deadlocks at CrossCoreWaitFlag because the flag mode, pipe or participant set differs from the producer",
+          "a custom op works in eager mode but fails torch.compile because no Meta implementation is registered"
+        ],
+        "keywords": [
+          "AscendC",
+          "tiling",
+          "TilingFunc",
+          "usedCoreNum",
+          "singleCoreLen",
+          "tileLen",
+          "DataCopyPad",
+          "SetVectorMask",
+          "TPipe",
+          "TQue",
+          "BUFFER_NUM",
+          "double buffer",
+          "AllocTensor",
+          "FreeTensor",
+          "EnQue",
+          "DeQue",
+          "PipeBarrier",
+          "SetFlag",
+          "WaitFlag",
+          "CrossCoreSetFlag",
+          "CrossCoreWaitFlag",
+          "SyncAll",
+          "aclnn",
+          "GetWorkspaceSize",
+          "TORCH_LIBRARY",
+          "Meta",
+          "FakeTensor"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "kernel_language": [
+          "catlass",
+          "tilelang",
+          "ascendc"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "matmul/catlass-tilelang",
+      "evidence_strength": "software_contract",
+      "id": "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "matmul/catlass-tilelang/unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/cann/cannbot-skills/blob/502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea/ops/catlass-op-design/references/architecture/00-hardware-arch.md",
+          "https://gitcode.com/cann/cannbot-skills/blob/502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea/ops/catlass-op-design/references/custom-epilogue.md",
+          "https://gitcode.com/cann/cannbot-skills",
+          "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/triton_api/Linear_Algebra_Ops/dot.md",
+          "https://gitcode.com/Ascend/AscendNPU-IR"
+        ],
+        "source_locator": "https://gitcode.com/cann/cannbot-skills/blob/502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea/ops/catlass-op-design/references/architecture/00-hardware-arch.md",
+        "source_revision": "502e3ed33f1440aa01bdc5a5bd396e4bf539c9ea",
+        "source_type": "public_software_contract_review",
+        "supersedes": [],
+        "supporting_source_revisions": [
+          "c22984baa55e1506eadd7c72955d9bf669b1c959",
+          "d2a6661365ef65ca738cb66299449b2740c857eb"
+        ]
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "CATLASS and TileLang-Ascend design SOP: template choice, L1/L0/UB tiling, L2 swizzle, AIC-AIV epilogue and Cube utilization",
+      "token_estimate": 4401,
+      "triggers": {
+        "error_signatures": [
+          "a CATLASS or TileLang GEMM is slower than the aclnn baseline despite a larger tile",
+          "the L1/L0/UB byte budget is exceeded or a tile is silently spilled",
+          "a 512 B L1 descriptor or 32 B UB DMA is misaligned",
+          "large-N GEMM or MLA loses L2 hit rate after a row-major block schedule",
+          "a fused epilogue writes the whole M by N fp32 matrix to GM and reads it back",
+          "AIC and AIV deadlock around CrossCoreSetFlag or CrossCoreWaitFlag",
+          "a SwiGLU or gated epilogue is wrong only when N exceeds one L1 N-tile",
+          "a large speedup is claimed while aic_mac_ratio is low or correctness fails"
+        ],
+        "keywords": [
+          "CATLASS",
+          "TileLang-Ascend",
+          "AscendC",
+          "GEMM",
+          "Grouped GEMM",
+          "MLA",
+          "FlashAttention",
+          "L1",
+          "L0A",
+          "L0B",
+          "L0C",
+          "UB",
+          "BlockSwizzle",
+          "Morton",
+          "L2 cache",
+          "CrossCoreSetFlag",
+          "epilogue fusion",
+          "aic_mac_ratio",
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
         ]
       }
     },
@@ -353,8 +976,8 @@
       },
       "revision": 7,
       "tier": "L4",
-      "title": "L4 mutator: residual-free gated RMSNorm native fastpath for Ascend910B",
-      "token_estimate": 798,
+      "title": "Residual-free gated RMSNorm native fastpath for Ascend910B",
+      "token_estimate": 795,
       "triggers": {
         "error_signatures": [
           "residual-free gated RMSNorm falls back to separate RmsNorm, Sigmoid and Mul operations",
@@ -481,6 +1104,147 @@
     {
       "category": "sop",
       "conditions": {
+        "kernel_language": "triton",
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "compilation/triton",
+      "evidence_strength": "software_contract",
+      "id": "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop",
+      "inherits_from": [
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      ],
+      "inherits_from_closure": [
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      ],
+      "path": "compilation/triton/unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/debug_guide/debugging.md",
+          "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/triton_api/Programming_Model/program_id.md",
+          "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/triton_api/Atomic_Ops/atomic_add.md",
+          "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/triton_api/Comparing_Ops/eq.md",
+          "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/triton_api/Linear_Algebra_Ops/dot.md",
+          "https://github.com/vllm-project/vllm-ascend/issues/3548"
+        ],
+        "source_locator": "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/debug_guide/debugging.md",
+        "source_revision": "c22984baa55e1506eadd7c72955d9bf669b1c959",
+        "source_type": "public_software_contract_review",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "Triton-Ascend lowering SOP: UB budget, CoreDim ceiling, int1 storage and GPU-intrinsic replacement",
+      "token_estimate": 4205,
+      "triggers": {
+        "error_signatures": [
+          "ub overflow, requires N bits while M bits available",
+          "unsupported AST node type Break or Continue",
+          "unsupported type bool, uint8, uint64 or fp64",
+          "coreDim=... can't be greater than UINT16_MAX",
+          "invalid CoreDim",
+          "failed to legalize operation 'tt.advance'",
+          "unsupported stride pattern for transpose",
+          "misaligned memory access",
+          "a CUDA-only import or inline PTX reaches the Triton-Ascend compiler"
+        ],
+        "keywords": [
+          "Triton-Ascend",
+          "BiShengIR",
+          "HIVM",
+          "ub overflow",
+          "UB",
+          "CoreDim",
+          "65535",
+          "grid",
+          "int1",
+          "bool",
+          "atomic_add",
+          "tl.dot",
+          "32-byte alignment",
+          "512-byte alignment",
+          "msprof",
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      }
+    },
+    {
+      "category": "mutator",
+      "conditions": {
+        "kernel_language": "triton",
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ],
+        "workload": "dynamic_shape"
+      },
+      "domain_path": "compilation/triton",
+      "evidence_strength": "reproduced_empirical",
+      "id": "unit-triton-constexpr-to-runtime-scalar-specialization-mutator",
+      "inherits_from": [
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-dynamic-scalar-specialization-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-dynamic-scalar-specialization-sop"
+      ],
+      "path": "compilation/triton/unit-triton-constexpr-to-runtime-scalar-specialization-mutator.md",
+      "provenance": {
+        "evidence_refs": [
+          "docs/evidence/l4-triton-constexpr-runtime-scalar-ablation.json"
+        ],
+        "experiment_status": "not_run_source_only",
+        "source_locator": "docs/evidence/l4-triton-constexpr-runtime-scalar-ablation.json",
+        "source_type": "ablation_design_receipt",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L4",
+      "title": "Triton-Ascend dynamic-shape specialization to a runtime-scalar persistent grid",
+      "token_estimate": 3932,
+      "triggers": {
+        "error_signatures": [
+          "a Triton-Ascend serving path compiles a new kernel when the batch or token count changes",
+          "the number of Triton cache entries grows with distinct M, seq_len or num_tokens values",
+          "do_not_specialize was added but the length-derived argument is still declared tl.constexpr",
+          "coreDim is reported above UINT16_MAX or the launch creates thousands of tiny blocks",
+          "a non-multiple-of-BLOCK_M tail reads out of bounds, returns NaN/Inf or changes the denominator",
+          "a bf16 or fp16 reduction drifts from the fp32 reference after the persistent-loop rewrite"
+        ],
+        "keywords": [
+          "Triton-Ascend",
+          "dynamic shape",
+          "constexpr",
+          "do_not_specialize",
+          "specialization key",
+          "recompilation",
+          "persistent grid",
+          "coreDim",
+          "65535",
+          "masked tail",
+          "32-byte alignment",
+          "fp32 accumulation",
+          "RMSNorm",
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
         "kernel_language": "triton"
       },
       "domain_path": "compilation/triton",
@@ -527,10 +1291,88 @@
     {
       "category": "workflow",
       "conditions": {
-        "kernel_language": "triton"
+        "kernel_language": "triton",
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
       },
       "domain_path": "compilation/triton",
       "evidence_strength": "reproduced_empirical",
+      "id": "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow",
+      "inherits_from": [
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-hivm-lowering-grid-overflow-and-intrinsics-sop"
+      ],
+      "path": "compilation/triton/unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow.md",
+      "provenance": {
+        "evidence_refs": [
+          "docs/evidence/l4-triton-constexpr-runtime-scalar-ablation.json",
+          "https://gitcode.com/cann/cannbot-knowledge/blob/main/knowledge/ops/triton/guides/migration/index.md",
+          "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/triton_api/index.md",
+          "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/debug_guide/debugging.md",
+          "https://gitcode.com/Ascend/triton-ascend/blob/main/docs/zh/triton_api/Programming_Model/program_id.md",
+          "https://gitcode.com/Ascend/AscendNPU-IR",
+          "https://github.com/vllm-project/vllm-ascend/issues/3548"
+        ],
+        "source_locator": "https://gitcode.com/cann/cannbot-knowledge/blob/main/knowledge/ops/triton/guides/migration/index.md",
+        "source_revision": "7ea0efbeb79f2559f121fa8514a9fe5c82245807",
+        "source_type": "reproduced_migration_case_and_runbook_review",
+        "supersedes": [],
+        "supporting_source_revisions": [
+          "c22984baa55e1506eadd7c72955d9bf669b1c959",
+          "d2a6661365ef65ca738cb66299449b2740c857eb"
+        ]
+      },
+      "revision": 1,
+      "tier": "L3",
+      "title": "Triton GPU-to-Ascend migration workflow: launch audit, UB tiling, numerical parity and steady-state profiling",
+      "token_estimate": 4477,
+      "triggers": {
+        "error_signatures": [
+          "a GPU Triton kernel still contains num_warps, num_stages or warp-shuffle logic",
+          "a 1D grid grows with batch times sequence length and overflows CoreDim",
+          "an unaligned pointer or row stride causes misaligned DMA on the NPU",
+          "the migrated kernel passes a small aligned shape but fails a prime tail or strided view",
+          "fp16 or bf16 accumulation drifts from the fp32 reference",
+          "thousands of tl.atomic_add calls replace a deterministic reduction",
+          "a speedup is claimed from kernel time without warmup, synchronization or a matched baseline"
+        ],
+        "keywords": [
+          "Triton migration",
+          "GPU to Ascend",
+          "Triton-Ascend",
+          "num_warps",
+          "num_stages",
+          "warp shuffle",
+          "persistent grid",
+          "UB tiling",
+          "32-byte alignment",
+          "atomic_add",
+          "numerical parity",
+          "msprof",
+          "aiv_time",
+          "aicore_time",
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      }
+    },
+    {
+      "category": "workflow",
+      "conditions": {
+        "kernel_language": "triton"
+      },
+      "domain_path": "compilation/triton",
+      "evidence_strength": "software_contract",
       "id": "unit-triton-recompilation-decision-tree",
       "inherits_from": [
         "unit-triton-ascend-constexpr-and-specialization-contract",
@@ -645,6 +1487,90 @@
           "logsumexp",
           "Ascend910B",
           "Ascend910_93"
+        ]
+      }
+    },
+    {
+      "category": "mutator",
+      "conditions": {
+        "dtype": [
+          "bfloat16",
+          "float16"
+        ],
+        "op_family": [
+          "reduction",
+          "norm"
+        ],
+        "output_dtype": [
+          "bfloat16",
+          "float16"
+        ],
+        "reduction_axis": [
+          "last"
+        ],
+        "register_pressure": "headroom",
+        "soc": [
+          "Ascend910B",
+          "Ascend910B1",
+          "Ascend910B2",
+          "Ascend910B3",
+          "Ascend910B4",
+          "Ascend910_93"
+        ],
+        "tail_alignment": "32B"
+      },
+      "domain_path": "Reduction",
+      "evidence_strength": "hypothesis",
+      "id": "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+      ],
+      "path": "Reduction/unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator.md",
+      "provenance": {
+        "evidence_refs": [
+          "docs/evidence/l4-vectorized-reduction-cast-fusion-ablation.json",
+          "docs/evidence/c4-case-block-v2-ablation.json",
+          "docs/evidence/c4-case-block-v2-stage-acceptance.json"
+        ],
+        "experiment_status": "not_run_source_only",
+        "source_digest": "d3db32071a28dd317956aa49494e81b3aeaf1da8159aa1bdb39232ef81844a6b",
+        "source_locator": "docs/evidence/l4-vectorized-reduction-cast-fusion-ablation.json",
+        "source_type": "ablation_design_receipt",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L4",
+      "title": "Vectorized bf16 reduction with fp32 accumulation and fused store cast",
+      "token_estimate": 1424,
+      "triggers": {
+        "error_signatures": [
+          "a bf16 or fp16 reduction casts a partial sum back to half between stages",
+          "the vectorized load improves the aligned prefix but the tail drives the error or NaN",
+          "fp32 partials spill to GM or an intermediate fp32 output tensor is materialized",
+          "split-K atomics make repeated runs of the same input return different bytes",
+          "a candidate is faster on one shape but regresses the workspace or warm-server guard"
+        ],
+        "keywords": [
+          "vectorized reduction",
+          "fp32 accumulation",
+          "cast fusion",
+          "split-K",
+          "UB alignment",
+          "tail mask",
+          "bfloat16",
+          "float16",
+          "Ascend910B",
+          "Ascend910_93",
+          "Triton-Ascend",
+          "leave-one-out",
+          "guard workload"
         ]
       }
     }
