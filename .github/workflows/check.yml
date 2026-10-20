@@ -136,14 +136,16 @@ jobs:
               git(repo, 'fetch', '--no-tags', '--depth=1',
                   'https://github.com/mindie-agent/knowledge-operators.git', base)
               # Validate the trusted declaration with its own installed validator.
-              trusted = read_git_contract(repo, base, 'operators',
-                                          expected_sha256=os.environ['TRUSTED_CONTRACT_SHA256'])
+              trusted = read_git_contract(repo, base, 'operators')
+              if trusted['sha256'] != os.environ['TRUSTED_CONTRACT_SHA256']:
+                  raise SystemExit('Trusted contract receipt mismatch')
               if trusted['contract']['validator']['revision'] != os.environ['KNOWLEDGE_VALIDATOR_SHA']:
                   raise SystemExit('Trusted validator receipt mismatch')
               classification = classify_changes(repo, base, expected, schema=trusted['contract']['schema'])
               ordinary = os.environ['GITHUB_EVENT_NAME'] != 'pull_request_target' or classification['content_only']
-              checked = validate(repo, expected, 'operators', base_revision=base,
-                                 expected_contract_sha256=trusted['sha256'] if ordinary else None)
+              checked = validate(repo, expected, 'operators', base_revision=base)
+              if ordinary and checked['contract_sha256'] != trusted['sha256']:
+                  raise SystemExit('Content PR changed the publication contract')
               with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
                   output.write('review_mode=' + ('content' if ordinary else 'development') + '\n')
               print(json.dumps(checked, sort_keys=True))

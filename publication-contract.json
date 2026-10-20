@@ -12,6 +12,6 @@
   "schema": "mindie-publication-contract/2",
   "validator": {
     "repository": "mindie-agent/knowledge",
-    "revision": "8e4377bacdb0d5ff529217c5963a68f989e0fe5d"
+    "revision": "1d78f1dbadeb770f7489d5a9378cfbfd4ca26c6a"
   }
 }
