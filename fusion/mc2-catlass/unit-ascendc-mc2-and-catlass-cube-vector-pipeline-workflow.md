@@ -59,7 +59,7 @@ triggers:
   - apace
   - URMA
   - tileCnt
-  - MmadAtlasA2PreloadAsyncWithCallback
+  - MmadAtlasA2PreloadAsync
   - GemmIdentityBlockSwizzle
   - UB_STAGES
   - rotating workspace
@@ -82,7 +82,7 @@ Select the exact hardware route from the target SOC and operator pattern before 
 | **MC2 Route A**: Dense Matmul + Collective on Ascend 910B / 910_93 | `Hccl` device client (`HCCL_SERVER_TYPE_AICPU`) + `AscendC::Matmul<..., CFG_MDL>` | Host `Mc2Init`/`Mc2Tiling` sets `"AICPU"`; AIC/AIV calls `hccl.AllReduce`/`ReduceScatter`/`AllGather`/`AlltoAll` -> `Commit(handleId)` -> `Wait(handleId)` -> `Finalize()` (`tileCnt <= 16`). |
 | **MC2 Route B**: Dense Matmul + One-Sided Put on Ascend 950 | `blaze-shmem` + `apace` (`ROCE_SYMMETRIC` URMA engine, `COMM_BUFF_SIZE >= 64 MB`) | Call `SyncAll<false>()` before communication; AIC finishes tile via `WaitIterateBatch()`, AIV issues `put_nbi_warp` + `signal_op_warp(SIGNAL_ADD)` and peers wait via `WaitSignal(peer, tileIdx + 1)`. |
 | **MC2 Route C**: MoE Token Dispatch / Combine across ranks | Direct AIV MTE window (`GetWindowsInAddr(rankId)` / `GetWindowsOutAddr(rankId)`) | AIV copies tokens directly between local UB and remote rank HBM IPC windows via `DataCopyPad`, synchronized with `CrossCoreSetFlag<0x0, PIPE_MTE3>(8)` / `CrossCoreWaitFlag<0x0>(8)`. |
-| **CATLASS CV Fusion**: GEMM + Vector epilogue on 910B / 910_93 / 950 | `MmadAtlasA2PreloadAsyncWithCallback` + rotating L2 workspace | Replace `MatmulActivation`/`MatmulEpilogue` full `[M, N]` HBM write-back with per-tile `CrossCoreSetFlag<0x2, PIPE_FIX>(flag)` callback handoff into an L2-resident ring buffer. |
+| **CATLASS CV Fusion**: GEMM + Vector epilogue on 910B / 910_93 / 950 | `MmadAtlasA2PreloadAsync` + rotating L2 workspace | Replace `MatmulActivation`/`MatmulEpilogue` full `[M, N]` HBM write-back with per-tile `CrossCoreSetFlag<0x2, PIPE_FIX>(flag)` callback handoff into an L2-resident ring buffer. |
 
 ## Stage 2 — Lock the serial accuracy baseline (`tileCnt = 1` / Golden Gate)
 
@@ -108,7 +108,7 @@ Never debug multi-tile overlap and numerical correctness simultaneously:
 
 Apply in strict priority order, testing one change per iteration:
 
-1. **Priority 1 — Async callback + rotating L2 workspace**: replace `MmadAtlasA2` + full-GM epilogue with `MmadAtlasA2PreloadAsyncWithCallback` (`DispatchPolicyMmadAtlasA2PreloadAsyncWithCallback<2, true>`). Size the rotating workspace to fit L2:
+1. **Priority 1 — Async callback + rotating L2 workspace**: replace `MmadAtlasA2` + full-GM epilogue with `MmadAtlasA2PreloadAsync` (`DispatchPolicyMmadAtlasA2<2, true>`). Size the rotating workspace to fit L2:
    $$\text{workspace\_bytes} = L1_M \times L1_N \times \text{aic\_cores} \times \text{WORKSPACE\_STAGES} \times \text{sizeof}(C)$$
    with `WORKSPACE_STAGES = 2..4`. Inside the callback, AIC fires `CrossCoreSetFlag<0x2, PIPE_FIX>(flag)`; both AIV sub-blocks wait via `CrossCoreWaitFlag<0x2>(flag)` and each processes `L1_M / 2` rows.
    - **Cross-N-half gated epilogue rule (`SwiGLU`, `GeGLU`, `ReGLU`)**: because output column `j` combines `C[:, j]` and `C[:, j + N/2]`, a single-tile rotating slot corrupts outputs whenever `N > L1_N`. Schedule loops over the **output** shape `[M, N/2]`, compute both `block_coord` (for `C[:, :N/2]`) and `block_coord_b` (for `C[:, N/2:]`) into paired rotating slots (`2 * WORKSPACE_STAGES`), and signal AIV only after both halves are written.

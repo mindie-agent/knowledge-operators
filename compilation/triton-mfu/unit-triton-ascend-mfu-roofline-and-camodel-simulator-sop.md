@@ -44,8 +44,8 @@ triggers:
   - operator_mfu
   - FlopCounterMode
   - aic_cube_fops
-  - MFU@nom
-  - MFU@ach
+  - MFU_nom
+  - MFU_ach
   - msprof op simulator
   - instr_exe.csv
   - code_exe.csv
@@ -72,7 +72,7 @@ $$\text{MFU} = \frac{\text{FLOPs}_{\text{semantic}}}{\text{kernelDuration}(\text
    - Hardware `aic_cube_fops` overcounts when the kernel computes padded tiles or masked blocks that are later discarded.
    - Take $\text{FLOPs}_{\text{semantic}} = \min(\text{FLOPs}_{\text{ref}}, \text{FLOPs}_{\text{hw}})$. Flag any case where $\text{FLOPs}_{\text{ref}} > \sum (\text{duration}_k \times \text{aic\_mac\_ratio}_k) \times \text{PeakFLOPS}$ or $\text{FLOPs}_{\text{ref}} / \text{FLOPs}_{\text{hw}} > 1.2$. Keep Cube and Vector FLOPs separate: dividing pure Vector FLOPs (`aic_mac_ratio == 0`) by Cube peak FLOPS is dimensionally invalid.
    - Trace FLOPs with `FakeTensor` only (`MFU_FLOPS_NO_REAL=1` + `RLIMIT_AS` cap); never fall back to real CPU tensor allocation on large `Sq * Sk` intermediate attention matrices.
-2. **Dtype-calibrated peak denominator (`MFU@ach` vs `MFU@nom`)**: formula-derived peak (`2 * 16^3 * ai_core_cnt * freq`, e.g., `353.89 TFLOPS` on 24-core 910B2C) reflects fp16/bf16 Cube throughput. Under fp32, Cube throughput is ~1/4 (`~85 TFLOPS` measured via `peak_calib.py` on $4096^3$ GEMM vs `~314-320 TFLOPS` for fp16/bf16). Report both nominal `MFU@nom` and dtype-calibrated `MFU@ach`.
+2. **Dtype-calibrated peak denominator (`MFU_ach` vs `MFU_nom`)**: formula-derived peak (`2 * 16^3 * ai_core_cnt * freq`, e.g., `353.89 TFLOPS` on 24-core 910B2C) reflects fp16/bf16 Cube throughput. Under fp32, Cube throughput is ~1/4 (`~85 TFLOPS` measured via `peak_calib.py` on $4096^3$ GEMM vs `~314-320 TFLOPS` for fp16/bf16). Report both nominal `MFU_nom` and dtype-calibrated `MFU_ach`.
 3. **Complete denominator coverage**: for hybrid implementations mixing `@triton.jit` and `aclnn`/PyTorch ops, detect the repeating forward launch period from `Task Start Time(us)` across the last $N$ iterations rather than filtering by kernel prefix; omitting `aclnn` projections inflates MFU above the ~90.4% empirical ceiling.
 
 ## 2. Probe peak MFU via 2D `(case, scale)` grid search and five validity gates
@@ -108,7 +108,7 @@ Before declaring an operator "at hardware limit" or when end-to-end latency is u
    export SOC_VERSION=Ascend910B1
    CANN_HOME="${ASCEND_HOME_PATH:-$(ls -d /usr/local/Ascend/cann-* 2>/dev/null | sort -V | tail -1)}"
    source "$CANN_HOME/set_env.sh"
-   export LD_LIBRARY_PATH="$CANN_HOME/aarch64-linux/simulator/${SOC_VERSION}/lib:$LD_LIBRARY_PATH"
+   export LD_LIBRARY_PATH="${CANN_HOME}/aarch64-linux/simulator/${SOC_VERSION}/lib:$LD_LIBRARY_PATH"
    export TRITON_DEBUG=1 TRITON_ALLWAYS_COMPILE=1 TRITON_DISABLE_LINE_INFO=0
 
    msprof op simulator --application="python3 prof_small.py" --output=prof_out \

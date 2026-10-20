@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 14.446540968492627,
+  "build_elapsed_ms": 15.2161669684574,
   "closure": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
     "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": [
@@ -733,7 +733,7 @@
       "revision": 1,
       "tier": "L3",
       "title": "AscendC MC2 collective-compute overlap and CATLASS Cube-Vector rotating-workspace optimization workflow",
-      "token_estimate": 1970,
+      "token_estimate": 1958,
       "triggers": {
         "error_signatures": [
           "an MC2 MatmulAllReduce or AllGatherMatmul kernel fails accuracy or hangs when tileCnt > 1 is enabled before verifying tileCnt = 1",
@@ -754,7 +754,7 @@
           "apace",
           "URMA",
           "tileCnt",
-          "MmadAtlasA2PreloadAsyncWithCallback",
+          "MmadAtlasA2PreloadAsync",
           "GemmIdentityBlockSwizzle",
           "UB_STAGES",
           "rotating workspace"
@@ -903,8 +903,8 @@
           "CrossCoreWaitFlag",
           "SetAtomicAdd",
           "double buffer",
-          "SYNC-01",
-          "SYNC-14"
+          "SYNC_01",
+          "SYNC_14"
         ]
       }
     },
@@ -1763,8 +1763,8 @@
           "operator_mfu",
           "FlopCounterMode",
           "aic_cube_fops",
-          "MFU@nom",
-          "MFU@ach",
+          "MFU_nom",
+          "MFU_ach",
           "msprof op simulator",
           "instr_exe.csv",
           "code_exe.csv",

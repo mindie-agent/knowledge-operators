@@ -125,8 +125,8 @@
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 314463,
-      "estimated_tokens": 64089,
+      "bytes": 314405,
+      "estimated_tokens": 64077,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
@@ -226,7 +226,7 @@
       },
       {
         "automatic": false,
-        "bytes": 72827,
+        "bytes": 72829,
         "estimated_tokens": 15419,
         "exceeds": [],
         "kind": "federation",
@@ -244,8 +244,8 @@
       },
       {
         "automatic": false,
-        "bytes": 29268,
-        "estimated_tokens": 5930,
+        "bytes": 29208,
+        "estimated_tokens": 5918,
         "exceeds": [],
         "kind": "federation",
         "path": "fusion",
@@ -288,7 +288,7 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 14.446540968492627,
+  "index_build_elapsed_ms": 15.2161669684574,
   "leaves": [
     {
       "automatic": false,
@@ -415,7 +415,7 @@
     },
     {
       "automatic": false,
-      "bytes": 10755,
+      "bytes": 10757,
       "estimated_tokens": 2009,
       "exceeds": [],
       "kind": "leaf",
@@ -428,8 +428,8 @@
     },
     {
       "automatic": false,
-      "bytes": 11059,
-      "estimated_tokens": 1970,
+      "bytes": 10999,
+      "estimated_tokens": 1958,
       "exceeds": [],
       "kind": "leaf",
       "path": "fusion/mc2-catlass",
@@ -630,7 +630,7 @@
     },
     {
       "automatic": false,
-      "bytes": 10755,
+      "bytes": 10757,
       "estimated_tokens": 2009,
       "exceeds": [],
       "kind": "subtree",
@@ -643,8 +643,8 @@
     },
     {
       "automatic": false,
-      "bytes": 11059,
-      "estimated_tokens": 1970,
+      "bytes": 10999,
+      "estimated_tokens": 1958,
       "exceeds": [],
       "kind": "subtree",
       "path": "fusion/mc2-catlass",
@@ -818,11 +818,11 @@
       "tier": "L3"
     },
     "unit-ascendc-mc2-and-catlass-cube-vector-pipeline-workflow": {
-      "bytes": 11059,
+      "bytes": 10999,
       "category": "workflow",
-      "content_sha256": "5f7d1f9ea6ee016d64251f7ac2a41446eaf7a7d0ed8802fbb71bcff32cb7f708",
+      "content_sha256": "7d8861a6f81bd4b427f2633d0daf21ab39ce9164c4731c068278ddcb6a862768",
       "domain_path": "fusion/mc2-catlass",
-      "estimated_tokens": 1970,
+      "estimated_tokens": 1958,
       "evidence_strength": "software_contract",
       "inherits_from": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -851,7 +851,7 @@
     "unit-ascendc-sync-audit-and-pipe-hazard-elimination-sop": {
       "bytes": 10677,
       "category": "sop",
-      "content_sha256": "adae19cf75b1cf0492dc119cfdb5280e5e46ae650a6d70db6fcbd64856fb492d",
+      "content_sha256": "08fc25d854520e695fa84083673125d3bc841692aafd8eb98f7c4055ba848613",
       "domain_path": "ascendc/sync",
       "estimated_tokens": 2024,
       "evidence_strength": "software_contract",
@@ -1021,9 +1021,9 @@
       "tier": "L2"
     },
     "unit-triton-ascend-mfu-roofline-and-camodel-simulator-sop": {
-      "bytes": 10755,
+      "bytes": 10757,
       "category": "sop",
-      "content_sha256": "1644f1c2426043ac94ecb8fac09258c06d1db2679901bb167d86f9f21ab0fa0e",
+      "content_sha256": "fca2c03458fc056927ff54f9a54a29f621aaac74ef14ceb06b2ea41f424e70d5",
       "domain_path": "compilation/triton-mfu",
       "estimated_tokens": 2009,
       "evidence_strength": "software_contract",
