@@ -1,10 +1,10 @@
 # Operators knowledge
 
-This repository is the `operators` domain knowledge source for MindIE Agent `0.0.3`. It stores **graded knowledge units** (`mindie-graded-unit/1`) for Ascend operator mechanisms, workflows and their measured applicability conditions.
+The `graded-v2` branch of this repository is the `operators` domain graded knowledge source for MindIE Agent `0.0.3`. It stores **graded knowledge units** (`mindie-graded-unit/1`) for Ascend operator mechanisms, workflows and their measured applicability conditions. `main` remains unchanged and is not the graded contract/2 publication branch.
 
 ## Access
 
-Install through the native MindIE Agent plugin for **Codex, Claude Code, Kimi or DSH** and follow the main installation guide: <https://github.com/mindie-agent/mindie-agent>. This repository does not copy host installers. Read-only query and explain do not require community sharing. The runtime can host other domains; the `0.0.3` release scope covers `operators` and `vllm-ascend`, not a hardcoded two-domain runtime.
+Install through the native MindIE Agent plugin for **Codex, Claude Code, Kimi or DSH** and follow the main installation guide: <https://github.com/mindie-agent/mindie-agent>. This repository does not copy host installers. Read-only query and explain do not require community sharing. The runtime can host other domains; the `0.0.3` release scope covers `operators` and `vllm-ascend`, not a hardcoded two-domain runtime. 0.0.3 plugins select `graded-v2` and bind the exact digest of this domain's `publication-contract.json`; manual contributions start from a `graded-v2` checkout and PRs target `graded-v2`.
 
 A unit is not a universal speedup claim. It states the conditions under which an observation or procedure holds, the evidence behind it, and the limits that remain. Read a unit only after comparing its declared conditions with facts your task actually observed; a missing or `unknown` condition does not match.
 
@@ -102,7 +102,7 @@ Knowledge shared from another domain is read through an explicit `mindie://<doma
 
 ## Publication and validation
 
-[`publication-contract.json`](publication-contract.json) declares `mindie-publication-contract/2`, the graded data formats and the immutable validator revision used by publication checks. Local content/Feed checks, remote publication readback and installed native acceptance are separate outcomes. The contract's presence and a passing local check do not assert that a remote merge or installed native acceptance has occurred; release and validation evidence record those facts separately.
+On `graded-v2`, [`publication-contract.json`](publication-contract.json) declares `mindie-publication-contract/2`, the graded data formats and the immutable validator revision used by publication checks. Local content/Feed checks, remote readback of `graded-v2` and installed native acceptance are separate outcomes. `main` remains unchanged and is not the graded publication branch. The contract's presence and a passing local check do not assert that a remote merge or installed native acceptance has occurred; release and validation evidence record those facts separately. `graded-v2` may receive content updates within this compatibility version while keeping the same `publication-contract/2` bytes; formal assets, remote publication and paid native acceptance are separate results, and locally prepared content is not published proof.
 
 Documentation and engineering changes follow the development review path. Unit, feedback and derived-index changes follow the content path. Neither path is an automatic semantic acceptance or promotion mechanism. Applicability remains a matter of matching declared conditions with observed task facts.
 
