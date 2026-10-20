@@ -1,0 +1,141 @@
+{
+  "schema": "mindie-l4-ablation-design/1",
+  "domain": "operators",
+  "candidate_id": "unit-streamk-matmul-and-mxa8w4-quant-bmm-tile-scheduling-mutator",
+  "candidate_family": "streamk-dpsk-and-mxa8w4-bit-permuted-quant-bmm",
+  "sibling_l4_family": "sparse-mla-lightning-indexer-cube-vector-pingpong",
+  "corpus_parent_revision": "knowledge-operators@24ed736",
+  "experiment_status": "not_run_source_only",
+  "evidence_strength": "hypothesis",
+  "measurement_claims": [],
+  "reason": "The three transformations and their separation are distilled from the pinned cannbot-dsl reference kernels (samples/matmul/matmul/matmul_streamk.py and samples/matmul/quant_matmul/quant_batch_matmul_mxa8w4.py at commit 4519e5372a8b9306f7d823688c0cb8141ee34fb1) and the CANNBot DSL / AISS tiling solver contracts (commit f305e200aa4b1e1fed73cd21ff1f083b8df25a1e). No paired hardware timing campaign, leave-one-out ablation execution or hidden-input retention run was executed in this distillation pass, so this receipt records a source-grounded transformation hypothesis and verification contract without claiming a measured speedup.",
+  "source_worktrees": [
+    "cannbot-dsl@4519e5372a8b9306f7d823688c0cb8141ee34fb1:samples/matmul/matmul/matmul_streamk.py",
+    "cannbot-dsl@4519e5372a8b9306f7d823688c0cb8141ee34fb1:samples/matmul/quant_matmul/quant_batch_matmul_mxa8w4.py"
+  ],
+  "conditions": {
+    "op_family": [
+      "matmul",
+      "quant_batch_matmul",
+      "streamk_matmul"
+    ],
+    "soc": [
+      "Ascend950",
+      "Ascend910B",
+      "Ascend910_93"
+    ],
+    "dtype": [
+      "bfloat16",
+      "float16",
+      "fp8_e4m3fn",
+      "int4"
+    ]
+  },
+  "correctness_prerequisites": [
+    "fp32_streamk_workspace_partial_accumulation",
+    "single_cache_line_invalidate_in_global_barrier_spin",
+    "deterministic_ordered_partial_sum_reduction",
+    "deq_scale_64_and_bias_2_pow_neg6_bit_permutation_compensation",
+    "k_tail_l1_64_and_mma_32_alignment_narrowing"
+  ],
+  "factors": [
+    {
+      "id": "dpsk_streamk_two_tile_wave_split_and_sliding_window_l2_order",
+      "kind": "performance",
+      "change": "When total_tiles = ceil(M / bm) * ceil(N / bn) is not divisible by aic_num (rem = total_tiles % aic_num != 0), partition work into sk_tiles = rem + aic_num (when total_tiles > aic_num and rem > 0, else rem) and dp_tiles = total_tiles - sk_tiles, distribute sk_tiles * k_iters_per_tile evenly across all aic_num cores, map tile IDs with a width-4 sliding window + odd-row serpentine reversal for L2 reuse, and run a 4-stage L1 / 2-stage L0 software pipeline.",
+      "depends_on": [],
+      "signals": [
+        "total_tiles % aic_num != 0 leaves a tail wave with idle AIC cores",
+        "row-major tile assignment causes low L2 hit rate on large M/N GEMM",
+        "single-buffer L1/L0 staging exposes MTE2 and MTE1 latency between K steps"
+      ]
+    },
+    {
+      "id": "three_phase_atomic_cross_core_sk_workspace_and_aiv_register_reduce",
+      "kind": "performance",
+      "change": "Write unsplit full-K tiles directly from L0C to C_gm via Fixpipe (F322BF16/F322F16) while routing split-K partials to workspace_gm[t * aic_num + sub_idx]; synchronize via AIC->AIV0 FIX-to-MTE2 CrossCoreSetFlag, AIV0 atomic_add on sync_gm[0] with DataCacheCleanAndInvalid('SINGLE_CACHE_LINE') spin-wait, and parallel AIV register accumulation (REDUCE_CHUNK = 16384) before a single output cast.",
+      "depends_on": [
+        "fp32_streamk_workspace_partial_accumulation",
+        "single_cache_line_invalidate_in_global_barrier_spin",
+        "deterministic_ordered_partial_sum_reduction"
+      ],
+      "signals": [
+        "all tiles are routed through a global workspace even when k_start == 0 and k_end == k_iters_per_tile",
+        "unordered atomic fp16/bf16 global additions cause accumulation drift or non-deterministic outputs",
+        "polling sync_gm without SINGLE_CACHE_LINE invalidation deadlocks on stale L2/UB cache lines"
+      ]
+    },
+    {
+      "id": "mxa8w4_bit_permuted_nibble_unpack_and_dual_aiv_split_m_l1_ring",
+      "kind": "performance",
+      "change": "Select (bm, bn, bk) with a makespan-aware Roofline cost model, unpack int4x2 E2M1 weights on dual AIVs via mask/shift/vzip bit permutation into fp8_e4m3fn bytes [s 0 0 e e m 0 0] (exact 1/64 value) compensated by bias * 2^-6 and Fixpipe deq_scale = 64.0, stage unpacked weights through a k_l1-deep L1 ring with DualParam(0, 1) split-M across AIV0/AIV1, and narrow K-tail L1 DMA to 64-aligned and mx_matmul k_actual to 32-aligned without GM padding.",
+      "depends_on": [
+        "deq_scale_64_and_bias_2_pow_neg6_bit_permutation_compensation",
+        "k_tail_l1_64_and_mma_32_alignment_narrowing"
+      ],
+      "signals": [
+        "LUT or multi-step scalar/vector int4->fp8 conversion bottlenecks AIV in W4A8/MXA8W4 matmul",
+        "explicit vector multiplication by 64.0 after unpacking adds extra VF instructions per K tile",
+        "host-side GM K-padding copies the entire activation and weight tensors when K % bk != 0"
+      ]
+    }
+  ],
+  "leave_one_out_arms": [
+    {
+      "arm": "full_candidate",
+      "removed": [],
+      "purpose": "Evaluate the complete DPSK Stream-K scheduling + 3-phase AIV register reduction and MXA8W4 bit-permuted Dual-AIV L1 ring pipeline."
+    },
+    {
+      "arm": "minus_dpsk_wave_split_and_l2_window",
+      "removed": [
+        "dpsk_streamk_two_tile_wave_split_and_sliding_window_l2_order"
+      ],
+      "purpose": "Revert to pure data-parallel tile assignment with row-major ordering to isolate tail-wave load balance and L2 locality gains."
+    },
+    {
+      "arm": "minus_direct_full_tile_bypass_and_reg_reduce",
+      "removed": [
+        "three_phase_atomic_cross_core_sk_workspace_and_aiv_register_reduce"
+      ],
+      "purpose": "Isolate the direct L0C->GM bypass for full-K tiles and the chunked AIV register reduction while preserving fp32 partial accumulation and cache-line invalidation."
+    },
+    {
+      "arm": "minus_bit_permuted_unpack_and_k_tail_narrowing",
+      "removed": [
+        "mxa8w4_bit_permuted_nibble_unpack_and_dual_aiv_split_m_l1_ring"
+      ],
+      "purpose": "Isolate the 1/64 bit-permuted nibble unpack with deq_scale=64 compensation, DualParam AIV0/AIV1 split-M L1 ring, and zero-copy K-tail narrowing."
+    }
+  ],
+  "guard_workloads": [
+    "total_tiles_divisible_by_aic_num_zero_sk_tiles",
+    "total_tiles_mod_aic_num_eq_1_worst_tail_wave",
+    "total_tiles_less_than_aic_num_small_mn",
+    "k_not_divisible_by_bk_128_or_256_tail",
+    "mxa8w4_subnormal_and_signed_zero_e2m1_weights",
+    "mxa8w4_with_and_without_f32_bias",
+    "repeated_runs_byte_identical_determinism"
+  ],
+  "fallback_boundary": {
+    "divisible_tile_count": "When total_tiles % aic_num == 0, sk_tiles is 0; skip the Stream-K workspace and global barrier entirely so every tile takes the direct DP L0C->GM path.",
+    "mx_matmul_hardware_requirement": "mx_m16n16k64 with E8M0 block scaling and fp8_e4m3fn inputs requires Ascend950 (c310); on Ascend910B/910_93 use the platform's W4A8/W8A8 QuantBatchMatmul contract.",
+    "bitwise_single_pass_reference": "Splitting K across cores changes floating-point addition associativity; require fp32 reference tolerance validation and byte-identical determinism across repeats rather than bit-identity against a single-core K loop."
+  },
+  "heldout_buckets": [
+    "both_pass",
+    "opt_regression",
+    "both_fail",
+    "opt_improvement",
+    "evaluation_error"
+  ],
+  "retention_rule": "Only both_pass cases with verified accuracy against the fp32 reference and byte-identical repeatability enter a paired timing ratio. Correctness prerequisites (fp32 workspace partials, SINGLE_CACHE_LINE invalidation, deq_scale=64 / bias*2^-6 compensation, and 64B/32B K-tail alignment narrowing) remain active in every ablation arm.",
+  "source_references": [
+    "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
+    "_common/unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms.md",
+    "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
+    "matmul/catlass-tilelang/unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop.md",
+    "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/matmul/matmul/matmul_streamk.py",
+    "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/matmul/quant_matmul/quant_batch_matmul_mxa8w4.py"
+  ]
+}

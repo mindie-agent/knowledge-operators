@@ -1,0 +1,145 @@
+{
+  "schema": "mindie-l4-ablation-design/1",
+  "domain": "operators",
+  "candidate_id": "unit-sparse-mla-and-lightning-indexer-cube-vector-pingpong-mutator",
+  "candidate_family": "sparse-mla-lightning-indexer-cube-vector-pingpong",
+  "sibling_l4_family": "fia-gqa-host-tiling-sink-bn2s-layout-splitkv-lse",
+  "corpus_parent_revision": "knowledge-operators@24ed736",
+  "experiment_status": "not_run_source_only",
+  "evidence_strength": "hypothesis",
+  "measurement_claims": [],
+  "reason": "The three transformations and their separation are distilled from the pinned cannbot-dsl reference kernels (sparse_flash_attention.py, quant_lightning_indexer_dsl.py, attn_prologue.py, qwen_sparse_attn.py at commit 4519e5372a8b9306f7d823688c0cb8141ee34fb1) and the CANNBot DSL software contracts (commit f305e200aa4b1e1fed73cd21ff1f083b8df25a1e). No paired hardware timing campaign, leave-one-out ablation execution or hidden-input retention run was executed in this distillation pass, so this receipt records a source-grounded transformation hypothesis and verification contract without claiming a measured speedup.",
+  "source_worktrees": [
+    "cannbot-dsl@4519e5372a8b9306f7d823688c0cb8141ee34fb1:samples/sparse_flash_attention/sparse_flash_attention.py",
+    "cannbot-dsl@4519e5372a8b9306f7d823688c0cb8141ee34fb1:samples/quant_lightning_indexer_dsl/quant_lightning_indexer_dsl.py",
+    "cannbot-dsl@4519e5372a8b9306f7d823688c0cb8141ee34fb1:samples/attn_prologue/attn_prologue.py",
+    "cannbot-dsl@4519e5372a8b9306f7d823688c0cb8141ee34fb1:samples/qwen_sparse_attn/qwen_sparse_attn.py"
+  ],
+  "conditions": {
+    "op_family": [
+      "attention",
+      "sparse_attention",
+      "lightning_indexer",
+      "mla_prologue"
+    ],
+    "soc": [
+      "Ascend950",
+      "Ascend910B",
+      "Ascend910_93"
+    ],
+    "dtype": [
+      "bfloat16",
+      "float16",
+      "fp4_e2m1"
+    ]
+  },
+  "correctness_prerequisites": [
+    "vst_vld_memory_barrier_before_scalar_get_value",
+    "fp32_running_max_and_lse_rescaling",
+    "invalid_negative_or_oob_sparse_indices_masked_to_neg_inf",
+    "tail_s2_tile_masked_before_row_max_and_row_sum",
+    "nz_fractal_p_ub_stride_matches_cube_l0b_layout",
+    "compensated_splitk_summation_before_rmsnorm"
+  ],
+  "factors": [
+    {
+      "id": "mla_absorb_paired_kv_gather_and_3slot_cv_pingpong",
+      "kind": "performance",
+      "change": "Keep Q_nope [G, 512] and Q_rope [G, 64] L1-resident per outer query block, gather sparse KV tokens in 2-row UB pairs (_gather_kv_pair_to_l1) before MTE3->L1 transfer, overlap AIC QK/PV matmuls with AIV online softmax across a 3-slot L1 KV ring (or 4-stage workspace ring for GQA sparse attention) via directional CrossCoreSetFlag/CrossCoreWaitFlag, and emit p_ub directly in NZ fractal layout [s2_tile // 16, G, 16] for copy_ub_to_cbuf.",
+      "depends_on": [],
+      "signals": [
+        "single-row sparse KV gather issues one MTE3->L1 transaction per token",
+        "AIC and AIV serialize on each s2_tile chunk without multi-slot L1 ring buffering",
+        "p_ub requires an extra transpose or HBM round-trip before Cube PV matmul"
+      ]
+    },
+    {
+      "id": "register_online_softmax_vst_vld_and_compensated_prologue_rope",
+      "kind": "performance",
+      "change": "Fuse row max, exponential rescaling (alpha = exp((m_prev - m_new) * scale)), unnormalized probability p, row sum and output rescaling inside a register-level @pto.vf_inline kernel guarded by pto.vmem_bar('vst_vld') before scalar get_value() reads; in the attention prologue, keep input X L1-resident across Matmul_QA and Matmul_KV, accumulate split-K partials with Kahan error compensation before RMSNorm, and fuse INTERLEAVE_HALF tail RoPE in UB.",
+      "depends_on": [
+        "vst_vld_memory_barrier_before_scalar_get_value",
+        "fp32_running_max_and_lse_rescaling"
+      ],
+      "signals": [
+        "online softmax materializes intermediateUB tensors across separate VF launches",
+        "stale UB scalar reads occur when get_value() follows Tensor.store() without vst_vld barrier",
+        "attention prologue reloads X from HBM for KV projection or drifts on split-K RMSNorm"
+      ]
+    },
+    {
+      "id": "mxfp4_lightning_indexer_split_m_fixpipe_and_streaming_topk",
+      "kind": "performance",
+      "change": "Run MXFP4 (E2M1 + E8M0 [2, 2] group scale) 16x16x128 Cube MMA with L1-resident query and scale, split the [H, N_PER_SUB] L0C accumulator along M across dual AIVs via F322BF16 Fixpipe transfers and mode=4 directed CrossCoreSetFlag, apply ReLU in bf16 before widening to fp32 for head-weighted accumulation, and dispatch cached vs streaming vbitsort32+vmrgsort4 TopK at the total_n = 4096 boundary under an AICPU atomic task queue.",
+      "depends_on": [
+        "invalid_negative_or_oob_sparse_indices_masked_to_neg_inf"
+      ],
+      "signals": [
+        "full fp32 L0C-to-UB transfer and fp32 ReLU double Fixpipe and vconv traffic in the indexer",
+        "variable sequence lengths across batch/query rows cause severe core makespan imbalance",
+        "full-row UB sort overflows UB when total_n exceeds 4096"
+      ]
+    }
+  ],
+  "leave_one_out_arms": [
+    {
+      "arm": "full_candidate",
+      "removed": [],
+      "purpose": "Evaluate the complete sparse MLA + prologue + MXFP4 lightning indexer pipeline."
+    },
+    {
+      "arm": "minus_paired_gather_and_cv_pingpong",
+      "removed": [
+        "mla_absorb_paired_kv_gather_and_3slot_cv_pingpong"
+      ],
+      "purpose": "Isolate the latency impact of 2-token paired UB->L1 gather, 3-slot CV ping-pong and direct NZ p_ub staging."
+    },
+    {
+      "arm": "minus_register_softmax_and_prologue_reuse",
+      "removed": [
+        "register_online_softmax_vst_vld_and_compensated_prologue_rope"
+      ],
+      "purpose": "Isolate the register-fused online softmax and L1-resident X prologue reuse while retaining the vst_vld and fp32 rescaling correctness guards."
+    },
+    {
+      "arm": "minus_mxfp4_split_m_and_streaming_topk",
+      "removed": [
+        "mxfp4_lightning_indexer_split_m_fixpipe_and_streaming_topk"
+      ],
+      "purpose": "Isolate the F322BF16 split-M Fixpipe handoff, bf16 ReLU pre-filter, streaming TopK crossover and AICPU dynamic task scheduling."
+    }
+  ],
+  "guard_workloads": [
+    "mla_absorb_d512_dr64_g64_topk2048",
+    "topk_not_divisible_by_s2_tile_64",
+    "sparse_indices_with_negative_or_oob_entries",
+    "qwen_gqa_sparse_d128_h1_less_than_16",
+    "lightning_indexer_total_n_le_4096_cached_topk",
+    "lightning_indexer_total_n_gt_4096_streaming_topk",
+    "variable_actual_seq_lengths_q_and_k_skew",
+    "prologue_splitk_rmsnorm_and_interleave_half_rope"
+  ],
+  "fallback_boundary": {
+    "no_l0c_to_ub_or_mx_mma_on_a2_a3": "Direct L0C-to-UB Fixpipe and mx_m16n16k128 MXFP4 instructions require Ascend950 (c310); on Ascend910B/910_93 stage L0C through GM/L2 workspace with mode=2 CrossCoreSetFlag and use supported W8A8/W4A8 or bf16 MMA paths.",
+    "gqa_heads_or_dim_outside_tile_contract": "If D != 512 or Dr != 64 in MLA-absorb, or G > 64 exceeds the [64, 512] L1 query slot, fall back to the general paged/FIA attention path rather than overflowing L1/UB.",
+    "missing_vst_vld_barrier": "Never remove pto.vmem_bar('vst_vld') between vector UB store and scalar get_value(); it is a hardware memory-ordering prerequisite, not an optional tuning knob."
+  },
+  "heldout_buckets": [
+    "both_pass",
+    "opt_regression",
+    "both_fail",
+    "opt_improvement",
+    "evaluation_error"
+  ],
+  "retention_rule": "Only both_pass cases with verified numerical accuracy against the fp32 reference (including LSE and TopK index set overlap) enter a paired timing comparison. Correctness prerequisites (vst_vld barrier, fp32 online-softmax rescaling, OOB index masking, Kahan split-K compensation) remain active in every ablation arm.",
+  "source_references": [
+    "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
+    "_common/unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms.md",
+    "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
+    "attention/fia-mla/unit-ascend-fused-infer-attention-and-flash-mla-c8-sop.md",
+    "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/sparse_flash_attention/sparse_flash_attention.py",
+    "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/quant_lightning_indexer_dsl/quant_lightning_indexer_dsl.py",
+    "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/attn_prologue/attn_prologue.py",
+    "https://gitcode.com/cann/cannbot-dsl/blob/4519e5372a8b9306f7d823688c0cb8141ee34fb1/samples/qwen_sparse_attn/qwen_sparse_attn.py"
+  ]
+}
