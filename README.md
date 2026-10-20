@@ -14,36 +14,35 @@ A unit is not a universal speedup claim. It states the conditions under which an
 
 | Unit | Revision | Tier / category | Evidence strength | Pinned reference |
 | --- | --- | --- | --- | --- |
-| [Ascend gated RMSNorm: verify the intended fast path loaded, then bound the claim to the observed stage inventory and numerics](normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md) | 1 | L2 / `sop` | `single_observation` | `mindie://operators/units/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence@052c3021547f44142562355cd6388ff0a3e7ca28d66570a7ec0fa0784eebee8d` |
-| [Residual-free RMSNorm fastpath](normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md) | 4 | L4 / `mutator` | `reproduced_empirical` | `mindie://operators/units/unit-residual-free-rmsnorm-fastpath@64f02c7298d8238d28d9884d4bc599d2d0bd27160be76e80f76841dc5f674d0c` |
-| [Five-stage RMSNorm ablation workflow](normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md) | 1 | L3 / `workflow` | `single_observation` | `mindie://operators/units/unit-rmsnorm-five-stage-ablation-workflow@f72c21fd52649a8b086010eda2049fbd200276d4b22badee963f0d2aa088fc67` |
+| [Ascend 910B/910_93 memory alignment, vector repeat and ACLGraph tiling axioms](_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md) | 1 | L1 / `axiom` | `hardware_spec` | `mindie://operators/units/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms@046d589203749274b72b11780d0181113176ff0935a39e45b4252c287e4e14e3` |
+| [Ascend operator four-gate measurement and four-view roofline contract](_common/unit-ascend-operator-roofline-and-four-view-measurement.md) | 1 | L1 / `measurement` | `reproduced_empirical` | `mindie://operators/units/unit-ascend-operator-roofline-and-four-view-measurement@bdd1a8d09cb01d317509d7e5eac17a6b9ac57d6b58fd6eabf023cbca9221570f` |
+| [Ascend gated RMSNorm Bottleneck & Fastpath Dispatch Triage SOP](normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md) | 2 | L2 / `sop` | `single_observation` | `mindie://operators/units/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence@8a88ab014b6104ae726d9f24f1cd1e8dd6d345f7fe66ddc4e5b7bc6c3c0d09a6` |
+| [Five-stage Hermes operator optimization, leave-one-out ablation, and distillation workflow](normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md) | 3 | L3 / `workflow` | `reproduced_empirical` | `mindie://operators/units/unit-rmsnorm-five-stage-ablation-workflow@7d3a3835b10d26f0d41df0835bab70ea7ab17953198dcdd32af141f8cc24408c` |
+| [L4 mutator: residual-free gated RMSNorm native fastpath for Ascend910B](normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md) | 6 | L4 / `mutator` | `reproduced_empirical` | `mindie://operators/units/unit-residual-free-rmsnorm-fastpath@179330e3ed4d9fd88740079999c95c86d094829e4532bb6baf3fedeea98f24b7` |
 
-These units live under the `normalization/rmsnorm` domain path. The `operators` domain has no migrated `vllm-ascend` task corpus; shared knowledge is accessed through explicit domain routes, not copied here.
+The two L1 units live under `_common` and are inherited by every `normalization/rmsnorm` unit. The `operators` domain has no migrated `vllm-ascend` task corpus; shared knowledge is accessed through explicit domain routes, not copied here.
 
 ## Conditions and evidence boundaries
 
-### L4 residual-free RMSNorm fastpath, revision 4
+### L1 foundation, revision 1
 
-The L4 rule applies only to the complete recorded bfloat16/sigmoid workload on Ascend910B4:
+The axiom unit states the hardware contracts for Ascend 910B (A2) and Ascend 910_93 (A3 dual-die, Phy-ID 0..15): 32 B UB DMA alignment, 512 B L1 alignment, vector repeat/stride rules, fp32 accumulation for RMSNorm/LayerNorm/Softmax reductions, contiguous-versus-strided dispatch, and ACLGraph workspace/stream capture invariants. Its conditions cover the Ascend 910B family plus Ascend 910_93 and bfloat16, float16 and float32.
 
-- input shapes `1x37x4x128` and `1x193x8x128`, 36 samples per shape, bound as a complete `exact_set`;
-- one visible logical device (`ascend_rt_visible_devices: "0"`), CANN `9.1.0`, driver `25.2.2`, firmware `7.7.0.10.220`;
-- `torch 2.10.0+cpu`, `torch_npu 2.10.0.post4`, Python 3.12.13 on aarch64;
-- source commit `f02da291ec0bdbe31af248deffa69f7a97e8f259`, target `vllm_ascend/ops/layernorm.py`, with the exact source and workload identities recorded in the unit.
+The measurement unit defines the four gates (OracleFreezer correctness, synchronized block timing, AblationGate leave-one-out attribution, and execution/artifact identity) and the four aligned views (msprof kernel, host dispatch, HBM/UB traffic against the Roofline ridge point, and end-to-end operator boundary). Both L1 units are inherited premises, not operator-specific performance claims.
 
-A subset of the recorded workload does not satisfy the `exact_set`: collection order does not matter, but a shape from one case cannot be paired with another case's sample count or case digest, and dtype must be the recorded bfloat16. The same rule does not establish gains on other shapes, models, workloads, full-model serving, unseen tasks or product development time.
+### L2 gated RMSNorm triage, revision 2
 
-Revision 4 uses the reviewed per-case/block analysis in [the ablation receipt](docs/evidence/c4-case-block-v2-ablation.json), [gate results](docs/evidence/c4-case-block-v2-gates.json) and [stage acceptance](docs/evidence/c4-case-block-v2-stage-acceptance.json). The reported block envelopes are descriptive, not confidence intervals or independent repeated campaigns. The source and redacted file identities remain in [the provenance record](docs/evidence/c4-revision4-provenance.json). The unit does not claim a new NPU run.
+The L2 unit is a reusable bottleneck and fastpath dispatch SOP. Its conditions are the observed facts `soc` in `[Ascend910B, Ascend910B4]`, `dtype: bfloat16`, `activation: sigmoid`, and `target_file: vllm_ascend/ops/layernorm.py`; it no longer requires a task-start base commit or a specific driver/firmware pair. It triages the executed kernel inventory, the dispatch registration, the oracle and the timing before routing to the L4 mutator or the L3 workflow. A class name or dispatch entry is treated as load evidence, not as fusion or speedup evidence.
 
-### L3 five-stage RMSNorm ablation workflow, revision 1
+### L3 five-stage Hermes workflow, revision 3
 
-The L3 unit describes the source, baseline, full candidate, leave-one-out and final stages of the same RMSNorm campaign. It is a `single_observation` workflow, not a second measurement campaign.
+The L3 unit is an executable five-stage workflow: source/symbol contract and oracle freeze; synchronized block baseline timing; candidate synthesis with an explicit L4 escalation trigger when routine optimization stalls or fails Gate 1/2; leave-one-out ablation that separates the correctness prerequisites `required_dispatch_registration` and `input_preservation_out_dtype` from performance factors such as `native_residual_free_fastpath`; and final retained verification with Hermes `knowledge_distill` into `reviewed_change` plus `experiment-ledger.jsonl`. Its conditions are the same four observed facts as the L2 unit, with no base-commit or driver/firmware lock.
 
-The original producer's reporting failure and raw verdict records are preserved. The later case/block analysis corrects their interpretation without rewriting the raw records and without claiming another NPU run. The correction does not promote the L3 observation to `reproduced_empirical`, and it does not turn the L4 envelope into a general performance claim.
+### L4 residual-free gated RMSNorm mutator, revision 6
 
-### L2 gated RMSNorm fastpath/load-stage evidence, revision 1
+The L4 unit is an actionable code-transformation mutator. Its conditions are `soc` in `[Ascend910B, Ascend910B4]`, `dtype: bfloat16`, `activation: sigmoid`, and `target_file: vllm_ascend/ops/layernorm.py`. It applies `native_residual_free_fastpath` together with the correctness prerequisites `required_dispatch_registration` and `input_preservation_out_dtype`, handles contiguous and strided gates without mutating inputs, and carries the Gate 1-3 verification invariants.
 
-The L2 unit is a `single_observation` source/load-stage SOP. It asks the consumer to verify that the intended fast path actually loaded and to bound the claim to the observed stage inventory and numerics. Its conditions bind repository `vllm-project/vllm-ascend`, task-start base commit `f02da291ec0bdbe31af248deffa69f7a97e8f259`, topic `gated-rmsnorm-gdn-kda-fastpath`, and declared hardware (one Ascend910). It is not a second measurement campaign and does not upgrade the L4 `reproduced_empirical` evidence or reclassify the L3 workflow. Missing or unknown facts remain `unknown`.
+The reference envelope was measured on Ascend910B4: bfloat16/sigmoid cases `1x37x4x128` with a contiguous gate and `1x193x8x128` with a strided gate, 36 samples per case in three blocks after two warmups. Final retained versus baseline is `1.6767473221869322x` (reported as 1.68x); the observed per-case block-envelope lower bounds are 1.5638748801806301 and 1.7387598131467064. The full candidate versus baseline is 1.5276488398873962x. The envelope is descriptive, not a confidence interval, and the stages are separate runs. Raw samples and comparison identities remain in [the ablation receipt](docs/evidence/c4-case-block-v2-ablation.json), [gate results](docs/evidence/c4-case-block-v2-gates.json) and [stage acceptance](docs/evidence/c4-case-block-v2-stage-acceptance.json). The measured speedup is not claimed for other shapes, SOCs, dtypes or full-model serving.
 
 ## Using these units
 
@@ -53,20 +52,17 @@ The L2 unit is a `single_observation` source/load-stage SOP. It asks the consume
 
 ```python
 knowledge_query(
-    query="residual-free RMSNorm fastpath bfloat16",
+    query="rmsnorm residual fastpath ablation",
     conditions={
         "soc": "Ascend910B4",
         "dtype": "bfloat16",
-        "cann": "9.1.0",
-        "framework": {
-            "torch": "2.10.0+cpu",
-            "torch_npu": "2.10.0.post4",
-        },
+        "activation": "sigmoid",
+        "target_file": "vllm_ascend/ops/layernorm.py",
     },
 )
 ```
 
-This excerpt shows the shape of `conditions`; it is not the complete L4 condition set. The L4 unit also requires the exact workload group, source commit, target file and other recorded identities. Omitting them yields `condition_unknown` and the unit is excluded by default. That is the correct result: supply the facts you actually observed, never copy the unit's own answers into the query, and never use a gold patch, oracle verdict or held-out answer to force applicability.
+These four observed facts are the complete condition set for the L2/L3/L4 units and match both L1 foundation units. Omitting any one of them yields `condition_unknown` and the unit is excluded by default. That is the correct result: supply the facts you actually observed, never copy the unit's own answers into the query, and never use a gold patch, oracle verdict or held-out answer to force applicability. A larger `token_budget` is needed when the caller wants the full inherited L1 bodies injected; the matched/rejected status does not depend on the budget.
 
 All declared conditions must hold for `matched`. Any explicit contradiction is `mismatch`; missing, `unknown` or incomparable facts remain `unknown` and do not match.
 
@@ -76,7 +72,7 @@ A query result carries a digest-pinned `ref`. Read that exact revision:
 
 ```python
 knowledge_explain(
-    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@64f02c7298d8238d28d9884d4bc599d2d0bd27160be76e80f76841dc5f674d0c",
+    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@179330e3ed4d9fd88740079999c95c86d094829e4532bb6baf3fedeea98f24b7",
 )
 ```
 
@@ -88,7 +84,7 @@ After using a unit in real work, record `up` or `down` against the exact observe
 
 ```python
 knowledge_feedback(
-    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@64f02c7298d8238d28d9884d4bc599d2d0bd27160be76e80f76841dc5f674d0c",
+    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@179330e3ed4d9fd88740079999c95c86d094829e4532bb6baf3fedeea98f24b7",
     rating="up",
     reason="Recorded after reusing the measured workload boundary in the observed task.",
 )
@@ -113,6 +109,9 @@ knowledge-operators/
 ├── publication-contract.json
 ├── AGENTS.md
 ├── README.md
+├── _common/
+│   ├── unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md
+│   └── unit-ascend-operator-roofline-and-four-view-measurement.md
 ├── index/
 │   ├── routing-manifest.json
 │   └── shard-topology.json

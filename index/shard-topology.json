@@ -1,29 +1,55 @@
 {
   "closure": {
-    "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": [],
-    "unit-residual-free-rmsnorm-fastpath": [],
-    "unit-rmsnorm-five-stage-ablation-workflow": []
+    "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
+    "unit-ascend-operator-roofline-and-four-view-measurement": [],
+    "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-residual-free-rmsnorm-fastpath": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-rmsnorm-five-stage-ablation-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ]
   },
-  "digest": "0e199f5b63bf464d8b666ca326f00f6b273ca260fe403c447afd2a6fd52ee7c4",
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 16259,
-      "estimated_tokens": 2566,
+      "bytes": 32686,
+      "estimated_tokens": 6330,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
         "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
         "unit-residual-free-rmsnorm-fastpath",
         "unit-rmsnorm-five-stage-ablation-workflow"
       ],
-      "units": 3
+      "units": 5
     },
     "domains": [
       {
         "automatic": false,
-        "bytes": 16259,
-        "estimated_tokens": 2566,
+        "bytes": 10207,
+        "estimated_tokens": 1943,
+        "exceeds": [],
+        "kind": "federation",
+        "path": "_common",
+        "recommended_action": "review_federation_boundary",
+        "unit_ids": [
+          "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+          "unit-ascend-operator-roofline-and-four-view-measurement"
+        ],
+        "units": 2
+      },
+      {
+        "automatic": false,
+        "bytes": 22479,
+        "estimated_tokens": 4387,
         "exceeds": [],
         "kind": "federation",
         "path": "normalization",
@@ -37,14 +63,29 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 0.6651669973507524,
-  "index_digest": "606a4f138b7c27f97af26a28ed4a465f53fee4278819afb25d089dc31f33cef2",
+  "index_build_elapsed_ms": 1.5714589972048998,
   "leaves": [
     {
       "automatic": false,
-      "bytes": 16259,
-      "estimated_tokens": 2566,
+      "bytes": 10207,
+      "estimated_tokens": 1943,
       "exceeds": [],
+      "kind": "leaf",
+      "path": "_common",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 22479,
+      "estimated_tokens": 4387,
+      "exceeds": [
+        "estimated_tokens"
+      ],
       "kind": "leaf",
       "path": "normalization/rmsnorm",
       "recommended_action": "review_leaf_split",
@@ -60,8 +101,22 @@
   "two_level_subtrees": [
     {
       "automatic": false,
-      "bytes": 16259,
-      "estimated_tokens": 2566,
+      "bytes": 10207,
+      "estimated_tokens": 1943,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "_common",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 22479,
+      "estimated_tokens": 4387,
       "exceeds": [],
       "kind": "subtree",
       "path": "normalization/rmsnorm",
@@ -74,38 +129,69 @@
       "units": 3
     }
   ],
-  "unit_count": 3,
+  "unit_count": 5,
   "units": {
-    "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": {
-      "bytes": 6919,
-      "category": "sop",
-      "content_sha256": "052c3021547f44142562355cd6388ff0a3e7ca28d66570a7ec0fa0784eebee8d",
-      "domain_path": "normalization/rmsnorm",
-      "estimated_tokens": 1299,
-      "evidence_strength": "single_observation",
+    "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": {
+      "bytes": 4897,
+      "category": "axiom",
+      "content_sha256": "046d589203749274b72b11780d0181113176ff0935a39e45b4252c287e4e14e3",
+      "domain_path": "_common",
+      "estimated_tokens": 925,
+      "evidence_strength": "hardware_spec",
       "inherits_from": [],
+      "path": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
+      "tier": "L1"
+    },
+    "unit-ascend-operator-roofline-and-four-view-measurement": {
+      "bytes": 5310,
+      "category": "measurement",
+      "content_sha256": "bdd1a8d09cb01d317509d7e5eac17a6b9ac57d6b58fd6eabf023cbca9221570f",
+      "domain_path": "_common",
+      "estimated_tokens": 1018,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [],
+      "path": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
+      "tier": "L1"
+    },
+    "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": {
+      "bytes": 5457,
+      "category": "sop",
+      "content_sha256": "8a88ab014b6104ae726d9f24f1cd1e8dd6d345f7fe66ddc4e5b7bc6c3c0d09a6",
+      "domain_path": "normalization/rmsnorm",
+      "estimated_tokens": 918,
+      "evidence_strength": "single_observation",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
       "path": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
       "tier": "L2"
     },
     "unit-residual-free-rmsnorm-fastpath": {
-      "bytes": 5842,
+      "bytes": 8504,
       "category": "mutator",
-      "content_sha256": "64f02c7298d8238d28d9884d4bc599d2d0bd27160be76e80f76841dc5f674d0c",
+      "content_sha256": "179330e3ed4d9fd88740079999c95c86d094829e4532bb6baf3fedeea98f24b7",
       "domain_path": "normalization/rmsnorm",
-      "estimated_tokens": 809,
+      "estimated_tokens": 1738,
       "evidence_strength": "reproduced_empirical",
-      "inherits_from": [],
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
       "path": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
       "tier": "L4"
     },
     "unit-rmsnorm-five-stage-ablation-workflow": {
-      "bytes": 3498,
+      "bytes": 8518,
       "category": "workflow",
-      "content_sha256": "f72c21fd52649a8b086010eda2049fbd200276d4b22badee963f0d2aa088fc67",
+      "content_sha256": "7d3a3835b10d26f0d41df0835bab70ea7ab17953198dcdd32af141f8cc24408c",
       "domain_path": "normalization/rmsnorm",
-      "estimated_tokens": 458,
-      "evidence_strength": "single_observation",
-      "inherits_from": [],
+      "estimated_tokens": 1731,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
       "path": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md",
       "tier": "L3"
     }

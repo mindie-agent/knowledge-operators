@@ -1,13 +1,25 @@
 {
-  "build_elapsed_ms": 0.6651669973507524,
+  "build_elapsed_ms": 1.5714589972048998,
   "closure": {
-    "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": [],
-    "unit-residual-free-rmsnorm-fastpath": [],
-    "unit-rmsnorm-five-stage-ablation-workflow": []
+    "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
+    "unit-ascend-operator-roofline-and-four-view-measurement": [],
+    "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-residual-free-rmsnorm-fastpath": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-rmsnorm-five-stage-ablation-workflow": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ]
   },
-  "digest": "606a4f138b7c27f97af26a28ed4a465f53fee4278819afb25d089dc31f33cef2",
-  "generation": "4ca1703f99176c4078075f2ddbfa339f84315cf1e473464f1174721241611822",
+  "generation": "a630fcadbe8c56f369895cb890d075aaa4997ecb3b7ba6103871ce4f78fb18e3",
   "id_path": {
+    "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
+    "unit-ascend-operator-roofline-and-four-view-measurement": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
     "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
     "unit-residual-free-rmsnorm-fastpath": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
     "unit-rmsnorm-five-stage-ablation-workflow": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md"
@@ -15,27 +27,147 @@
   "query_budget_excludes_build": true,
   "schema_version": "mindie-routing-manifest/1",
   "token_estimator": "utf8_bytes_div_4_ceiling",
-  "unit_count": 3,
+  "unit_count": 5,
   "units": [
     {
-      "category": "sop",
-      "closure_digest": "sha256:ded4d723c7912c2e894db09d2ac8b1dd7dd1ef2ed8ad85073ca1cee145368d99",
+      "category": "axiom",
       "conditions": {
-        "declared_hardware": {
-          "npu_count": 1,
-          "npu_model": "Ascend910"
-        },
-        "repository": "vllm-project/vllm-ascend",
-        "task_start_base_commit": "f02da291ec0bdbe31af248deffa69f7a97e8f259",
-        "topic": "gated-rmsnorm-gdn-kda-fastpath"
+        "dtype": [
+          "bfloat16",
+          "float16",
+          "float32"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910B1",
+          "Ascend910B2",
+          "Ascend910B3",
+          "Ascend910B4",
+          "Ascend910_93"
+        ]
       },
-      "content_digest": "sha256:052c3021547f44142562355cd6388ff0a3e7ca28d66570a7ec0fa0784eebee8d",
-      "content_sha256": "052c3021547f44142562355cd6388ff0a3e7ca28d66570a7ec0fa0784eebee8d",
+      "domain_path": "_common",
+      "evidence_strength": "hardware_spec",
+      "id": "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "inherits_from": [],
+      "inherits_from_closure": [],
+      "path": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
+      "provenance": {
+        "evidence_refs": [
+          "docs/evidence/c4-case-block-v2-gates.json"
+        ],
+        "source_locator": "docs/evidence/c4-case-block-v2-gates.json",
+        "source_type": "hardware_architecture_specification",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L1",
+      "title": "Ascend 910B and 910_93 memory alignment, vector repeat and ACLGraph tiling axioms",
+      "token_estimate": 925,
+      "triggers": {
+        "error_signatures": [
+          "misaligned UB DMA, L1 tile or vector repeat causes wrong results or a runtime fault",
+          "bf16 or fp16 RMSNorm/LayerNorm/Softmax loses accuracy because the reduction is not fp32",
+          "a strided gate view silently takes the contiguous fast path",
+          "ACLGraph capture fails or replay changes the captured workspace"
+        ],
+        "keywords": [
+          "Ascend910B",
+          "Ascend910_93",
+          "alignment",
+          "UB",
+          "L1",
+          "vector repeat",
+          "fp32 accumulation",
+          "RMSNorm",
+          "LayerNorm",
+          "Softmax",
+          "contiguous",
+          "strided",
+          "ACLGraph"
+        ]
+      }
+    },
+    {
+      "category": "measurement",
+      "conditions": {
+        "dtype": [
+          "bfloat16",
+          "float16",
+          "float32"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910B1",
+          "Ascend910B2",
+          "Ascend910B3",
+          "Ascend910B4",
+          "Ascend910_93"
+        ]
+      },
+      "domain_path": "_common",
+      "evidence_strength": "reproduced_empirical",
+      "id": "unit-ascend-operator-roofline-and-four-view-measurement",
+      "inherits_from": [],
+      "inherits_from_closure": [],
+      "path": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
+      "provenance": {
+        "evidence_refs": [
+          "docs/evidence/c4-case-block-v2-gates.json",
+          "docs/evidence/c4-case-block-v2-stage-acceptance.json"
+        ],
+        "source_locator": "docs/evidence/c4-case-block-v2-gates.json",
+        "source_type": "measurement_contract",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L1",
+      "title": "Ascend operator four-gate measurement and four-view roofline contract",
+      "token_estimate": 1018,
+      "triggers": {
+        "error_signatures": [
+          "a speedup is claimed without synchronized before/after timing or without warmup exclusion",
+          "one pooled IQR is used across different shapes while per-case block behavior is ignored",
+          "a correctness prerequisite is counted as a measured performance factor",
+          "kernel duration is reported as end-to-end operator latency"
+        ],
+        "keywords": [
+          "Ascend operator",
+          "measurement",
+          "OracleFreezer",
+          "synchronize_stream",
+          "AblationGate",
+          "leave-one-out",
+          "roofline",
+          "msprof",
+          "HBM",
+          "UB",
+          "four-view"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "activation": "sigmoid",
+        "dtype": "bfloat16",
+        "soc": [
+          "Ascend910B",
+          "Ascend910B4"
+        ],
+        "target_file": "vllm_ascend/ops/layernorm.py"
+      },
       "domain_path": "normalization/rmsnorm",
       "evidence_strength": "single_observation",
       "id": "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
-      "inherits_from": [],
-      "inherits_from_closure": [],
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
       "path": "normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md",
       "provenance": {
         "evidence_refs": [
@@ -48,16 +180,19 @@
         "source_locator": "https://github.com/vllm-project/vllm-ascend/tree/f02da291ec0bdbe31af248deffa69f7a97e8f259",
         "source_type": "public_task_start_metadata_plus_same_family_observation",
         "source_url": "https://github.com/vllm-project/vllm-ascend",
-        "supersedes": []
+        "supersedes": [
+          "mindie://operators/units/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence@1"
+        ]
       },
-      "revision": 1,
+      "revision": 2,
       "tier": "L2",
-      "title": "Ascend gated RMSNorm: verify the intended fast path loaded, then bound the claim to the observed stage inventory and numerics",
-      "token_estimate": 1299,
+      "title": "Ascend gated RMSNorm Bottleneck & Fastpath Dispatch Triage SOP",
+      "token_estimate": 918,
       "triggers": {
         "error_signatures": [
           "gated RMSNorm falls back to unoptimized PyTorch instead of the Ascend fast path",
-          "Ascend fused gated RMSNorm path does not take effect"
+          "Ascend fused gated RMSNorm path does not take effect",
+          "gated RMSNorm runs as separate RmsNorm, Sigmoid and Mul kernels"
         ],
         "keywords": [
           "gated RMSNorm",
@@ -67,73 +202,35 @@
           "RmsNorm",
           "Sigmoid",
           "Mul",
-          "Ascend910"
+          "Ascend910B",
+          "Ascend910B4",
+          "fastpath",
+          "dispatch"
         ]
       }
     },
     {
       "category": "mutator",
-      "closure_digest": "sha256:edbd08b334727cc479b1947e3de069c3228c5f2c1242e1cf22684273ff69bf70",
       "conditions": {
         "activation": "sigmoid",
-        "ascend_rt_visible_devices": "0",
-        "base_commit": "f02da291ec0bdbe31af248deffa69f7a97e8f259",
-        "cann": "9.1.0",
-        "driver": "25.2.2",
         "dtype": "bfloat16",
-        "factor_id": "native_residual_free_fastpath",
-        "firmware": "7.7.0.10.220",
-        "framework": {
-          "torch": "2.10.0+cpu",
-          "torch_npu": "2.10.0.post4"
-        },
-        "gold_patch_sha256": "f01efd3a242a3b183e1431d9df6aefb700ba067314c41ad7891c8c249babf2ec",
-        "hostname": "<redacted:local-path:0e4201aad4a5>",
-        "input_shape": [
-          "1x37x4x128",
-          "1x193x8x128"
+        "soc": [
+          "Ascend910B",
+          "Ascend910B4"
         ],
-        "machine": "aarch64",
-        "measure_sha256": "bc77c926270222f5ab051e1d94abb070df6d39bb66ace05963a83f3f29cd4efe",
-        "non_factors": [
-          "required_dispatch_registration",
-          "input_preservation_out_dtype"
-        ],
-        "oracle_manifest_sha256": "f343d8a964b8b20a168efcc9b8380e7c5afecffd5a1cd048d0a7cb93c2bd6bf2",
-        "platform": "Linux-5.10.0-282.0.0.184.oe2203sp3.aarch64-aarch64-with-glibc2.35",
-        "python_executable": "/usr/local/python3.12.13/bin/python3",
-        "python_version": "3.12.13",
-        "soc": "Ascend910B4",
-        "source_root_tree_sha256": "efb31c0470b80b8a4f955bcde7825c90cccd1ea1886215f925830901749aa715",
-        "stage_timeout_seconds": 240.0,
-        "target_file": "vllm_ascend/ops/layernorm.py",
-        "task_id": "fused-rmsnorm-gate-dispatch-performance",
-        "workload": {
-          "exact_set": [
-            {
-              "input_shape": "1x37x4x128",
-              "samples_per_shape": 36,
-              "workload_case_sha256": "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a"
-            },
-            {
-              "input_shape": "1x193x8x128",
-              "samples_per_shape": 36,
-              "workload_case_sha256": "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
-            }
-          ]
-        },
-        "workload_case_sha256": [
-          "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a",
-          "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
-        ]
+        "target_file": "vllm_ascend/ops/layernorm.py"
       },
-      "content_digest": "sha256:64f02c7298d8238d28d9884d4bc599d2d0bd27160be76e80f76841dc5f674d0c",
-      "content_sha256": "64f02c7298d8238d28d9884d4bc599d2d0bd27160be76e80f76841dc5f674d0c",
       "domain_path": "normalization/rmsnorm",
       "evidence_strength": "reproduced_empirical",
       "id": "unit-residual-free-rmsnorm-fastpath",
-      "inherits_from": [],
-      "inherits_from_closure": [],
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
       "path": "normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md",
       "provenance": {
         "evidence_refs": [
@@ -144,62 +241,57 @@
         "source_locator": "mindie-003-execution/c4-case-block-assembly-v2/ablation_receipt.json",
         "source_type": "ablation_receipt",
         "supersedes": [
-          "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@049e64317e28aeaad88e2df1649661935270acadef82ba3dc97e22bf42cbdbef"
+          "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@3",
+          "mindie://operators/units/unit-residual-free-rmsnorm-fastpath@5"
         ]
       },
-      "revision": 4,
+      "revision": 6,
       "tier": "L4",
-      "title": "Residual-free RMSNorm fastpath for the complete measured Ascend910B4 workload",
-      "token_estimate": 809,
+      "title": "L4 mutator: residual-free gated RMSNorm native fastpath for Ascend910B",
+      "token_estimate": 1738,
       "triggers": {
-        "error_signatures": [],
+        "error_signatures": [
+          "residual-free gated RMSNorm falls back to separate RmsNorm, Sigmoid and Mul operations",
+          "the native gated RMSNorm path is not registered or is not selected for bf16 sigmoid input",
+          "a strided gate takes the contiguous fast path or the candidate mutates its inputs"
+        ],
         "keywords": [
           "rmsnorm",
-          "residual",
+          "residual-free",
+          "gated RMSNorm",
           "dispatch",
-          "fastpath"
+          "fastpath",
+          "native_residual_free_fastpath",
+          "required_dispatch_registration",
+          "input_preservation_out_dtype",
+          "contiguous",
+          "strided",
+          "Ascend910B"
         ]
       }
     },
     {
       "category": "workflow",
-      "closure_digest": "sha256:b1bd737ab989166932f458ede8fff8e6e13e5d45812c555a1301bdf610c047a0",
       "conditions": {
         "activation": "sigmoid",
-        "base_commit": "f02da291ec0bdbe31af248deffa69f7a97e8f259",
-        "cann": "9.1.0",
-        "driver": "25.2.2",
         "dtype": "bfloat16",
-        "factor_id": "native_residual_free_fastpath",
-        "firmware": "7.7.0.10.220",
-        "framework": {
-          "torch": "2.10.0+cpu",
-          "torch_npu": "2.10.0.post4"
-        },
-        "soc": "Ascend910B4",
-        "target_file": "vllm_ascend/ops/layernorm.py",
-        "workload": {
-          "exact_set": [
-            {
-              "input_shape": "1x37x4x128",
-              "samples_per_shape": 36,
-              "workload_case_sha256": "2869c075070aff7c08049c50d772f27fa67ecdf9a019a90154191ee9ac00ae2a"
-            },
-            {
-              "input_shape": "1x193x8x128",
-              "samples_per_shape": 36,
-              "workload_case_sha256": "fa2291e2cfb790aa2c30dab849999118d004246e00aa46517c1b54708f0c4b2e"
-            }
-          ]
-        }
+        "soc": [
+          "Ascend910B",
+          "Ascend910B4"
+        ],
+        "target_file": "vllm_ascend/ops/layernorm.py"
       },
-      "content_digest": "sha256:f72c21fd52649a8b086010eda2049fbd200276d4b22badee963f0d2aa088fc67",
-      "content_sha256": "f72c21fd52649a8b086010eda2049fbd200276d4b22badee963f0d2aa088fc67",
       "domain_path": "normalization/rmsnorm",
-      "evidence_strength": "single_observation",
+      "evidence_strength": "reproduced_empirical",
       "id": "unit-rmsnorm-five-stage-ablation-workflow",
-      "inherits_from": [],
-      "inherits_from_closure": [],
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
       "path": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md",
       "provenance": {
         "evidence_refs": [
@@ -212,24 +304,31 @@
         "source_digest": "559ec6571463148494c090be4f3ac768268ca73104119ffe1791d4b125e55b2c",
         "source_locator": "docs/evidence/l3-ablation-workflow.json",
         "source_type": "run_manifest",
-        "supersedes": []
+        "supersedes": [
+          "mindie://operators/units/unit-rmsnorm-five-stage-ablation-workflow@2"
+        ]
       },
-      "revision": 1,
+      "revision": 3,
       "tier": "L3",
-      "title": "Observed five-stage RMSNorm ablation workflow with preserved reporting failure",
-      "token_estimate": 458,
+      "title": "Five-stage Hermes operator optimization, leave-one-out ablation, and distillation workflow",
+      "token_estimate": 1731,
       "triggers": {
-        "error_signatures": [],
+        "error_signatures": [
+          "an operator optimization has no frozen oracle, no synchronized baseline or no leave-one-out attribution",
+          "routine optimization stalls and the task never escalates to a code-transformation mutator",
+          "a final retained result is claimed without a separate retained verification run"
+        ],
         "keywords": [
-          "observed",
+          "Hermes",
           "five-stage",
-          "rmsnorm",
+          "operator optimization",
+          "leave-one-out",
           "ablation",
-          "workflow",
-          "with",
-          "preserved",
-          "reporting",
-          "failure"
+          "distillation",
+          "RMSNorm",
+          "escalation",
+          "reviewed_change",
+          "experiment-ledger"
         ]
       }
     }
