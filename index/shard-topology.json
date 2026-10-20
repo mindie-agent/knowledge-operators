@@ -13,13 +13,16 @@
     "unit-rmsnorm-five-stage-ablation-workflow": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-triton-dynamic-scalar-specialization-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ]
   },
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 32686,
-      "estimated_tokens": 6330,
+      "bytes": 34983,
+      "estimated_tokens": 6663,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
@@ -27,9 +30,10 @@
         "unit-ascend-operator-roofline-and-four-view-measurement",
         "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
         "unit-residual-free-rmsnorm-fastpath",
-        "unit-rmsnorm-five-stage-ablation-workflow"
+        "unit-rmsnorm-five-stage-ablation-workflow",
+        "unit-triton-dynamic-scalar-specialization-sop"
       ],
-      "units": 5
+      "units": 6
     },
     "domains": [
       {
@@ -48,6 +52,19 @@
       },
       {
         "automatic": false,
+        "bytes": 2297,
+        "estimated_tokens": 333,
+        "exceeds": [],
+        "kind": "federation",
+        "path": "compilation",
+        "recommended_action": "review_federation_boundary",
+        "unit_ids": [
+          "unit-triton-dynamic-scalar-specialization-sop"
+        ],
+        "units": 1
+      },
+      {
+        "automatic": false,
         "bytes": 22479,
         "estimated_tokens": 4387,
         "exceeds": [],
@@ -63,7 +80,7 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 1.5714589972048998,
+  "index_build_elapsed_ms": 1.6910829581320286,
   "leaves": [
     {
       "automatic": false,
@@ -78,6 +95,19 @@
         "unit-ascend-operator-roofline-and-four-view-measurement"
       ],
       "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 2297,
+      "estimated_tokens": 333,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "compilation/triton",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-triton-dynamic-scalar-specialization-sop"
+      ],
+      "units": 1
     },
     {
       "automatic": false,
@@ -115,6 +145,19 @@
     },
     {
       "automatic": false,
+      "bytes": 2297,
+      "estimated_tokens": 333,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "compilation/triton",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-triton-dynamic-scalar-specialization-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 22479,
       "estimated_tokens": 4387,
       "exceeds": [],
@@ -129,7 +172,7 @@
       "units": 3
     }
   ],
-  "unit_count": 5,
+  "unit_count": 6,
   "units": {
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": {
       "bytes": 4897,
@@ -194,6 +237,19 @@
       ],
       "path": "normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md",
       "tier": "L3"
+    },
+    "unit-triton-dynamic-scalar-specialization-sop": {
+      "bytes": 2297,
+      "category": "sop",
+      "content_sha256": "7da580d50b1f5b47acc64b81d21eedd70c95e9d9f1d35fa61dee94047f87c86b",
+      "domain_path": "compilation/triton",
+      "estimated_tokens": 333,
+      "evidence_strength": "single_observation",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+      ],
+      "path": "compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md",
+      "tier": "L2"
     }
   }
 }

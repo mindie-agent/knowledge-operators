@@ -4,21 +4,22 @@ The `graded-v2` branch of this repository is the `operators` domain graded knowl
 
 ## Access
 
-Install through the native MindIE Agent plugin for **Codex, Claude Code, Kimi or DSH** and follow the main installation guide: <https://github.com/mindie-agent/mindie-agent>. This repository does not copy host installers. Read-only query and explain do not require community sharing. The runtime can host other domains; the `0.0.3` release scope covers `operators` and `vllm-ascend`, not a hardcoded two-domain runtime. 0.0.3 plugins select `graded-v2` and bind the exact digest of this domain's `publication-contract.json`; manual contributions start from a `graded-v2` checkout and PRs target `graded-v2`.
+Install through the native MindIE Agent plugin for **Codex, Claude Code, Kimi or DSH** and follow the main installation guide: <https://github.com/mindie-agent/mindie-agent>. This repository does not copy host installers. Read-only query and explain do not require community sharing. The runtime can host other domains; the `0.0.3` release scope covers `operators` and `vllm-ascend`, not a hardcoded two-domain runtime. 0.0.3 plugins and manual contributions use `main`; queries and feedback identify units by `ID@revision`.
 
 A unit is not a universal speedup claim. It states the conditions under which an observation or procedure holds, the evidence behind it, and the limits that remain. Read a unit only after comparing its declared conditions with facts your task actually observed; a missing or `unknown` condition does not match.
 
 ## Live inventory
 
-[`index/routing-manifest.json`](index/routing-manifest.json) is the authoritative, live inventory. It records stable IDs, paths, tiers, evidence strength, conditions, content digests, inheritance and token estimates. The table lists the units present in the manifest at this check; the manifest remains authoritative. A new unit becomes current only when its unit Markdown and rebuilt manifest entries both exist. Reviewed changes use the runtime's `mindie-reviewed-change/1` plan: complete unit bytes, the exact base generation and a review reference. Applying a plan writes units and rebuilds the local index; it does not commit, push or publish.
+Markdown units are the source of truth. [`index/routing-manifest.json`](index/routing-manifest.json) is their rebuildable inventory of IDs, revisions, paths, conditions and inheritance. Rebuild the routing index after changing a unit; reviewed changes use the runtime's existing `mindie-reviewed-change/1` application path.
 
 | Unit | Revision | Tier / category | Evidence strength | Pinned reference |
 | --- | --- | --- | --- | --- |
-| [Ascend 910B/910_93 memory alignment, vector repeat and ACLGraph tiling axioms](_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md) | 1 | L1 / `axiom` | `hardware_spec` | `mindie://operators/units/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms@046d589203749274b72b11780d0181113176ff0935a39e45b4252c287e4e14e3` |
-| [Ascend operator four-gate measurement and four-view roofline contract](_common/unit-ascend-operator-roofline-and-four-view-measurement.md) | 1 | L1 / `measurement` | `reproduced_empirical` | `mindie://operators/units/unit-ascend-operator-roofline-and-four-view-measurement@bdd1a8d09cb01d317509d7e5eac17a6b9ac57d6b58fd6eabf023cbca9221570f` |
-| [Ascend gated RMSNorm Bottleneck & Fastpath Dispatch Triage SOP](normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md) | 2 | L2 / `sop` | `single_observation` | `mindie://operators/units/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence@8a88ab014b6104ae726d9f24f1cd1e8dd6d345f7fe66ddc4e5b7bc6c3c0d09a6` |
-| [Five-stage Hermes operator optimization, leave-one-out ablation, and distillation workflow](normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md) | 3 | L3 / `workflow` | `reproduced_empirical` | `mindie://operators/units/unit-rmsnorm-five-stage-ablation-workflow@7d3a3835b10d26f0d41df0835bab70ea7ab17953198dcdd32af141f8cc24408c` |
-| [L4 mutator: residual-free gated RMSNorm native fastpath for Ascend910B](normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md) | 6 | L4 / `mutator` | `reproduced_empirical` | `mindie://operators/units/unit-residual-free-rmsnorm-fastpath@179330e3ed4d9fd88740079999c95c86d094829e4532bb6baf3fedeea98f24b7` |
+| [Ascend 910B/910_93 memory alignment, vector repeat and ACLGraph tiling axioms](_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md) | 1 | L1 / `axiom` | `hardware_spec` | `mindie://operators/units/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms@1` |
+| [Ascend operator four-gate measurement and four-view roofline contract](_common/unit-ascend-operator-roofline-and-four-view-measurement.md) | 1 | L1 / `measurement` | `reproduced_empirical` | `mindie://operators/units/unit-ascend-operator-roofline-and-four-view-measurement@1` |
+| [Ascend gated RMSNorm Bottleneck & Fastpath Dispatch Triage SOP](normalization/rmsnorm/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence.md) | 2 | L2 / `sop` | `single_observation` | `mindie://operators/units/unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence@2` |
+| [Five-stage Hermes operator optimization, leave-one-out ablation, and distillation workflow](normalization/rmsnorm/unit-rmsnorm-five-stage-ablation-workflow.md) | 3 | L3 / `workflow` | `reproduced_empirical` | `mindie://operators/units/unit-rmsnorm-five-stage-ablation-workflow@3` |
+| [L4 mutator: residual-free gated RMSNorm native fastpath for Ascend910B](normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md) | 6 | L4 / `mutator` | `reproduced_empirical` | `mindie://operators/units/unit-residual-free-rmsnorm-fastpath@6` |
+| [Dynamic-length Triton recompilation SOP](compilation/triton/unit-triton-dynamic-scalar-specialization-sop.md) | 1 | L2 / `sop` | `single_observation` | `mindie://operators/units/unit-triton-dynamic-scalar-specialization-sop@1` |
 
 The two L1 units live under `_common` and are inherited by every `normalization/rmsnorm` unit. The `operators` domain has no migrated `vllm-ascend` task corpus; shared knowledge is accessed through explicit domain routes, not copied here.
 
@@ -66,17 +67,17 @@ These four observed facts are the complete condition set for the L2/L3/L4 units 
 
 All declared conditions must hold for `matched`. Any explicit contradiction is `mismatch`; missing, `unknown` or incomparable facts remain `unknown` and do not match.
 
-### Read the full body by exact digest
+### Read the full body by revision
 
-A query result carries a digest-pinned `ref`. Read that exact revision:
+A query result carries a revision-specific `ref`. Read that revision:
 
 ```python
 knowledge_explain(
-    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@179330e3ed4d9fd88740079999c95c86d094829e4532bb6baf3fedeea98f24b7",
+    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@6",
 )
 ```
 
-The hash after `@` is the bare 64-character content digest, not the revision number. After a semantic edit, an old reference fails explicitly; a location-only move keeps the digest and revision. Reading the body does not establish applicability.
+The integer after `@` is the unit revision. Semantic edits advance it; location-only moves preserve it. Use the `ref` returned by the query.
 
 ### Optional local feedback
 
@@ -84,7 +85,7 @@ After using a unit in real work, record `up` or `down` against the exact observe
 
 ```python
 knowledge_feedback(
-    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@179330e3ed4d9fd88740079999c95c86d094829e4532bb6baf3fedeea98f24b7",
+    ref="mindie://operators/units/unit-residual-free-rmsnorm-fastpath@6",
     rating="up",
     reason="Recorded after reusing the measured workload boundary in the observed task.",
 )
@@ -94,7 +95,7 @@ Feedback is optional and descriptive. It binds the revision actually returned, n
 
 ### Explicit domain routes
 
-Knowledge shared from another domain is read through an explicit `mindie://<domain>/units/<unit-id>@<sha256>` route with that domain configured. An unknown or unconfigured domain fails instead of falling back. This repository neither imports another domain's units nor merges same-topic rules across domains.
+Knowledge shared from another domain is read through an explicit `mindie://<domain>/units/<unit-id>@<revision>` route with that domain configured. An unknown or unconfigured domain fails instead of falling back. This repository neither imports another domain's units nor merges same-topic rules across domains.
 
 ## Publication and validation
 
@@ -125,4 +126,4 @@ knowledge-operators/
 └── scripts/
 ```
 
-Format, digest, condition, inheritance and reviewed-change rules are in the runtime's unit schema; this domain follows the same `mindie-graded-unit/1` contract. For repository boundaries and maintenance rules, see [`AGENTS.md`](AGENTS.md).
+Format, revision, condition, inheritance and reviewed-change rules are in the runtime's unit schema; this domain follows the same `mindie-graded-unit/1` contract. For repository boundaries and maintenance rules, see [`AGENTS.md`](AGENTS.md).
