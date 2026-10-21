@@ -8,6 +8,26 @@
       "unit-ascend950-microarchitecture-per-core-memory-and-interconnect-axioms",
       "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
     ],
+    "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
+    "unit-agent-skills-catlass-gemm-grouped-matmul-and-epilogue-fusion-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-agent-skills-gpu-to-npu-triton-and-tilelang-vector-migration-workflow": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
+    "unit-agent-skills-triton-operator-design-review-and-npu-optimization": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
+    "unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow": [
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
+    ],
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": [],
     "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
@@ -220,6 +240,10 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
     ],
+    "unit-cann-recipes-custom-ops-flash-kda-and-ascendc-kernel-catalog": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract"
+    ],
     "unit-cannbot-dsl-matmul-and-catlass-gemm-epilogue-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
@@ -231,6 +255,18 @@
     "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-deepseek-v32-exp-ascendc-and-tilelang-mla-indexer-kernels": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-deepseek-v4-ascendc-compressor-indexer-and-sparse-attn-sharedkv": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+    ],
+    "unit-deepseek-v4-tilelang-and-pypto-sfa-mhc-quant-kernel-guide": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
     ],
     "unit-flash-kda-and-mega-recurrent-replayssm-dsl-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -310,10 +346,30 @@
       "unit-ascend-operator-roofline-and-four-view-measurement",
       "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
     ],
+    "unit-ops-transformer-aclnn-fia-v3-and-mla-prolog-contracts": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
+    "unit-ops-transformer-aclnn-lightning-indexer-v2-and-sparse-fia-contract": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+    ],
+    "unit-ops-transformer-gmm-swiglu-quant-v2-and-moe-init-routing-v2-contract": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+    ],
+    "unit-ops-transformer-mc2-moe-distribute-dispatch-and-combine-v2-contract": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
     "unit-pypto-compile-precision-bisect-and-swimlane-debug-workflow": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-pypto-tile-operator-design-api-and-execution-constraints-sop",
       "unit-ascend-operator-roofline-and-four-view-measurement"
+    ],
+    "unit-pypto-mpmd-megakernel-deepseek-v32-exp-and-bailing-v3-guide": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
     ],
     "unit-pypto-tile-operator-design-api-and-execution-constraints-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
@@ -495,17 +551,30 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement",
       "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
+    ],
+    "unit-vllm-ascend-fused-moe-comm-methods-and-stage-contracts": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+    ],
+    "unit-vllm-ascend-triton-fla-gdn-kimi-kda-dsa-and-rope-dsv4-ops": [
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ]
   },
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 858135,
-      "estimated_tokens": 156707,
+      "bytes": 930346,
+      "estimated_tokens": 166774,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
         "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop",
+        "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop",
+        "unit-agent-skills-catlass-gemm-grouped-matmul-and-epilogue-fusion-sop",
+        "unit-agent-skills-gpu-to-npu-triton-and-tilelang-vector-migration-workflow",
+        "unit-agent-skills-triton-operator-design-review-and-npu-optimization",
+        "unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow",
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
         "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
         "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop",
@@ -544,8 +613,12 @@
         "unit-ascendc-wholereduce-blockreduce-and-argreduce-sop",
         "unit-bisheng-ir-bufferization-memory-planning-and-multibuffer-sop",
         "unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract",
+        "unit-cann-recipes-custom-ops-flash-kda-and-ascendc-kernel-catalog",
         "unit-cannbot-dsl-matmul-and-catlass-gemm-epilogue-sop",
         "unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop",
+        "unit-deepseek-v32-exp-ascendc-and-tilelang-mla-indexer-kernels",
+        "unit-deepseek-v4-ascendc-compressor-indexer-and-sparse-attn-sharedkv",
+        "unit-deepseek-v4-tilelang-and-pypto-sfa-mhc-quant-kernel-guide",
         "unit-flash-kda-and-mega-recurrent-replayssm-dsl-sop",
         "unit-gated-rmsnorm-ascend-fastpath-load-stage-evidence",
         "unit-hfusion-hacc-and-triton-custom-dialects-sop",
@@ -559,7 +632,12 @@
         "unit-nn-math-and-cv-aclnn-direct-operator-contracts-sop",
         "unit-nsa-qwen-block-sparse-and-fp8-fullquant-flash-attention-sop",
         "unit-operator-memory-vs-compute-bottleneck-convergence-workflow",
+        "unit-ops-transformer-aclnn-fia-v3-and-mla-prolog-contracts",
+        "unit-ops-transformer-aclnn-lightning-indexer-v2-and-sparse-fia-contract",
+        "unit-ops-transformer-gmm-swiglu-quant-v2-and-moe-init-routing-v2-contract",
+        "unit-ops-transformer-mc2-moe-distribute-dispatch-and-combine-v2-contract",
         "unit-pypto-compile-precision-bisect-and-swimlane-debug-workflow",
+        "unit-pypto-mpmd-megakernel-deepseek-v32-exp-and-bailing-v3-guide",
         "unit-pypto-tile-operator-design-api-and-execution-constraints-sop",
         "unit-residual-free-rmsnorm-fastpath",
         "unit-rmsnorm-five-stage-ablation-workflow",
@@ -591,9 +669,11 @@
         "unit-triton-gpu-to-ascend-kernel-migration-and-verification-workflow",
         "unit-triton-recompilation-decision-tree",
         "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop",
-        "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator"
+        "unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator",
+        "unit-vllm-ascend-fused-moe-comm-methods-and-stage-contracts",
+        "unit-vllm-ascend-triton-fla-gdn-kimi-kda-dsa-and-rope-dsv4-ops"
       ],
-      "units": 87
+      "units": 103
     },
     "domains": [
       {
@@ -802,17 +882,33 @@
       },
       {
         "automatic": false,
-        "bytes": 19465,
-        "estimated_tokens": 2977,
+        "bytes": 91676,
+        "estimated_tokens": 13044,
         "exceeds": [],
         "kind": "federation",
         "path": "operators",
         "recommended_action": "review_federation_boundary",
         "unit_ids": [
+          "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop",
+          "unit-agent-skills-catlass-gemm-grouped-matmul-and-epilogue-fusion-sop",
+          "unit-agent-skills-gpu-to-npu-triton-and-tilelang-vector-migration-workflow",
+          "unit-agent-skills-triton-operator-design-review-and-npu-optimization",
+          "unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow",
+          "unit-cann-recipes-custom-ops-flash-kda-and-ascendc-kernel-catalog",
+          "unit-deepseek-v32-exp-ascendc-and-tilelang-mla-indexer-kernels",
+          "unit-deepseek-v4-ascendc-compressor-indexer-and-sparse-attn-sharedkv",
+          "unit-deepseek-v4-tilelang-and-pypto-sfa-mhc-quant-kernel-guide",
           "unit-nn-math-and-cv-aclnn-direct-operator-contracts-sop",
-          "unit-transformer-aclnn-and-direct-attention-mc2-gmm-moe-operator-contracts-sop"
+          "unit-ops-transformer-aclnn-fia-v3-and-mla-prolog-contracts",
+          "unit-ops-transformer-aclnn-lightning-indexer-v2-and-sparse-fia-contract",
+          "unit-ops-transformer-gmm-swiglu-quant-v2-and-moe-init-routing-v2-contract",
+          "unit-ops-transformer-mc2-moe-distribute-dispatch-and-combine-v2-contract",
+          "unit-pypto-mpmd-megakernel-deepseek-v32-exp-and-bailing-v3-guide",
+          "unit-transformer-aclnn-and-direct-attention-mc2-gmm-moe-operator-contracts-sop",
+          "unit-vllm-ascend-fused-moe-comm-methods-and-stage-contracts",
+          "unit-vllm-ascend-triton-fla-gdn-kimi-kda-dsa-and-rope-dsv4-ops"
         ],
-        "units": 2
+        "units": 18
       },
       {
         "automatic": false,
@@ -829,7 +925,7 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 51.422375021502376,
+  "index_build_elapsed_ms": 68.01120901945978,
   "leaves": [
     {
       "automatic": false,
@@ -1649,6 +1745,48 @@
     },
     {
       "automatic": false,
+      "bytes": 9071,
+      "estimated_tokens": 1282,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/model-recipes/agentic-kernel-tuning",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow",
+        "unit-cann-recipes-custom-ops-flash-kda-and-ascendc-kernel-catalog"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 8529,
+      "estimated_tokens": 1151,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/model-recipes/deepseek-v32-and-bailing",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-deepseek-v32-exp-ascendc-and-tilelang-mla-indexer-kernels",
+        "unit-pypto-mpmd-megakernel-deepseek-v32-exp-and-bailing-v3-guide"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 9339,
+      "estimated_tokens": 1374,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/model-recipes/deepseek-v4-guides",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-deepseek-v4-ascendc-compressor-indexer-and-sparse-attn-sharedkv",
+        "unit-deepseek-v4-tilelang-and-pypto-sfa-mhc-quant-kernel-guide"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
       "bytes": 9386,
       "estimated_tokens": 1455,
       "exceeds": [],
@@ -1662,6 +1800,34 @@
     },
     {
       "automatic": false,
+      "bytes": 8868,
+      "estimated_tokens": 1217,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/skill-playbooks/ascendc-and-catlass",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop",
+        "unit-agent-skills-catlass-gemm-grouped-matmul-and-epilogue-fusion-sop"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 9334,
+      "estimated_tokens": 1340,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/skill-playbooks/triton-and-tilelang",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-agent-skills-gpu-to-npu-triton-and-tilelang-vector-migration-workflow",
+        "unit-agent-skills-triton-operator-design-review-and-npu-optimization"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
       "bytes": 10079,
       "estimated_tokens": 1522,
       "exceeds": [],
@@ -1672,6 +1838,48 @@
         "unit-transformer-aclnn-and-direct-attention-mc2-gmm-moe-operator-contracts-sop"
       ],
       "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 8987,
+      "estimated_tokens": 1282,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/transformer-fused/attention-mla-indexer",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ops-transformer-aclnn-fia-v3-and-mla-prolog-contracts",
+        "unit-ops-transformer-aclnn-lightning-indexer-v2-and-sparse-fia-contract"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 8955,
+      "estimated_tokens": 1259,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/transformer-fused/moe-mc2-gmm-and-rope",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ops-transformer-gmm-swiglu-quant-v2-and-moe-init-routing-v2-contract",
+        "unit-ops-transformer-mc2-moe-distribute-dispatch-and-combine-v2-contract"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
+      "bytes": 9128,
+      "estimated_tokens": 1162,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/transformer-fused/vllm-ascend-custom-ops",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-vllm-ascend-fused-moe-comm-methods-and-stage-contracts",
+        "unit-vllm-ascend-triton-fla-gdn-kimi-kda-dsa-and-rope-dsv4-ops"
+      ],
+      "units": 2
     },
     {
       "automatic": false,
@@ -2195,6 +2403,24 @@
     },
     {
       "automatic": false,
+      "bytes": 26939,
+      "estimated_tokens": 3807,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "operators/model-recipes",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow",
+        "unit-cann-recipes-custom-ops-flash-kda-and-ascendc-kernel-catalog",
+        "unit-deepseek-v32-exp-ascendc-and-tilelang-mla-indexer-kernels",
+        "unit-deepseek-v4-ascendc-compressor-indexer-and-sparse-attn-sharedkv",
+        "unit-deepseek-v4-tilelang-and-pypto-sfa-mhc-quant-kernel-guide",
+        "unit-pypto-mpmd-megakernel-deepseek-v32-exp-and-bailing-v3-guide"
+      ],
+      "units": 6
+    },
+    {
+      "automatic": false,
       "bytes": 9386,
       "estimated_tokens": 1455,
       "exceeds": [],
@@ -2205,6 +2431,22 @@
         "unit-nn-math-and-cv-aclnn-direct-operator-contracts-sop"
       ],
       "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 18202,
+      "estimated_tokens": 2557,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "operators/skill-playbooks",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop",
+        "unit-agent-skills-catlass-gemm-grouped-matmul-and-epilogue-fusion-sop",
+        "unit-agent-skills-gpu-to-npu-triton-and-tilelang-vector-migration-workflow",
+        "unit-agent-skills-triton-operator-design-review-and-npu-optimization"
+      ],
+      "units": 4
     },
     {
       "automatic": false,
@@ -2221,6 +2463,24 @@
     },
     {
       "automatic": false,
+      "bytes": 27070,
+      "estimated_tokens": 3703,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "operators/transformer-fused",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ops-transformer-aclnn-fia-v3-and-mla-prolog-contracts",
+        "unit-ops-transformer-aclnn-lightning-indexer-v2-and-sparse-fia-contract",
+        "unit-ops-transformer-gmm-swiglu-quant-v2-and-moe-init-routing-v2-contract",
+        "unit-ops-transformer-mc2-moe-distribute-dispatch-and-combine-v2-contract",
+        "unit-vllm-ascend-fused-moe-comm-methods-and-stage-contracts",
+        "unit-vllm-ascend-triton-fla-gdn-kimi-kda-dsa-and-rope-dsv4-ops"
+      ],
+      "units": 6
+    },
+    {
+      "automatic": false,
       "bytes": 9694,
       "estimated_tokens": 1513,
       "exceeds": [],
@@ -2233,7 +2493,7 @@
       "units": 1
     }
   ],
-  "unit_count": 87,
+  "unit_count": 103,
   "units": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": {
       "bytes": 9098,
@@ -2249,6 +2509,76 @@
       ],
       "path": "normalization/rmsnorm-rope-quant/unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop.md",
       "tier": "L2"
+    },
+    "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop": {
+      "bytes": 4355,
+      "category": "sop",
+      "content_sha256": "ad7c1d04461f2bc7c6976588d8988ae1823e5828d827d4ebc00b1530ae496295",
+      "domain_path": "operators/skill-playbooks/ascendc-and-catlass",
+      "estimated_tokens": 587,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+      ],
+      "path": "operators/skill-playbooks/ascendc-and-catlass/unit-agent-skills-ascendc-operator-design-codegen-and-review-sop.md",
+      "tier": "L2"
+    },
+    "unit-agent-skills-catlass-gemm-grouped-matmul-and-epilogue-fusion-sop": {
+      "bytes": 4513,
+      "category": "sop",
+      "content_sha256": "878aec63573994e3f42c490bbe5078f35b94ccd696b63d031cf5b8e7f867fedf",
+      "domain_path": "operators/skill-playbooks/ascendc-and-catlass",
+      "estimated_tokens": 630,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "operators/skill-playbooks/ascendc-and-catlass/unit-agent-skills-catlass-gemm-grouped-matmul-and-epilogue-fusion-sop.md",
+      "tier": "L2"
+    },
+    "unit-agent-skills-gpu-to-npu-triton-and-tilelang-vector-migration-workflow": {
+      "bytes": 4599,
+      "category": "workflow",
+      "content_sha256": "c4e1c285f2367d4a8eaac8a4dd684084181b41a41cbaceb5a1ad9851e848a229",
+      "domain_path": "operators/skill-playbooks/triton-and-tilelang",
+      "estimated_tokens": 678,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract"
+      ],
+      "path": "operators/skill-playbooks/triton-and-tilelang/unit-agent-skills-gpu-to-npu-triton-and-tilelang-vector-migration-workflow.md",
+      "tier": "L3"
+    },
+    "unit-agent-skills-triton-operator-design-review-and-npu-optimization": {
+      "bytes": 4735,
+      "category": "sop",
+      "content_sha256": "95bc5fa719c0b8041648d771820f9694af2d1e8ec15ab64a531c3786c0aea620",
+      "domain_path": "operators/skill-playbooks/triton-and-tilelang",
+      "estimated_tokens": 662,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract"
+      ],
+      "path": "operators/skill-playbooks/triton-and-tilelang/unit-agent-skills-triton-operator-design-review-and-npu-optimization.md",
+      "tier": "L2"
+    },
+    "unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow": {
+      "bytes": 4766,
+      "category": "workflow",
+      "content_sha256": "6f4d30048f2a957973fe5e1588ad067d45b6d12c4d4e66ee14b312a3272788c0",
+      "domain_path": "operators/model-recipes/agentic-kernel-tuning",
+      "estimated_tokens": 664,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "operators/model-recipes/agentic-kernel-tuning/unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow.md",
+      "tier": "L3"
     },
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": {
       "bytes": 2511,
@@ -2798,6 +3128,20 @@
       "path": "compilation/bisheng-ir/pipeline-and-arch/unit-bisheng-ir-compilation-pipeline-and-pass-lowering-contract.md",
       "tier": "L1"
     },
+    "unit-cann-recipes-custom-ops-flash-kda-and-ascendc-kernel-catalog": {
+      "bytes": 4305,
+      "category": "sop",
+      "content_sha256": "f257da835955e04b954562d243666c561131d662ccecd0022128f5d793c510a9",
+      "domain_path": "operators/model-recipes/agentic-kernel-tuning",
+      "estimated_tokens": 618,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract"
+      ],
+      "path": "operators/model-recipes/agentic-kernel-tuning/unit-cann-recipes-custom-ops-flash-kda-and-ascendc-kernel-catalog.md",
+      "tier": "L2"
+    },
     "unit-cannbot-dsl-matmul-and-catlass-gemm-epilogue-sop": {
       "bytes": 9984,
       "category": "sop",
@@ -2825,6 +3169,48 @@
         "unit-ascend-operator-roofline-and-four-view-measurement"
       ],
       "path": "matmul/catlass-tilelang/unit-catlass-and-tilelang-ascend-operator-design-and-tuning-sop.md",
+      "tier": "L2"
+    },
+    "unit-deepseek-v32-exp-ascendc-and-tilelang-mla-indexer-kernels": {
+      "bytes": 4198,
+      "category": "sop",
+      "content_sha256": "87884bcf88dbe61ff3db3a4a4d2cea25f17c2d677c0e01caf2a862c58e8d0e2a",
+      "domain_path": "operators/model-recipes/deepseek-v32-and-bailing",
+      "estimated_tokens": 560,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement"
+      ],
+      "path": "operators/model-recipes/deepseek-v32-and-bailing/unit-deepseek-v32-exp-ascendc-and-tilelang-mla-indexer-kernels.md",
+      "tier": "L2"
+    },
+    "unit-deepseek-v4-ascendc-compressor-indexer-and-sparse-attn-sharedkv": {
+      "bytes": 4588,
+      "category": "sop",
+      "content_sha256": "36d3555c20d582f28362a80d4f9ec69ed7d37c6767193383bdddae85ba006301",
+      "domain_path": "operators/model-recipes/deepseek-v4-guides",
+      "estimated_tokens": 667,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "operators/model-recipes/deepseek-v4-guides/unit-deepseek-v4-ascendc-compressor-indexer-and-sparse-attn-sharedkv.md",
+      "tier": "L2"
+    },
+    "unit-deepseek-v4-tilelang-and-pypto-sfa-mhc-quant-kernel-guide": {
+      "bytes": 4751,
+      "category": "sop",
+      "content_sha256": "68c9ddc3eb99ebb28b56c376cd71a57a00e692610ffb7e1d5f295fbd6f3f1339",
+      "domain_path": "operators/model-recipes/deepseek-v4-guides",
+      "estimated_tokens": 707,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "operators/model-recipes/deepseek-v4-guides/unit-deepseek-v4-tilelang-and-pypto-sfa-mhc-quant-kernel-guide.md",
       "tier": "L2"
     },
     "unit-flash-kda-and-mega-recurrent-replayssm-dsl-sop": {
@@ -3020,6 +3406,62 @@
       "path": "Reduction/unit-operator-memory-vs-compute-bottleneck-convergence-workflow.md",
       "tier": "L3"
     },
+    "unit-ops-transformer-aclnn-fia-v3-and-mla-prolog-contracts": {
+      "bytes": 4911,
+      "category": "sop",
+      "content_sha256": "f0ac2daf7955837a107ffa4700ef39d2b487dfb9a697c465eb2f716d16691310",
+      "domain_path": "operators/transformer-fused/attention-mla-indexer",
+      "estimated_tokens": 697,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+      ],
+      "path": "operators/transformer-fused/attention-mla-indexer/unit-ops-transformer-aclnn-fia-v3-and-mla-prolog-contracts.md",
+      "tier": "L2"
+    },
+    "unit-ops-transformer-aclnn-lightning-indexer-v2-and-sparse-fia-contract": {
+      "bytes": 4076,
+      "category": "sop",
+      "content_sha256": "527aa59967374e921df08af96822a2e1799c884d7359fb63692128ba71e4362a",
+      "domain_path": "operators/transformer-fused/attention-mla-indexer",
+      "estimated_tokens": 585,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "operators/transformer-fused/attention-mla-indexer/unit-ops-transformer-aclnn-lightning-indexer-v2-and-sparse-fia-contract.md",
+      "tier": "L2"
+    },
+    "unit-ops-transformer-gmm-swiglu-quant-v2-and-moe-init-routing-v2-contract": {
+      "bytes": 4467,
+      "category": "sop",
+      "content_sha256": "5b7a9fbe50d3d48adedd8aaeec457a21b60c07e9cbde3a68943899b04c93ec7c",
+      "domain_path": "operators/transformer-fused/moe-mc2-gmm-and-rope",
+      "estimated_tokens": 631,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "operators/transformer-fused/moe-mc2-gmm-and-rope/unit-ops-transformer-gmm-swiglu-quant-v2-and-moe-init-routing-v2-contract.md",
+      "tier": "L2"
+    },
+    "unit-ops-transformer-mc2-moe-distribute-dispatch-and-combine-v2-contract": {
+      "bytes": 4488,
+      "category": "sop",
+      "content_sha256": "f96785c0df59f8dc219228e5c7c4abac27cb808edf3619b41ef0799c91bc748a",
+      "domain_path": "operators/transformer-fused/moe-mc2-gmm-and-rope",
+      "estimated_tokens": 628,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+      ],
+      "path": "operators/transformer-fused/moe-mc2-gmm-and-rope/unit-ops-transformer-mc2-moe-distribute-dispatch-and-combine-v2-contract.md",
+      "tier": "L2"
+    },
     "unit-pypto-compile-precision-bisect-and-swimlane-debug-workflow": {
       "bytes": 10106,
       "category": "workflow",
@@ -3033,6 +3475,20 @@
       ],
       "path": "compilation/pypto/unit-pypto-compile-precision-bisect-and-swimlane-debug-workflow.md",
       "tier": "L3"
+    },
+    "unit-pypto-mpmd-megakernel-deepseek-v32-exp-and-bailing-v3-guide": {
+      "bytes": 4331,
+      "category": "sop",
+      "content_sha256": "a300ae27b199977f4000f9c1ff9316f0be0bbaf05d06b06377cec1e5ab49001a",
+      "domain_path": "operators/model-recipes/deepseek-v32-and-bailing",
+      "estimated_tokens": 591,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "operators/model-recipes/deepseek-v32-and-bailing/unit-pypto-mpmd-megakernel-deepseek-v32-exp-and-bailing-v3-guide.md",
+      "tier": "L2"
     },
     "unit-pypto-tile-operator-design-api-and-execution-constraints-sop": {
       "bytes": 9888,
@@ -3487,6 +3943,34 @@
       ],
       "path": "Reduction/unit-vectorized-bf16-fp32-accumulation-cast-fusion-mutator.md",
       "tier": "L4"
+    },
+    "unit-vllm-ascend-fused-moe-comm-methods-and-stage-contracts": {
+      "bytes": 4410,
+      "category": "sop",
+      "content_sha256": "3e3d3403ab2222a96cad820daa9563427c20f312648a2c639d32f7a1785b8b7a",
+      "domain_path": "operators/transformer-fused/vllm-ascend-custom-ops",
+      "estimated_tokens": 558,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms"
+      ],
+      "path": "operators/transformer-fused/vllm-ascend-custom-ops/unit-vllm-ascend-fused-moe-comm-methods-and-stage-contracts.md",
+      "tier": "L2"
+    },
+    "unit-vllm-ascend-triton-fla-gdn-kimi-kda-dsa-and-rope-dsv4-ops": {
+      "bytes": 4718,
+      "category": "sop",
+      "content_sha256": "879b4dfa9cc17cea0bb3537623c88b02ac0f3da1ca62c2dd7e754dc841389321",
+      "domain_path": "operators/transformer-fused/vllm-ascend-custom-ops",
+      "estimated_tokens": 604,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract"
+      ],
+      "path": "operators/transformer-fused/vllm-ascend-custom-ops/unit-vllm-ascend-triton-fla-gdn-kimi-kda-dsa-and-rope-dsv4-ops.md",
+      "tier": "L2"
     }
   }
 }
