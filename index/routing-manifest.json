@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 65.98991599457804,
+  "build_elapsed_ms": 64.01766701310407,
   "closure": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -6468,7 +6468,7 @@
       "revision": 1,
       "tier": "L4",
       "title": "Triton-Ascend Contiguous Dimension Merge, Block Size Scaling, and Multibuffer Mutator",
-      "token_estimate": 1334,
+      "token_estimate": 1771,
       "triggers": {
         "error_signatures": [
           "1. Mutator A: Contiguous Spatial Dimension Merge (`OPT_11`, `2.6x` Measured Speedup)",

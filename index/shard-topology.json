@@ -564,8 +564,8 @@
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 932937,
-      "estimated_tokens": 167342,
+      "bytes": 934685,
+      "estimated_tokens": 167779,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
@@ -767,8 +767,8 @@
       },
       {
         "automatic": false,
-        "bytes": 275930,
-        "estimated_tokens": 53319,
+        "bytes": 277678,
+        "estimated_tokens": 53756,
         "exceeds": [],
         "kind": "federation",
         "path": "compilation",
@@ -925,7 +925,7 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 65.98991599457804,
+  "index_build_elapsed_ms": 64.01766701310407,
   "leaves": [
     {
       "automatic": false,
@@ -1508,8 +1508,8 @@
     },
     {
       "automatic": false,
-      "bytes": 14744,
-      "estimated_tokens": 2650,
+      "bytes": 16492,
+      "estimated_tokens": 3087,
       "exceeds": [],
       "kind": "leaf",
       "path": "compilation/triton/optimizations/tiling-and-ub-budget",
@@ -2212,8 +2212,8 @@
     },
     {
       "automatic": false,
-      "bytes": 38665,
-      "estimated_tokens": 6983,
+      "bytes": 40413,
+      "estimated_tokens": 7420,
       "exceeds": [],
       "kind": "subtree",
       "path": "compilation/triton/optimizations",
@@ -3675,11 +3675,11 @@
       "tier": "L3"
     },
     "unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator": {
-      "bytes": 7347,
+      "bytes": 9095,
       "category": "mutator",
-      "content_sha256": "89675c362a719361ac50d93be109a0967798f3813903d5ce5f42b1082356652d",
+      "content_sha256": "6d10762f0ad035946efaa8de45813198290edb892567075b19724048b78660c3",
       "domain_path": "compilation/triton/optimizations/tiling-and-ub-budget",
-      "estimated_tokens": 1334,
+      "estimated_tokens": 1771,
       "evidence_strength": "reproduced_empirical",
       "inherits_from": [
         "unit-triton-ascend-hardware-and-compiler-constraints-contract",

@@ -146,3 +146,17 @@ def select_optimal_block_size(numel: int, dtype: torch.dtype, num_live_f32_buffe
 - **Disable / Omit `multibuffer=True`** when:
   1. Single-iteration kernels (`numel <= BLOCK_SIZE * NUM_CORES`) where ping-pong setup overhead exceeds overlap gain (e.g., `SiLU` small/medium shapes, `MoeGatingTopKSoftmax`), **or**
   2. Multi-pass reduction kernels (`GroupNormSwish`) where live reduction accumulators + double-buffered tiles force smaller `BLOCK_SIZE` or cause UB spills.
+
+---
+
+## 4. Verification and Leave-One-Out Ablation Arms (`spatial_group_norm_reduce`)
+
+When applying the three mutators (`OPT_11` Contiguous `(H, W) -> HW` Dimension Merge + Loop-Carried Vector Accumulator, `OPT_10` Multi-Channel Group Stats Flattening `(C // G) * H * W -> elems_per_group`, and `OPT-5` + `OPT_23` `select_optimal_block_size` with reduction `multibuffer=False` guard) to a spatial/group reduction module (`spatial_group_norm_reduce.py`), expose a `run_ablation_suite()` function returning a `dict[str, dict]` across the 4 leave-one-out arms:
+
+| Arm | Removed factor | Required discriminating result |
+|---|---|---|
+| `full_candidate` | none (all 3 mutators enabled: `merge_hw=True`, `flatten_group_stats=True`, `scale_block_size=True`, `multibuffer=False`) | Lowest latency (`latency_ms`), minimal scalar barrier/sum iterations (`scalar_sum_calls`), highest mask occupancy (`mask_occupancy >= 0.90`), `ub_spill_bytes == 0`, `correctness_ok == True` |
+| `minus_dim_merge` | `OPT_11` (`merge_hw=False`: reverts to 3-level `N -> H -> W` nested loop with per-tile `tl.sum`) | Outer loop iterations and `scalar_sum_calls` jump by `H`x (`512x`), `latency_ms` regresses significantly |
+| `minus_group_flatten` | `OPT_10` (`flatten_group_stats=False`: reverts to per-channel `for c in range(c_start, c_end)` inner loop over small `L = H * W`) | `mask_occupancy` drops below `0.15` (e.g. `6.25%` when `L=16, BLOCK_HW=256`) and `latency_ms` regresses |
+| `minus_block_scaling` | `OPT-5` & `OPT_23` (`scale_block_size=False`: reverts to fixed `BLOCK_SIZE = 512` or enables `multibuffer=True` on multi-pass reduction causing UB pressure) | MTE2 burst utilization drops or `ub_spill_bytes > 0`, increasing `latency_ms` over `full_candidate` |
+
