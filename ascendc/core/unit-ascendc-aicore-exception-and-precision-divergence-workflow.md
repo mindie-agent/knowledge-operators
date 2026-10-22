@@ -1,7 +1,7 @@
 ---
 schema: mindie-graded-unit/1
 id: unit-ascendc-aicore-exception-and-precision-divergence-workflow
-revision: 1
+revision: 2
 tier: L3
 category: workflow
 domain_path: ascendc/core
@@ -36,6 +36,7 @@ triggers:
   - the first tile is correct and later tiles contain garbage, inf or NaN
   - the aligned prefix is correct but the tail is wrong near a 32 B or 256 B boundary
   - eager output looks correct but ACLGraph replay diverges or fails to capture
+  - enabling DumpTensor or ASCEND_LAUNCH_BLOCKING makes the failure disappear while the uninstrumented run still fails
   - EZ9999 appears during tiling or graph compilation without a device-side crash
   keywords:
   - AscendC
@@ -55,6 +56,7 @@ triggers:
   - tikicpulib
   - AscendC::PRINTF
   - DumpTensor
+  - observer perturbation
   - msaicerr
   - mssanitizer
   - msprof
@@ -74,9 +76,10 @@ Use when a custom AscendC kernel on Ascend 910B, 910_93 or 950 exhibits one of:
 - a runtime error code `507015` (`ACL_ERROR_RT_AICORE_TIMEOUT` or an AICore trap) or `507035` (`ACL_ERROR_RT_VECTOR_CORE_EXCEPTION`);
 - a hang in `AllocTensor`, `EnQue`/`DeQue`, `WaitFlag`, `CrossCoreWaitFlag` or a `SyncAll`;
 - a numerical divergence: `NaN`/`Inf`, tail corruption near a 32 B or 256 B boundary, bf16 accumulation drift, or a first-tile-correct/later-tile-garbage pattern;
+- an observer-perturbation symptom where enabling `DumpTensor`, `PRINTF`, `mssanitizer`, or stream synchronization causes the error to vanish while the identical uninstrumented run still fails (or where a candidate patch branch execution count is `0` under a dump-enabled pass);
 - `EZ9999` during tiling or graph compilation, where no device-side crash has occurred yet.
 
-The workflow assumes the correctness oracle is frozen and the failing case is reproducible at least once. It does not cover a pure host Python error, a compile error, a link error, a device link-down, or a kernel whose mathematical contract is known to be wrong. Those are separate branches; mixing them into the AICore triage produces false root causes.
+The workflow assumes the correctness oracle is frozen and the failing case is reproducible at least once. It does not cover a pure host Python error, a compile error, a link error, a device link-down, or a kernel whose mathematical contract is known to be wrong. Those are separate branches; mixing them into the AICore triage produces false root causes. Never treat a dump-enabled pass or zero-execution candidate branch as proof of a fix; always retain an uninstrumented baseline and an observer-only control before concluding.
 
 The four stages are deliberately ordered: **stabilize and classify the first failure → shrink to one kernel and localize with the CPU twin and dumps → attribute the defect to memory, queue/sync or numerics → fix, regress and profile**. Do not skip from a 507035 directly to rewriting the math; the error code is a class, not a root cause.
 

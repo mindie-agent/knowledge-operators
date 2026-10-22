@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 68.01120901945978,
+  "build_elapsed_ms": 65.98991599457804,
   "closure": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -562,7 +562,7 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ]
   },
-  "generation": "85df39806707a3b70232be9bfc4ae3a2b05bb14b93466afe8eb21984005ccffd",
+  "generation": "9a350945d839757a2183d27aa0dc3409c726c9ce4f37f02d7088765934934f37",
   "id_path": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": "normalization/rmsnorm-rope-quant/unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop.md",
     "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop": "operators/skill-playbooks/ascendc-and-catlass/unit-agent-skills-ascendc-operator-design-codegen-and-review-sop.md",
@@ -1027,20 +1027,23 @@
         "source_type": "code",
         "supersedes": []
       },
-      "revision": 1,
+      "revision": 2,
       "tier": "L3",
       "title": "Agentic Kernel Selection, Bottleneck Profiling, and Operator Fusion Workflow (LongCat, Gemma-4, Hy3)",
-      "token_estimate": 664,
+      "token_estimate": 1118,
       "triggers": {
         "error_signatures": [
           "agentic optimization report operator fusion",
-          "longcat flash lite gemma 4 hy3 operator bottleneck"
+          "longcat flash lite gemma 4 hy3 operator bottleneck",
+          "local single-kernel tile tweak yields no end-to-end latency gain due to GM round-trip"
         ],
         "keywords": [
           "agentic optimization report operator fusion",
           "longcat flash lite gemma 4 hy3 operator bottleneck",
           "replace python expert loop with npu_grouped_matmul",
           "scatter_update_ static kv cache operator",
+          "phase0 fusion boundary",
+          "gm round-trip",
           "agentic-optimization",
           "kernel-selection",
           "longcat-flash-lite",
@@ -2030,10 +2033,10 @@
         "source_type": "reproduced_debug_campaign_and_public_runbook_review",
         "supersedes": []
       },
-      "revision": 1,
+      "revision": 2,
       "tier": "L3",
       "title": "AscendC AICore exception, hang and numerical-divergence four-stage triage workflow",
-      "token_estimate": 4241,
+      "token_estimate": 4355,
       "triggers": {
         "error_signatures": [
           "aclrtSynchronizeStream returns 507015 (AICore timeout or trap) or 507035 (vector core exception)",
@@ -2041,6 +2044,7 @@
           "the first tile is correct and later tiles contain garbage, inf or NaN",
           "the aligned prefix is correct but the tail is wrong near a 32 B or 256 B boundary",
           "eager output looks correct but ACLGraph replay diverges or fails to capture",
+          "enabling DumpTensor or ASCEND_LAUNCH_BLOCKING makes the failure disappear while the uninstrumented run still fails",
           "EZ9999 appears during tiling or graph compilation without a device-side crash"
         ],
         "keywords": [
@@ -2061,6 +2065,7 @@
           "tikicpulib",
           "AscendC::PRINTF",
           "DumpTensor",
+          "observer perturbation",
           "msaicerr",
           "mssanitizer",
           "msprof",

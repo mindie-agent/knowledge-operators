@@ -564,8 +564,8 @@
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 930346,
-      "estimated_tokens": 166774,
+      "bytes": 932937,
+      "estimated_tokens": 167342,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
@@ -714,8 +714,8 @@
       },
       {
         "automatic": false,
-        "bytes": 228811,
-        "estimated_tokens": 38671,
+        "bytes": 229414,
+        "estimated_tokens": 38785,
         "exceeds": [],
         "kind": "federation",
         "path": "ascendc",
@@ -882,8 +882,8 @@
       },
       {
         "automatic": false,
-        "bytes": 91676,
-        "estimated_tokens": 13044,
+        "bytes": 93664,
+        "estimated_tokens": 13498,
         "exceeds": [],
         "kind": "federation",
         "path": "operators",
@@ -925,7 +925,7 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 68.01120901945978,
+  "index_build_elapsed_ms": 65.98991599457804,
   "leaves": [
     {
       "automatic": false,
@@ -1064,8 +1064,8 @@
     },
     {
       "automatic": false,
-      "bytes": 37594,
-      "estimated_tokens": 8178,
+      "bytes": 38197,
+      "estimated_tokens": 8292,
       "exceeds": [],
       "kind": "leaf",
       "path": "ascendc/core",
@@ -1745,8 +1745,8 @@
     },
     {
       "automatic": false,
-      "bytes": 9071,
-      "estimated_tokens": 1282,
+      "bytes": 11059,
+      "estimated_tokens": 1736,
       "exceeds": [],
       "kind": "leaf",
       "path": "operators/model-recipes/agentic-kernel-tuning",
@@ -1974,8 +1974,8 @@
     },
     {
       "automatic": false,
-      "bytes": 37594,
-      "estimated_tokens": 8178,
+      "bytes": 38197,
+      "estimated_tokens": 8292,
       "exceeds": [],
       "kind": "subtree",
       "path": "ascendc/core",
@@ -2403,8 +2403,8 @@
     },
     {
       "automatic": false,
-      "bytes": 26939,
-      "estimated_tokens": 3807,
+      "bytes": 28927,
+      "estimated_tokens": 4261,
       "exceeds": [],
       "kind": "subtree",
       "path": "operators/model-recipes",
@@ -2567,11 +2567,11 @@
       "tier": "L2"
     },
     "unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow": {
-      "bytes": 4766,
+      "bytes": 6754,
       "category": "workflow",
-      "content_sha256": "6f4d30048f2a957973fe5e1588ad067d45b6d12c4d4e66ee14b312a3272788c0",
+      "content_sha256": "ac61bfd1e990dd43c81303f1236e3b12b3488f902f97e086bc935fe6d767c652",
       "domain_path": "operators/model-recipes/agentic-kernel-tuning",
-      "estimated_tokens": 664,
+      "estimated_tokens": 1118,
       "evidence_strength": "reproduced_empirical",
       "inherits_from": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -2758,11 +2758,11 @@
       "tier": "L3"
     },
     "unit-ascendc-aicore-exception-and-precision-divergence-workflow": {
-      "bytes": 19329,
+      "bytes": 19932,
       "category": "workflow",
-      "content_sha256": "d707acfab5c1af6205eaef4647031ac749527d110f71387ef84e49454a2a0a64",
+      "content_sha256": "ce233a583d32e7335ff01b7ad85c36480f3fc614de8bb854f9744aab381e8df4",
       "domain_path": "ascendc/core",
-      "estimated_tokens": 4241,
+      "estimated_tokens": 4355,
       "evidence_strength": "reproduced_empirical",
       "inherits_from": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
