@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 64.01766701310407,
+  "build_elapsed_ms": 80.57708299020305,
   "closure": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -311,6 +311,18 @@
       "unit-ascend-operator-roofline-and-four-view-measurement",
       "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
     ],
+    "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+    ],
+    "unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow": [
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop"
+    ],
     "unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
@@ -562,7 +574,7 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ]
   },
-  "generation": "9a350945d839757a2183d27aa0dc3409c726c9ce4f37f02d7088765934934f37",
+  "generation": "2f3c2a62b0bd4fd00c1dd4cfbb69ad3b661850bde1b65c0095cdee159fd50c98",
   "id_path": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": "normalization/rmsnorm-rope-quant/unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop.md",
     "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop": "operators/skill-playbooks/ascendc-and-catlass/unit-agent-skills-ascendc-operator-design-codegen-and-review-sop.md",
@@ -621,6 +633,8 @@
     "unit-hivm-dialect-vector-simd-and-sync-injection-sop": "compilation/bisheng-ir/hivm-dialect/unit-hivm-dialect-vector-simd-and-sync-injection-sop.md",
     "unit-lightning-indexer-prolog-epilogue-and-qsa-stem-indexer-sop": "attention/indexer-prolog/unit-lightning-indexer-prolog-epilogue-and-qsa-stem-indexer-sop.md",
     "unit-mhc-pre-post-sinkhorn-knopp-and-engram-gate-fusion-sop": "fusion/mhc-hyper-connections/unit-mhc-pre-post-sinkhorn-knopp-and-engram-gate-fusion-sop.md",
+    "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop": "operators/mindie-sd/custom-ops/unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop.md",
+    "unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow": "operators/mindie-sd/fusion-analysis/unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow.md",
     "unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop": "attention/mla-sparse/unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop.md",
     "unit-moe-dispatch-gmm-combine-and-alltoallv-routing-sop": "moe/dispatch-combine/unit-moe-dispatch-gmm-combine-and-alltoallv-routing-sop.md",
     "unit-moe-grouped-matmul-swiglu-finalize-and-dynamic-shape-selection-mutator": "moe/grouped-matmul/unit-moe-grouped-matmul-swiglu-finalize-and-dynamic-shape-selection-mutator.md",
@@ -671,7 +685,7 @@
   "query_budget_excludes_build": true,
   "schema_version": "mindie-routing-manifest/1",
   "token_estimator": "utf8_bytes_div_4_ceiling",
-  "unit_count": 103,
+  "unit_count": 105,
   "units": [
     {
       "category": "sop",
@@ -4728,6 +4742,133 @@
           "hyper_connections",
           "signed_sqrt_sigmoid",
           "online_softmax_residual"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "cann_versions": [
+          ">=8.5.0"
+        ],
+        "hardware": [
+          "Ascend 910B (Atlas A2)",
+          "Ascend 910C (Atlas A3)",
+          "Ascend 950PR/DT"
+        ],
+        "workloads": [
+          "MindIE-SD and vLLM-Omni DiT custom attention, normalization, RoPE, and quantized FFN kernels"
+        ]
+      },
+      "domain_path": "operators/mindie-sd/custom-ops",
+      "evidence_strength": "software_contract",
+      "id": "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+      ],
+      "path": "operators/mindie-sd/custom-ops/unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "Ascend/MindIE-SD@9fe772dfb90696e21b5e5d4e92ca07dffab84cf4:.agents/skills/operator-dev/SKILL.md",
+          "Ascend/MindIE-SD@9fe772dfb90696e21b5e5d4e92ca07dffab84cf4:docs/zh/features/sparse.md",
+          "Ascend/MindIE-SD@9fe772dfb90696e21b5e5d4e92ca07dffab84cf4:docs/zh/features/quantization.md"
+        ],
+        "source_digest": "747d1489067e7d888c9c344a8535d6518e846d82a2bbbcd5264585158e1de186",
+        "source_locator": "Ascend/MindIE-SD@9fe772dfb90696e21b5e5d4e92ca07dffab84cf4:.agents/skills/operator-dev/SKILL.md",
+        "source_type": "architecture_and_runtime_guide",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L2",
+      "title": "MindIE-SD custom C++/AscendC/TIK/Triton/Catlass operators (RainFusion, EagleQBSA, LaPreprocess, mm_swiglu_mxquant) SOP",
+      "token_estimate": 815,
+      "triggers": {
+        "error_signatures": [
+          "inferShape function does not exist",
+          "AI Core 507015",
+          "aclnnBlockSparseAttention"
+        ],
+        "keywords": [
+          "RainFusionAttention",
+          "AdaBlockSparseAttention",
+          "EagleQuantBlockSparseAttention",
+          "EagleQBSA",
+          "EagleFfn",
+          "mm_swiglu_mxquant",
+          "LaPreprocess",
+          "ascend_laser_attention",
+          "NormRopeConcat",
+          "quant_four_over_six_a5"
+        ]
+      }
+    },
+    {
+      "category": "workflow",
+      "conditions": {
+        "cann_versions": [
+          ">=8.5.0"
+        ],
+        "hardware": [
+          "Ascend 910B (Atlas A2)",
+          "Ascend 910C (Atlas A3)",
+          "Ascend 950PR/DT"
+        ],
+        "workloads": [
+          "Operator fusion scope identification, PipeUtilization go/no-go estimation, and post-fusion regression root-cause analysis"
+        ]
+      },
+      "domain_path": "operators/mindie-sd/fusion-analysis",
+      "evidence_strength": "reproduced_empirical",
+      "id": "unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow",
+      "inherits_from": [
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop"
+      ],
+      "inherits_from_closure": [
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop"
+      ],
+      "path": "operators/mindie-sd/fusion-analysis/unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow.md",
+      "provenance": {
+        "evidence_refs": [
+          "Ascend/MindIE-SD@9fe772dfb90696e21b5e5d4e92ca07dffab84cf4:.agents/skills/fusion-scope-analyze/SKILL.md"
+        ],
+        "source_digest": "0150cf3251d8afcc7ee720dee1e9d5939d17d2dc343b08c9d13129ce0b3e33fa",
+        "source_locator": "Ascend/MindIE-SD@9fe772dfb90696e21b5e5d4e92ca07dffab84cf4:.agents/skills/fusion-scope-analyze/SKILL.md",
+        "source_type": "architecture_and_runtime_guide",
+        "supersedes": []
+      },
+      "revision": 1,
+      "tier": "L3",
+      "title": "MindIE-SD fusion-scope-analyze structural boundary rules, PipeUtilization benefit ceiling, and post-hoc equal-work audit workflow",
+      "token_estimate": 1181,
+      "triggers": {
+        "error_signatures": [
+          "fused kernel wall clock is flat or slower than unfused baseline",
+          "PipeUtilization columns missing or N/A in op_summary",
+          "sum of independent candidate fusion speedups exceeds actual combined speedup"
+        ],
+        "keywords": [
+          "fusion-scope-analyze",
+          "check_fusion_scope",
+          "memory_bound",
+          "PipeUtilization",
+          "mte2_ratio",
+          "mac_ratio",
+          "vec_ratio",
+          "cube_utilization",
+          "equal-work-busy-cycle"
         ]
       }
     },

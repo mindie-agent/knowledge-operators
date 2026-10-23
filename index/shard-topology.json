@@ -310,6 +310,18 @@
       "unit-ascend-operator-roofline-and-four-view-measurement",
       "unit-vector-reduction-fp32-accumulator-and-ub-alignment-sop"
     ],
+    "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop": [
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms"
+    ],
+    "unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow": [
+      "unit-ascend-operator-roofline-and-four-view-measurement",
+      "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+      "unit-triton-ascend-constexpr-and-specialization-contract",
+      "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+      "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop"
+    ],
     "unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
@@ -564,8 +576,8 @@
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 934685,
-      "estimated_tokens": 167779,
+      "bytes": 946047,
+      "estimated_tokens": 169775,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
@@ -626,6 +638,8 @@
         "unit-hivm-dialect-vector-simd-and-sync-injection-sop",
         "unit-lightning-indexer-prolog-epilogue-and-qsa-stem-indexer-sop",
         "unit-mhc-pre-post-sinkhorn-knopp-and-engram-gate-fusion-sop",
+        "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop",
+        "unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow",
         "unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop",
         "unit-moe-dispatch-gmm-combine-and-alltoallv-routing-sop",
         "unit-moe-grouped-matmul-swiglu-finalize-and-dynamic-shape-selection-mutator",
@@ -673,7 +687,7 @@
         "unit-vllm-ascend-fused-moe-comm-methods-and-stage-contracts",
         "unit-vllm-ascend-triton-fla-gdn-kimi-kda-dsa-and-rope-dsv4-ops"
       ],
-      "units": 103
+      "units": 105
     },
     "domains": [
       {
@@ -882,8 +896,8 @@
       },
       {
         "automatic": false,
-        "bytes": 93664,
-        "estimated_tokens": 13498,
+        "bytes": 105026,
+        "estimated_tokens": 15494,
         "exceeds": [],
         "kind": "federation",
         "path": "operators",
@@ -898,6 +912,8 @@
           "unit-deepseek-v32-exp-ascendc-and-tilelang-mla-indexer-kernels",
           "unit-deepseek-v4-ascendc-compressor-indexer-and-sparse-attn-sharedkv",
           "unit-deepseek-v4-tilelang-and-pypto-sfa-mhc-quant-kernel-guide",
+          "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop",
+          "unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow",
           "unit-nn-math-and-cv-aclnn-direct-operator-contracts-sop",
           "unit-ops-transformer-aclnn-fia-v3-and-mla-prolog-contracts",
           "unit-ops-transformer-aclnn-lightning-indexer-v2-and-sparse-fia-contract",
@@ -908,7 +924,7 @@
           "unit-vllm-ascend-fused-moe-comm-methods-and-stage-contracts",
           "unit-vllm-ascend-triton-fla-gdn-kimi-kda-dsa-and-rope-dsv4-ops"
         ],
-        "units": 18
+        "units": 20
       },
       {
         "automatic": false,
@@ -925,7 +941,7 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 64.01766701310407,
+  "index_build_elapsed_ms": 80.57708299020305,
   "leaves": [
     {
       "automatic": false,
@@ -1745,6 +1761,32 @@
     },
     {
       "automatic": false,
+      "bytes": 4971,
+      "estimated_tokens": 815,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/mindie-sd/custom-ops",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
+      "bytes": 6391,
+      "estimated_tokens": 1181,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/mindie-sd/fusion-analysis",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 11059,
       "estimated_tokens": 1736,
       "exceeds": [],
@@ -2403,6 +2445,20 @@
     },
     {
       "automatic": false,
+      "bytes": 11362,
+      "estimated_tokens": 1996,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "operators/mindie-sd",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop",
+        "unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow"
+      ],
+      "units": 2
+    },
+    {
+      "automatic": false,
       "bytes": 28927,
       "estimated_tokens": 4261,
       "exceeds": [],
@@ -2493,7 +2549,7 @@
       "units": 1
     }
   ],
-  "unit_count": 103,
+  "unit_count": 105,
   "units": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": {
       "bytes": 9098,
@@ -3314,6 +3370,36 @@
       ],
       "path": "fusion/mhc-hyper-connections/unit-mhc-pre-post-sinkhorn-knopp-and-engram-gate-fusion-sop.md",
       "tier": "L2"
+    },
+    "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop": {
+      "bytes": 4971,
+      "category": "sop",
+      "content_sha256": "1967261c0d768fa1efdbbea96043e0f3485c27c7b435e352e662663e863bb0d3",
+      "domain_path": "operators/mindie-sd/custom-ops",
+      "estimated_tokens": 815,
+      "evidence_strength": "software_contract",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-triton-ascend-constexpr-and-specialization-contract"
+      ],
+      "path": "operators/mindie-sd/custom-ops/unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop.md",
+      "tier": "L2"
+    },
+    "unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow": {
+      "bytes": 6391,
+      "category": "workflow",
+      "content_sha256": "2c39593e2ae270ec1598c89e2a700c737f2dedad59c66a6e979149d5394f2df8",
+      "domain_path": "operators/mindie-sd/fusion-analysis",
+      "estimated_tokens": 1181,
+      "evidence_strength": "reproduced_empirical",
+      "inherits_from": [
+        "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
+        "unit-ascend-operator-roofline-and-four-view-measurement",
+        "unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop"
+      ],
+      "path": "operators/mindie-sd/fusion-analysis/unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow.md",
+      "tier": "L3"
     },
     "unit-mixed-quant-sparse-flash-mla-and-kvcache-dsl-sop": {
       "bytes": 10411,
