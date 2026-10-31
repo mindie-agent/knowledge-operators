@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 80.57708299020305,
+  "build_elapsed_ms": 73.66712496150285,
   "closure": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -574,7 +574,7 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ]
   },
-  "generation": "2f3c2a62b0bd4fd00c1dd4cfbb69ad3b661850bde1b65c0095cdee159fd50c98",
+  "generation": "efb8d1d13e62ba1e3ebba2745813882a79ef5c45d988ae95e794f8528a72be5f",
   "id_path": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": "normalization/rmsnorm-rope-quant/unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop.md",
     "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop": "operators/skill-playbooks/ascendc-and-catlass/unit-agent-skills-ascendc-operator-design-codegen-and-review-sop.md",
@@ -6606,7 +6606,7 @@
         "source_type": "canonical_engineering_guide",
         "supersedes": []
       },
-      "revision": 1,
+      "revision": 2,
       "tier": "L4",
       "title": "Triton-Ascend Contiguous Dimension Merge, Block Size Scaling, and Multibuffer Mutator",
       "token_estimate": 1771,
