@@ -12,7 +12,7 @@
   <a href="https://github.com/mindie-agent/mindie-agent"><img src="https://img.shields.io/badge/MindIE%20Agent-Ecosystem-7045f5.svg" alt="MindIE Agent"></a>
   <a href="./publication-contract.json"><img src="https://img.shields.io/badge/Schema-mindie--graded--unit%2F1-0f766e.svg" alt="Schema mindie-graded-unit/1"></a>
   <a href="./publication-contract.json"><img src="https://img.shields.io/badge/domain-operators-0284c7.svg" alt="Domain operators"></a>
-  <a href="./index/routing-manifest.json"><img src="https://img.shields.io/badge/Graded%20Units-105%20Units-d97757.svg" alt="105 Graded Units"></a>
+  <a href="./index/routing-manifest.json"><img src="https://img.shields.io/badge/Graded%20Units-103%20Units-d97757.svg" alt="103 Graded Units"></a>
   <a href="./index/shard-topology.json"><img src="https://img.shields.io/badge/Levels-L1%20to%20L4-10a37f.svg" alt="Levels L1-L4"></a>
 </p>
 
@@ -84,11 +84,11 @@
 
 ## 🏗️ 领域全景与 L1–L4 分级架构
 
-本仓库承载 MindIE Agent 的 **`operators` 领域分级知识源**（共 **105 个分级知识单元**：`L1: 15`、`L2: 56`、`L3: 19`、`L4: 15`）。全面覆盖昇腾 910B (A2)、910C (A3 双 Die)、310P 与 Ascend 950 (A5) 的硬件内存对齐与流水线公理、四视图 Roofline 测量标准、BiShengIR / HIVM / HFusion / Triton-Ascend / PyPTO / TileLang / CATLASS 编译与 Specialization 规程、AscendC 算子开发与 AICore 故障排障，以及 Attention (FIA/FlashMLA/NSA/KDA)、Normalization、Reduction、Matmul、MoE、Fusion 等核心算子族的 L4 深度调优模式。
+本仓库承载 MindIE Agent 的 **`operators` 领域分级知识源**（共 **103 个分级知识单元**：`L1: 15`、`L2: 55`、`L3: 18`、`L4: 15`）。全面覆盖昇腾 910B (A2)、910C (A3 双 Die)、310P 与 Ascend 950 (A5) 的硬件内存对齐与流水线公理、四视图 Roofline 测量标准、BiShengIR / HIVM / HFusion / Triton-Ascend / PyPTO / TileLang / CATLASS 编译与 Specialization 规程、AscendC 算子开发与 AICore 故障排障，以及 Attention (FIA/FlashMLA/NSA/KDA)、Normalization、Reduction、Matmul、MoE、Fusion 等核心算子族的 L4 深度调优模式。
 
 ### 1. `mindie-graded-unit/1` 四级知识单元体系（L1–L4）
 
-本知识库拒绝碎片化的聊天摘要或脱离前提的“万能经验”，所有知识单元均按工程抽象粒度与可操作性划分为 **L1–L4 四个层级**（当前分布：**L1: 15 · L2: 56 · L3: 19 · L4: 15**）：
+本知识库拒绝碎片化的聊天摘要或脱离前提的“万能经验”，所有知识单元均按工程抽象粒度与可操作性划分为 **L1–L4 四个层级**（当前分布：**L1: 15 · L2: 55 · L3: 18 · L4: 15**）：
 
 | 层级 | 标准类别 (`category`) | 工程定位 | 核心内容与准入要求 |
 | :---: | --- | --- | --- |
@@ -103,7 +103,7 @@
 flowchart LR
   Agent["🤖 AI Coding Agent (Claude Code / Codex / Kimi / DSH)"]
   Query["🔎 knowledge_query (查询词 + 实测环境条件)"]
-  Manifest["📋 index/routing-manifest.json (105 个单元元数据 · 条件与继承闭包)"]
+  Manifest["📋 index/routing-manifest.json (103 个单元元数据 · 条件与继承闭包)"]
   Topology["🗂️ index/shard-topology.json (子领域分片拓扑 · L1-L4 统计)"]
   Match{"⚖️ 条件匹配引擎 (matched / mismatch / condition_unknown)"}
   Explain["📖 knowledge_explain (按精确修订号 @revision 精读)"]
@@ -120,7 +120,7 @@ flowchart LR
 
 ## 📊 子领域分布与代表性知识单元
 
-[`index/routing-manifest.json`](./index/routing-manifest.json) 与 [`index/shard-topology.json`](./index/shard-topology.json) 是由全量 Markdown 单元派生的权威实时清单。当前仓库共包含 **105 个分级知识单元**（**L1: 15 · L2: 56 · L3: 19 · L4: 15**）：
+[`index/routing-manifest.json`](./index/routing-manifest.json) 与 [`index/shard-topology.json`](./index/shard-topology.json) 是由全量 Markdown 单元派生的权威实时清单。当前仓库共包含 **103 个分级知识单元**（**L1: 15 · L2: 55 · L3: 18 · L4: 15**）：
 
 ### 1. 子领域（Subdomain）分布统计
 
@@ -135,7 +135,7 @@ flowchart LR
 | `matmul` | **4** | `L2: 3, L4: 1` | CATLASS 与 TileLang-Ascend 模板设计、L2 Swizzle、Stream-K 负载均衡与 MXA8W4 分组量化 BatchMatmul 调度优化 |
 | `fusion` | **3** | `L2: 2, L3: 1` | GroupedMatmul + SwiGLU + MC2 通算融合、CATLASS Cube-Vector 旋转 Workspace 流水线与 mHC Sinkhorn-Knopp / EngramGate 融合 |
 | `moe` | **2** | `L2: 1, L4: 1` | MoE Dispatch/Combine、AlltoAllvGroupedMatMul 路由规程与动态 shape 专家 L1 带宽选择 Mutator |
-| `operators` | **20** | `L2: 17, L3: 3` | Transformer 核心算子与 NN/Math/3D-CV (VoxelConv/PointNetSA) ACLNN & Direct 接口契约 |
+| `operators` | **18** | `L2: 16, L3: 2` | Transformer 核心算子与 NN/Math/3D-CV (VoxelConv/PointNetSA) ACLNN & Direct 接口契约 |
 | `quantization` | **1** | `L2: 1` | Ascend 动态量化、双轴/分块 MXFP8/MXFP4 量化、SwiGLU-Quant 与 AntiQuant 算子规程 |
 | `elementwise` | **1** | `L2: 1` | GatherV2、ScatterElements、MaskedSelect、Unique 与索引类算子开发规程 |
 
@@ -155,8 +155,6 @@ flowchart LR
 | [`unit-residual-free-rmsnorm-fastpath`](./normalization/rmsnorm/unit-residual-free-rmsnorm-fastpath.md) | `normalization` | **L4** / `mutator` | Residual-free gated RMSNorm native fastpath for Ascend910B | `mindie://operators/units/unit-residual-free-rmsnorm-fastpath@7` |
 | [`unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator`](./attention/fia-mla/unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator.md) | `attention` | **L4** / `mutator` | FIA GQA device tiling sink, BN2S head-fold view and split-KV fp32 LSE combine | `mindie://operators/units/unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator@1` |
 | [`unit-streamk-matmul-and-mxa8w4-quant-bmm-tile-scheduling-mutator`](./matmul/streamk-mxquant/unit-streamk-matmul-and-mxa8w4-quant-bmm-tile-scheduling-mutator.md) | `matmul` | **L4** / `mutator` | Stream-K DPSK load-balanced Matmul and MXA8W4 bit-permuted group-quantized BatchMatmul tile scheduling mutator | `mindie://operators/units/unit-streamk-matmul-and-mxa8w4-quant-bmm-tile-scheduling-mutator@1` |
-| [`unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop`](./operators/mindie-sd/custom-ops/unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop.md) | `operators` | **L2** / `sop` | MindIE-SD custom Ascend C sparse attention (rainfusion/bsa/SparseLightningIndexer), Catlass matmul_add, and Triton RoPE/Norm/AdaLN SOP | `mindie://operators/units/unit-mindie-sd-custom-sparse-attention-catlass-ffn-and-triton-ops-sop@1` |
-| [`unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow`](./operators/mindie-sd/fusion-analysis/unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow.md) | `operators` | **L3** / `workflow` | MindIE-SD fusion scope discovery, Vector/MTE2/MTE3 pipe utilization triage, and fusion benefit estimation workflow | `mindie://operators/units/unit-mindie-sd-fusion-scope-analyze-and-pipe-benefit-workflow@1` |
 
 ---
 
@@ -197,14 +195,15 @@ knowledge-operators/
 
 - **主仓库与一键安装入口**：[`mindie-agent/mindie-agent`](https://github.com/mindie-agent/mindie-agent)
 - **知识检索与隐私脱敏运行时**：[`mindie-agent/knowledge`](https://github.com/mindie-agent/knowledge)（Python 包 `mindie-knowledge`）
-- **七大公开领域知识库矩阵**：
+- **八大公开领域知识库矩阵**：
   - [`knowledge-vllm-ascend`](https://github.com/mindie-agent/knowledge-vllm-ascend) — `vLLM-Ascend` 与 `vLLM-Omni` 适配、图编译、MoE、PD 分离与多阶段全模态流水线（91 Units）
-  - [`knowledge-operators`](https://github.com/mindie-agent/knowledge-operators) — AscendC / BiShengIR / Triton / TileLang / MindIE-SD 算子开发与优化（105 Units）
-  - [`knowledge-infer-core`](https://github.com/mindie-agent/knowledge-infer-core) — 核心推理引擎调度、KV Cache、`MindIE-SD` 扩散加速与服务化架构（109 Units）
+  - [`knowledge-mindie-sd`](https://github.com/mindie-agent/knowledge-mindie-sd) — `MindIE-SD` 多模态扩散模型（DiT/MMDiT/3D-VAE）块稀疏注意力、USP 序列并行、跨步缓存与量化加速（24 Units）
+  - [`knowledge-operators`](https://github.com/mindie-agent/knowledge-operators) — AscendC / BiShengIR / Triton / TileLang 算子开发与优化（103 Units）
+  - [`knowledge-infer-core`](https://github.com/mindie-agent/knowledge-infer-core) — 核心推理引擎调度、KV Cache 与服务化架构（105 Units）
   - [`knowledge-infer-distributed`](https://github.com/mindie-agent/knowledge-infer-distributed) — HCCL 集合通信、RoCE/HCCS 拓扑、Ulysses/Ring/CFG 混合并行与 SHMEM（39 Units）
   - [`knowledge-infer-observability`](https://github.com/mindie-agent/knowledge-infer-observability) — CANN 故障诊断、`msprof` 性能剖析与 A/B/A 性能/精度门禁（39 Units）
   - [`knowledge-infer-ops-compat`](https://github.com/mindie-agent/knowledge-infer-ops-compat) — GE/TorchAir/Inductor 图编译、自定义算子注册与两阶段框架集成（34 Units）
-  - [`knowledge-agent-engineering`](https://github.com/mindie-agent/knowledge-agent-engineering) — 智能体编排、S0–S6 自动调优工作流、脱敏审计与基准评测（33 Units）
+  - [`knowledge-agent-engineering`](https://github.com/mindie-agent/knowledge-agent-engineering) — 智能体编排、脱敏审计与基准评测（32 Units）
 
 ---
 
