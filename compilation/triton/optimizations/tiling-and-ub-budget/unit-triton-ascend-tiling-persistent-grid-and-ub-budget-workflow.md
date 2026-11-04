@@ -52,7 +52,3 @@ triggers:
 
 1. Enable `multibuffer=True` double-buffering on the GroupNorm reduction loop.
    - **Limitation**: Multi-pass reduction live accumulators overflow the double-buffered UB stage ceiling (`80 KB`), forcing intermediate `bfloat16` staging casts (`bf16_casts > 0`, `bf16_arithmetic > 0`) (`verdict: "refuted"`).
-
-## Stagnation & RSI Escalation Rule
-
-When all 3 stages above (`Stage 1`, `Stage 2`, `Stage 3`) fail to eliminate both the 3D indexing loop and the `bfloat16` accumulation drift (`3` consecutive `refuted` attempts), record the 3 failed `L3` stage attempts in `logs/experiment-ledger.jsonl` and re-query `knowledge_query` with `ledger_entries` + `bottleneck_summary` (or `mode="explore"`) to trigger RSI automatic switching and mount the `L4` dimension-merge mutator.
