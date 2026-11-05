@@ -3,7 +3,13 @@ category: mutator
 conditions:
   framework:
   - vllm-ascend
-  - any
+  - pytorch-npu
+  - triton-ascend
+  soc:
+  - Ascend910B
+  - Ascend910_93
+  - Ascend950
+  - Ascend950DT
 domain_path: compilation/triton/optimizations/tiling-and-ub-budget
 evidence_strength: reproduced_empirical
 id: unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator
@@ -17,7 +23,7 @@ provenance:
   source_revision: be5882ef29fa9943305085652d2025a038ba491c
   source_type: canonical_engineering_guide
   supersedes: []
-revision: 5
+revision: 6
 schema: mindie-graded-unit/1
 tier: L4
 title: Triton-Ascend Contiguous Dimension Merge, Block Size Scaling, and Multibuffer
@@ -135,8 +141,8 @@ def select_optimal_block_size(numel: int, dtype: torch.dtype, num_live_f32_buffe
     # Reserve <= 128KB for live tensors so compiler scratch + alignment fit in 192KB UB
     max_elems_by_ub = (128 * 1024) // (4 * max(num_live_f32_buffers, 1))
     cap = 4096 if dtype == torch.float32 else min(16384, max_elems_by_ub * 2)
-    raw = triton.next_power_of_2(min(numel, cap))
-    return max(512, min(raw, cap))
+    raw = 1 << (max(1, min(numel, cap)).bit_length() - 1)
+    return max(512, raw)
 ```
 
 ### 3.2 Selective `multibuffer` Double-Buffering Gate (`OPT_23`)
@@ -170,6 +176,6 @@ In `spatial_group_norm_reduce(x, weight, bias, num_groups=4, eps=1e-5, *, merge_
 
 
 - **`select_optimal_block_size(numel: int, dtype: torch.dtype, num_live_f32_buffers: int = 3) -> int`**:
-  Compute `max_elems_by_ub = (128 * 1024) // (4 * max(num_live_f32_buffers, 1))`, `cap = 4096 if dtype == torch.float32 else min(16384, max_elems_by_ub * 2)`, power-of-two `raw = 1 << (max(1, min(numel, cap)) - 1).bit_length()`, and return `max(512, min(raw, cap))`.
+  Compute `max_elems_by_ub = (128 * 1024) // (4 * max(num_live_f32_buffers, 1))`, `cap = 4096 if dtype == torch.float32 else min(16384, max_elems_by_ub * 2)`, power-of-two `raw = 1 << (max(1, min(numel, cap)).bit_length() - 1)`, and return `max(512, raw)`.
 - **`run_ablation_suite(*args, **kwargs) -> dict[str, dict]`**:
   Run `spatial_group_norm_reduce` across the 4 arms (`"full_candidate"`, `"minus_dim_merge"`, `"minus_block_scaling"`, `"minus_multibuffer_cast_guard"`) and return a dict mapping each arm name to its metrics dict (including `"correctness_ok": True`).

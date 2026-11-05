@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 74.69837507233024,
+  "build_elapsed_ms": 73.74470797367394,
   "closure": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -562,7 +562,7 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ]
   },
-  "generation": "92d1c71fecad7f93f6e4f3c0fc790bf33b35ccfff2ab1f49bf46e1e6a67a17de",
+  "generation": "c8c53d7b935ab8d9b5881c464c8f88dabec9ec0cd9fe71f39650b8365b805fdd",
   "id_path": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": "normalization/rmsnorm-rope-quant/unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop.md",
     "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop": "operators/skill-playbooks/ascendc-and-catlass/unit-agent-skills-ascendc-operator-design-codegen-and-review-sop.md",
@@ -6430,7 +6430,14 @@
       "conditions": {
         "framework": [
           "vllm-ascend",
-          "any"
+          "pytorch-npu",
+          "triton-ascend"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950",
+          "Ascend950DT"
         ]
       },
       "domain_path": "compilation/triton/optimizations/tiling-and-ub-budget",
@@ -6457,10 +6464,10 @@
         "source_type": "canonical_engineering_guide",
         "supersedes": []
       },
-      "revision": 5,
+      "revision": 6,
       "tier": "L4",
       "title": "Triton-Ascend Contiguous Dimension Merge, Block Size Scaling, and Multibuffer Mutator (`spatial_group_norm_reduce.py`)",
-      "token_estimate": 2432,
+      "token_estimate": 2429,
       "triggers": {
         "error_signatures": [
           "Numerical check failed on shape (2, 16, 16, 16) max_abs_err=0.046875 > 5e-3",
@@ -7147,7 +7154,14 @@
       "conditions": {
         "framework": [
           "vllm-ascend",
-          "any"
+          "pytorch-npu",
+          "triton-ascend"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910_93",
+          "Ascend950",
+          "Ascend950DT"
         ]
       },
       "domain_path": "compilation/triton/optimizations/tiling-and-ub-budget",
@@ -7173,7 +7187,7 @@
         "source_type": "canonical_engineering_guide",
         "supersedes": []
       },
-      "revision": 4,
+      "revision": 5,
       "tier": "L3",
       "title": "Triton-Ascend Tiling Geometry, Persistent Grid Scheduling, and UB Budget Fitting Workflow (`spatial_group_norm_reduce.py`)",
       "token_estimate": 621,

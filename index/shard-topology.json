@@ -564,8 +564,8 @@
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 933461,
-      "estimated_tokens": 167745,
+      "bytes": 933639,
+      "estimated_tokens": 167742,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
@@ -767,8 +767,8 @@
       },
       {
         "automatic": false,
-        "bytes": 276454,
-        "estimated_tokens": 53722,
+        "bytes": 276632,
+        "estimated_tokens": 53719,
         "exceeds": [],
         "kind": "federation",
         "path": "compilation",
@@ -925,7 +925,7 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 74.69837507233024,
+  "index_build_elapsed_ms": 73.74470797367394,
   "leaves": [
     {
       "automatic": false,
@@ -1508,8 +1508,8 @@
     },
     {
       "automatic": false,
-      "bytes": 15268,
-      "estimated_tokens": 3053,
+      "bytes": 15446,
+      "estimated_tokens": 3050,
       "exceeds": [],
       "kind": "leaf",
       "path": "compilation/triton/optimizations/tiling-and-ub-budget",
@@ -2212,8 +2212,8 @@
     },
     {
       "automatic": false,
-      "bytes": 39189,
-      "estimated_tokens": 7386,
+      "bytes": 39367,
+      "estimated_tokens": 7383,
       "exceeds": [],
       "kind": "subtree",
       "path": "compilation/triton/optimizations",
@@ -3675,11 +3675,11 @@
       "tier": "L3"
     },
     "unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator": {
-      "bytes": 11278,
+      "bytes": 11361,
       "category": "mutator",
-      "content_sha256": "757172888612a5c58ab724d041698096e1a99de0fa1ec9900d5940c3556a9e84",
+      "content_sha256": "1c42d500af2239a9ba76c78d26f3b42db2de7e3d8dab1e01b0dd5274800107cc",
       "domain_path": "compilation/triton/optimizations/tiling-and-ub-budget",
-      "estimated_tokens": 2432,
+      "estimated_tokens": 2429,
       "evidence_strength": "reproduced_empirical",
       "inherits_from": [
         "unit-triton-ascend-hardware-and-compiler-constraints-contract",
@@ -3845,9 +3845,9 @@
       "tier": "L4"
     },
     "unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow": {
-      "bytes": 3990,
+      "bytes": 4085,
       "category": "workflow",
-      "content_sha256": "e5447fa722200f741bdf5ee9b5d238e6d24ce68017889fd03e4d7360c9105827",
+      "content_sha256": "1bfc2952937532dd867a35df275e62defea435b4fbc9e799386bf806aca774ed",
       "domain_path": "compilation/triton/optimizations/tiling-and-ub-budget",
       "estimated_tokens": 621,
       "evidence_strength": "reproduced_empirical",

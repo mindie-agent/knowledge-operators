@@ -3,7 +3,13 @@ category: workflow
 conditions:
   framework:
   - vllm-ascend
-  - any
+  - pytorch-npu
+  - triton-ascend
+  soc:
+  - Ascend910B
+  - Ascend910_93
+  - Ascend950
+  - Ascend950DT
 domain_path: compilation/triton/optimizations/tiling-and-ub-budget
 evidence_strength: reproduced_empirical
 id: unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow
@@ -17,7 +23,7 @@ provenance:
   source_revision: be5882ef29fa9943305085652d2025a038ba491c
   source_type: canonical_engineering_guide
   supersedes: []
-revision: 4
+revision: 5
 schema: mindie-graded-unit/1
 tier: L3
 title: Triton-Ascend Tiling Geometry, Persistent Grid Scheduling, and UB Budget Fitting
