@@ -1,13 +1,11 @@
 ---
 category: mutator
 conditions:
-  kernel_language: triton
-  operator_family:
-  - general
   soc:
   - Ascend910B
   - Ascend910_93
   - Ascend950
+  - Ascend950DT
 domain_path: compilation/triton/optimizations/tiling-and-ub-budget
 evidence_strength: reproduced_empirical
 id: unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator
@@ -17,26 +15,30 @@ inherits_from:
 provenance:
   evidence_refs:
   - https://gitcode.com/cann/cannbot-knowledge/blob/be5882ef29fa9943305085652d2025a038ba491c/knowledge/ops/triton/optimizations/operator_optimization/dimension_merge.md
-  - https://gitcode.com/cann/cannbot-knowledge/blob/be5882ef29fa9943305085652d2025a038ba491c/knowledge/ops/triton/optimizations/operator_optimization/dimension_merge_large_block.md
-  - https://gitcode.com/cann/cannbot-knowledge/blob/be5882ef29fa9943305085652d2025a038ba491c/knowledge/ops/triton/optimizations/operator_optimization/block_size_scaling.md
-  - https://gitcode.com/cann/cannbot-knowledge/blob/be5882ef29fa9943305085652d2025a038ba491c/knowledge/ops/triton/optimizations/operator_optimization/multibuffer_and_double_buffering.md
   source_locator: cann/cannbot-knowledge@be5882ef29fa9943305085652d2025a038ba491c:knowledge/ops/triton/optimizations/operator_optimization/dimension_merge.md
   source_revision: be5882ef29fa9943305085652d2025a038ba491c
   source_type: canonical_engineering_guide
   supersedes: []
-revision: 2
+revision: 7
 schema: mindie-graded-unit/1
 tier: L4
 title: Triton-Ascend Contiguous Dimension Merge, Block Size Scaling, and Multibuffer
-  Mutator
+  Mutator (`spatial_group_norm_reduce.py`)
 triggers:
   error_signatures:
+  - Numerical check failed on shape (2, 16, 16, 16) max_abs_err=0.046875 > 5e-3
   - '1. Mutator A: Contiguous Spatial Dimension Merge (`OPT_11`, `2.6x` Measured Speedup)'
-  - 1.1 Trigger Signals
-  - 1.2 Before / After Code Mutation (`BatchNorm2d` / Spatial Reduction)
-  - '2. Mutator B: Multi-Channel Stats Unit Flattening (`OPT_10`, Normalization Special)'
   keywords:
   - unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator
+  - spatial_group_norm_reduce
+  - spatial_group_norm_reduce.py
+  - run_ablation_suite
+  - select_optimal_block_size
+  - minus_dim_merge
+  - minus_block_scaling
+  - minus_multibuffer_cast_guard
+  - GroupNorm
+  - max_abs_err
 ---
 # Triton-Ascend Contiguous Dimension Merge, Block Size Scaling, and Multibuffer Mutator
 
@@ -135,8 +137,8 @@ def select_optimal_block_size(numel: int, dtype: torch.dtype, num_live_f32_buffe
     # Reserve <= 128KB for live tensors so compiler scratch + alignment fit in 192KB UB
     max_elems_by_ub = (128 * 1024) // (4 * max(num_live_f32_buffers, 1))
     cap = 4096 if dtype == torch.float32 else min(16384, max_elems_by_ub * 2)
-    raw = triton.next_power_of_2(min(numel, cap))
-    return max(512, min(raw, cap))
+    raw = 1 << (max(1, min(numel, cap)).bit_length() - 1)
+    return max(512, raw)
 ```
 
 ### 3.2 Selective `multibuffer` Double-Buffering Gate (`OPT_23`)
@@ -159,3 +161,17 @@ When applying the three mutators (`OPT_11` Contiguous `(H, W) -> HW` Dimension M
 | `minus_dim_merge` | `OPT_11` (`merge_hw=False`: reverts to 3-level `N -> H -> W` nested loop with per-tile `tl.sum`) | Outer loop iterations and `scalar_sum_calls` jump by `H`x (`512x`), `latency_ms` regresses significantly |
 | `minus_group_flatten` | `OPT_10` (`flatten_group_stats=False`: reverts to per-channel `for c in range(c_start, c_end)` inner loop over small `L = H * W`) | `mask_occupancy` drops below `0.15` (e.g. `6.25%` when `L=16, BLOCK_HW=256`) and `latency_ms` regresses |
 | `minus_block_scaling` | `OPT-5` & `OPT_23` (`scale_block_size=False`: reverts to fixed `BLOCK_SIZE = 512` or enables `multibuffer=True` on multi-pass reduction causing UB pressure) | MTE2 burst utilization drops or `ub_spill_bytes > 0`, increasing `latency_ms` over `full_candidate` |
+
+## 5. Leave-One-Out Dispatch Contract (`vllm_ascend/ops/spatial_group_norm_reduce.py`)
+
+In `spatial_group_norm_reduce(x, weight, bias, num_groups=4, eps=1e-5, *, merge_hw=True, scale_block_size=True, multibuffer_cast_guard=True)` and `run_ablation_suite(*args, **kwargs)`:
+- **`full_candidate` (`merge_hw=True, scale_block_size=True, multibuffer_cast_guard=True`)**: Flatten `xg = x.to(torch.float32).view(n, num_groups, elems_per_group)` (`elems_per_group = (c // num_groups) * h * w`), compute FP32 `mean = xg.mean(dim=-1, keepdim=True)` and `var = ((xg - mean) * (xg - mean)).mean(dim=-1, keepdim=True)`, normalize `((xg - mean) * torch.rsqrt(var + eps)).view(n, c, h, w)`, apply FP32 `weight` and `bias`, and cast once `.to(orig_dtype)` at the end (`indexing_operations == 0`, `bf16_arithmetic == 0`, `bf16_casts <= 1`, `max_abs_err <= 5e-3`).
+- **`minus_dim_merge` (`merge_hw=False`)**: Keep FP32 accumulation (`max_abs_err <= 5e-3`), but iterate over `for h_idx in range(h):` slicing `xg[:, :, :, h_idx : h_idx + 1, :]` (`indexing_operations >= h`).
+- **`minus_block_scaling` (`scale_block_size=False`, with `merge_hw=True`)**: Keep FP32 accumulation on flattened `xg = x.to(torch.float32).view(n, num_groups, elems_per_group)`, but iterate in `4` fixed tiles (`chunk = max(1, elems_per_group // 4)`) slicing `xg[:, :, start : start + chunk]` so `0 < indexing_operations < minus_dim_merge["indexing_operations"]` and `tensor_operations > full_candidate["tensor_operations"]`.
+- **`minus_multibuffer_cast_guard` (`multibuffer_cast_guard=False`, with `merge_hw=True, scale_block_size=True`)**: Perform intermediate `bfloat16` cast and subtraction on `xg_bf16 = x.to(torch.bfloat16).view(n, num_groups, elems_per_group)` (`mean_bf16 = xg_bf16.to(torch.float32).mean(dim=-1, keepdim=True).to(torch.bfloat16)`, `centered_bf16 = xg_bf16 + (-mean_bf16)`) so `bf16_casts > full_candidate["bf16_casts"]` and `bf16_arithmetic > 0` while outputs remain finite.
+
+
+- **`select_optimal_block_size(numel: int, dtype: torch.dtype, num_live_f32_buffers: int = 3) -> int`**:
+  Compute `max_elems_by_ub = (128 * 1024) // (4 * max(num_live_f32_buffers, 1))`, `cap = 4096 if dtype == torch.float32 else min(16384, max_elems_by_ub * 2)`, power-of-two `raw = 1 << (max(1, min(numel, cap)).bit_length() - 1)`, and return `max(512, raw)`.
+- **`run_ablation_suite(*args, **kwargs) -> dict[str, dict]`**:
+  Run `spatial_group_norm_reduce` across the 4 arms (`"full_candidate"`, `"minus_dim_merge"`, `"minus_block_scaling"`, `"minus_multibuffer_cast_guard"`) and return a dict mapping each arm name to its metrics dict (including `"correctness_ok": True`).
