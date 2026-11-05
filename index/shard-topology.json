@@ -564,7 +564,7 @@
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 933513,
+      "bytes": 933643,
       "estimated_tokens": 167742,
       "kind": "federation",
       "path": ".",
@@ -694,7 +694,7 @@
       },
       {
         "automatic": false,
-        "bytes": 51599,
+        "bytes": 51649,
         "estimated_tokens": 8983,
         "exceeds": [],
         "kind": "federation",
@@ -767,7 +767,7 @@
       },
       {
         "automatic": false,
-        "bytes": 276506,
+        "bytes": 276586,
         "estimated_tokens": 53719,
         "exceeds": [],
         "kind": "federation",
@@ -925,7 +925,7 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 78.24575016275048,
+  "index_build_elapsed_ms": 72.6702909450978,
   "leaves": [
     {
       "automatic": false,
@@ -957,7 +957,7 @@
     },
     {
       "automatic": false,
-      "bytes": 18458,
+      "bytes": 18508,
       "estimated_tokens": 3153,
       "exceeds": [],
       "kind": "leaf",
@@ -1453,7 +1453,7 @@
     },
     {
       "automatic": false,
-      "bytes": 20542,
+      "bytes": 20622,
       "estimated_tokens": 4037,
       "exceeds": [],
       "kind": "leaf",
@@ -1927,7 +1927,7 @@
     },
     {
       "automatic": false,
-      "bytes": 18458,
+      "bytes": 18508,
       "estimated_tokens": 3153,
       "exceeds": [],
       "kind": "subtree",
@@ -2177,7 +2177,7 @@
     },
     {
       "automatic": false,
-      "bytes": 109541,
+      "bytes": 109621,
       "estimated_tokens": 22542,
       "exceeds": [],
       "kind": "subtree",
@@ -2581,9 +2581,9 @@
       "tier": "L3"
     },
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": {
-      "bytes": 2511,
+      "bytes": 2561,
       "category": "axiom",
-      "content_sha256": "13f52b0ad7fd24b85b9789137a58979a8b0548057c692d609d6c72ddddb707a4",
+      "content_sha256": "552b1fa9fe7056f37ecdc5acacde4ac46a4db822169d27905527452f21038d0b",
       "domain_path": "_common",
       "estimated_tokens": 344,
       "evidence_strength": "hardware_spec",
@@ -3703,9 +3703,9 @@
       "tier": "L2"
     },
     "unit-triton-ascend-hardware-and-compiler-constraints-contract": {
-      "bytes": 10041,
+      "bytes": 10121,
       "category": "axiom",
-      "content_sha256": "d3b3dd1445268121ba85b4fab9263d0560419bafdd5afcda40557d64d71a049a",
+      "content_sha256": "5cf83883e3490f0480f7c5f85aefd1d4a3c0a32c9a0c4defa05af46edfef6a8f",
       "domain_path": "compilation/triton/constraints",
       "estimated_tokens": 2045,
       "evidence_strength": "software_contract",

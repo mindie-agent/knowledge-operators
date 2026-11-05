@@ -1,12 +1,12 @@
 ---
 schema: mindie-graded-unit/1
 id: unit-ascend-910b-a3-memory-alignment-and-tiling-axioms
-revision: 2
+revision: 3
 tier: L1
 category: axiom
 domain_path: _common
 evidence_strength: hardware_spec
-title: 'Ascend 910B/910_93 memory alignment and reduction axioms'
+title: 'Ascend 910B/910_93/950 memory alignment and reduction axioms'
 conditions:
   soc:
   - Ascend910B
@@ -15,6 +15,9 @@ conditions:
   - Ascend910B3
   - Ascend910B4
   - Ascend910_93
+  - Ascend950
+  - Ascend950DT
+  - Ascend950PR
   dtype:
   - bfloat16
   - float16

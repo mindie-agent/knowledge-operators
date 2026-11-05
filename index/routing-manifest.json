@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 78.24575016275048,
+  "build_elapsed_ms": 72.6702909450978,
   "closure": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -562,7 +562,7 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ]
   },
-  "generation": "e17f4869df93d9864e392938a7ef7bdf15bfa7e4c45ff571a2eed23633093c92",
+  "generation": "1153da4b0a852caea7cea7ba58da96b041075d804ada27aaeab315c0197ac95b",
   "id_path": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": "normalization/rmsnorm-rope-quant/unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop.md",
     "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop": "operators/skill-playbooks/ascendc-and-catlass/unit-agent-skills-ascendc-operator-design-codegen-and-review-sop.md",
@@ -1069,7 +1069,10 @@
           "Ascend910B2",
           "Ascend910B3",
           "Ascend910B4",
-          "Ascend910_93"
+          "Ascend910_93",
+          "Ascend950",
+          "Ascend950DT",
+          "Ascend950PR"
         ]
       },
       "domain_path": "_common",
@@ -1088,9 +1091,9 @@
           "mindie://operators/units/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms@1"
         ]
       },
-      "revision": 2,
+      "revision": 3,
       "tier": "L1",
-      "title": "Ascend 910B/910_93 memory alignment and reduction axioms",
+      "title": "Ascend 910B/910_93/950 memory alignment and reduction axioms",
       "token_estimate": 344,
       "triggers": {
         "error_signatures": [
@@ -6549,8 +6552,13 @@
         ],
         "soc": [
           "Ascend910B",
+          "Ascend910B2",
+          "Ascend910B3",
+          "Ascend910B4",
           "Ascend910_93",
-          "Ascend950"
+          "Ascend950",
+          "Ascend950DT",
+          "Ascend950PR"
         ]
       },
       "domain_path": "compilation/triton/constraints",
@@ -6579,7 +6587,7 @@
         "source_type": "public_software_contract_review",
         "supersedes": []
       },
-      "revision": 1,
+      "revision": 2,
       "tier": "L1",
       "title": "Triton-Ascend Hardware, Memory, BlockSize, API, and Data Type Constraints Contract",
       "token_estimate": 2045,

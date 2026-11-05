@@ -6,8 +6,13 @@ conditions:
   - general
   soc:
   - Ascend910B
+  - Ascend910B2
+  - Ascend910B3
+  - Ascend910B4
   - Ascend910_93
   - Ascend950
+  - Ascend950DT
+  - Ascend950PR
 domain_path: compilation/triton/constraints
 evidence_strength: software_contract
 id: unit-triton-ascend-hardware-and-compiler-constraints-contract
@@ -25,7 +30,7 @@ provenance:
   source_revision: be5882ef29fa9943305085652d2025a038ba491c
   source_type: public_software_contract_review
   supersedes: []
-revision: 1
+revision: 2
 schema: mindie-graded-unit/1
 tier: L1
 title: Triton-Ascend Hardware, Memory, BlockSize, API, and Data Type Constraints Contract
