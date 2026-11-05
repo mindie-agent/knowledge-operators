@@ -17,7 +17,7 @@ provenance:
   source_revision: be5882ef29fa9943305085652d2025a038ba491c
   source_type: canonical_engineering_guide
   supersedes: []
-revision: 4
+revision: 5
 schema: mindie-graded-unit/1
 tier: L4
 title: Triton-Ascend Contiguous Dimension Merge, Block Size Scaling, and Multibuffer

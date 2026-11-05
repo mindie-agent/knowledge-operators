@@ -17,7 +17,7 @@ provenance:
   source_revision: be5882ef29fa9943305085652d2025a038ba491c
   source_type: canonical_engineering_guide
   supersedes: []
-revision: 3
+revision: 4
 schema: mindie-graded-unit/1
 tier: L3
 title: Triton-Ascend Tiling Geometry, Persistent Grid Scheduling, and UB Budget Fitting
