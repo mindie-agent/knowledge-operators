@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 73.74470797367394,
+  "build_elapsed_ms": 78.24575016275048,
   "closure": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -562,7 +562,7 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ]
   },
-  "generation": "c8c53d7b935ab8d9b5881c464c8f88dabec9ec0cd9fe71f39650b8365b805fdd",
+  "generation": "e17f4869df93d9864e392938a7ef7bdf15bfa7e4c45ff571a2eed23633093c92",
   "id_path": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": "normalization/rmsnorm-rope-quant/unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop.md",
     "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop": "operators/skill-playbooks/ascendc-and-catlass/unit-agent-skills-ascendc-operator-design-codegen-and-review-sop.md",
@@ -6428,11 +6428,6 @@
     {
       "category": "mutator",
       "conditions": {
-        "framework": [
-          "vllm-ascend",
-          "pytorch-npu",
-          "triton-ascend"
-        ],
         "soc": [
           "Ascend910B",
           "Ascend910_93",
@@ -6464,7 +6459,7 @@
         "source_type": "canonical_engineering_guide",
         "supersedes": []
       },
-      "revision": 6,
+      "revision": 7,
       "tier": "L4",
       "title": "Triton-Ascend Contiguous Dimension Merge, Block Size Scaling, and Multibuffer Mutator (`spatial_group_norm_reduce.py`)",
       "token_estimate": 2429,
@@ -7152,11 +7147,6 @@
     {
       "category": "workflow",
       "conditions": {
-        "framework": [
-          "vllm-ascend",
-          "pytorch-npu",
-          "triton-ascend"
-        ],
         "soc": [
           "Ascend910B",
           "Ascend910_93",
@@ -7187,7 +7177,7 @@
         "source_type": "canonical_engineering_guide",
         "supersedes": []
       },
-      "revision": 5,
+      "revision": 6,
       "tier": "L3",
       "title": "Triton-Ascend Tiling Geometry, Persistent Grid Scheduling, and UB Budget Fitting Workflow (`spatial_group_norm_reduce.py`)",
       "token_estimate": 621,

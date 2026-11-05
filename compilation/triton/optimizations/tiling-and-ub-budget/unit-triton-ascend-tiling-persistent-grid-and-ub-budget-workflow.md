@@ -1,10 +1,6 @@
 ---
 category: workflow
 conditions:
-  framework:
-  - vllm-ascend
-  - pytorch-npu
-  - triton-ascend
   soc:
   - Ascend910B
   - Ascend910_93
@@ -23,7 +19,7 @@ provenance:
   source_revision: be5882ef29fa9943305085652d2025a038ba491c
   source_type: canonical_engineering_guide
   supersedes: []
-revision: 5
+revision: 6
 schema: mindie-graded-unit/1
 tier: L3
 title: Triton-Ascend Tiling Geometry, Persistent Grid Scheduling, and UB Budget Fitting

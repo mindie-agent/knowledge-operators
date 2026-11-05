@@ -564,7 +564,7 @@
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 933639,
+      "bytes": 933513,
       "estimated_tokens": 167742,
       "kind": "federation",
       "path": ".",
@@ -767,7 +767,7 @@
       },
       {
         "automatic": false,
-        "bytes": 276632,
+        "bytes": 276506,
         "estimated_tokens": 53719,
         "exceeds": [],
         "kind": "federation",
@@ -925,7 +925,7 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 73.74470797367394,
+  "index_build_elapsed_ms": 78.24575016275048,
   "leaves": [
     {
       "automatic": false,
@@ -1508,7 +1508,7 @@
     },
     {
       "automatic": false,
-      "bytes": 15446,
+      "bytes": 15320,
       "estimated_tokens": 3050,
       "exceeds": [],
       "kind": "leaf",
@@ -2212,7 +2212,7 @@
     },
     {
       "automatic": false,
-      "bytes": 39367,
+      "bytes": 39241,
       "estimated_tokens": 7383,
       "exceeds": [],
       "kind": "subtree",
@@ -3675,9 +3675,9 @@
       "tier": "L3"
     },
     "unit-triton-ascend-dimension-merge-and-ub-multibuffer-mutator": {
-      "bytes": 11361,
+      "bytes": 11298,
       "category": "mutator",
-      "content_sha256": "1c42d500af2239a9ba76c78d26f3b42db2de7e3d8dab1e01b0dd5274800107cc",
+      "content_sha256": "97cb7d8fc7ff515c81986477ae9b9e76041b9fa6575c920a847c684ca545fc23",
       "domain_path": "compilation/triton/optimizations/tiling-and-ub-budget",
       "estimated_tokens": 2429,
       "evidence_strength": "reproduced_empirical",
@@ -3845,9 +3845,9 @@
       "tier": "L4"
     },
     "unit-triton-ascend-tiling-persistent-grid-and-ub-budget-workflow": {
-      "bytes": 4085,
+      "bytes": 4022,
       "category": "workflow",
-      "content_sha256": "1bfc2952937532dd867a35df275e62defea435b4fbc9e799386bf806aca774ed",
+      "content_sha256": "98f01f02fb0125528cf466d274d2de41fcfe043e8d2577f24ba3d1b043326967",
       "domain_path": "compilation/triton/optimizations/tiling-and-ub-budget",
       "estimated_tokens": 621,
       "evidence_strength": "reproduced_empirical",
