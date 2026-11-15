@@ -1,5 +1,5 @@
 {
-  "build_elapsed_ms": 72.6702909450978,
+  "build_elapsed_ms": 78.20779224857688,
   "closure": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
@@ -33,6 +33,7 @@
     "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ],
+    "unit-ascend-aclgraph-bucket-padding-and-varlen-axioms": [],
     "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
@@ -61,6 +62,7 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
     ],
+    "unit-ascend-op-abi-binding-and-single-op-repro-sop": [],
     "unit-ascend-operator-roofline-and-four-view-measurement": [],
     "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
@@ -562,7 +564,7 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ]
   },
-  "generation": "1153da4b0a852caea7cea7ba58da96b041075d804ada27aaeab315c0197ac95b",
+  "generation": "1bb9e730a7fb9952825c83ed59360957192676936029026d3c03890c05f200fa",
   "id_path": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": "normalization/rmsnorm-rope-quant/unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop.md",
     "unit-agent-skills-ascendc-operator-design-codegen-and-review-sop": "operators/skill-playbooks/ascendc-and-catlass/unit-agent-skills-ascendc-operator-design-codegen-and-review-sop.md",
@@ -572,11 +574,13 @@
     "unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow": "operators/model-recipes/agentic-kernel-tuning/unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow.md",
     "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms": "_common/unit-ascend-910b-a3-memory-alignment-and-tiling-axioms.md",
     "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": "_common/unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms.md",
+    "unit-ascend-aclgraph-bucket-padding-and-varlen-axioms": "_common/unit-ascend-aclgraph-bucket-padding-and-varlen-axioms.md",
     "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop": "quantization/aclnn-and-dsl-quant/unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop.md",
     "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator": "attention/fia-mla/unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator.md",
     "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop": "attention/fia-mla/unit-ascend-fused-infer-attention-and-flash-mla-c8-sop.md",
     "unit-ascend-gather-v2-scatter-elements-and-index-operator-sop": "elementwise/gather-scatter-dsl/unit-ascend-gather-v2-scatter-elements-and-index-operator-sop.md",
     "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop": "fusion/moe-gmm/unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop.md",
+    "unit-ascend-op-abi-binding-and-single-op-repro-sop": "operators/api-abi/single-op-repro/unit-ascend-op-abi-binding-and-single-op-repro-sop.md",
     "unit-ascend-operator-roofline-and-four-view-measurement": "_common/unit-ascend-operator-roofline-and-four-view-measurement.md",
     "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms": "_common/platforms/constraints-cheatsheet/unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms.md",
     "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms": "_common/platforms/ascend910b-910c-310p/unit-ascend910b-910c-and-310p-memory-model-and-target-axioms.md",
@@ -671,7 +675,7 @@
   "query_budget_excludes_build": true,
   "schema_version": "mindie-routing-manifest/1",
   "token_estimator": "utf8_bytes_div_4_ceiling",
-  "unit_count": 103,
+  "unit_count": 105,
   "units": [
     {
       "category": "sop",
@@ -1197,6 +1201,70 @@
       }
     },
     {
+      "category": "axiom",
+      "conditions": {
+        "accelerator": "ascend",
+        "cann": ">=9.0,<10",
+        "execution_mode": "aclgraph",
+        "framework": [
+          "vllm-ascend>=0.10,<0.12"
+        ],
+        "soc": [
+          "Ascend910B",
+          "Ascend910B4",
+          "Ascend910_93",
+          "Ascend950"
+        ],
+        "workload_phase": [
+          "decode",
+          "prefill"
+        ]
+      },
+      "domain_path": "_common",
+      "evidence_strength": "hardware_spec",
+      "id": "unit-ascend-aclgraph-bucket-padding-and-varlen-axioms",
+      "inherits_from": [],
+      "inherits_from_closure": [],
+      "path": "_common/unit-ascend-aclgraph-bucket-padding-and-varlen-axioms.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://github.com/cann/ops-transformer/blob/4891cf6a210bf08a4a9bb26f7c1e2277ed43c860/docs/aclnn_fused_infer_attention_score_v3.md",
+          "gitcode.com/https://github.com/cann/ops-transformer/blob/308a15f56d4af213e86871b8fb9747e1494571dd/docs/aclnn_quant_lightning_indexer.md"
+        ],
+        "source_digest": "cbfc50be1e2eef6c7f9b366a780b1bf7937c1e38eb38f7979c060a5baa05a598",
+        "source_locator": "https://github.com/cann/ops-transformer/blob/4891cf6a210bf08a4a9bb26f7c1e2277ed43c860/docs/aclnn_fused_infer_attention_score_v3.md",
+        "source_type": "operator_abi_and_graph_capture_contract"
+      },
+      "revision": 3,
+      "tier": "L1",
+      "title": "ACLGraph bucket padding classes and exact varlen operator contracts",
+      "token_estimate": 1267,
+      "triggers": {
+        "error_signatures": [
+          "queryT (12) != last element of actualSequenceLengthQ (9)",
+          "grouped matmul reads padded tail rows because group_list ends at M_bucket",
+          "ACLGraph replay latency is flat inside a bucket and jumps at the next bucket",
+          "AllReduce or AllGather time is unchanged when the logical token count drops"
+        ],
+        "keywords": [
+          "aclgraph",
+          "bucket padding",
+          "masked_varlen",
+          "grouped_prefix",
+          "full_padded_tensor",
+          "actual_seq_lens_q",
+          "actual_seq_lens_kv",
+          "FusedInferAttentionScore",
+          "FlashAttentionVarLenScore",
+          "QuantLightningIndexer",
+          "GroupedMatmulV4",
+          "group_list",
+          "M_bucket",
+          "M_logical"
+        ]
+      }
+    },
+    {
       "category": "sop",
       "conditions": {
         "kernel_language": "ascendc",
@@ -1583,6 +1651,67 @@
           "gmm_alltoallv",
           "msprof",
           "PipeUtilization"
+        ]
+      }
+    },
+    {
+      "category": "sop",
+      "conditions": {
+        "accelerator": "ascend",
+        "cann": ">=9.0,<10",
+        "execution_mode": "aclgraph",
+        "framework": [
+          "vllm-ascend>=0.10,<0.12"
+        ],
+        "measurement_gear": "deep",
+        "soc": [
+          "Ascend910B",
+          "Ascend910B4",
+          "Ascend910_93",
+          "Ascend950"
+        ]
+      },
+      "domain_path": "operators/api-abi/single-op-repro",
+      "evidence_strength": "hardware_spec",
+      "id": "unit-ascend-op-abi-binding-and-single-op-repro-sop",
+      "inherits_from": [],
+      "inherits_from_closure": [],
+      "path": "operators/api-abi/single-op-repro/unit-ascend-op-abi-binding-and-single-op-repro-sop.md",
+      "provenance": {
+        "evidence_refs": [
+          "https://github.com/cann/ops-transformer/blob/4891cf6a210bf08a4a9bb26f7c1e2277ed43c860/docs/aclnn_fused_infer_attention_score_v3.md",
+          "https://github.com/vllm-project/vllm-ascend/blob/175ef4d49c2072f9233619636f0309f4f88b4e2c/vllm_ascend/device/device_op.py"
+        ],
+        "source_digest": "95a54b37c47aebeaafa09d3fec860ed53d91a8f83de364619094f85599367cb6",
+        "source_locator": "https://github.com/vllm-project/vllm-ascend/blob/175ef4d49c2072f9233619636f0309f4f88b4e2c/vllm_ascend/device/device_op.py",
+        "source_type": "profiling_tool_and_operator_catalog_contract"
+      },
+      "revision": 3,
+      "tier": "L2",
+      "title": "Named operator ABI binding, FRACTAL_NZ storage, and single-op reproduction",
+      "token_estimate": 1314,
+      "triggers": {
+        "error_signatures": [
+          "msprof op_summary positional Input Shapes cannot be mapped back to named API arguments",
+          "repro script passes an ND tensor to a FRACTAL_NZ slot or fails with format mismatch",
+          "actual_seq_lens_q is non-monotonic or its last element differs from queryT",
+          "block_table contains -1, an unallocated block id, or too few columns",
+          "standalone repro is more than 2x slower than the captured operator without a clock or shape change"
+        ],
+        "keywords": [
+          "mindie-profiler inspect-op-abi",
+          "mindie-profiler repro-op",
+          "op_api_catalog.json",
+          "MSPTI tensor descriptor",
+          "named ABI",
+          "FRACTAL_NZ",
+          "format 29",
+          "actual_seq_lens",
+          "group_list",
+          "block_table",
+          "slot_mapping",
+          "single-op reproduction",
+          "workspace"
         ]
       }
     },

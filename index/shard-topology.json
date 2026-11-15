@@ -32,6 +32,7 @@
     "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
     ],
+    "unit-ascend-aclgraph-bucket-padding-and-varlen-axioms": [],
     "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
@@ -60,6 +61,7 @@
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
       "unit-ascend-operator-roofline-and-four-view-measurement"
     ],
+    "unit-ascend-op-abi-binding-and-single-op-repro-sop": [],
     "unit-ascend-operator-roofline-and-four-view-measurement": [],
     "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms": [
       "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms"
@@ -564,8 +566,8 @@
   "federation": {
     "corpus": {
       "automatic": false,
-      "bytes": 933643,
-      "estimated_tokens": 167742,
+      "bytes": 947596,
+      "estimated_tokens": 170323,
       "kind": "federation",
       "path": ".",
       "unit_ids": [
@@ -577,11 +579,13 @@
         "unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow",
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
         "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-aclgraph-bucket-padding-and-varlen-axioms",
         "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop",
         "unit-ascend-fia-gqa-host-tiling-sink-and-bn2s-layout-mutator",
         "unit-ascend-fused-infer-attention-and-flash-mla-c8-sop",
         "unit-ascend-gather-v2-scatter-elements-and-index-operator-sop",
         "unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop",
+        "unit-ascend-op-abi-binding-and-single-op-repro-sop",
         "unit-ascend-operator-roofline-and-four-view-measurement",
         "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
         "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms",
@@ -673,7 +677,7 @@
         "unit-vllm-ascend-fused-moe-comm-methods-and-stage-contracts",
         "unit-vllm-ascend-triton-fla-gdn-kimi-kda-dsa-and-rope-dsv4-ops"
       ],
-      "units": 103
+      "units": 105
     },
     "domains": [
       {
@@ -694,8 +698,8 @@
       },
       {
         "automatic": false,
-        "bytes": 51649,
-        "estimated_tokens": 8983,
+        "bytes": 58473,
+        "estimated_tokens": 10250,
         "exceeds": [],
         "kind": "federation",
         "path": "_common",
@@ -703,6 +707,7 @@
         "unit_ids": [
           "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
           "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+          "unit-ascend-aclgraph-bucket-padding-and-varlen-axioms",
           "unit-ascend-operator-roofline-and-four-view-measurement",
           "unit-ascend-platform-alignment-pipeline-and-execution-constraints-axioms",
           "unit-ascend910b-910c-and-310p-memory-model-and-target-axioms",
@@ -710,7 +715,7 @@
           "unit-ascend950dt-measured-bandwidth-and-dt-vs-pr-overrides-measurement",
           "unit-triton-ascend-constexpr-and-specialization-contract"
         ],
-        "units": 8
+        "units": 9
       },
       {
         "automatic": false,
@@ -882,8 +887,8 @@
       },
       {
         "automatic": false,
-        "bytes": 93664,
-        "estimated_tokens": 13498,
+        "bytes": 100793,
+        "estimated_tokens": 14812,
         "exceeds": [],
         "kind": "federation",
         "path": "operators",
@@ -894,6 +899,7 @@
           "unit-agent-skills-gpu-to-npu-triton-and-tilelang-vector-migration-workflow",
           "unit-agent-skills-triton-operator-design-review-and-npu-optimization",
           "unit-agentic-model-kernel-selection-and-profiling-driven-fusion-workflow",
+          "unit-ascend-op-abi-binding-and-single-op-repro-sop",
           "unit-cann-recipes-custom-ops-flash-kda-and-ascendc-kernel-catalog",
           "unit-deepseek-v32-exp-ascendc-and-tilelang-mla-indexer-kernels",
           "unit-deepseek-v4-ascendc-compressor-indexer-and-sparse-attn-sharedkv",
@@ -908,7 +914,7 @@
           "unit-vllm-ascend-fused-moe-comm-methods-and-stage-contracts",
           "unit-vllm-ascend-triton-fla-gdn-kimi-kda-dsa-and-rope-dsv4-ops"
         ],
-        "units": 18
+        "units": 19
       },
       {
         "automatic": false,
@@ -925,7 +931,7 @@
       }
     ]
   },
-  "index_build_elapsed_ms": 72.6702909450978,
+  "index_build_elapsed_ms": 78.20779224857688,
   "leaves": [
     {
       "automatic": false,
@@ -957,8 +963,8 @@
     },
     {
       "automatic": false,
-      "bytes": 18508,
-      "estimated_tokens": 3153,
+      "bytes": 25332,
+      "estimated_tokens": 4420,
       "exceeds": [],
       "kind": "leaf",
       "path": "_common",
@@ -966,10 +972,11 @@
       "unit_ids": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
         "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-aclgraph-bucket-padding-and-varlen-axioms",
         "unit-ascend-operator-roofline-and-four-view-measurement",
         "unit-triton-ascend-constexpr-and-specialization-contract"
       ],
-      "units": 4
+      "units": 5
     },
     {
       "automatic": false,
@@ -1745,6 +1752,19 @@
     },
     {
       "automatic": false,
+      "bytes": 7129,
+      "estimated_tokens": 1314,
+      "exceeds": [],
+      "kind": "leaf",
+      "path": "operators/api-abi/single-op-repro",
+      "recommended_action": "review_leaf_split",
+      "unit_ids": [
+        "unit-ascend-op-abi-binding-and-single-op-repro-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 11059,
       "estimated_tokens": 1736,
       "exceeds": [],
@@ -1927,8 +1947,8 @@
     },
     {
       "automatic": false,
-      "bytes": 18508,
-      "estimated_tokens": 3153,
+      "bytes": 25332,
+      "estimated_tokens": 4420,
       "exceeds": [],
       "kind": "subtree",
       "path": "_common",
@@ -1936,10 +1956,11 @@
       "unit_ids": [
         "unit-ascend-910b-a3-memory-alignment-and-tiling-axioms",
         "unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms",
+        "unit-ascend-aclgraph-bucket-padding-and-varlen-axioms",
         "unit-ascend-operator-roofline-and-four-view-measurement",
         "unit-triton-ascend-constexpr-and-specialization-contract"
       ],
-      "units": 4
+      "units": 5
     },
     {
       "automatic": false,
@@ -2403,6 +2424,19 @@
     },
     {
       "automatic": false,
+      "bytes": 7129,
+      "estimated_tokens": 1314,
+      "exceeds": [],
+      "kind": "subtree",
+      "path": "operators/api-abi",
+      "recommended_action": "review_two_level_subtree_split",
+      "unit_ids": [
+        "unit-ascend-op-abi-binding-and-single-op-repro-sop"
+      ],
+      "units": 1
+    },
+    {
+      "automatic": false,
       "bytes": 28927,
       "estimated_tokens": 4261,
       "exceeds": [],
@@ -2493,7 +2527,7 @@
       "units": 1
     }
   ],
-  "unit_count": 103,
+  "unit_count": 105,
   "units": {
     "unit-add-rmsnorm-dynamic-quant-rope-cache-and-grad-sop": {
       "bytes": 9098,
@@ -2604,6 +2638,17 @@
       "path": "_common/unit-ascend-a5-950-ub-l1-cube-vector-architecture-axioms.md",
       "tier": "L1"
     },
+    "unit-ascend-aclgraph-bucket-padding-and-varlen-axioms": {
+      "bytes": 6824,
+      "category": "axiom",
+      "content_sha256": "7e87cdc2365a726254f5f61159d273470360268596f4da04136cd53b03ab9632",
+      "domain_path": "_common",
+      "estimated_tokens": 1267,
+      "evidence_strength": "hardware_spec",
+      "inherits_from": [],
+      "path": "_common/unit-ascend-aclgraph-bucket-padding-and-varlen-axioms.md",
+      "tier": "L1"
+    },
     "unit-ascend-dynamic-quant-mxfp8-mxfp4-and-antiquant-operator-sop": {
       "bytes": 9694,
       "category": "sop",
@@ -2675,6 +2720,17 @@
         "unit-ascend-operator-roofline-and-four-view-measurement"
       ],
       "path": "fusion/moe-gmm/unit-ascend-grouped-matmul-swiglu-and-mc2-fusion-sop.md",
+      "tier": "L2"
+    },
+    "unit-ascend-op-abi-binding-and-single-op-repro-sop": {
+      "bytes": 7129,
+      "category": "sop",
+      "content_sha256": "a2f69dce8cc9ce8e05dbe72f971f28bb54e07c2c5dab06db43f13d039418abaf",
+      "domain_path": "operators/api-abi/single-op-repro",
+      "estimated_tokens": 1314,
+      "evidence_strength": "hardware_spec",
+      "inherits_from": [],
+      "path": "operators/api-abi/single-op-repro/unit-ascend-op-abi-binding-and-single-op-repro-sop.md",
       "tier": "L2"
     },
     "unit-ascend-operator-roofline-and-four-view-measurement": {
